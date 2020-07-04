@@ -1,4 +1,11 @@
 {
     "name": "arcosim",
-    "main": "index.js"
+    "main": "index.js",
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.13.1",
+        "bootstrap": "^4.5.0",
+        "electron": "^9.0.5",
+        "jquery": "^3.5.1",
+        "jquery-ui-dist": "^1.12.1"
+    }
 }
