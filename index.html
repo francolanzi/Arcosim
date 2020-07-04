@@ -4,6 +4,28 @@
         <link rel="stylesheet" type="text/css" href="css/styles.css">
     </head>
     <body>
+        <div class="container-fluid bg-light py-2 h-100">
+            <div class="row justify-content-start align-items-center">
+                <div class="col-auto">
+                    <span data-toggle="tooltip" data-placement="bottom" title="Eliminar">
+                        <a class="fas fa-trash-alt text-danger text-decoration-none h2 m-0" href="javascript:void(0);"></a>
+                    </span>
+                </div>
+                <div class="col-auto">
+                    <span data-toggle="tooltip" data-placement="bottom" title="Conectar">
+                        <a class="fas fa-project-diagram text-success text-decoration-none h2 m-0" href="javascript:void(0);"></a>
+                    </span>
+                </div>
+                <div class="col-auto">
+                    <span data-toggle="tooltip" data-placement="bottom" title="Componentes">
+                        <a class="fas fa-puzzle-piece text-primary text-decoration-none h2 m-0" data-toggle="collapse" href="#gallery"></a>
+                    </span>
+                </div>
+            </div>
+            <div id="gallery" class="collapse float-left border border-primary rounded mt-2 px-3 py-0">
+                Gallery
+            </div>
+        </div>
         <script type="text/javascript" src="js/scripts.js"></script>
     </body>
 </html>
