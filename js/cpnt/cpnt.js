@@ -3,7 +3,7 @@ class Component
     constructor()
     {
         if (this.constructor == Component)
-            throw new Error("Component class can't be instantiated");
+            throw new Error('Component class can not be instantiated');
         
         this.inputs = new Map();
         this.outputs = new Map();
