@@ -1,5 +1,10 @@
 class Component
 {
+    static get image()
+    {
+        throw new Error('image static property must be overrided');
+    }
+
     constructor()
     {
         if (this.constructor == Component)
@@ -30,20 +35,117 @@ class Component
     }
 }
 
-class ALU extends Component { }
-class Clock extends Component { }
-class ControlStore extends Component { }
-class Decoder extends Component { }
-class Increment extends Component { }
-class Latch extends Component { }
-class MAR extends Component { }
-class MBR extends Component { }
-class MIR extends Component { }
-class MPC extends Component { }
-class MUX extends Component { }
-class MicroSequenceLogic extends Component { }
-class Registers extends Component { }
-class Shifter extends Component { }
+class ALU extends Component
+{
+    static get image()
+    {
+        return 'img/cpnt/alu.png';
+    }
+}
+
+class Clock extends Component
+{
+    static get image()
+    {
+        return 'img/cpnt/clock.png';
+    }
+}
+
+class ControlStore extends Component
+{
+    static get image()
+    {
+        return 'img/cpnt/ctrlstore.png';
+    }
+}
+
+class Decoder extends Component
+{
+    static get image()
+    {
+        return 'img/cpnt/decoder.png';
+    }
+}
+
+class Increment extends Component
+{
+    static get image()
+    {
+        return 'img/cpnt/increment.png';
+    }
+}
+
+class Latch extends Component
+{
+    static get image()
+    {
+        return 'img/cpnt/latch.png';
+    }
+}
+
+class MAR extends Component
+{
+    static get image()
+    {
+        return 'img/cpnt/mar.png';
+    }
+}
+
+class MBR extends Component
+{
+    static get image()
+    {
+        return 'img/cpnt/mbr.png';
+    }
+}
+
+class MIR extends Component
+{
+    static get image()
+    {
+        return 'img/cpnt/mir.png';
+    }
+}
+
+class MPC extends Component
+{
+    static get image()
+    {
+        return 'img/cpnt/mpc.png';
+    }
+}
+
+class MUX extends Component
+{
+    static get image()
+    {
+        return 'img/cpnt/mux.png';
+    }
+}
+
+class MicroSequenceLogic extends Component
+{
+    static get image()
+    {
+        return 'img/cpnt/mseqlogic.png';
+    }
+}
+
+class Registers extends Component
+{
+    static get image()
+    {
+        return 'img/cpnt/registers.png';
+    }
+}
+
+class Shifter extends Component
+{
+    static get image()
+    {
+        return 'img/cpnt/shifter.png';
+    }
+}
 
 const cpnt = new Map();
 
