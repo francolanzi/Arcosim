@@ -4,7 +4,7 @@ class Latch extends Component
 {
     static get image()
     {
-        return 'img/cpnt/latch.png';
+        return 'img/cpnt/Latch.png';
     }
 }
 

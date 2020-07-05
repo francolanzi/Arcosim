@@ -4,7 +4,7 @@ class Increment extends Component
 {
     static get image()
     {
-        return 'img/cpnt/increment.png';
+        return 'img/cpnt/Increment.png';
     }
 }
 

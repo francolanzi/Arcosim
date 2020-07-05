@@ -4,7 +4,7 @@ class ControlStore extends Component
 {
     static get image()
     {
-        return 'img/cpnt/ctrlstore.png';
+        return 'img/cpnt/ControlStore.png';
     }
 }
 

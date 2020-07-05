@@ -4,7 +4,7 @@ class Shifter extends Component
 {
     static get image()
     {
-        return 'img/cpnt/shifter.png';
+        return 'img/cpnt/Shifter.png';
     }
 }
 

@@ -4,7 +4,7 @@ class Decoder extends Component
 {
     static get image()
     {
-        return 'img/cpnt/decoder.png';
+        return 'img/cpnt/Decoder.png';
     }
 }
 

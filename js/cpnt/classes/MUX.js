@@ -4,7 +4,7 @@ class MUX extends Component
 {
     static get image()
     {
-        return 'img/cpnt/mux.png';
+        return 'img/cpnt/MUX.png';
     }
 }
 

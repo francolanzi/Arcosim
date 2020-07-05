@@ -4,7 +4,7 @@ class MIR extends Component
 {
     static get image()
     {
-        return 'img/cpnt/mir.png';
+        return 'img/cpnt/MIR.png';
     }
 }
 

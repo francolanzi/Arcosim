@@ -4,7 +4,7 @@ class MPC extends Component
 {
     static get image()
     {
-        return 'img/cpnt/mpc.png';
+        return 'img/cpnt/MPC.png';
     }
 }
 

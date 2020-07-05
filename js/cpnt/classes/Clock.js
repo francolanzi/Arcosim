@@ -4,7 +4,7 @@ class Clock extends Component
 {
     static get image()
     {
-        return 'img/cpnt/clock.png';
+        return 'img/cpnt/Clock.png';
     }
 }
 

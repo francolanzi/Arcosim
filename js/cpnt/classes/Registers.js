@@ -4,7 +4,7 @@ class Registers extends Component
 {
     static get image()
     {
-        return 'img/cpnt/registers.png';
+        return 'img/cpnt/Registers.png';
     }
 }
 

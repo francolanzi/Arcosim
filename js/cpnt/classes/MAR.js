@@ -4,7 +4,7 @@ class MAR extends Component
 {
     static get image()
     {
-        return 'img/cpnt/mar.png';
+        return 'img/cpnt/MAR.png';
     }
 }
 

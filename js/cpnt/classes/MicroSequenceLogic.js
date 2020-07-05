@@ -4,7 +4,7 @@ class MicroSequenceLogic extends Component
 {
     static get image()
     {
-        return 'img/cpnt/mseqlogic.png';
+        return 'img/cpnt/MicroSequenceLogic.png';
     }
 }
 

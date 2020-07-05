@@ -4,7 +4,7 @@ class MBR extends Component
 {
     static get image()
     {
-        return 'img/cpnt/mbr.png';
+        return 'img/cpnt/MBR.png';
     }
 }
 

@@ -4,7 +4,7 @@ class ALU extends Component
 {
     static get image()
     {
-        return 'img/cpnt/alu.png';
+        return 'img/cpnt/ALU.png';
     }
 }
 
