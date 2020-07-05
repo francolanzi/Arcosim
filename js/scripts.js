@@ -19,7 +19,7 @@ for (type of computer.cpntTypes())
     let elem = $('#' + type);
 
     let img = new Image();
-    let src = computer.getImage(type);
+    let src = computer.getCpntImage(type);
 
     img.onload = () =>
     {

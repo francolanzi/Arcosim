@@ -14,6 +14,6 @@ files.forEach(file =>
 module.exports =
 {
     cpntTypes: () => cpntClasses.keys(),
-    getImage: type => cpntClasses.get(type).image,
+    getCpntImage: type => cpntClasses.get(type).image,
     addCpnt: type => new (cpntClasses.get(type))()
 };
