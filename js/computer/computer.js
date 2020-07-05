@@ -1,9 +1,9 @@
 const fs = require('fs');
-const path = require('path')
+const path = require('path');
 
 const cpntClasses = new Map();
 
-const files = fs.readdirSync(__dirname + '/classes');
+var files = fs.readdirSync(__dirname + '/classes');
 files.forEach(file =>
 {
     file = path.parse(file);
