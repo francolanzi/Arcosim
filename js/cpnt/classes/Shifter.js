@@ -1,4 +1,4 @@
-const Component = require('./Component');
+const Component = require('../Component');
 
 class Shifter extends Component
 {
