@@ -14,5 +14,6 @@ files.forEach(file =>
 module.exports =
 {
     list: () => cpnt.keys(),
+    get: key => cpnt.get(key),
     new: key => new (cpnt.get(key))()
 };
