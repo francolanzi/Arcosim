@@ -2,9 +2,9 @@ const jQuery = $ = require('jquery');
 require('jquery-ui-dist/jquery-ui');
 require('bootstrap/dist/js/bootstrap.bundle');
 
-const cpnt = require('./js/cpnt');
+const computer = require('./js/computer');
 
-for (type of cpnt.cpntTypes())
+for (type of computer.cpntTypes())
 {
     let html = '\
         <div class="row justify-content-around my-3">\
@@ -19,8 +19,8 @@ for (type of cpnt.cpntTypes())
     let elem = $('#' + type);
 
     let img = new Image();
-    let src = cpnt.getImage(type);
-    
+    let src = computer.getImage(type);
+
     img.onload = () =>
     {
         elem.width(img.width);
