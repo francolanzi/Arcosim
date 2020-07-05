@@ -7,3 +7,5 @@ class ALU extends Component
         return 'img/cpnt/alu.png';
     }
 }
+
+module.exports = ALU;
