@@ -27,6 +27,11 @@ class Component
         return this._id;
     }
 
+    get type()
+    {
+        return this.constructor.name;
+    }
+
     getInput(id)
     {
         return this.inputs.get(id);
