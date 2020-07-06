@@ -14,9 +14,17 @@ files.forEach(file =>
     }
 });
 
+var cpnts = new Map();
+
 module.exports =
 {
     cpntTypes: () => cpntClasses.keys(),
     getCpntImage: type => cpntClasses.get(type).image,
-    addCpnt: type => new (cpntClasses.get(type))()
+    addCpnt: type =>
+        {
+            var cpnt = new (cpntClasses.get(type))();
+            var key = cpnt.constructor.type + cpnt.id;
+            cpnts.set(key, cpnt);
+            return cpnt.id;
+        }
 };
