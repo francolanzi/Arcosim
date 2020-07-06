@@ -8,7 +8,10 @@ files.forEach(file =>
 {
     file = path.parse(file);
     if (file.ext === '.js')
-        cpntClasses.set(file.name, require('./classes/' + file.name));
+    {
+        var elem = require('./classes/' + file.name);
+        cpntClasses.set(elem.name, elem);
+    }
 });
 
 module.exports =
