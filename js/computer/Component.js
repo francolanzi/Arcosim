@@ -1,4 +1,5 @@
 const { _count } = require("./classes/ALU");
+const { cpntTypes } = require("./computer");
 
 class Component
 {
@@ -7,6 +8,11 @@ class Component
     static get image()
     {
         throw new Error('image static property must be overrided');
+    }
+
+    static get type()
+    {
+        return this.name;
     }
 
     constructor()
@@ -25,11 +31,6 @@ class Component
     get id()
     {
         return this._id;
-    }
-
-    get type()
-    {
-        return this.constructor.name;
     }
 
     getInput(id)
