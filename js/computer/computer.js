@@ -26,5 +26,6 @@ module.exports =
             var key = cpnt.constructor.type + cpnt.id;
             cpnts.set(key, cpnt);
             return cpnt.id;
-        }
+        },
+    removeCpnt: (type, id) => cpnts.delete(type + id)
 };
