@@ -38,7 +38,7 @@ class View
 
     constructor()
     {
-        throw new Error('Component class can not be instantiated');
+        throw new Error('View class can not be instantiated');
     }
 }
 
