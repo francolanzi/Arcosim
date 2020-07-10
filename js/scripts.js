@@ -3,8 +3,9 @@ require('jquery-ui-dist/jquery-ui');
 require('bootstrap/dist/js/bootstrap.bundle');
 
 const Computer = require('./js/computer');
+const View = require('./js/view');
 
-for (type of Computer.cpntTypes())
+for (type of View.cpntTypes())
 {
     let html = '\
         <div class="row justify-content-around my-3">\
@@ -19,7 +20,7 @@ for (type of Computer.cpntTypes())
     let cpnt = $('#' + type);
 
     let img = new Image();
-    let src = Computer.getCpntImage(type);
+    let src = View.getCpntImage(type);
 
     img.onload = () =>
     {

@@ -2,11 +2,6 @@ class Component
 {
     static _count = new Map();
 
-    static get image()
-    {
-        throw new Error('image static property must be overrided');
-    }
-
     static get type()
     {
         return this.name;
