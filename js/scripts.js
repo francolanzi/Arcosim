@@ -88,3 +88,5 @@ $('#trash').droppable({
 });
 
 $('[data-toggle="tooltip"]').tooltip();
+
+$('a').on('click', function() { $(this).trigger('blur'); });
