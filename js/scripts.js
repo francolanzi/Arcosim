@@ -86,3 +86,5 @@ $('#trash').droppable({
         $(ev.target).trigger('blur');
     }
 });
+
+$('[data-toggle="tooltip"]').tooltip();
