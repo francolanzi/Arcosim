@@ -2,9 +2,9 @@ const jQuery = $ = require('jquery');
 require('jquery-ui-dist/jquery-ui');
 require('bootstrap/dist/js/bootstrap.bundle');
 
-const computer = require('./js/computer');
+const Computer = require('./js/computer');
 
-for (type of computer.cpntTypes())
+for (type of Computer.cpntTypes())
 {
     let html = '\
         <div class="row justify-content-around my-3">\
@@ -19,7 +19,7 @@ for (type of computer.cpntTypes())
     let cpnt = $('#' + type);
 
     let img = new Image();
-    let src = computer.getCpntImage(type);
+    let src = Computer.getCpntImage(type);
 
     img.onload = () =>
     {
@@ -35,6 +35,8 @@ for (type of computer.cpntTypes())
         containment: '#board'
     });
 }
+
+var computer = new Computer();
 
 $('#board').droppable({
     drop: function(ev, ui)
