@@ -36,8 +36,6 @@ for (type of computer.cpntTypes())
     });
 }
 
-
-
 $('#board').droppable({
     drop: function(ev, ui)
     {
@@ -63,5 +61,28 @@ $('#board').droppable({
             clone.attr('cpnt-id', id);
             clone.attr('id', type + id);
         }
+    }
+});
+
+$('#trash').droppable({
+    greedy: true,
+    tolerance: 'pointer',
+    drop: (ev, ui) =>
+    {
+        var type = $(ui.draggable).attr('cpnt-type');
+        var id = $(ui.draggable).attr('cpnt-id');
+        computer.removeCpnt(type, id);
+        $(ui.draggable).remove('.cpnt-instance');
+        $(ev.target).trigger('blur');
+    },
+    over: (ev, ui) =>
+    {
+        $(ui.helper).addClass('filter-invert');
+        $(ev.target).trigger('focus');
+    },
+    out: (ev, ui) =>
+    {
+        $(ui.helper).removeClass('filter-invert');
+        $(ev.target).trigger('blur');
     }
 });

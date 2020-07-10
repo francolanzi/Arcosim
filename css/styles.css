@@ -13,6 +13,11 @@
     z-index: 1;
 }
 
+.filter-invert
+{
+    filter: invert(1);
+}
+
 button
 {
     outline: none !important;
