@@ -24,8 +24,8 @@ class Component
         this._id = count ? ++count : 1;
         Component._count.set(this.constructor.name, this._id);
         
-        this.inputs = new Map();
-        this.outputs = new Map();
+        this._inputs = new Map();
+        this._outputs = new Map();
     }
 
     get id()
@@ -35,22 +35,22 @@ class Component
 
     getInput(id)
     {
-        return this.inputs.get(id);
+        return this._inputs.get(id);
     }
 
     getOutput(id)
     {
-        return this.outputs.get(id);
+        return this._outputs.get(id);
     }
 
     inputList()
     {
-        return this.inputs.keys();
+        return this._inputs.keys();
     }
 
     outputList()
     {
-        return this.outputs.keys();
+        return this._outputs.keys();
     }
 }
 
