@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { runInThisContext } = require('vm');
 
 class Computer
 {
@@ -53,6 +54,34 @@ class Computer
     removeCpnt(type, id)
     {
         return this._cpnts.delete(type + id);
+    }
+
+    getInput(type, id, input)
+    {
+        if (this._cpnts.has(type + id))
+            return this._cpnts.get(type + id).getInput(input);
+        return undefined;
+    }
+
+    getOutput(type, id, output)
+    {
+        if (this._cpnts.has(type + id))
+            return this._cpnts.get(type + id).getOutput(output);
+        return undefined;
+    }
+
+    inputList(type, id)
+    {
+        if (this._cpnts.has(type + id))
+            return this._cpnts.get(type + id).inputList();
+        return undefined;
+    }
+
+    outputList(type, id)
+    {
+        if (this._cpnts.has(type + id))
+            return this._cpnts.get(type + id).outputList();
+        return undefined;
     }
 }
 
