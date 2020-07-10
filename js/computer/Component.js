@@ -1,6 +1,3 @@
-const { _count } = require("./classes/ALU");
-const { cpntTypes } = require("./computer");
-
 class Component
 {
     static _count = new Map();
