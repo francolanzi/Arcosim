@@ -11,13 +11,13 @@ class Computer
         {
             Computer._cpntClasses = new Map();
 
-            var files = fs.readdirSync(__dirname + '/classes');
+            var files = fs.readdirSync(__dirname + '/cpnts');
             files.forEach(file =>
             {
                 file = path.parse(file);
                 if (file.ext === '.js')
                 {
-                    var cpnt = require('./classes/' + file.name);
+                    var cpnt = require('./cpnts/' + file.name);
                     Computer._cpntClasses.set(cpnt.type, cpnt);
                 }
             });

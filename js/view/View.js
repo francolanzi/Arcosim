@@ -11,13 +11,13 @@ class View
         {
             View._cpnts = new Map();
 
-            var files = fs.readdirSync(__dirname + '/classes');
+            var files = fs.readdirSync(__dirname + '/cpnts');
             files.forEach(file =>
             {
                 file = path.parse(file);
                 if (file.ext === '.js')
                 {
-                    var cpnt = require('./classes/' + file.name);
+                    var cpnt = require('./cpnts/' + file.name);
                     View._cpnts.set(cpnt.type, cpnt);
                 }
             });
