@@ -50,37 +50,14 @@ class Computer
         return cpnt.id;
     }
 
+    getCpnt(type, id)
+    {
+        return this._cpnts.get(type + id);
+    }
+
     removeCpnt(type, id)
     {
         return this._cpnts.delete(type + id);
-    }
-
-    getInput(type, id, input)
-    {
-        if (this._cpnts.has(type + id))
-            return this._cpnts.get(type + id).getInput(input);
-        return undefined;
-    }
-
-    getOutput(type, id, output)
-    {
-        if (this._cpnts.has(type + id))
-            return this._cpnts.get(type + id).getOutput(output);
-        return undefined;
-    }
-
-    inputList(type, id)
-    {
-        if (this._cpnts.has(type + id))
-            return this._cpnts.get(type + id).inputList();
-        return undefined;
-    }
-
-    outputList(type, id)
-    {
-        if (this._cpnts.has(type + id))
-            return this._cpnts.get(type + id).outputList();
-        return undefined;
     }
 }
 
