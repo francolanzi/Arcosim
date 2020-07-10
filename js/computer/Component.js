@@ -1,3 +1,6 @@
+const Input = require('./Input');
+const Output = require('./Output');
+
 class Component
 {
     static _count = new Map();
@@ -25,6 +28,30 @@ class Component
         return this._id;
     }
 
+    get inputs()
+    {
+        return this._inputs.keys();
+    }
+
+    get outputs()
+    {
+        return this._outputs.keys();
+    }
+
+    addInput(id)
+    {
+        if (!this._inputs.has(id))
+            this._inputs.set(id, new Input(id));
+        return this.getInput(id);
+    }
+
+    addOutput(id)
+    {
+        if (!this._outputs.has(id))
+            this._outputs.set(id, new Output(id));
+        return this.getOutput(id);
+    }
+
     getInput(id)
     {
         return this._inputs.get(id);
@@ -35,14 +62,14 @@ class Component
         return this._outputs.get(id);
     }
 
-    inputList()
+    removeInput(id)
     {
-        return this._inputs.keys();
+        return this._inputs.delete(id);
     }
 
-    outputList()
+    removeOutput(id)
     {
-        return this._outputs.keys();
+        return this._outputs.delete(id);
     }
 }
 
