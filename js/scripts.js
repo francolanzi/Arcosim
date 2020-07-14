@@ -1,9 +1,87 @@
-const jQuery = $ = require('jquery');
-require('jquery-ui-dist/jquery-ui');
+const $ = require('jquery');
 require('bootstrap/dist/js/bootstrap.bundle');
 
 const Computer = require('./js/computer');
 const View = require('./js/view');
+
+var computer = new Computer();
+
+function trash(ev)
+{
+    var width = $('#trash').width();
+    var height = $('#trash').height();
+    var offset = $('#trash').offset();
+    
+    return ev.clientY >= offset.top
+        && ev.clientX >= offset.left
+        && ev.clientY <= offset.top + height
+        && ev.clientX <= offset.left + width;
+}
+
+function drag(ev)
+{
+    var cpnt = $(this);
+
+    var x = ev.clientX - cpnt.offset().left;
+    var y = ev.clientY - cpnt.offset().top;
+
+    function move(ev)
+    {
+        cpnt.css('top', ev.clientY - y);
+        cpnt.css('left', ev.clientX - x);
+
+        if (trash(ev))
+        {
+            cpnt.addClass('filter-invert');
+            $('#trash').trigger('focus');
+        }
+        else
+        {
+            cpnt.removeClass('filter-invert');
+            $('#trash').trigger('blur');
+        }
+    }
+
+    function drop()
+    {
+        $(document).off('mousemove', move);
+        $(document).off('mouseup', drop);
+
+        if (cpnt.hasClass('filter-invert'))
+        {
+            var type = cpnt.attr('cpnt-type');
+            var id = cpnt.attr('cpnt-id');
+            computer.removeCpnt(type, id);
+            cpnt.remove('.cpnt-instance');
+            $('#trash').trigger('blur');
+        }
+    }
+
+    if (cpnt.hasClass('cpnt-original'))
+    {
+        cpnt = cpnt.clone();
+        $('#board').append(cpnt);
+    
+        cpnt.removeClass('cpnt-original');
+        cpnt.addClass('cpnt-instance');
+    
+        cpnt.css('position', 'absolute');
+        
+        var type = cpnt.attr('cpnt-type');
+        var id = computer.addCpnt(type);
+    
+        cpnt.attr('cpnt-id', id);
+        cpnt.attr('id', type + id);
+
+        cpnt.on('mousedown', drag);
+        cpnt.on('dragstart', () => false);
+    }
+
+    $(document).on('mousemove', move);
+    $(document).on('mouseup', drop);
+
+    move(ev);
+}
 
 for (type of View.cpntTypes())
 {
@@ -30,65 +108,9 @@ for (type of View.cpntTypes())
     };
     img.src = src;
 
-    cpnt.draggable({
-        helper: 'clone',
-        appendTo: '#board',
-        containment: '#board'
-    });
+    cpnt.on('mousedown', drag);
+    cpnt.on('dragstart', () => false);
 }
-
-var computer = new Computer();
-
-$('#board').droppable({
-    drop: function(ev, ui)
-    {
-        if ($(ui.draggable).hasClass('cpnt-original'))
-        {
-            var clone = $(ui.draggable).clone();
-            $(this).append(clone);
-
-            clone.removeClass('cpnt-original');
-            clone.addClass('cpnt-instance');
-
-            clone.css('position', 'absolute');
-            clone.css('top', ui.offset.top);
-            clone.css('left', ui.offset.left);
-
-            clone.draggable({
-                containment: '#board'
-            });
-            
-            var type = clone.attr('cpnt-type');
-            var id = computer.addCpnt(type);
-
-            clone.attr('cpnt-id', id);
-            clone.attr('id', type + id);
-        }
-    }
-});
-
-$('#trash').droppable({
-    greedy: true,
-    tolerance: 'pointer',
-    drop: (ev, ui) =>
-    {
-        var type = $(ui.draggable).attr('cpnt-type');
-        var id = $(ui.draggable).attr('cpnt-id');
-        computer.removeCpnt(type, id);
-        $(ui.draggable).remove('.cpnt-instance');
-        $(ev.target).trigger('blur');
-    },
-    over: (ev, ui) =>
-    {
-        $(ui.helper).addClass('filter-invert');
-        $(ev.target).trigger('focus');
-    },
-    out: (ev, ui) =>
-    {
-        $(ui.helper).removeClass('filter-invert');
-        $(ev.target).trigger('blur');
-    }
-});
 
 $('[data-toggle="tooltip"]').tooltip();
 
