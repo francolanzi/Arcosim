@@ -17,10 +17,3 @@
 {
     filter: invert(1);
 }
-
-button
-{
-    outline: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-}
