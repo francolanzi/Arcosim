@@ -6,112 +6,123 @@ const View = require('./js/view');
 
 var computer = new Computer();
 
-function trash(ev)
+function overTrash(ev)
 {
-    var width = $('#trash').width();
-    var height = $('#trash').height();
-    var offset = $('#trash').offset();
+    var rect = trash.getBoundingClientRect();
     
-    return ev.clientY >= offset.top
-        && ev.clientX >= offset.left
-        && ev.clientY <= offset.top + height
-        && ev.clientX <= offset.left + width;
+    return ev.clientY >= rect.top
+        && ev.clientX >= rect.left
+        && ev.clientY <= rect.bottom
+        && ev.clientX <= rect.right;
 }
 
 function drag(ev)
 {
-    var cpnt = $(this);
+    var cpnt = this;
 
-    var x = ev.clientX - cpnt.offset().left;
-    var y = ev.clientY - cpnt.offset().top;
+    var rect = cpnt.getBoundingClientRect();
+    var x = ev.clientX - rect.left;
+    var y = ev.clientY - rect.top;
 
     function move(ev)
     {
-        cpnt.css('top', ev.clientY - y);
-        cpnt.css('left', ev.clientX - x);
+        cpnt.style.top = ev.clientY - y;
+        cpnt.style.left = ev.clientX - x;
 
-        if (trash(ev))
+        if (overTrash(ev))
         {
-            cpnt.addClass('filter-invert');
-            $('#trash').trigger('focus');
+            cpnt.classList.add('filter-invert');
+            trash.focus();
         }
         else
         {
-            cpnt.removeClass('filter-invert');
-            $('#trash').trigger('blur');
+            cpnt.classList.remove('filter-invert');
+            trash.blur();
         }
     }
 
     function drop()
     {
-        $(document).off('mousemove', move);
-        $(document).off('mouseup', drop);
+        document.removeEventListener('mousemove', move);
+        document.removeEventListener('mouseup', drop);
 
-        if (cpnt.hasClass('filter-invert'))
+        if (cpnt.classList.contains('filter-invert'))
         {
-            var type = cpnt.attr('cpnt-type');
-            var id = cpnt.attr('cpnt-id');
+            var type = cpnt.getAttribute('cpnt-type');
+            var id = cpnt.getAttribute('cpnt-id');
             computer.removeCpnt(type, id);
-            cpnt.remove('.cpnt-instance');
-            $('#trash').trigger('blur');
+            cpnt.remove();
+            trash.blur();
         }
     }
 
-    if (cpnt.hasClass('cpnt-original'))
+    if (cpnt.classList.contains('cpnt-original'))
     {
-        cpnt = cpnt.clone();
-        $('#board').append(cpnt);
+        cpnt = cpnt.cloneNode(true);
+        board.appendChild(cpnt);
     
-        cpnt.removeClass('cpnt-original');
-        cpnt.addClass('cpnt-instance');
-    
-        cpnt.css('position', 'absolute');
+        cpnt.classList.remove('cpnt-original');
+        cpnt.classList.add('cpnt-instance');
+
+        cpnt.style.position = 'absolute';
         
-        var type = cpnt.attr('cpnt-type');
+        var type = cpnt.getAttribute('cpnt-type');
         var id = computer.addCpnt(type);
     
-        cpnt.attr('cpnt-id', id);
-        cpnt.attr('id', type + id);
+        cpnt.setAttribute('cpnt-id', id);
+        cpnt.setAttribute('id', type + id);
 
-        cpnt.on('mousedown', drag);
-        cpnt.on('dragstart', () => false);
+        cpnt.addEventListener('mousedown', drag);
+        
+        cpnt.ondragstart = () => false;
     }
 
-    $(document).on('mousemove', move);
-    $(document).on('mouseup', drop);
+    document.addEventListener('mousemove', move);
+    document.addEventListener('mouseup', drop);
 
     move(ev);
 }
 
-for (type of View.cpntTypes())
+for (let type of View.cpntTypes())
 {
-    let html = '\
-        <div class="row justify-content-around my-3">\
-            <div class="col-auto">\
-                <div id="' + type + '" cpnt-type="' + type + '" class="cpnt-original m-0 p-0"></div>\
-            </div>\
-        </div>\
-    ';
+    let cpnt = document.createElement('div');
+    cpnt.id = type;
+    cpnt.setAttribute('cpnt-type', type);
+    cpnt.classList.add('cpnt-original');
+    cpnt.classList.add('m-0');
+    cpnt.classList.add('p-0');
 
-    $('#gallery').append(html);
-    
-    let cpnt = $('#' + type);
+    let col = document.createElement('div');
+    col.classList.add('col-auto');
+    col.appendChild(cpnt);
+
+    let row = document.createElement('div');
+    row.classList.add('row');
+    row.classList.add('justify-content-around');
+    row.classList.add('my-3');
+    row.appendChild(col);
+
+    gallery.appendChild(row);
 
     let img = new Image();
     let src = View.getCpntImage(type);
 
     img.onload = () =>
     {
-        cpnt.width(img.width);
-        cpnt.height(img.height);
-        cpnt.css('background-image', 'url(' + src + ')');
+        cpnt.style.width = img.width;
+        cpnt.style.height = img.height;
+        cpnt.style.backgroundImage = 'url(' + src + ')';
     };
     img.src = src;
 
-    cpnt.on('mousedown', drag);
-    cpnt.on('dragstart', () => false);
+    cpnt.addEventListener('mousedown', drag);
+
+    cpnt.ondragstart = () => false;
 }
 
-$('[data-toggle="tooltip"]').tooltip();
+var anchor = document.getElementsByTagName('a');
 
-$('a').on('click', function() { $(this).trigger('blur'); });
+for (let i = 0; i < anchor.length; i++)
+    anchor[i].addEventListener('click', function() { this.blur(); });
+
+$('[data-toggle="tooltip"]').tooltip();
