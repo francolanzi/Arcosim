@@ -130,6 +130,6 @@ for (let type of View.cpntTypes())
 var anchor = document.getElementsByTagName('a');
 
 for (let i = 0; i < anchor.length; i++)
-    anchor[i].addEventListener('click', function() { this.blur(); });
+    anchor[i].addEventListener('mouseup', function() { this.blur(); });
 
 $('[data-toggle="tooltip"]').tooltip();
