@@ -30,12 +30,6 @@ class Computer
         return Computer._cpntClasses.keys();
     }
 
-    static getCpntImage(type)
-    {
-        Computer.init();
-        return Computer._cpntClasses.get(type).image;
-    }
-
     constructor()
     {
         Computer.init();
