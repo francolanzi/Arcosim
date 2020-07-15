@@ -16,6 +16,33 @@ function overTrash(ev)
         && ev.clientX <= rect.right;
 }
 
+function instance()
+{
+    var rect = this.getBoundingClientRect();
+
+    var cpnt = this.cloneNode(true);
+    board.appendChild(cpnt);
+
+    cpnt.classList.remove('cpnt-original');
+    cpnt.classList.add('cpnt-instance');
+
+    cpnt.style.position = 'absolute';
+    cpnt.style.top = rect.top;
+    cpnt.style.left = rect.left;
+    
+    var type = cpnt.getAttribute('cpnt-type');
+    var id = computer.addCpnt(type);
+
+    cpnt.setAttribute('cpnt-id', id);
+    cpnt.setAttribute('id', type + id);
+
+    cpnt.addEventListener('mousedown', drag);
+    
+    cpnt.ondragstart = () => false;
+
+    return cpnt;
+}
+
 function drag(ev)
 {
     var cpnt = this;
@@ -56,31 +83,8 @@ function drag(ev)
         }
     }
 
-    if (cpnt.classList.contains('cpnt-original'))
-    {
-        cpnt = cpnt.cloneNode(true);
-        board.appendChild(cpnt);
-    
-        cpnt.classList.remove('cpnt-original');
-        cpnt.classList.add('cpnt-instance');
-
-        cpnt.style.position = 'absolute';
-        
-        var type = cpnt.getAttribute('cpnt-type');
-        var id = computer.addCpnt(type);
-    
-        cpnt.setAttribute('cpnt-id', id);
-        cpnt.setAttribute('id', type + id);
-
-        cpnt.addEventListener('mousedown', drag);
-        
-        cpnt.ondragstart = () => false;
-    }
-
     document.addEventListener('mousemove', move);
     document.addEventListener('mouseup', drop);
-
-    move(ev);
 }
 
 for (let type of View.cpntTypes())
@@ -115,7 +119,10 @@ for (let type of View.cpntTypes())
     };
     img.src = src;
 
-    cpnt.addEventListener('mousedown', drag);
+    cpnt.addEventListener('mousedown', function(ev)
+    {
+        drag.call(instance.call(this), ev);
+    });
 
     cpnt.ondragstart = () => false;
 }
