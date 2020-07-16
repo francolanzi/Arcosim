@@ -32,18 +32,8 @@ fs.readdirSync('js/view/cpnts').forEach(file =>
             var cpnt = ev.detail.cpnt;
             computer.removeCpnt(cpnt.constructor.type, cpnt.id);
         });
-
-        var col = document.createElement('div');
-        col.classList.add('col-auto');
-        col.appendChild(cpnt);
     
-        var row = document.createElement('div');
-        row.classList.add('row');
-        row.classList.add('justify-content-around');
-        row.classList.add('my-3');
-        row.appendChild(col);
-    
-        gallery.appendChild(row);
+        gallery.firstElementChild.appendChild(cpnt);
     }
 });
 

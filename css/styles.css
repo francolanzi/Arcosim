@@ -7,3 +7,15 @@
     position: relative;
     z-index: 1;
 }
+
+#gallery span
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#gallery span *
+{
+    margin: 0.5rem !important;
+}
