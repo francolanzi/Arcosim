@@ -1,6 +1,19 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 
+#menu
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+#menu *
+{
+    margin-right: 1rem;
+}
+
 #gallery
 {
     background-color: rgba(0, 123, 255, 0.2);
