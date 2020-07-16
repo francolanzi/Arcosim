@@ -21,6 +21,8 @@ fs.readdirSync('js/view/cpnts').forEach(file =>
         cpnt.addEventListener('add', ev =>
         {
             var instance = ev.detail;
+            board.appendChild(instance);
+            
             var id = computer.addCpnt(instance.constructor.type);
             instance.cpnt = computer.getCpnt(instance.constructor.type, id);
         });
