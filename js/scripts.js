@@ -8,6 +8,8 @@ const Computer = require('./js/computer');
 
 var computer = new Computer();
 
+document.ondragstart = () => false;
+
 fs.readdirSync('js/view/cpnts').forEach(file =>
 {
     file = path.parse(file);
