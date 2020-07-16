@@ -46,6 +46,6 @@ fs.readdirSync('js/view/cpnts').forEach(file =>
 var anchor = document.getElementsByTagName('a');
 
 for (let i = 0; i < anchor.length; i++)
-    anchor[i].addEventListener('mouseup', function() { this.blur(); });
+    anchor[i].addEventListener('mousedown', ev => ev.preventDefault());
 
 $('[data-toggle="tooltip"]').tooltip();
