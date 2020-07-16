@@ -1,11 +1,37 @@
-const Component = require('../Component');
+const { CpntOriginal, CpntInstance } = require('../Component');
 
-class MAR extends Component
+const type = 'MAR';
+const image = 'img/cpnt/MAR.png';
+
+class MARInstance extends CpntInstance
 {
+    static get type()
+    {
+        return type;
+    }
+    
     static get image()
     {
-        return 'img/cpnt/MAR.png';
+        return image;
     }
 }
 
-module.exports = MAR;
+class MAROriginal extends CpntOriginal
+{
+    static get type()
+    {
+        return type;
+    }
+    
+    static get image()
+    {
+        return image;
+    }
+
+    static get instance()
+    {
+        return MARInstance;
+    }
+}
+
+module.exports = MAROriginal;

@@ -1,11 +1,37 @@
-const Component = require('../Component');
+const { CpntOriginal, CpntInstance } = require('../Component');
 
-class ControlStore extends Component
+const type = 'ControlStore';
+const image = 'img/cpnt/ControlStore.png';
+
+class ControlStoreInstance extends CpntInstance
 {
+    static get type()
+    {
+        return type;
+    }
+    
     static get image()
     {
-        return 'img/cpnt/ControlStore.png';
+        return image;
     }
 }
 
-module.exports = ControlStore;
+class ControlStoreOriginal extends CpntOriginal
+{
+    static get type()
+    {
+        return type;
+    }
+    
+    static get image()
+    {
+        return image;
+    }
+
+    static get instance()
+    {
+        return ControlStoreInstance;
+    }
+}
+
+module.exports = ControlStoreOriginal;

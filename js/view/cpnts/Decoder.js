@@ -1,11 +1,37 @@
-const Component = require('../Component');
+const { CpntOriginal, CpntInstance } = require('../Component');
 
-class Decoder extends Component
+const type = 'Decoder';
+const image = 'img/cpnt/Decoder.png';
+
+class DecoderInstance extends CpntInstance
 {
+    static get type()
+    {
+        return type;
+    }
+    
     static get image()
     {
-        return 'img/cpnt/Decoder.png';
+        return image;
     }
 }
 
-module.exports = Decoder;
+class DecoderOriginal extends CpntOriginal
+{
+    static get type()
+    {
+        return type;
+    }
+    
+    static get image()
+    {
+        return image;
+    }
+
+    static get instance()
+    {
+        return DecoderInstance;
+    }
+}
+
+module.exports = DecoderOriginal;

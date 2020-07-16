@@ -1,11 +1,37 @@
-const Component = require('../Component');
+const { CpntOriginal, CpntInstance } = require('../Component');
 
-class MUX extends Component
+const type = 'MUX';
+const image = 'img/cpnt/MUX.png';
+
+class MUXInstance extends CpntInstance
 {
+    static get type()
+    {
+        return type;
+    }
+    
     static get image()
     {
-        return 'img/cpnt/MUX.png';
+        return image;
     }
 }
 
-module.exports = MUX;
+class MUXOriginal extends CpntOriginal
+{
+    static get type()
+    {
+        return type;
+    }
+    
+    static get image()
+    {
+        return image;
+    }
+
+    static get instance()
+    {
+        return MUXInstance;
+    }
+}
+
+module.exports = MUXOriginal;

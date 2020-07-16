@@ -1,11 +1,37 @@
-const Component = require('../Component');
+const { CpntOriginal, CpntInstance } = require('../Component');
 
-class Clock extends Component
+const type = 'Clock';
+const image = 'img/cpnt/Clock.png';
+
+class ClockInstance extends CpntInstance
 {
+    static get type()
+    {
+        return type;
+    }
+    
     static get image()
     {
-        return 'img/cpnt/Clock.png';
+        return image;
     }
 }
 
-module.exports = Clock;
+class ClockOriginal extends CpntOriginal
+{
+    static get type()
+    {
+        return type;
+    }
+    
+    static get image()
+    {
+        return image;
+    }
+
+    static get instance()
+    {
+        return ClockInstance;
+    }
+}
+
+module.exports = ClockOriginal;

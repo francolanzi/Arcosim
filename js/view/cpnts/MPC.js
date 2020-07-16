@@ -1,11 +1,37 @@
-const Component = require('../Component');
+const { CpntOriginal, CpntInstance } = require('../Component');
 
-class MPC extends Component
+const type = 'MPC';
+const image = 'img/cpnt/MPC.png';
+
+class MPCInstance extends CpntInstance
 {
+    static get type()
+    {
+        return type;
+    }
+    
     static get image()
     {
-        return 'img/cpnt/MPC.png';
+        return image;
     }
 }
 
-module.exports = MPC;
+class MPCOriginal extends CpntOriginal
+{
+    static get type()
+    {
+        return type;
+    }
+    
+    static get image()
+    {
+        return image;
+    }
+
+    static get instance()
+    {
+        return MPCInstance;
+    }
+}
+
+module.exports = MPCOriginal;

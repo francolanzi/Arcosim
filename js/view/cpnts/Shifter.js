@@ -1,11 +1,37 @@
-const Component = require('../Component');
+const { CpntOriginal, CpntInstance } = require('../Component');
 
-class Shifter extends Component
+const type = 'Shifter';
+const image = 'img/cpnt/Shifter.png';
+
+class ShifterInstance extends CpntInstance
 {
+    static get type()
+    {
+        return type;
+    }
+    
     static get image()
     {
-        return 'img/cpnt/Shifter.png';
+        return image;
     }
 }
 
-module.exports = Shifter;
+class ShifterOriginal extends CpntOriginal
+{
+    static get type()
+    {
+        return type;
+    }
+    
+    static get image()
+    {
+        return image;
+    }
+
+    static get instance()
+    {
+        return ShifterInstance;
+    }
+}
+
+module.exports = ShifterOriginal;

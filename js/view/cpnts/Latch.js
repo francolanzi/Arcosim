@@ -1,11 +1,37 @@
-const Component = require('../Component');
+const { CpntOriginal, CpntInstance } = require('../Component');
 
-class Latch extends Component
+const type = 'Latch';
+const image = 'img/cpnt/Latch.png';
+
+class LatchInstance extends CpntInstance
 {
+    static get type()
+    {
+        return type;
+    }
+    
     static get image()
     {
-        return 'img/cpnt/Latch.png';
+        return image;
     }
 }
 
-module.exports = Latch;
+class LatchOriginal extends CpntOriginal
+{
+    static get type()
+    {
+        return type;
+    }
+    
+    static get image()
+    {
+        return image;
+    }
+
+    static get instance()
+    {
+        return LatchInstance;
+    }
+}
+
+module.exports = LatchOriginal;

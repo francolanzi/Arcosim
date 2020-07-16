@@ -1,11 +1,37 @@
-const Component = require('../Component');
+const { CpntOriginal, CpntInstance } = require('../Component');
 
-class ALU extends Component
+const type = 'ALU';
+const image = 'img/cpnt/ALU.png';
+
+class ALUInstance extends CpntInstance
 {
+    static get type()
+    {
+        return type;
+    }
+    
     static get image()
     {
-        return 'img/cpnt/ALU.png';
+        return image;
     }
 }
 
-module.exports = ALU;
+class ALUOriginal extends CpntOriginal
+{
+    static get type()
+    {
+        return type;
+    }
+    
+    static get image()
+    {
+        return image;
+    }
+
+    static get instance()
+    {
+        return ALUInstance;
+    }
+}
+
+module.exports = ALUOriginal;

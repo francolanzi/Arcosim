@@ -1,11 +1,37 @@
-const Component = require('../Component');
+const { CpntOriginal, CpntInstance } = require('../Component');
 
-class Registers extends Component
+const type = 'Registers';
+const image = 'img/cpnt/Registers.png';
+
+class RegistersInstance extends CpntInstance
 {
+    static get type()
+    {
+        return type;
+    }
+    
     static get image()
     {
-        return 'img/cpnt/Registers.png';
+        return image;
     }
 }
 
-module.exports = Registers;
+class RegistersOriginal extends CpntOriginal
+{
+    static get type()
+    {
+        return type;
+    }
+    
+    static get image()
+    {
+        return image;
+    }
+
+    static get instance()
+    {
+        return RegistersInstance;
+    }
+}
+
+module.exports = RegistersOriginal;

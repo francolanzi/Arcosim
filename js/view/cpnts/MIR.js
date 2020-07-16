@@ -1,11 +1,37 @@
-const Component = require('../Component');
+const { CpntOriginal, CpntInstance } = require('../Component');
 
-class MIR extends Component
+const type = 'MIR';
+const image = 'img/cpnt/MIR.png';
+
+class MIRInstance extends CpntInstance
 {
+    static get type()
+    {
+        return type;
+    }
+    
     static get image()
     {
-        return 'img/cpnt/MIR.png';
+        return image;
     }
 }
 
-module.exports = MIR;
+class MIROriginal extends CpntOriginal
+{
+    static get type()
+    {
+        return type;
+    }
+    
+    static get image()
+    {
+        return image;
+    }
+
+    static get instance()
+    {
+        return MIRInstance;
+    }
+}
+
+module.exports = MIROriginal;

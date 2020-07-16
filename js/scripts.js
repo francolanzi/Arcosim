@@ -1,131 +1,47 @@
+const fs = require('fs');
+const path = require('path');
+
 const $ = require('jquery');
 require('bootstrap/dist/js/bootstrap.bundle');
 
 const Computer = require('./js/computer');
-const View = require('./js/view');
 
 var computer = new Computer();
 
-function overTrash(ev)
+fs.readdirSync('js/view/cpnts').forEach(file =>
 {
-    var rect = trash.getBoundingClientRect();
-    
-    return ev.clientY >= rect.top
-        && ev.clientX >= rect.left
-        && ev.clientY <= rect.bottom
-        && ev.clientX <= rect.right;
-}
-
-function instance()
-{
-    var rect = this.getBoundingClientRect();
-
-    var cpnt = this.cloneNode(true);
-    board.appendChild(cpnt);
-
-    cpnt.classList.remove('cpnt-original');
-    cpnt.classList.add('cpnt-instance');
-
-    cpnt.style.position = 'absolute';
-    cpnt.style.top = rect.top;
-    cpnt.style.left = rect.left;
-    
-    var type = cpnt.getAttribute('cpnt-type');
-    var id = computer.addCpnt(type);
-
-    cpnt.setAttribute('cpnt-id', id);
-    cpnt.setAttribute('id', type + id);
-
-    cpnt.addEventListener('mousedown', drag);
-    
-    cpnt.ondragstart = () => false;
-
-    return cpnt;
-}
-
-function drag(ev)
-{
-    var cpnt = this;
-
-    var rect = cpnt.getBoundingClientRect();
-    var x = ev.clientX - rect.left;
-    var y = ev.clientY - rect.top;
-
-    function move(ev)
+    file = path.parse(file);
+    if (file.ext === '.js')
     {
-        cpnt.style.top = ev.clientY - y;
-        cpnt.style.left = ev.clientX - x;
+        var ctor = require('./js/view/cpnts/' + file.name);
+        var cpnt = new ctor(trash);
 
-        if (overTrash(ev))
+        cpnt.addEventListener('add', ev =>
         {
-            cpnt.classList.add('filter-invert');
-            trash.focus();
-        }
-        else
+            var instance = ev.detail;
+            var id = computer.addCpnt(instance.constructor.type);
+            instance.cpnt = computer.getCpnt(instance.constructor.type, id);
+        });
+
+        cpnt.addEventListener('remove', ev =>
         {
-            cpnt.classList.remove('filter-invert');
-            trash.blur();
-        }
+            var cpnt = ev.detail.cpnt;
+            computer.removeCpnt(cpnt.constructor.type, cpnt.id);
+        });
+
+        var col = document.createElement('div');
+        col.classList.add('col-auto');
+        col.appendChild(cpnt);
+    
+        var row = document.createElement('div');
+        row.classList.add('row');
+        row.classList.add('justify-content-around');
+        row.classList.add('my-3');
+        row.appendChild(col);
+    
+        gallery.appendChild(row);
     }
-
-    function drop()
-    {
-        document.removeEventListener('mousemove', move);
-        document.removeEventListener('mouseup', drop);
-
-        if (cpnt.classList.contains('filter-invert'))
-        {
-            var type = cpnt.getAttribute('cpnt-type');
-            var id = cpnt.getAttribute('cpnt-id');
-            computer.removeCpnt(type, id);
-            cpnt.remove();
-            trash.blur();
-        }
-    }
-
-    document.addEventListener('mousemove', move);
-    document.addEventListener('mouseup', drop);
-}
-
-for (let type of View.cpntTypes())
-{
-    let cpnt = document.createElement('div');
-    cpnt.id = type;
-    cpnt.setAttribute('cpnt-type', type);
-    cpnt.classList.add('cpnt-original');
-    cpnt.classList.add('m-0');
-    cpnt.classList.add('p-0');
-
-    let col = document.createElement('div');
-    col.classList.add('col-auto');
-    col.appendChild(cpnt);
-
-    let row = document.createElement('div');
-    row.classList.add('row');
-    row.classList.add('justify-content-around');
-    row.classList.add('my-3');
-    row.appendChild(col);
-
-    gallery.appendChild(row);
-
-    let img = new Image();
-    let src = View.getCpntImage(type);
-
-    img.onload = () =>
-    {
-        cpnt.style.width = img.width;
-        cpnt.style.height = img.height;
-        cpnt.style.backgroundImage = 'url(' + src + ')';
-    };
-    img.src = src;
-
-    cpnt.addEventListener('mousedown', function(ev)
-    {
-        drag.call(instance.call(this), ev);
-    });
-
-    cpnt.ondragstart = () => false;
-}
+});
 
 var anchor = document.getElementsByTagName('a');
 

@@ -1,11 +1,37 @@
-const Component = require('../Component');
+const { CpntOriginal, CpntInstance } = require('../Component');
 
-class MicroSequenceLogic extends Component
+const type = 'MicroSequenceLogic';
+const image = 'img/cpnt/MicroSequenceLogic.png';
+
+class MicroSequenceLogicInstance extends CpntInstance
 {
+    static get type()
+    {
+        return type;
+    }
+    
     static get image()
     {
-        return 'img/cpnt/MicroSequenceLogic.png';
+        return image;
     }
 }
 
-module.exports = MicroSequenceLogic;
+class MicroSequenceLogicOriginal extends CpntOriginal
+{
+    static get type()
+    {
+        return type;
+    }
+    
+    static get image()
+    {
+        return image;
+    }
+
+    static get instance()
+    {
+        return MicroSequenceLogicInstance;
+    }
+}
+
+module.exports = MicroSequenceLogicOriginal;
