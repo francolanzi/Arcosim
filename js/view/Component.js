@@ -17,7 +17,6 @@ class CpntElement extends Image
         if (this.constructor == CpntElement)
             throw new Error('CpntElement class can not be instantiated');
         
-        this.id = this.constructor.type;
         this.style.margin = 0;
         this.style.padding = 0;
         this.src = this.constructor.image;
