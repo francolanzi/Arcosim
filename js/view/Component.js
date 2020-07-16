@@ -21,6 +21,7 @@ class CpntElement extends Image
         this.style.padding = 0;
         this.src = this.constructor.image;
         this.style.userSelect = 'none';
+        this.style.cursor = 'move';
     }
 }
 
