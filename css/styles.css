@@ -7,8 +7,3 @@
     position: relative;
     z-index: 1;
 }
-
-.filter-invert
-{
-    filter: invert(1);
-}

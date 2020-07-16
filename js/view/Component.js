@@ -111,9 +111,9 @@ class CpntInstance extends CpntElement
         this.style.left = ev.clientX - this.mouse.x;
 
         if (this.trashed(ev))
-            this.classList.add('filter-invert');
+            this.style.filter = 'invert(1)';
         else
-            this.classList.remove('filter-invert');
+            this.style.filter = 'none';
     }
 
     drop(ev)
