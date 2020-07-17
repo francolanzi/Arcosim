@@ -41,6 +41,8 @@ class Computer
         var cpnt = new (Computer._cpntClasses.get(type))();
         var key = cpnt.constructor.type + cpnt.id;
         this._cpnts.set(key, cpnt);
+
+        console.log(type + ' ' + cpnt.id + ' added');
         return cpnt;
     }
 
@@ -51,6 +53,7 @@ class Computer
 
     removeCpnt(type, id)
     {
+        console.log(type + ' ' + id + ' removed');
         return this._cpnts.delete(type + id);
     }
 }
