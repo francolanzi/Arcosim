@@ -34,4 +34,7 @@ class MBROriginal extends CpntOriginal
     }
 }
 
+customElements.define('mbr-instance', MBRInstance);
+customElements.define('mbr-original', MBROriginal);
+
 module.exports = MBROriginal;

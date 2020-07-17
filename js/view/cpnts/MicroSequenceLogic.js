@@ -34,4 +34,7 @@ class MicroSequenceLogicOriginal extends CpntOriginal
     }
 }
 
+customElements.define('micro-sequence-logic-instance', MicroSequenceLogicInstance);
+customElements.define('micro-sequence-logic-original', MicroSequenceLogicOriginal);
+
 module.exports = MicroSequenceLogicOriginal;

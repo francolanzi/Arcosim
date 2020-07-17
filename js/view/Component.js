@@ -1,4 +1,4 @@
-class CpntElement extends Image
+class CpntElement extends HTMLElement
 {
     static get type()
     {
@@ -17,9 +17,24 @@ class CpntElement extends Image
         if (this.constructor == CpntElement)
             throw new Error('CpntElement class can not be instantiated');
         
+        var img = new Image();
+        img.onload = () =>
+        {
+            this.style.width = img.width;
+            this.style.height = img.height;
+        };
+        img.src = this.constructor.image;
+        
         this.style.margin = 0;
         this.style.padding = 0;
-        this.src = this.constructor.image;
+
+        this.style.display = 'block';
+
+        this.style.backgroundImage = 'url(' + this.constructor.image + ')';
+        this.style.backgroundSize = 'contain';
+        this.style.backgroundRepeat = 'no-repeat';
+        this.style.backgroundPosition = 'center';
+
         this.style.userSelect = 'none';
         this.style.cursor = 'move';
     }

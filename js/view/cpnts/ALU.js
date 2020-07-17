@@ -34,4 +34,7 @@ class ALUOriginal extends CpntOriginal
     }
 }
 
+customElements.define('alu-instance', ALUInstance);
+customElements.define('alu-original', ALUOriginal);
+
 module.exports = ALUOriginal;

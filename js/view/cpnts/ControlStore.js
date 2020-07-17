@@ -34,4 +34,7 @@ class ControlStoreOriginal extends CpntOriginal
     }
 }
 
+customElements.define('control-store-instance', ControlStoreInstance);
+customElements.define('control-store-original', ControlStoreOriginal);
+
 module.exports = ControlStoreOriginal;

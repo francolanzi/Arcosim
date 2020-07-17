@@ -34,4 +34,7 @@ class RegistersOriginal extends CpntOriginal
     }
 }
 
+customElements.define('registers-instance', RegistersInstance);
+customElements.define('registers-original', RegistersOriginal);
+
 module.exports = RegistersOriginal;

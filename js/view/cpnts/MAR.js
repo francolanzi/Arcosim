@@ -34,4 +34,7 @@ class MAROriginal extends CpntOriginal
     }
 }
 
+customElements.define('mar-instance', MARInstance);
+customElements.define('mar-original', MAROriginal);
+
 module.exports = MAROriginal;

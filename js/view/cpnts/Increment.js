@@ -34,4 +34,7 @@ class IncrementOriginal extends CpntOriginal
     }
 }
 
+customElements.define('increment-instance', IncrementInstance);
+customElements.define('increment-original', IncrementOriginal);
+
 module.exports = IncrementOriginal;

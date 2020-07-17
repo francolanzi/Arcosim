@@ -34,4 +34,7 @@ class ClockOriginal extends CpntOriginal
     }
 }
 
+customElements.define('clock-instance', ClockInstance);
+customElements.define('clock-original', ClockOriginal);
+
 module.exports = ClockOriginal;

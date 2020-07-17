@@ -34,4 +34,7 @@ class LatchOriginal extends CpntOriginal
     }
 }
 
+customElements.define('latch-instance', LatchInstance);
+customElements.define('latch-original', LatchOriginal);
+
 module.exports = LatchOriginal;

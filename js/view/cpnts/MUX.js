@@ -34,4 +34,7 @@ class MUXOriginal extends CpntOriginal
     }
 }
 
+customElements.define('mux-instance', MUXInstance);
+customElements.define('mux-original', MUXOriginal);
+
 module.exports = MUXOriginal;

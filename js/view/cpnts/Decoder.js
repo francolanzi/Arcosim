@@ -34,4 +34,7 @@ class DecoderOriginal extends CpntOriginal
     }
 }
 
+customElements.define('decoder-instance', DecoderInstance);
+customElements.define('decoder-original', DecoderOriginal);
+
 module.exports = DecoderOriginal;

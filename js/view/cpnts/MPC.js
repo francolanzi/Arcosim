@@ -34,4 +34,7 @@ class MPCOriginal extends CpntOriginal
     }
 }
 
+customElements.define('mpc-instance', MPCInstance);
+customElements.define('mpc-original', MPCOriginal);
+
 module.exports = MPCOriginal;

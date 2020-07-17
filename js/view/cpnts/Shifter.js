@@ -34,4 +34,7 @@ class ShifterOriginal extends CpntOriginal
     }
 }
 
+customElements.define('shifter-instance', ShifterInstance);
+customElements.define('shifter-original', ShifterOriginal);
+
 module.exports = ShifterOriginal;

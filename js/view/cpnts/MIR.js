@@ -34,4 +34,7 @@ class MIROriginal extends CpntOriginal
     }
 }
 
+customElements.define('mir-instance', MIRInstance);
+customElements.define('mir-original', MIROriginal);
+
 module.exports = MIROriginal;
