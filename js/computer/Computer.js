@@ -41,7 +41,7 @@ class Computer
         var cpnt = new (Computer._cpntClasses.get(type))();
         var key = cpnt.constructor.type + cpnt.id;
         this._cpnts.set(key, cpnt);
-        return cpnt.id;
+        return cpnt;
     }
 
     getCpnt(type, id)

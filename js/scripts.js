@@ -22,9 +22,7 @@ fs.readdirSync('js/view/cpnts').forEach(file =>
         {
             var instance = ev.detail;
             board.appendChild(instance);
-            
-            var id = computer.addCpnt(instance.constructor.type);
-            instance.cpnt = computer.getCpnt(instance.constructor.type, id);
+            instance.cpnt = computer.addCpnt(instance.constructor.type);
         });
 
         cpnt.addEventListener('remove', ev =>
