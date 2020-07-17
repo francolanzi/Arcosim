@@ -90,8 +90,10 @@ class CpntInstance extends CpntElement
             throw new Error('CpntInstance class can not be instantiated');
     
         this.style.position = 'absolute';
+        this.style.zIndex = 'auto';
         this.style.top = rect.top;
         this.style.left = rect.left;
+
 
         this.trash = trash;
 
@@ -109,6 +111,8 @@ class CpntInstance extends CpntElement
     drag(ev)
     {
         var rect = this.getBoundingClientRect();
+
+        this.style.zIndex = 2;
 
         this.mouse.x = ev.clientX - rect.left;
         this.mouse.y = ev.clientY - rect.top;
@@ -132,6 +136,8 @@ class CpntInstance extends CpntElement
     {
         document.removeEventListener('mousemove', this.mousemove);
         document.removeEventListener('mouseup', this.mouseup);
+
+        this.style.zIndex = 'auto';
 
         this.mouse.x = null;
         this.mouse.y = null;
