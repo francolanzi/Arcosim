@@ -27,8 +27,8 @@ fs.readdirSync('js/view/cpnts').forEach(file =>
 
         cpnt.addEventListener('remove', ev =>
         {
-            var cpnt = ev.detail;
-            computer.removeCpnt(cpnt.constructor.type, cpnt.id);
+            var instance = ev.detail;
+            computer.removeCpnt(instance.constructor.type, instance.cpnt.id);
         });
     
         gallery.firstElementChild.appendChild(cpnt);
