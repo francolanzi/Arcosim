@@ -13,6 +13,6 @@ class TrashItem extends MenuItem
     }
 }
 
-customElements.define('trash-item', TrashItem);
+customElements.define('trash-item', TrashItem, { extends: 'a' });
 
 module.exports = TrashItem;

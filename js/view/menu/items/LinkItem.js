@@ -13,6 +13,6 @@ class LinkItem extends MenuItem
     }
 }
 
-customElements.define('link-item', LinkItem);
+customElements.define('link-item', LinkItem, { extends: 'a' });
 
 module.exports = LinkItem;

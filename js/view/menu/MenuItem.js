@@ -1,4 +1,4 @@
-class MenuItem extends HTMLElement
+class MenuItem extends HTMLAnchorElement
 {
     static get title()
     {
@@ -10,11 +10,6 @@ class MenuItem extends HTMLElement
         throw new Error('icon static property must be overrided');
     }
 
-    get anchor()
-    {
-        return this._anchor;
-    }
-
     constructor()
     {
         super();
@@ -24,17 +19,15 @@ class MenuItem extends HTMLElement
 
         this.setAttribute('title', this.constructor.title);
 
-        this._anchor = this.appendChild(document.createElement('a'));
+        this.href = 'javascript:void(0);';
 
-        this._anchor.href = 'javascript:void(0);';
-
-        this._anchor.classList.add('fas');
-        this._anchor.classList.add(this.constructor.icon);
-        this._anchor.classList.add('text-dark');
-        this._anchor.classList.add('text-decoration-none');
-        this._anchor.classList.add('h2');
-        this._anchor.classList.add('m-0');
-        this._anchor.classList.add('mr-3');
+        this.classList.add('fas');
+        this.classList.add(this.constructor.icon);
+        this.classList.add('text-dark');
+        this.classList.add('text-decoration-none');
+        this.classList.add('h2');
+        this.classList.add('m-0');
+        this.classList.add('mr-3');
     }
 }
 
