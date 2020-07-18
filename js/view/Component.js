@@ -159,7 +159,7 @@ class CpntInstance extends CpntElement
 
     trashed(ev)
     {
-        var rect = trash.getBoundingClientRect();
+        var rect = this.trash.getBoundingClientRect();
         
         return ev.clientY >= rect.top
             && ev.clientX >= rect.left
