@@ -1,5 +1,5 @@
-const InputElement = require('./Input');
-const OutputElement = require('./Output');
+const InputElement = require('./io/Input');
+const OutputElement = require('./io/Output');
 
 class CpntElement extends HTMLElement
 {
