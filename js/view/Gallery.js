@@ -36,12 +36,12 @@ class Gallery extends HTMLElement
         this.style.flexDirection = 'column';
         this.style.alignItems = 'center';
 
-        fs.readdirSync(__dirname + '/../cpnts').forEach(file =>
+        fs.readdirSync(__dirname + '/cpnts').forEach(file =>
         {
             file = path.parse(file);
             if (file.ext === '.js')
             {
-                var ctor = require('../cpnts/' + file.name);
+                var ctor = require('./cpnts/' + file.name);
                 var cpnt = new ctor(trash);
         
                 cpnt.addEventListener('add', ev =>

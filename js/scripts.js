@@ -4,7 +4,7 @@ require('bootstrap/dist/js/bootstrap.bundle');
 const Computer = require('./js/computer');
 
 const Menu = require('./js/view/menu/Menu');
-const Gallery = require('./js/view/gallery/Gallery');
+const Gallery = require('./js/view/Gallery');
 const TrashItem = require('./js/view/menu/items/TrashItem');
 const LinkItem = require('./js/view/menu/items/LinkItem');
 const CpntItem = require('./js/view/menu/items/CpntItem');
