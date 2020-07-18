@@ -7,11 +7,10 @@ class Board extends HTMLElement
         this._cpnts = new Map();
 
         this.style.display = 'block';
-
-        this.classList.add('bg-light');
-        this.classList.add('p-2');
-        this.classList.add('h-100');
-        this.classList.add('w-100');
+        this.style.backgroundColor = '#f8f9fa';
+        this.style.padding = '0.5rem';
+        this.style.width = '100%'
+        this.style.height = '100%'
     }
 
     addCpnt(instance)
