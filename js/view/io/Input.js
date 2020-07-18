@@ -13,6 +13,6 @@ class InputElement extends IOElement
     }
 }
 
-customElements.define('cpnt-input', InputElement, { extends: 'a' });
+customElements.define('cpnt-input', InputElement);
 
 module.exports = InputElement;
