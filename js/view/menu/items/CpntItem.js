@@ -21,6 +21,6 @@ class CpntItem extends MenuItem
     }
 }
 
-customElements.define('cpnt-item', CpntItem, { extends: 'a' });
+customElements.define('cpnt-item', CpntItem);
 
 module.exports = CpntItem;

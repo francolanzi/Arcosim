@@ -1,4 +1,4 @@
-class MenuItem extends HTMLAnchorElement
+class MenuItem extends HTMLElement
 {
     static get title()
     {
@@ -19,10 +19,8 @@ class MenuItem extends HTMLAnchorElement
 
         this.setAttribute('title', this.constructor.title);
 
-        this.href = 'javascript:void(0);';
-
         this.style.color = '#343a40';
-        this.style.textDecoration = 'none';
+        this.style.cursor = 'pointer';
         this.style.fontSize = '2rem';
         this.style.margin = 0;
         this.style.marginRight = '1rem';
