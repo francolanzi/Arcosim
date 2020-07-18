@@ -38,8 +38,3 @@ board.appendChild(menu);
 board.appendChild(gallery);
 
 document.ondragstart = () => false;
-
-var anchor = document.getElementsByTagName('a');
-
-for (let i = 0; i < anchor.length; i++)
-    anchor[i].addEventListener('mousedown', ev => ev.preventDefault());
