@@ -10,8 +10,6 @@ const Computer = require('./js/computer');
 
 var computer = new Computer();
 
-document.ondragstart = () => false;
-
 var menu = new Menu();
 
 board.prepend(menu);
@@ -40,6 +38,8 @@ fs.readdirSync('js/view/cpnts').forEach(file =>
         gallery.firstElementChild.appendChild(cpnt);
     }
 });
+
+document.ondragstart = () => false;
 
 var anchor = document.getElementsByTagName('a');
 
