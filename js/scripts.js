@@ -4,11 +4,17 @@ const path = require('path');
 const $ = require('jquery');
 require('bootstrap/dist/js/bootstrap.bundle');
 
+const Menu = require('./js/view/menu/Menu');
+
 const Computer = require('./js/computer');
 
 var computer = new Computer();
 
 document.ondragstart = () => false;
+
+var menu = new Menu();
+
+board.prepend(menu);
 
 fs.readdirSync('js/view/cpnts').forEach(file =>
 {
@@ -16,7 +22,7 @@ fs.readdirSync('js/view/cpnts').forEach(file =>
     if (file.ext === '.js')
     {
         var ctor = require('./js/view/cpnts/' + file.name);
-        var cpnt = new ctor(trash);
+        var cpnt = new ctor(menu.getItem('trash'));
 
         cpnt.addEventListener('add', ev =>
         {
