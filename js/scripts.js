@@ -42,4 +42,7 @@ board.appendChild(gallery);
 
 document.body.appendChild(board);
 
+document.body.style.margin = 0;
+document.body.style.padding = 0;
+
 document.ondragstart = () => false;
