@@ -167,22 +167,22 @@ class CpntInstance extends CpntElement
             && ev.clientX <= rect.right;
     }
 
-    addInput(id, top, left)
+    addInput(id, x, y)
     {
         if (!this._inputs.has(id))
         {
-            var input = new InputElement(id, top, left);
+            var input = new InputElement(id, x, y);
             this._inputs.set(id, input);
             this.appendChild(input);
         }
         return this.getInput(id);
     }
 
-    addOutput(id, top, left)
+    addOutput(id, x, y)
     {
         if (!this._outputs.has(id))
         {
-            var output = new OutputElement(id, top, left);
+            var output = new OutputElement(id, x, y);
             this._outputs.set(id, output);
             this.appendChild(output);
         }

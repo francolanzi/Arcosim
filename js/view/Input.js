@@ -2,9 +2,9 @@ const IOElement = require('./IOElement');
 
 class InputElement extends IOElement
 {
-    constructor(id, top, left)
+    constructor(id, x, y)
     {
-        super(id, top, left);
+        super(id, x, y);
 
         this.classList.add('text-light');
     }

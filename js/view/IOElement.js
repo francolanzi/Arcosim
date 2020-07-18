@@ -10,7 +10,7 @@ class IOElement extends HTMLAnchorElement
         this.style.visibility = show ? 'visible' : 'hidden';
     }
 
-    constructor(id, top, left)
+    constructor(id, x, y)
     {
         super();
 
@@ -20,8 +20,8 @@ class IOElement extends HTMLAnchorElement
         this.style.position = 'absolute';
         this.style.textShadow = '0 0 2px #000';
         this.style.fontSize = 10;
-        this.style.top = top;
-        this.style.left = left;
+        this.style.top = y - 4.5;
+        this.style.left = x - 4.5;
         this.href = 'javascript:void(0);';
 
         this.classList.add('text-decoration-none');
