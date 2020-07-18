@@ -3,6 +3,7 @@ require('bootstrap/dist/js/bootstrap.bundle');
 
 const Computer = require('./js/computer');
 
+const Board = require('./js/view/Board');
 const Menu = require('./js/view/menu/Menu');
 const Gallery = require('./js/view/Gallery');
 const TrashItem = require('./js/view/menu/items/TrashItem');
@@ -11,6 +12,7 @@ const CpntItem = require('./js/view/menu/items/CpntItem');
 
 var computer = new Computer();
 
+var board = new Board();
 var trash = new TrashItem();
 var link = new LinkItem();
 var gallery = new Gallery(trash);
@@ -24,17 +26,20 @@ menu.addItem('cpnt', cpnt);
 gallery.addEventListener('add', ev =>
 {
     var instance = ev.detail;
-    board.appendChild(instance);
     instance.cpnt = computer.addCpnt(instance.constructor.type);
+    board.addCpnt(instance);
 });
         
 gallery.addEventListener('remove', ev =>
 {
     var instance = ev.detail;
+    board.removeCpnt(instance.constructor.type, instance.cpnt.id);
     computer.removeCpnt(instance.constructor.type, instance.cpnt.id);
 });
 
 board.appendChild(menu);
 board.appendChild(gallery);
+
+document.body.appendChild(board);
 
 document.ondragstart = () => false;
