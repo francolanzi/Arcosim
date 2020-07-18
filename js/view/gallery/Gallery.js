@@ -13,7 +13,7 @@ class Gallery extends HTMLElement
         this.style.transform = 'scaleY(' + (open ? 1 : 0) + ')';
     }
 
-    constructor(computer, trash)
+    constructor(trash)
     {
         super();
 
@@ -45,17 +45,10 @@ class Gallery extends HTMLElement
                 var cpnt = new ctor(trash);
         
                 cpnt.addEventListener('add', ev =>
-                {
-                    var instance = ev.detail;
-                    board.appendChild(instance);
-                    instance.cpnt = computer.addCpnt(instance.constructor.type);
-                });
+                    this.dispatchEvent(new CustomEvent('add', { detail: ev.detail })));
         
                 cpnt.addEventListener('remove', ev =>
-                {
-                    var instance = ev.detail;
-                    computer.removeCpnt(instance.constructor.type, instance.cpnt.id);
-                });
+                    this.dispatchEvent(new CustomEvent('remove', { detail: ev.detail })));
             
                 this.appendChild(cpnt);
             }
