@@ -17,13 +17,13 @@ class Gallery extends HTMLElement
     {
         super();
 
-        this.classList.add('float-left');
-        this.classList.add('border');
-        this.classList.add('border-secondary');
-        this.classList.add('rounded');
-        this.classList.add('mt-2');
-        this.classList.add('p-2');
-
+        this.style.float = 'left';
+        this.style.borderWidth = '1px';
+        this.style.borderStyle = 'solid';
+        this.style.borderColor = '#6c757d';
+        this.style.borderRadius = '0.5rem';
+        this.style.marginTop = '0.5rem';
+        this.style.padding = '0.5rem';
         this.style.transform = 'scaleY(0)';
         this.style.transformOrigin = 'top';
         this.style.transitionProperty = 'transform';
