@@ -11,6 +11,7 @@ class Board extends HTMLElement
         this.style.padding = '0.5rem';
         this.style.width = '100%'
         this.style.height = '100%'
+        this.style.boxSizing = 'border-box';
     }
 
     addCpnt(instance)
