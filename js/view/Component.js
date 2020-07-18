@@ -1,3 +1,6 @@
+const InputElement = require('./Input');
+const OutputElement = require('./Output');
+
 class CpntElement extends HTMLElement
 {
     static get type()
@@ -77,9 +80,12 @@ class CpntInstance extends CpntElement
         return this._cpnt;
     }
 
-    set cpnt(_cpnt)
+    set cpnt(cpnt)
     {
-        this._cpnt = _cpnt;
+        this._cpnt = cpnt;
+
+        this._inputs.clear();
+        this._outputs.clear();
     }
 
     constructor(rect, trash)
@@ -94,6 +100,8 @@ class CpntInstance extends CpntElement
         this.style.top = rect.top;
         this.style.left = rect.left;
 
+        this._inputs = new Map();
+        this._outputs = new Map();
 
         this.trash = trash;
 
@@ -157,6 +165,48 @@ class CpntInstance extends CpntElement
             && ev.clientX >= rect.left
             && ev.clientY <= rect.bottom
             && ev.clientX <= rect.right;
+    }
+
+    addInput(id, top, left)
+    {
+        if (!this._inputs.has(id))
+        {
+            var input = new InputElement(id, top, left);
+            this._inputs.set(id, input);
+            this.appendChild(input);
+        }
+        return this.getInput(id);
+    }
+
+    addOutput(id, top, left)
+    {
+        if (!this._outputs.has(id))
+        {
+            var output = new OutputElement(id, top, left);
+            this._outputs.set(id, output);
+            this.appendChild(output);
+        }
+        return this.getOutput(id);
+    }
+
+    getInput(id)
+    {
+        return this._inputs.get(id);
+    }
+
+    getOutput(id)
+    {
+        return this._outputs.get(id);
+    }
+
+    removeInput(id)
+    {
+        return this._inputs.delete(id);
+    }
+
+    removeOutput(id)
+    {
+        return this._outputs.delete(id);
     }
 }
 
