@@ -22,8 +22,6 @@ class MenuItem extends HTMLElement
         if (this.constructor == MenuItem)
             throw new Error('MenuItem class can not be instantiated');
 
-        this.setAttribute('data-toggle', 'tooltip');
-        this.setAttribute('data-placement', 'bottom');
         this.setAttribute('title', this.constructor.title);
 
         this._anchor = this.appendChild(document.createElement('a'));
