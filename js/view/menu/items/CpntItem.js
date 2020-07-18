@@ -12,12 +12,12 @@ class CpntItem extends MenuItem
         return 'fa-puzzle-piece';
     }
 
-    constructor()
+    constructor(gallery)
     {
         super();
 
-        this.anchor.href = '#gallery';
-        this.anchor.setAttribute('data-toggle', 'collapse');
+        this.addEventListener('click', () =>
+            gallery.open = !gallery.open);
     }
 }
 

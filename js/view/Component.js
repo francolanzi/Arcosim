@@ -57,6 +57,8 @@ class CpntOriginal extends CpntElement
         if (this.constructor == CpntOriginal)
             throw new Error('CpntOriginal class can not be instantiated');
         
+        this.style.margin = '0.5rem';
+        
         this.addEventListener('mousedown', ev =>
         {
             var rect = this.getBoundingClientRect();

@@ -1,54 +1,28 @@
-const fs = require('fs');
-const path = require('path');
-
 const $ = require('jquery');
 require('bootstrap/dist/js/bootstrap.bundle');
 
 const Computer = require('./js/computer');
 
 const Menu = require('./js/view/menu/Menu');
+const Gallery = require('./js/view/gallery/Gallery');
 const TrashItem = require('./js/view/menu/items/TrashItem');
 const LinkItem = require('./js/view/menu/items/LinkItem');
 const CpntItem = require('./js/view/menu/items/CpntItem');
 
 var computer = new Computer();
 
-var menu = new Menu();
-
 var trash = new TrashItem();
 var link = new LinkItem();
-var cpnt = new CpntItem();
+var gallery = new Gallery(computer, trash);
+var cpnt = new CpntItem(gallery);
+var menu = new Menu();
 
 menu.addItem('trash', trash);
 menu.addItem('link', link);
 menu.addItem('cpnt', cpnt);
 
-board.prepend(menu);
-
-fs.readdirSync('js/view/cpnts').forEach(file =>
-{
-    file = path.parse(file);
-    if (file.ext === '.js')
-    {
-        var ctor = require('./js/view/cpnts/' + file.name);
-        var cpnt = new ctor(trash);
-
-        cpnt.addEventListener('add', ev =>
-        {
-            var instance = ev.detail;
-            board.appendChild(instance);
-            instance.cpnt = computer.addCpnt(instance.constructor.type);
-        });
-
-        cpnt.addEventListener('remove', ev =>
-        {
-            var instance = ev.detail;
-            computer.removeCpnt(instance.constructor.type, instance.cpnt.id);
-        });
-    
-        gallery.firstElementChild.appendChild(cpnt);
-    }
-});
+board.appendChild(menu);
+board.appendChild(gallery);
 
 document.ondragstart = () => false;
 
