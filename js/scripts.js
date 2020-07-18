@@ -1,6 +1,3 @@
-const $ = require('jquery');
-require('bootstrap/dist/js/bootstrap.bundle');
-
 const Computer = require('./js/computer');
 
 const Board = require('./js/view/Board');
