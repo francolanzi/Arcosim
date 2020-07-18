@@ -16,6 +16,7 @@ class IOElement extends HTMLAnchorElement
 
         this._id = id;
 
+        this.style.textDecoration = 'none';
         this.style.visibility = 'hidden';
         this.style.position = 'absolute';
         this.style.textShadow = '0 0 2px #000';
@@ -24,7 +25,6 @@ class IOElement extends HTMLAnchorElement
         this.style.left = x - 4.5;
         this.href = 'javascript:void(0);';
 
-        this.classList.add('text-decoration-none');
         this.classList.add('fas');
         this.classList.add('fa-circle');
     }

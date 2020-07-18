@@ -6,7 +6,10 @@ class InputElement extends IOElement
     {
         super(id, x, y);
 
-        this.classList.add('text-light');
+        this.style.color = '#f8f9fa';
+
+        this.addEventListener('mouseenter', () => this.style.color = '#cbd3da');
+        this.addEventListener('mouseleave', () => this.style.color = '#f8f9fa');
     }
 }
 

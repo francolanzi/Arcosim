@@ -6,7 +6,10 @@ class OutputElement extends IOElement
     {
         super(id, x, y);
 
-        this.classList.add('text-secondary');
+        this.style.color = '#343a40';
+
+        this.addEventListener('mouseenter', () => this.style.color = '#121416');
+        this.addEventListener('mouseleave', () => this.style.color = '#343a40');
     }
 }
 
