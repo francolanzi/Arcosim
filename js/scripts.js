@@ -4,13 +4,24 @@ const path = require('path');
 const $ = require('jquery');
 require('bootstrap/dist/js/bootstrap.bundle');
 
-const Menu = require('./js/view/menu/Menu');
-
 const Computer = require('./js/computer');
+
+const Menu = require('./js/view/menu/Menu');
+const TrashItem = require('./js/view/menu/items/TrashItem');
+const LinkItem = require('./js/view/menu/items/LinkItem');
+const CpntItem = require('./js/view/menu/items/CpntItem');
 
 var computer = new Computer();
 
 var menu = new Menu();
+
+var trash = new TrashItem();
+var link = new LinkItem();
+var cpnt = new CpntItem();
+
+menu.addItem('trash', trash);
+menu.addItem('link', link);
+menu.addItem('cpnt', cpnt);
 
 board.prepend(menu);
 
@@ -20,7 +31,7 @@ fs.readdirSync('js/view/cpnts').forEach(file =>
     if (file.ext === '.js')
     {
         var ctor = require('./js/view/cpnts/' + file.name);
-        var cpnt = new ctor(menu.getItem('trash'));
+        var cpnt = new ctor(trash);
 
         cpnt.addEventListener('add', ev =>
         {
