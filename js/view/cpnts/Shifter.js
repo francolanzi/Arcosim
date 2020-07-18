@@ -14,6 +14,21 @@ class ShifterInstance extends CpntInstance
     {
         return image;
     }
+
+    get cpnt()
+    {
+        return super.cpnt;
+    }
+    
+    set cpnt(cpnt)
+    {
+        super.cpnt = cpnt;
+        
+        this.addInput('Input', 37.5, 0);
+        this.addInput('Function', 75, 13.5);
+
+        this.addOutput('Result', 37.5, 27);
+    }
 }
 
 class ShifterOriginal extends CpntOriginal

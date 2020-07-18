@@ -14,6 +14,21 @@ class MPCInstance extends CpntInstance
     {
         return image;
     }
+
+    get cpnt()
+    {
+        return super.cpnt;
+    }
+    
+    set cpnt(cpnt)
+    {
+        super.cpnt = cpnt;
+        
+        this.addInput('Next', 26.5, 0);
+        this.addInput('Clock', 53, 11);
+
+        this.addOutput('Current', 26.5, 22);
+    }
 }
 
 class MPCOriginal extends CpntOriginal

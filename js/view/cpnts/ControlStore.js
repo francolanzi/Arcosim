@@ -14,6 +14,20 @@ class ControlStoreInstance extends CpntInstance
     {
         return image;
     }
+
+    get cpnt()
+    {
+        return super.cpnt;
+    }
+    
+    set cpnt(cpnt)
+    {
+        super.cpnt = cpnt;
+        
+        this.addInput('Number', 164, 0);
+
+        this.addOutput('Instruction', 164, 63);
+    }
 }
 
 class ControlStoreOriginal extends CpntOriginal

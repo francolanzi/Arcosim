@@ -14,6 +14,21 @@ class MicroSequenceLogicInstance extends CpntInstance
     {
         return image;
     }
+
+    get cpnt()
+    {
+        return super.cpnt;
+    }
+    
+    set cpnt(cpnt)
+    {
+        super.cpnt = cpnt;
+        
+        this.addInput('Condition', 61, 20.5);
+        this.addInput('Control', 0, 20.5);
+
+        this.addOutput('Jump', 30.5, 0);
+    }
 }
 
 class MicroSequenceLogicOriginal extends CpntOriginal

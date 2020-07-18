@@ -14,6 +14,20 @@ class MARInstance extends CpntInstance
     {
         return image;
     }
+
+    get cpnt()
+    {
+        return super.cpnt;
+    }
+    
+    set cpnt(cpnt)
+    {
+        super.cpnt = cpnt;
+        
+        this.addInput('Control', 23, 15);
+        this.addInput('Input', 46, 7.5);
+        this.addInput('Clock', 23, 0);
+    }
 }
 
 class MAROriginal extends CpntOriginal

@@ -14,6 +14,20 @@ class IncrementInstance extends CpntInstance
     {
         return image;
     }
+
+    get cpnt()
+    {
+        return super.cpnt;
+    }
+    
+    set cpnt(cpnt)
+    {
+        super.cpnt = cpnt;
+        
+        this.addInput('Current', 67, 11);
+        
+        this.addOutput('Next', 33.5, 0);
+    }
 }
 
 class IncrementOriginal extends CpntOriginal
