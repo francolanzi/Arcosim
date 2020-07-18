@@ -21,13 +21,17 @@ class MenuItem extends HTMLAnchorElement
 
         this.href = 'javascript:void(0);';
 
+        this.style.color = '#343a40';
+        this.style.textDecoration = 'none';
+        this.style.fontSize = '2rem';
+        this.style.margin = 0;
+        this.style.marginRight = '1rem';
+
         this.classList.add('fas');
         this.classList.add(this.constructor.icon);
-        this.classList.add('text-dark');
-        this.classList.add('text-decoration-none');
-        this.classList.add('h2');
-        this.classList.add('m-0');
-        this.classList.add('mr-3');
+
+        this.addEventListener('mouseenter', () => this.style.color = '#121416');
+        this.addEventListener('mouseleave', () => this.style.color = '#343a40');
     }
 }
 
