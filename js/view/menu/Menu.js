@@ -1,4 +1,6 @@
-class Menu extends HTMLElement
+const StyledElement = require('../StyledElement');
+
+class Menu extends StyledElement
 {
     constructor()
     {
@@ -6,12 +8,8 @@ class Menu extends HTMLElement
 
         this._items = new Map();
 
-        this.style.display = 'flex';
-        this.style.flexDirection = 'row';
-        this.style.justifyContent = 'start';
-        this.style.alignItems = 'center';
-        this.style.position = 'relative';
-        this.style.zIndex = 1;
+        this.addStyles('css/menu/Menu.css');
+        this.addStyles('css/fontawesome.css');
     }
 
     addItem(id, item)
@@ -19,7 +17,7 @@ class Menu extends HTMLElement
         if (!this._items.has(id))
         {
             this._items.set(id, item);
-            this.appendChild(item);
+            this.shadow.appendChild(item);
         }
         return this.getItem(id);
     }
