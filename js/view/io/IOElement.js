@@ -20,6 +20,7 @@ class IOElement extends StyledElement
 
         this.addStyles('css/io/IOElement.css');
 
+        this.style.position = 'absolute';
         this.style.top = y - 4.5;
         this.style.left = x - 4.5;
         this.style.visibility = 'hidden';
