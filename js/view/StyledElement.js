@@ -1,5 +1,10 @@
 class StyledElement extends HTMLElement
 {
+    get shadow()
+    {
+        return this._shadow;
+    }
+
     constructor()
     {
         super();
