@@ -1,4 +1,6 @@
-class MenuItem extends HTMLElement
+const StyledElement = require('../StyledElement');
+
+class MenuItem extends StyledElement
 {
     static get title()
     {
@@ -17,19 +19,12 @@ class MenuItem extends HTMLElement
         if (this.constructor == MenuItem)
             throw new Error('MenuItem class can not be instantiated');
 
-        this.setAttribute('title', this.constructor.title);
+        this.addStyles('css/menu/MenuItem.css');
 
-        this.style.color = '#343a40';
-        this.style.cursor = 'pointer';
-        this.style.fontSize = '2rem';
-        this.style.margin = 0;
-        this.style.marginRight = '1rem';
+        this.setAttribute('title', this.constructor.title);
 
         this.classList.add('fas');
         this.classList.add(this.constructor.icon);
-
-        this.addEventListener('mouseenter', () => this.style.color = '#121416');
-        this.addEventListener('mouseleave', () => this.style.color = '#343a40');
     }
 }
 
