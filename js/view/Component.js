@@ -1,7 +1,8 @@
+const StyledElement = require('./StyledElement');
 const InputElement = require('./io/Input');
 const OutputElement = require('./io/Output');
 
-class CpntElement extends HTMLElement
+class CpntElement extends StyledElement
 {
     static get type()
     {
@@ -19,6 +20,8 @@ class CpntElement extends HTMLElement
 
         if (this.constructor == CpntElement)
             throw new Error('CpntElement class can not be instantiated');
+
+        this.addStyles('css/Component/CpntElement.css');
         
         var img = new Image();
         img.onload = () =>
@@ -27,19 +30,8 @@ class CpntElement extends HTMLElement
             this.style.height = img.height;
         };
         img.src = this.constructor.image;
-        
-        this.style.margin = 0;
-        this.style.padding = 0;
-
-        this.style.display = 'block';
 
         this.style.backgroundImage = 'url(' + this.constructor.image + ')';
-        this.style.backgroundSize = 'contain';
-        this.style.backgroundRepeat = 'no-repeat';
-        this.style.backgroundPosition = 'center';
-
-        this.style.userSelect = 'none';
-        this.style.cursor = 'move';
     }
 }
 
@@ -56,8 +48,8 @@ class CpntOriginal extends CpntElement
     
         if (this.constructor == CpntOriginal)
             throw new Error('CpntOriginal class can not be instantiated');
-        
-        this.style.margin = '0.5rem';
+
+        this.addStyles('css/Component/CpntOriginal.css');
         
         this.addEventListener('mousedown', ev =>
         {
@@ -96,9 +88,11 @@ class CpntInstance extends CpntElement
 
         if (this.constructor == CpntInstance)
             throw new Error('CpntInstance class can not be instantiated');
+
+        this.addStyles('css/Component/CpntInstance.css');
+        this.addStyles('css/fontawesome.css');
     
         this.style.position = 'absolute';
-        this.style.zIndex = 2;
         this.style.top = rect.top;
         this.style.left = rect.left;
 
@@ -175,7 +169,7 @@ class CpntInstance extends CpntElement
         {
             var input = new InputElement(id, x, y);
             this._inputs.set(id, input);
-            this.appendChild(input);
+            this.shadow.appendChild(input);
         }
         return this.getInput(id);
     }
@@ -186,7 +180,7 @@ class CpntInstance extends CpntElement
         {
             var output = new OutputElement(id, x, y);
             this._outputs.set(id, output);
-            this.appendChild(output);
+            this.shadow.appendChild(output);
         }
         return this.getOutput(id);
     }
