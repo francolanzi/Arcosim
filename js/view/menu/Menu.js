@@ -10,6 +10,8 @@ class Menu extends HTMLElement
         this.style.flexDirection = 'row';
         this.style.justifyContent = 'start';
         this.style.alignItems = 'center';
+        this.style.position = 'relative';
+        this.style.zIndex = 1;
     }
 
     addItem(id, item)

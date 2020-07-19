@@ -34,12 +34,11 @@ gallery.addEventListener('remove', ev =>
     computer.removeCpnt(instance.constructor.type, instance.cpnt.id);
 });
 
-board.appendChild(menu);
-board.appendChild(gallery);
-
+document.body.appendChild(menu);
+document.body.appendChild(gallery);
 document.body.appendChild(board);
 
 document.body.style.margin = 0;
-document.body.style.padding = 0;
+document.body.style.padding = '0.5rem';
 
 document.ondragstart = () => false;
