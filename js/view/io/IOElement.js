@@ -1,4 +1,6 @@
-class IOElement extends HTMLElement
+const StyledElement = require('../StyledElement');
+
+class IOElement extends StyledElement
 {
     get show()
     {
@@ -16,11 +18,8 @@ class IOElement extends HTMLElement
 
         this._id = id;
 
-        this.style.cursor = 'pointer';
-        this.style.visibility = 'hidden';
-        this.style.position = 'absolute';
-        this.style.textShadow = '0 0 2px #000';
-        this.style.fontSize = 10;
+        this.addStyles('css/io/IOElement.css');
+
         this.style.top = y - 4.5;
         this.style.left = x - 4.5;
 
