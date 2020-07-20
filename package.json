@@ -5,7 +5,6 @@
         "start": "electron ."
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.13.1",
         "electron": "^9.0.5"
     }
 }
