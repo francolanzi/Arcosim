@@ -130,8 +130,11 @@ class CpntInstance extends CpntElement
 
     move(ev)
     {
-        this.style.top = (ev.clientY - this.mouse.y) + 'px';
-        this.style.left = (ev.clientX - this.mouse.x) + 'px';
+        var top = ev.clientY - this.mouse.y;
+        var left = ev.clientX - this.mouse.x;
+        
+        this.style.top = (top > 0 ? top : 0) + 'px';
+        this.style.left = (left > 0 ? left : 0) + 'px';
 
         if (this.trashed(ev))
             this.style.filter = 'invert(1)';
