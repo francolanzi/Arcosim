@@ -9,7 +9,6 @@ class Menu extends StyledElement
         this._items = new Map();
 
         this.addStyles('css/menu/Menu.css');
-        this.addStyles('css/fontawesome.css');
     }
 
     addItem(id, item)

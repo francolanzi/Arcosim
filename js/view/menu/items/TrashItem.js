@@ -9,7 +9,7 @@ class TrashItem extends MenuItem
 
     static get icon()
     {
-        return 'fa-trash-alt';
+        return 'img/menu/trash.svg';
     }
 }
 

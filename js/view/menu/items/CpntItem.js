@@ -9,7 +9,7 @@ class CpntItem extends MenuItem
 
     static get icon()
     {
-        return 'fa-puzzle-piece';
+        return 'img/menu/cpnt.svg';
     }
 
     constructor(gallery)

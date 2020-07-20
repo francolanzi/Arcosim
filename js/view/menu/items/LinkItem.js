@@ -9,7 +9,7 @@ class LinkItem extends MenuItem
 
     static get icon()
     {
-        return 'fa-project-diagram';
+        return 'img/menu/link.svg';
     }
 }
 

@@ -22,9 +22,11 @@ class MenuItem extends StyledElement
         this.addStyles('css/menu/MenuItem.css');
 
         this.setAttribute('title', this.constructor.title);
+        
+        var img = new Image();
+        img.src = this.constructor.icon;
 
-        this.classList.add('fas');
-        this.classList.add(this.constructor.icon);
+        this.shadow.appendChild(img);
     }
 }
 
