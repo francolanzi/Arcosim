@@ -26,8 +26,8 @@ class CpntElement extends StyledElement
         var img = new Image();
         img.onload = () =>
         {
-            this.style.width = img.width;
-            this.style.height = img.height;
+            this.style.width = img.width + 'px';
+            this.style.height = img.height + 'px';
         };
         img.src = this.constructor.image;
 
@@ -92,8 +92,8 @@ class CpntInstance extends CpntElement
         this.addStyles('css/Component/CpntInstance.css');
     
         this.style.position = 'absolute';
-        this.style.top = rect.top;
-        this.style.left = rect.left;
+        this.style.top = rect.top + 'px';
+        this.style.left = rect.left + 'px';
 
         this._inputs = new Map();
         this._outputs = new Map();
@@ -126,8 +126,8 @@ class CpntInstance extends CpntElement
 
     move(ev)
     {
-        this.style.top = ev.clientY - this.mouse.y;
-        this.style.left = ev.clientX - this.mouse.x;
+        this.style.top = (ev.clientY - this.mouse.y) + 'px';
+        this.style.left = (ev.clientX - this.mouse.x) + 'px';
 
         if (this.trashed(ev))
             this.style.filter = 'invert(1)';
