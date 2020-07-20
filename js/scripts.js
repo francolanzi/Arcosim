@@ -22,7 +22,6 @@ gallery.addEventListener('add', ev =>
 {
     var instance = ev.detail;
     instance.cpnt = computer.addCpnt(instance.constructor.type);
-    document.body.appendChild(instance);
 });
         
 gallery.addEventListener('remove', ev =>
