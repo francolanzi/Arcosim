@@ -121,6 +121,8 @@ class CpntInstance extends CpntElement
         document.addEventListener('mousemove', this.mousemove);
         document.addEventListener('mouseup', this.mouseup);
 
+        this.classList.add('dragging');
+
         this.dispatchEvent(new Event('drag'));
     }
 
@@ -142,6 +144,8 @@ class CpntInstance extends CpntElement
 
         this.mouse.x = null;
         this.mouse.y = null;
+
+        this.classList.remove('dragging');
 
         this.dispatchEvent(new Event('drop'));
 
