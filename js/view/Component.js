@@ -59,8 +59,6 @@ class CpntOriginal extends CpntElement
             var cpnt = new ctor(...args);
 
             this.dispatchEvent(new CustomEvent('add', { detail: cpnt }));
-            cpnt.addEventListener('remove', () =>
-                this.dispatchEvent(new CustomEvent('remove', { detail: cpnt })));
 
             cpnt.drag(ev);
         });
@@ -132,7 +130,7 @@ class CpntInstance extends CpntElement
     {
         var top = ev.clientY - this.mouse.y;
         var left = ev.clientX - this.mouse.x;
-        
+
         this.style.top = (top > 0 ? top : 0) + 'px';
         this.style.left = (left > 0 ? left : 0) + 'px';
 

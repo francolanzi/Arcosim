@@ -22,12 +22,9 @@ gallery.addEventListener('add', ev =>
 {
     var instance = ev.detail;
     instance.cpnt = computer.addCpnt(instance.constructor.type);
-});
         
-gallery.addEventListener('remove', ev =>
-{
-    var instance = ev.detail;
-    computer.removeCpnt(instance.constructor.type, instance.cpnt.id);
+    instance.addEventListener('remove', () =>
+        computer.removeCpnt(instance.constructor.type, instance.cpnt.id));
 });
 
 document.body.appendChild(menu);
