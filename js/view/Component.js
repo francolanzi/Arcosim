@@ -92,8 +92,8 @@ class CpntInstance extends CpntElement
         this.addStyles('css/Component/CpntInstance.css');
     
         this.style.position = 'absolute';
-        this.style.top = rect.top + 'px';
-        this.style.left = rect.left + 'px';
+        this.style.top = rect.top + window.scrollY + 'px';
+        this.style.left = rect.left + window.scrollX + 'px';
 
         this._inputs = new Map();
         this._outputs = new Map();
@@ -117,8 +117,8 @@ class CpntInstance extends CpntElement
     {
         var rect = this.getBoundingClientRect();
 
-        this.mouse.x = ev.clientX - rect.left;
-        this.mouse.y = ev.clientY - rect.top;
+        this.mouse.x = ev.clientX - rect.left - window.scrollX;
+        this.mouse.y = ev.clientY - rect.top - window.scrollY;
 
         document.addEventListener('mousemove', this.mousemove);
         document.addEventListener('mouseup', this.mouseup);
