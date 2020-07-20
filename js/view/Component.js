@@ -90,7 +90,6 @@ class CpntInstance extends CpntElement
             throw new Error('CpntInstance class can not be instantiated');
 
         this.addStyles('css/Component/CpntInstance.css');
-        this.addStyles('css/fontawesome.css');
     
         this.style.position = 'absolute';
         this.style.top = rect.top;

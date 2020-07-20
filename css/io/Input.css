@@ -1,9 +1,4 @@
 :host
 {
-    color: #f8f9fa;
-}
-
-:host(:hover)
-{
-    color: #cbd3da;
+    background-color: white;
 }

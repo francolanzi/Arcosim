@@ -24,9 +24,6 @@ class IOElement extends StyledElement
         this.style.top = y - 4.5;
         this.style.left = x - 4.5;
         this.style.visibility = 'hidden';
-
-        this.classList.add('fas');
-        this.classList.add('fa-circle');
     }
 }
 
