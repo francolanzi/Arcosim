@@ -15,8 +15,8 @@ class Component
         if (this.constructor == Component)
             throw new Error('Component class can not be instantiated');
         
-        var count = Component._count.get(this.constructor.name);
-        this._id = count ? ++count : 1;
+        const count = Component._count.get(this.constructor.name);
+        this._id = count ? count + 1 : 1;
         Component._count.set(this.constructor.name, this._id);
         
         this._inputs = new Map();

@@ -4,16 +4,16 @@ const FixedLayer = require('./js/view/FixedLayer');
 const Menu = require('./js/view/menu/Menu');
 const Gallery = require('./js/view/Gallery');
 
-var computer = new Computer();
+const computer = new Computer();
 
-var gallery = new Gallery();
-var menu = new Menu();
+const gallery = new Gallery();
+const menu = new Menu();
 
 menu.getItem('cpnt').gallery = gallery;
 
 gallery.addEventListener('add', ev =>
 {
-    var instance = ev.detail;
+    const instance = ev.detail;
     instance.cpnt = computer.addCpnt(instance.constructor.type);
     instance.trash = menu.getItem('trash');
     instance.addEventListener('remove', () =>
@@ -21,7 +21,7 @@ gallery.addEventListener('add', ev =>
     document.body.appendChild(instance);
 });
 
-var fixedLayer = new FixedLayer();
+const fixedLayer = new FixedLayer();
 
 fixedLayer.appendChild(menu);
 fixedLayer.appendChild(gallery);

@@ -23,7 +23,7 @@ class CpntElement extends StyledElement
 
         this.addStyles('css/Component/CpntElement.css');
         
-        var img = new Image();
+        const img = new Image();
         img.src = this.constructor.image;
         this.appendChild(img);
     }
@@ -47,12 +47,12 @@ class CpntOriginal extends CpntElement
         
         this.addEventListener('mousedown', ev =>
         {
-            var rect = this.getBoundingClientRect();
+            const rect = this.getBoundingClientRect();
 
-            var top = ev.pageY - ev.clientY + rect.top;
-            var left = ev.pageX - ev.clientX + rect.left;
+            const top = ev.pageY - ev.clientY + rect.top;
+            const left = ev.pageX - ev.clientX + rect.left;
 
-            var cpnt = new (this.constructor.instance)(top, left);
+            const cpnt = new (this.constructor.instance)(top, left);
 
             this.dispatchEvent(new CustomEvent('add', { detail: cpnt }));
 
@@ -115,7 +115,7 @@ class CpntInstance extends CpntElement
 
     drag(ev)
     {
-        var rect = this.getBoundingClientRect();
+        const rect = this.getBoundingClientRect();
 
         this._mouse.x = ev.clientX - rect.left;
         this._mouse.y = ev.clientY - rect.top;
@@ -130,8 +130,8 @@ class CpntInstance extends CpntElement
 
     move(ev)
     {
-        var top = ev.pageY - this._mouse.y;
-        var left = ev.pageX - this._mouse.x;
+        const top = ev.pageY - this._mouse.y;
+        const left = ev.pageX - this._mouse.x;
 
         this.style.top = (top > 0 ? top : 0) + 'px';
         this.style.left = (left > 0 ? left : 0) + 'px';
@@ -169,7 +169,7 @@ class CpntInstance extends CpntElement
         if (!this.trash)
             return false;
 
-        var rect = this.trash.getBoundingClientRect();
+        const rect = this.trash.getBoundingClientRect();
         
         return ev.clientY >= rect.top
             && ev.clientX >= rect.left
@@ -181,7 +181,7 @@ class CpntInstance extends CpntElement
     {
         if (!this._inputs.has(id))
         {
-            var input = new InputElement(id, x, y);
+            const input = new InputElement(id, x, y);
             this._inputs.set(id, input);
             this.appendChild(input);
         }
@@ -192,7 +192,7 @@ class CpntInstance extends CpntElement
     {
         if (!this._outputs.has(id))
         {
-            var output = new OutputElement(id, x, y);
+            const output = new OutputElement(id, x, y);
             this._outputs.set(id, output);
             this.appendChild(output);
         }

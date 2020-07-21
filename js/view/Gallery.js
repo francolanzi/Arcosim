@@ -28,8 +28,8 @@ class Gallery extends StyledElement
             file = path.parse(file);
             if (file.ext === '.js')
             {
-                var ctor = require('./cpnts/' + file.name);
-                var cpnt = new ctor(trash);
+                const ctor = require('./cpnts/' + file.name);
+                const cpnt = new ctor(trash);
         
                 cpnt.addEventListener('add', ev =>
                     this.dispatchEvent(new CustomEvent('add', { detail: ev.detail })));

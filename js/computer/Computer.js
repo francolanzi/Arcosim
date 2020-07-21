@@ -11,13 +11,13 @@ class Computer
         {
             Computer._cpntClasses = new Map();
 
-            var files = fs.readdirSync(__dirname + '/cpnts');
+            const files = fs.readdirSync(__dirname + '/cpnts');
             files.forEach(file =>
             {
                 file = path.parse(file);
                 if (file.ext === '.js')
                 {
-                    var cpnt = require('./cpnts/' + file.name);
+                    const cpnt = require('./cpnts/' + file.name);
                     Computer._cpntClasses.set(cpnt.type, cpnt);
                 }
             });
@@ -38,8 +38,8 @@ class Computer
 
     addCpnt(type)
     {
-        var cpnt = new (Computer._cpntClasses.get(type))();
-        var key = cpnt.constructor.type + cpnt.id;
+        const cpnt = new (Computer._cpntClasses.get(type))();
+        const key = cpnt.constructor.type + cpnt.id;
         this._cpnts.set(key, cpnt);
 
         console.log(type + ' ' + cpnt.id + ' added');

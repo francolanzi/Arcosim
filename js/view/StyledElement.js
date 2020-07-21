@@ -17,7 +17,7 @@ class StyledElement extends HTMLElement
     {
         if (!this._styles.has(href))
         {
-            var styles = document.createElement('link');
+            const styles = document.createElement('link');
             this._shadow.appendChild(styles);
             this._styles.set(href, styles);
             styles.rel = 'stylesheet';
@@ -27,7 +27,7 @@ class StyledElement extends HTMLElement
 
     removeStyles(href)
     {
-        var styles = this._styles.get(href);
+        const styles = this._styles.get(href);
         if (styles)
             styles.remove();
         return this._styles.delete(href);
