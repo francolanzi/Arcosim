@@ -3,11 +3,9 @@ const path = require('path');
 
 class Computer
 {
-    static _cpntClasses = null;
-
     static init()
     {
-        if (Computer._cpntClasses == null)
+        if (!Computer._cpntClasses)
         {
             Computer._cpntClasses = new Map();
 

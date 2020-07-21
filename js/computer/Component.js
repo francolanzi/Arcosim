@@ -3,8 +3,6 @@ const Output = require('./Output');
 
 class Component
 {
-    static _count = new Map();
-
     static get type()
     {
         return this.name;
@@ -15,6 +13,9 @@ class Component
         if (this.constructor == Component)
             throw new Error('Component class can not be instantiated');
         
+        if (!Component._count)
+            Component._count = new Map();
+
         const count = Component._count.get(this.constructor.name);
         this._id = count ? count + 1 : 1;
         Component._count.set(this.constructor.name, this._id);
