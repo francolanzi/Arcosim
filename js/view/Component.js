@@ -36,7 +36,7 @@ class CpntOriginal extends CpntElement
         throw new Error('instance static property must be overrided');
     }
 
-    constructor(trash)
+    constructor()
     {
         super();
     
@@ -49,8 +49,7 @@ class CpntOriginal extends CpntElement
         {
             var rect = this.getBoundingClientRect();
             var ctor = this.constructor.instance;
-            var args = [rect, trash];
-            var cpnt = new ctor(...args);
+            var cpnt = new ctor(rect);
 
             this.dispatchEvent(new CustomEvent('add', { detail: cpnt }));
 
@@ -74,7 +73,17 @@ class CpntInstance extends CpntElement
         this._outputs.clear();
     }
 
-    constructor(rect, trash)
+    get trash()
+    {
+        return this._trash;
+    }
+
+    set trash(trash)
+    {
+        this._trash = trash;
+    }
+
+    constructor(rect)
     {
         super();
 
@@ -89,8 +98,6 @@ class CpntInstance extends CpntElement
 
         this._inputs = new Map();
         this._outputs = new Map();
-
-        this._trash = trash;
 
         this._mouse = {};
         this._mouse.x = null;
@@ -155,7 +162,10 @@ class CpntInstance extends CpntElement
 
     trashed(ev)
     {
-        var rect = this._trash.getBoundingClientRect();
+        if (!this.trash)
+            return false;
+
+        var rect = this.trash.getBoundingClientRect();
         
         return ev.clientY >= rect.top
             && ev.clientX >= rect.left

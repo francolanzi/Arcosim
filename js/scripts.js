@@ -11,7 +11,7 @@ var computer = new Computer();
 
 var trash = new TrashItem();
 var link = new LinkItem();
-var gallery = new Gallery(trash);
+var gallery = new Gallery();
 var cpnt = new CpntItem(gallery);
 var menu = new Menu();
 
@@ -23,7 +23,7 @@ gallery.addEventListener('add', ev =>
 {
     var instance = ev.detail;
     instance.cpnt = computer.addCpnt(instance.constructor.type);
-        
+    instance.trash = trash;
     instance.addEventListener('remove', () =>
         computer.removeCpnt(instance.constructor.type, instance.cpnt.id));
 });
