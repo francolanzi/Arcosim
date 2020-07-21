@@ -48,8 +48,11 @@ class CpntOriginal extends CpntElement
         this.addEventListener('mousedown', ev =>
         {
             var rect = this.getBoundingClientRect();
-            var ctor = this.constructor.instance;
-            var cpnt = new ctor(rect);
+
+            var top = ev.pageY - ev.clientY + rect.top;
+            var left = ev.pageX - ev.clientX + rect.left;
+
+            var cpnt = new (this.constructor.instance)(top, left);
 
             this.dispatchEvent(new CustomEvent('add', { detail: cpnt }));
 
@@ -83,7 +86,7 @@ class CpntInstance extends CpntElement
         this._trash = trash;
     }
 
-    constructor(rect)
+    constructor(top, left)
     {
         super();
 
@@ -93,8 +96,8 @@ class CpntInstance extends CpntElement
         this.addStyles('css/Component/CpntInstance.css');
     
         this.style.position = 'absolute';
-        this.style.top = rect.top + window.scrollY + 'px';
-        this.style.left = rect.left + window.scrollX + 'px';
+        this.style.top = top + 'px';
+        this.style.left = left + 'px';
 
         this._inputs = new Map();
         this._outputs = new Map();
