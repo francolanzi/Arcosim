@@ -30,8 +30,8 @@ gallery.addEventListener('add', ev =>
 
 var fixedLayer = new FixedLayer();
 
-fixedLayer.shadow.appendChild(menu);
-fixedLayer.shadow.appendChild(gallery);
+fixedLayer.appendChild(menu);
+fixedLayer.appendChild(gallery);
 
 document.body.appendChild(fixedLayer);
 

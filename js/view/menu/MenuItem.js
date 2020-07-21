@@ -26,7 +26,7 @@ class MenuItem extends StyledElement
         var img = new Image();
         img.src = this.constructor.icon;
 
-        this.shadow.appendChild(img);
+        this.appendChild(img);
     }
 }
 

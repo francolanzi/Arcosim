@@ -16,7 +16,7 @@ class Menu extends StyledElement
         if (!this._items.has(id))
         {
             this._items.set(id, item);
-            this.shadow.appendChild(item);
+            this.appendChild(item);
         }
         return this.getItem(id);
     }

@@ -34,7 +34,7 @@ class Gallery extends StyledElement
                 cpnt.addEventListener('add', ev =>
                     this.dispatchEvent(new CustomEvent('add', { detail: ev.detail })));
             
-                this.shadow.appendChild(cpnt);
+                this.appendChild(cpnt);
             }
         });
     }

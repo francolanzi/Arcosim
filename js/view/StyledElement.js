@@ -1,16 +1,16 @@
 class StyledElement extends HTMLElement
 {
-    get shadow()
-    {
-        return this._shadow;
-    }
-
     constructor()
     {
         super();
 
         this._shadow = this.attachShadow({ mode: 'closed' });
         this._styles = new Map();
+    }
+
+    appendChild(newChild)
+    {
+        this._shadow.appendChild(newChild);
     }
 
     addStyles(href)

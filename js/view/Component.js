@@ -25,7 +25,7 @@ class CpntElement extends StyledElement
         
         var img = new Image();
         img.src = this.constructor.image;
-        this.shadow.appendChild(img);
+        this.appendChild(img);
     }
 }
 
@@ -169,7 +169,7 @@ class CpntInstance extends CpntElement
         {
             var input = new InputElement(id, x, y);
             this._inputs.set(id, input);
-            this.shadow.appendChild(input);
+            this.appendChild(input);
         }
         return this.getInput(id);
     }
@@ -180,7 +180,7 @@ class CpntInstance extends CpntElement
         {
             var output = new OutputElement(id, x, y);
             this._outputs.set(id, output);
-            this.shadow.appendChild(output);
+            this.appendChild(output);
         }
         return this.getOutput(id);
     }
