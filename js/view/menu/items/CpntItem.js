@@ -12,12 +12,25 @@ class CpntItem extends MenuItem
         return 'img/menu/cpnt.svg';
     }
 
-    constructor(gallery)
+    get gallery()
+    {
+        return this._gallery;
+    }
+
+    set gallery(gallery)
+    {
+        this._gallery = gallery;
+    }
+
+    constructor()
     {
         super();
 
         this.addEventListener('click', () =>
-            gallery.open = !gallery.open);
+        {
+            if (this.gallery)
+                this.gallery.open = !this.gallery.open
+        });
     }
 }
 

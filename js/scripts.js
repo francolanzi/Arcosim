@@ -12,12 +12,14 @@ var computer = new Computer();
 var trash = new TrashItem();
 var link = new LinkItem();
 var gallery = new Gallery();
-var cpnt = new CpntItem(gallery);
+var cpnt = new CpntItem();
 var menu = new Menu();
 
 menu.addItem('trash', trash);
 menu.addItem('link', link);
 menu.addItem('cpnt', cpnt);
+
+cpnt.gallery = gallery;
 
 gallery.addEventListener('add', ev =>
 {
