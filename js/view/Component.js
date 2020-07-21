@@ -24,11 +24,13 @@ class CpntElement extends StyledElement
         this.addStyles('css/Component/CpntElement.css');
         
         var img = new Image();
-        img.onload = () =>
+
+        img.addEventListener('load', () =>
         {
             this.style.width = img.width + 'px';
             this.style.height = img.height + 'px';
-        };
+        });
+        
         img.src = this.constructor.image;
 
         this.style.backgroundImage = 'url(' + this.constructor.image + ')';
