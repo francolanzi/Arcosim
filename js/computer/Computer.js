@@ -11,8 +11,7 @@ class Computer
         {
             Computer._cpntClasses = new Map();
 
-            const files = fs.readdirSync(__dirname + '/cpnts');
-            files.forEach(file =>
+            fs.readdirSync(__dirname + '/cpnts').forEach(file =>
             {
                 file = path.parse(file);
                 if (file.ext === '.js')
