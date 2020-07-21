@@ -15,7 +15,7 @@ class Gallery extends StyledElement
         this.style.transform = 'scaleY(' + (open ? 1 : 0) + ')';
     }
 
-    constructor(trash)
+    constructor()
     {
         super();
 
@@ -28,8 +28,7 @@ class Gallery extends StyledElement
             file = path.parse(file);
             if (file.ext === '.js')
             {
-                const ctor = require('./cpnts/' + file.name);
-                const cpnt = new ctor(trash);
+                const cpnt = new (require('./cpnts/' + file.name))();
         
                 cpnt.addEventListener('add', ev =>
                     this.dispatchEvent(new CustomEvent('add', { detail: ev.detail })));
