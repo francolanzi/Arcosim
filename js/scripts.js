@@ -1,5 +1,6 @@
 const Computer = require('./js/computer');
 
+const FixedLayer = require('./js/view/FixedLayer');
 const Menu = require('./js/view/menu/Menu');
 const Gallery = require('./js/view/Gallery');
 const TrashItem = require('./js/view/menu/items/TrashItem');
@@ -27,7 +28,11 @@ gallery.addEventListener('add', ev =>
         computer.removeCpnt(instance.constructor.type, instance.cpnt.id));
 });
 
-document.body.appendChild(menu);
-document.body.appendChild(gallery);
+var fixedLayer = new FixedLayer();
+
+fixedLayer.shadow.appendChild(menu);
+fixedLayer.shadow.appendChild(gallery);
+
+document.body.appendChild(fixedLayer);
 
 document.ondragstart = () => false;
