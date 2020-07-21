@@ -18,6 +18,7 @@ gallery.addEventListener('add', ev =>
     instance.trash = menu.getItem('trash');
     instance.addEventListener('remove', () =>
         computer.removeCpnt(instance.constructor.type, instance.cpnt.id));
+    document.body.appendChild(instance);
 });
 
 var fixedLayer = new FixedLayer();

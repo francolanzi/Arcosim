@@ -109,8 +109,6 @@ class CpntInstance extends CpntElement
         this._mousedown = this.drag.bind(this);
         this._mousemove = this.move.bind(this);
         this._mouseup = this.drop.bind(this);
-
-        document.body.appendChild(this);
     
         this.addEventListener('mousedown', this._mousedown);
     }
