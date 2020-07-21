@@ -2,10 +2,7 @@
 {
     margin: 0;
     padding: 0;
-    display: block;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    line-height: 0;
     user-select: none;
     cursor: move;
 }
