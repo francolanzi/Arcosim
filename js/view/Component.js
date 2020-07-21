@@ -90,30 +90,30 @@ class CpntInstance extends CpntElement
         this._inputs = new Map();
         this._outputs = new Map();
 
-        this.trash = trash;
+        this._trash = trash;
 
-        this.mouse = {};
-        this.mouse.x = null;
-        this.mouse.y = null;
+        this._mouse = {};
+        this._mouse.x = null;
+        this._mouse.y = null;
 
-        this.mousedown = this.drag.bind(this);
-        this.mousemove = this.move.bind(this);
-        this.mouseup = this.drop.bind(this);
+        this._mousedown = this.drag.bind(this);
+        this._mousemove = this.move.bind(this);
+        this._mouseup = this.drop.bind(this);
 
         document.body.appendChild(this);
     
-        this.addEventListener('mousedown', this.mousedown);
+        this.addEventListener('mousedown', this._mousedown);
     }
 
     drag(ev)
     {
         var rect = this.getBoundingClientRect();
 
-        this.mouse.x = ev.clientX - rect.left - window.scrollX;
-        this.mouse.y = ev.clientY - rect.top - window.scrollY;
+        this._mouse.x = ev.clientX - rect.left - window.scrollX;
+        this._mouse.y = ev.clientY - rect.top - window.scrollY;
 
-        document.addEventListener('mousemove', this.mousemove);
-        document.addEventListener('mouseup', this.mouseup);
+        document.addEventListener('mousemove', this._mousemove);
+        document.addEventListener('mouseup', this._mouseup);
 
         this.classList.add('dragging');
 
@@ -122,8 +122,8 @@ class CpntInstance extends CpntElement
 
     move(ev)
     {
-        var top = ev.clientY - this.mouse.y;
-        var left = ev.clientX - this.mouse.x;
+        var top = ev.clientY - this._mouse.y;
+        var left = ev.clientX - this._mouse.x;
 
         this.style.top = (top > 0 ? top : 0) + 'px';
         this.style.left = (left > 0 ? left : 0) + 'px';
@@ -136,11 +136,11 @@ class CpntInstance extends CpntElement
 
     drop(ev)
     {
-        document.removeEventListener('mousemove', this.mousemove);
-        document.removeEventListener('mouseup', this.mouseup);
+        document.removeEventListener('mousemove', this._mousemove);
+        document.removeEventListener('mouseup', this._mouseup);
 
-        this.mouse.x = null;
-        this.mouse.y = null;
+        this._mouse.x = null;
+        this._mouse.y = null;
 
         this.classList.remove('dragging');
 
@@ -155,7 +155,7 @@ class CpntInstance extends CpntElement
 
     trashed(ev)
     {
-        var rect = this.trash.getBoundingClientRect();
+        var rect = this._trash.getBoundingClientRect();
         
         return ev.clientY >= rect.top
             && ev.clientX >= rect.left
