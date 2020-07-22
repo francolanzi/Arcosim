@@ -6,7 +6,7 @@ class Computer {
     if (!this._cpntClasses) {
       this._cpntClasses = new Map();
 
-      fs.readdirSync(__dirname + '/cpnts').forEach(file => {
+      fs.readdirSync(path.resolve(__dirname, 'cpnts')).forEach(file => {
         file = path.parse(file);
         if (file.ext === '.js') {
           const cpnt = require('./cpnts/' + file.name);
