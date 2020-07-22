@@ -27,7 +27,8 @@ class Computer {
   }
 
   addCpnt(type) {
-    const cpnt = new (this.constructor._cpntClasses.get(type))();
+    const Component = this.constructor._cpntClasses.get(type);
+    const cpnt = new Component();
     const key = cpnt.constructor.type + cpnt.id;
     this._cpnts.set(key, cpnt);
 

@@ -22,7 +22,8 @@ class Gallery extends StyledElement {
     fs.readdirSync(path.resolve(__dirname, 'cpnts')).forEach(file => {
       file = path.parse(file);
       if (file.ext === '.js') {
-        const cpnt = new (require('./cpnts/' + file.name))();
+        const Component = require('./cpnts/' + file.name);
+        const cpnt = new Component();
 
         cpnt.addEventListener('add', ev =>
           this.dispatchEvent(new CustomEvent('add', { detail: ev.detail })));
