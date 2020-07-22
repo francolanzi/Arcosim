@@ -1,3 +1,7 @@
 :host(.dragging) {
   z-index: 2;
 }
+
+:host(.dragging) img {
+  filter: drop-shadow(0 0 5px grey);
+}
