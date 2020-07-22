@@ -171,9 +171,9 @@ class CpntInstance extends CpntElement {
     const rect = this.trash.getBoundingClientRect();
 
     return ev.clientY >= rect.top
-            && ev.clientX >= rect.left
-            && ev.clientY <= rect.bottom
-            && ev.clientX <= rect.right;
+        && ev.clientX >= rect.left
+        && ev.clientY <= rect.bottom
+        && ev.clientX <= rect.right;
   }
 
   addInput(id, x, y) {
