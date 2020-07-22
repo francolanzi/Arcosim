@@ -1,8 +1,7 @@
-:host
-{
-    margin: 0;
-    padding: 0;
-    line-height: 0;
-    user-select: none;
-    cursor: move;
+:host {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  user-select: none;
+  cursor: move;
 }

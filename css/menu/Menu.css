@@ -1,12 +1,11 @@
-:host
-{
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    margin-bottom: 0.5rem;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
+:host {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
 }

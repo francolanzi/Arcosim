@@ -1,4 +1,3 @@
-:host(.dragging)
-{
-    z-index: 2;
+:host(.dragging) {
+  z-index: 2;
 }

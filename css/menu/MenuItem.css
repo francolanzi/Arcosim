@@ -1,21 +1,18 @@
-:host
-{
-    margin: 0;
-    margin-right: 1rem;
-    padding: 0;
-    line-height: 0;
-    cursor: pointer;
-    user-select: none;
-    opacity: 0.5;
-    pointer-events: all;
+:host {
+  margin: 0;
+  margin-right: 1rem;
+  padding: 0;
+  line-height: 0;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.5;
+  pointer-events: all;
 }
 
-:host img
-{
-    height: 2rem;
+:host img {
+  height: 2rem;
 }
 
-:host(:hover)
-{
-    opacity: 1;
+:host(:hover) {
+  opacity: 1;
 }

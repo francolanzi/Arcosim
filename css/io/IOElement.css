@@ -1,17 +1,15 @@
-:host
-{
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-    border-radius: 50%;
-    border: 1px solid black;
-    opacity: 0.5;
-    width: 10px;
-    height: 10px;
-    box-sizing: border-box;
+:host {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid black;
+  opacity: 0.5;
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
 }
 
-:host(:hover)
-{
-    opacity: 1;
+:host(:hover) {
+  opacity: 1;
 }
