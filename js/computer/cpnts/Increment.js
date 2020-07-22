@@ -1,15 +1,13 @@
 const Component = require('../Component');
 
-class Increment extends Component
-{
-    constructor()
-    {
-        super();
+class Increment extends Component {
+  constructor() {
+    super();
 
-        this.addInput('Current');
+    this.addInput('Current');
 
-        this.addOutput('Next');
-    }
+    this.addOutput('Next');
+  }
 }
 
 module.exports = Increment;

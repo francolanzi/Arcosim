@@ -3,51 +3,42 @@ const { CpntOriginal, CpntInstance } = require('../Component');
 const type = 'Decoder';
 const image = 'img/cpnt/Decoder.png';
 
-class DecoderInstance extends CpntInstance
-{
-    static get type()
-    {
-        return type;
-    }
-    
-    static get image()
-    {
-        return image;
-    }
+class DecoderInstance extends CpntInstance {
+  static get type() {
+    return type;
+  }
 
-    get cpnt()
-    {
-        return super.cpnt;
-    }
-    
-    set cpnt(cpnt)
-    {
-        super.cpnt = cpnt;
-        
-        this.addInput('Encoded', 77, 14.5);
-        this.addInput('Enable', 38.5, 0);
-        this.addInput('Clock', 38.5, 29);
+  static get image() {
+    return image;
+  }
 
-        this.addOutput('Decoded', 0, 14.5);
-    }
+  get cpnt() {
+    return super.cpnt;
+  }
+
+  set cpnt(cpnt) {
+    super.cpnt = cpnt;
+
+    this.addInput('Encoded', 77, 14.5);
+    this.addInput('Enable', 38.5, 0);
+    this.addInput('Clock', 38.5, 29);
+
+    this.addOutput('Decoded', 0, 14.5);
+  }
 }
 
-class DecoderOriginal extends CpntOriginal
-{
-    static get type()
-    {
-        return type;
-    }
-    
-    static get image()
-    {
-        return image;
-    }
+class DecoderOriginal extends CpntOriginal {
+  static get type() {
+    return type;
+  }
 
-    static get instance()
-    {
-        return DecoderInstance;
-    }
+  static get image() {
+    return image;
+  }
+
+  static get instance() {
+    return DecoderInstance;
+  }
 }
 
 customElements.define('decoder-instance', DecoderInstance);

@@ -1,37 +1,31 @@
 const MenuItem = require('../MenuItem');
 
-class CpntItem extends MenuItem
-{
-    static get title()
-    {
-        return 'Componentes';
-    }
+class CpntItem extends MenuItem {
+  static get title() {
+    return 'Componentes';
+  }
 
-    static get icon()
-    {
-        return 'img/menu/cpnt.svg';
-    }
+  static get icon() {
+    return 'img/menu/cpnt.svg';
+  }
 
-    get gallery()
-    {
-        return this._gallery;
-    }
+  get gallery() {
+    return this._gallery;
+  }
 
-    set gallery(gallery)
-    {
-        this._gallery = gallery;
-    }
+  set gallery(gallery) {
+    this._gallery = gallery;
+  }
 
-    constructor()
-    {
-        super();
+  constructor() {
+    super();
 
-        this.addEventListener('click', () =>
-        {
-            if (this.gallery)
-                this.gallery.open = !this.gallery.open
-        });
-    }
+    this.addEventListener('click', () => {
+      if (this.gallery) {
+        this.gallery.open = !this.gallery.open;
+      }
+    });
+  }
 }
 
 customElements.define('cpnt-item', CpntItem);

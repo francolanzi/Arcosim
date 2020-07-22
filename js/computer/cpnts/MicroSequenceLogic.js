@@ -1,16 +1,14 @@
 const Component = require('../Component');
 
-class MicroSequenceLogic extends Component
-{
-    constructor()
-    {
-        super();
+class MicroSequenceLogic extends Component {
+  constructor() {
+    super();
 
-        this.addInput('Condition');
-        this.addInput('Control');
+    this.addInput('Condition');
+    this.addInput('Control');
 
-        this.addOutput('Jump');
-    }
+    this.addOutput('Jump');
+  }
 }
 
 module.exports = MicroSequenceLogic;

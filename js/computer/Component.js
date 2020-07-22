@@ -1,77 +1,69 @@
 const Input = require('./Input');
 const Output = require('./Output');
 
-class Component
-{
-    static get type()
-    {
-        return this.name;
+class Component {
+  static get type() {
+    return this.name;
+  }
+
+  constructor() {
+    if (this.constructor == Component) {
+      throw new Error('Component class can not be instantiated');
     }
 
-    constructor()
-    {
-        if (this.constructor == Component)
-            throw new Error('Component class can not be instantiated');
-        
-        if (!Component._count)
-            Component._count = new Map();
-
-        const count = Component._count.get(this.constructor.name);
-        this._id = count ? count + 1 : 1;
-        Component._count.set(this.constructor.name, this._id);
-        
-        this._inputs = new Map();
-        this._outputs = new Map();
+    if (!this.constructor._count) {
+      this.constructor._count = new Map();
     }
 
-    get id()
-    {
-        return this._id;
-    }
+    const count = this.constructor._count.get(this.constructor.name);
+    this._id = count ? count + 1 : 1;
+    this.constructor._count.set(this.constructor.name, this._id);
 
-    get inputs()
-    {
-        return this._inputs.keys();
-    }
+    this._inputs = new Map();
+    this._outputs = new Map();
+  }
 
-    get outputs()
-    {
-        return this._outputs.keys();
-    }
+  get id() {
+    return this._id;
+  }
 
-    addInput(id)
-    {
-        if (!this._inputs.has(id))
-            this._inputs.set(id, new Input(id));
-        return this.getInput(id);
-    }
+  get inputs() {
+    return this._inputs.keys();
+  }
 
-    addOutput(id)
-    {
-        if (!this._outputs.has(id))
-            this._outputs.set(id, new Output(id));
-        return this.getOutput(id);
-    }
+  get outputs() {
+    return this._outputs.keys();
+  }
 
-    getInput(id)
-    {
-        return this._inputs.get(id);
+  addInput(id) {
+    if (!this._inputs.has(id)) {
+      this._inputs.set(id, new Input(id));
     }
+    return this.getInput(id);
+  }
 
-    getOutput(id)
-    {
-        return this._outputs.get(id);
+  addOutput(id) {
+    if (!this._outputs.has(id)) {
+      this._outputs.set(id, new Output(id));
     }
+    return this.getOutput(id);
+  }
 
-    removeInput(id)
-    {
-        return this._inputs.delete(id);
-    }
+  getInput(id) {
+    return this._inputs.get(id);
+  }
 
-    removeOutput(id)
-    {
-        return this._outputs.delete(id);
-    }
+  getOutput(id) {
+    return this._outputs.get(id);
+  }
+
+  removeInput(id) {
+    return this._inputs.delete(id);
+  }
+
+  removeOutput(id) {
+    return this._outputs.delete(id);
+  }
 }
 
 module.exports = Component;

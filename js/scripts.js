@@ -11,14 +11,13 @@ const menu = new Menu();
 
 menu.getItem('cpnt').gallery = gallery;
 
-gallery.addEventListener('add', ev =>
-{
-    const instance = ev.detail;
-    instance.cpnt = computer.addCpnt(instance.constructor.type);
-    instance.trash = menu.getItem('trash');
-    instance.addEventListener('remove', () =>
-        computer.removeCpnt(instance.constructor.type, instance.cpnt.id));
-    document.body.appendChild(instance);
+gallery.addEventListener('add', ev => {
+  const instance = ev.detail;
+  instance.cpnt = computer.addCpnt(instance.constructor.type);
+  instance.trash = menu.getItem('trash');
+  instance.addEventListener('remove', () =>
+    computer.removeCpnt(instance.constructor.type, instance.cpnt.id));
+  document.body.appendChild(instance);
 });
 
 const fixedLayer = new FixedLayer();

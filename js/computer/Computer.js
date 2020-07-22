@@ -1,58 +1,48 @@
 const fs = require('fs');
 const path = require('path');
 
-class Computer
-{
-    static init()
-    {
-        if (!Computer._cpntClasses)
-        {
-            Computer._cpntClasses = new Map();
+class Computer {
+  static init() {
+    if (!this._cpntClasses) {
+      this._cpntClasses = new Map();
 
-            fs.readdirSync(__dirname + '/cpnts').forEach(file =>
-            {
-                file = path.parse(file);
-                if (file.ext === '.js')
-                {
-                    const cpnt = require('./cpnts/' + file.name);
-                    Computer._cpntClasses.set(cpnt.type, cpnt);
-                }
-            });
+      fs.readdirSync(__dirname + '/cpnts').forEach(file => {
+        file = path.parse(file);
+        if (file.ext === '.js') {
+          const cpnt = require('./cpnts/' + file.name);
+          this._cpntClasses.set(cpnt.type, cpnt);
         }
+      });
     }
-    
-    static cpntTypes()
-    {
-        Computer.init();
-        return Computer._cpntClasses.keys();
-    }
+  }
 
-    constructor()
-    {
-        Computer.init();
-        this._cpnts = new Map();
-    }
+  static cpntTypes() {
+    Computer.init();
+    return this._cpntClasses.keys();
+  }
 
-    addCpnt(type)
-    {
-        const cpnt = new (Computer._cpntClasses.get(type))();
-        const key = cpnt.constructor.type + cpnt.id;
-        this._cpnts.set(key, cpnt);
+  constructor() {
+    this.constructor.init();
+    this._cpnts = new Map();
+  }
 
-        console.log(type + ' ' + cpnt.id + ' added');
-        return cpnt;
-    }
+  addCpnt(type) {
+    const cpnt = new (this.constructor._cpntClasses.get(type))();
+    const key = cpnt.constructor.type + cpnt.id;
+    this._cpnts.set(key, cpnt);
 
-    getCpnt(type, id)
-    {
-        return this._cpnts.get(type + id);
-    }
+    console.log(type + ' ' + cpnt.id + ' added');
+    return cpnt;
+  }
 
-    removeCpnt(type, id)
-    {
-        console.log(type + ' ' + id + ' removed');
-        return this._cpnts.delete(type + id);
-    }
+  getCpnt(type, id) {
+    return this._cpnts.get(type + id);
+  }
+
+  removeCpnt(type, id) {
+    console.log(type + ' ' + id + ' removed');
+    return this._cpnts.delete(type + id);
+  }
 }
 
 module.exports = Computer;

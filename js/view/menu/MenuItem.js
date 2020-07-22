@@ -1,33 +1,30 @@
 const StyledElement = require('../StyledElement');
 
-class MenuItem extends StyledElement
-{
-    static get title()
-    {
-        throw new Error('title static property must be overrided');
+class MenuItem extends StyledElement {
+  static get title() {
+    throw new Error('title static property must be overrided');
+  }
+
+  static get icon() {
+    throw new Error('icon static property must be overrided');
+  }
+
+  constructor() {
+    super();
+
+    if (this.constructor == MenuItem) {
+      throw new Error('MenuItem class can not be instantiated');
     }
 
-    static get icon()
-    {
-        throw new Error('icon static property must be overrided');
-    }
+    this.addStyles('css/menu/MenuItem.css');
 
-    constructor()
-    {
-        super();
+    this.setAttribute('title', this.constructor.title);
 
-        if (this.constructor == MenuItem)
-            throw new Error('MenuItem class can not be instantiated');
+    const img = new Image();
+    img.src = this.constructor.icon;
 
-        this.addStyles('css/menu/MenuItem.css');
-
-        this.setAttribute('title', this.constructor.title);
-        
-        const img = new Image();
-        img.src = this.constructor.icon;
-
-        this.appendChild(img);
-    }
+    this.appendChild(img);
+  }
 }
 
 module.exports = MenuItem;

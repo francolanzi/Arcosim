@@ -1,15 +1,13 @@
 const Component = require('../Component');
 
-class ControlStore extends Component
-{
-    constructor()
-    {
-        super();
+class ControlStore extends Component {
+  constructor() {
+    super();
 
-        this.addInput('Number');
+    this.addInput('Number');
 
-        this.addOutput('Instruction');
-    }
+    this.addOutput('Instruction');
+  }
 }
 
 module.exports = ControlStore;
