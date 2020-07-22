@@ -17,6 +17,8 @@ gallery.addEventListener('add', ev => {
   instance.trash = menu.getItem('trash');
   instance.addEventListener('remove', () =>
     computer.removeCpnt(instance.constructor.type, instance.cpnt.id));
+  instance.showIO = menu.getItem('link').show;
+  menu.getItem('link').addEventListener('show', ev => instance.showIO = ev.detail);
   document.body.appendChild(instance);
 });
 

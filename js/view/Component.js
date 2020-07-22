@@ -76,6 +76,16 @@ class CpntInstance extends CpntElement {
     this._trash = trash;
   }
 
+  get showIO() {
+    return this._showIO;
+  }
+
+  set showIO(show) {
+    this._showIO = show;
+    this._inputs.forEach(input => input.show = show);
+    this._outputs.forEach(input => input.show = show);
+  }
+
   constructor(top, left) {
     super();
 
@@ -88,6 +98,8 @@ class CpntInstance extends CpntElement {
     this.style.position = 'absolute';
     this.style.top = top + 'px';
     this.style.left = left + 'px';
+
+    this._showIO = false;
 
     this._inputs = new Map();
     this._outputs = new Map();
