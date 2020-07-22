@@ -13,12 +13,16 @@ menu.getItem('cpnt').gallery = gallery;
 
 gallery.addEventListener('add', ev => {
   const instance = ev.detail;
+
   instance.cpnt = computer.addCpnt(instance.constructor.type);
   instance.trash = menu.getItem('trash');
+
   instance.addEventListener('remove', () =>
     computer.removeCpnt(instance.constructor.type, instance.cpnt.id));
+
   instance.showIO = menu.getItem('link').show;
   menu.getItem('link').addEventListener('show', ev => instance.showIO = ev.detail);
+
   document.body.appendChild(instance);
 });
 
