@@ -1,9 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const StyledElement = require('./StyledElement');
-
-class Gallery extends StyledElement {
+class Gallery extends HTMLElement {
   get open() {
     return this.style.transform === 'scaleY(1)';
   }
@@ -14,8 +12,6 @@ class Gallery extends StyledElement {
 
   constructor() {
     super();
-
-    this.addStyles('css/Gallery.css');
 
     this.style.transform = 'scaleY(0)';
 

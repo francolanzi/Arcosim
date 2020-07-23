@@ -1,6 +1,4 @@
-const StyledElement = require('../StyledElement');
-
-class MenuItem extends StyledElement {
+class MenuItem extends HTMLElement {
   static get title() {
     throw new Error('title static property must be overrided');
   }
@@ -16,7 +14,7 @@ class MenuItem extends StyledElement {
       throw new Error('MenuItem class can not be instantiated');
     }
 
-    this.addStyles('css/menu/MenuItem.css');
+    this.classList.add('menu-item');
 
     this.setAttribute('title', this.constructor.title);
 

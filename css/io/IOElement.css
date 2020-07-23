@@ -1,4 +1,4 @@
-:host {
+.io {
   margin: 0;
   padding: 0;
   cursor: pointer;
@@ -10,6 +10,6 @@
   box-sizing: border-box;
 }
 
-:host(:hover) {
+.io:hover {
   opacity: 1;
 }

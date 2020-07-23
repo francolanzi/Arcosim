@@ -1,3 +1,12 @@
+@import 'Component.css';
+@import 'io/IOElement.css';
+@import 'io/Input.css';
+@import 'io/Output.css';
+@import 'menu/Menu.css';
+@import 'menu/MenuItem.css';
+@import 'FixedLayer.css';
+@import 'Gallery.css';
+
 body {
   margin: 0;
   padding: 0;

@@ -1,12 +1,4 @@
-const StyledElement = require('./StyledElement');
-
-class FixedLayer extends StyledElement {
-  constructor() {
-    super();
-
-    this.addStyles('css/FixedLayer.css');
-  }
-}
+class FixedLayer extends HTMLElement {}
 
 customElements.define('fixed-layer', FixedLayer);
 

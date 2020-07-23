@@ -1,4 +1,4 @@
-:host {
+.menu-item {
   margin: 0;
   margin-right: 1rem;
   padding: 0;
@@ -9,10 +9,10 @@
   pointer-events: all;
 }
 
-:host img {
+.menu-item img {
   height: 2rem;
 }
 
-:host(:hover) {
+.menu-item:hover {
   opacity: 1;
 }

@@ -1,0 +1,19 @@
+.cpnt-element {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  user-select: none;
+  cursor: move;
+}
+
+.cpnt-element.cpnt-original {
+  margin: 0.5rem;
+}
+
+.cpnt-element.cpnt-instance.dragging {
+  z-index: 2;
+}
+
+.cpnt-element.cpnt-instance.dragging img {
+  filter: drop-shadow(0 0 5px grey);
+}

@@ -1,8 +1,7 @@
-const StyledElement = require('./StyledElement');
 const InputElement = require('./io/Input');
 const OutputElement = require('./io/Output');
 
-class CpntElement extends StyledElement {
+class CpntElement extends HTMLElement {
   static get type() {
     throw new Error('type static property must be overrided');
   }
@@ -22,7 +21,7 @@ class CpntElement extends StyledElement {
       throw new Error('CpntElement class can not be instantiated');
     }
 
-    this.addStyles('css/Component/CpntElement.css');
+    this.classList.add('cpnt-element');
 
     this._image = new Image();
     this.image.src = this.constructor.imageFile;
@@ -42,7 +41,7 @@ class CpntOriginal extends CpntElement {
       throw new Error('CpntOriginal class can not be instantiated');
     }
 
-    this.addStyles('css/Component/CpntOriginal.css');
+    this.classList.add('cpnt-original');
 
     this.image.addEventListener('mousedown', ev => {
       const rect = this.getBoundingClientRect();
@@ -97,7 +96,7 @@ class CpntInstance extends CpntElement {
       throw new Error('CpntInstance class can not be instantiated');
     }
 
-    this.addStyles('css/Component/CpntInstance.css');
+    this.classList.add('cpnt-instance');
 
     this.style.position = 'absolute';
     this.style.top = top + 'px';

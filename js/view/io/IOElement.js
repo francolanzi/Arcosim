@@ -1,6 +1,4 @@
-const StyledElement = require('../StyledElement');
-
-class IOElement extends StyledElement {
+class IOElement extends HTMLElement {
   get cpnt() {
     return this._cpnt;
   }
@@ -23,7 +21,7 @@ class IOElement extends StyledElement {
     this._cpnt = cpnt;
     this._name = name;
 
-    this.addStyles('css/io/IOElement.css');
+    this.classList.add('io');
 
     this.style.position = 'absolute';
     this.style.top = (y - 4.5) + 'px';
