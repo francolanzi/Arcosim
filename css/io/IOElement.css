@@ -13,3 +13,7 @@
 .io:hover {
   opacity: 1;
 }
+
+.io:focus {
+  outline: none;
+}
