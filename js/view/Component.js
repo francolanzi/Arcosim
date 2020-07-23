@@ -178,7 +178,7 @@ class CpntInstance extends CpntElement {
 
   addInput(id, x, y) {
     if (!this._inputs.has(id)) {
-      const input = new InputElement(id, x, y);
+      const input = new InputElement(this, id, x, y);
       this._inputs.set(id, input);
       this.appendChild(input);
     }
@@ -187,7 +187,7 @@ class CpntInstance extends CpntElement {
 
   addOutput(id, x, y) {
     if (!this._outputs.has(id)) {
-      const output = new OutputElement(id, x, y);
+      const output = new OutputElement(this, id, x, y);
       this._outputs.set(id, output);
       this.appendChild(output);
     }

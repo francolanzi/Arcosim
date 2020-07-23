@@ -1,6 +1,10 @@
 const StyledElement = require('../StyledElement');
 
 class IOElement extends StyledElement {
+  get cpnt() {
+    return this._cpnt;
+  }
+
   get name() {
     return this._name;
   }
@@ -13,9 +17,10 @@ class IOElement extends StyledElement {
     this.style.visibility = show ? 'visible' : 'hidden';
   }
 
-  constructor(name, x, y) {
+  constructor(cpnt, name, x, y) {
     super();
 
+    this._cpnt = cpnt;
     this._name = name;
 
     this.addStyles('css/io/IOElement.css');

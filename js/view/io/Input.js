@@ -1,8 +1,8 @@
 const IOElement = require('./IOElement');
 
 class InputElement extends IOElement {
-  constructor(name, x, y) {
-    super(name, x, y);
+  constructor(cpnt, name, x, y) {
+    super(cpnt, name, x, y);
 
     this.addStyles('css/io/Input.css');
   }
