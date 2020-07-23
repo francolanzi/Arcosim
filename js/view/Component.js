@@ -185,9 +185,6 @@ class CpntInstance extends CpntElement {
 
       this._inputs.set(id, input);
       this.appendChild(input);
-
-      input.addEventListener('click', () =>
-        this.dispatchEvent(new CustomEvent('inputclick', { detail: input })));
     }
     return this.getInput(id);
   }
@@ -198,9 +195,6 @@ class CpntInstance extends CpntElement {
 
       this._outputs.set(id, output);
       this.appendChild(output);
-
-      output.addEventListener('click', () =>
-        this.dispatchEvent(new CustomEvent('outputclick', { detail: output })));
     }
     return this.getOutput(id);
   }
