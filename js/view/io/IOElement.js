@@ -18,6 +18,10 @@ class IOElement extends HTMLElement {
   constructor(cpnt, name, x, y) {
     super();
 
+    if (this.constructor == IOElement) {
+      throw new Error('IOElement class can not be instantiated');
+    }
+
     this._cpnt = cpnt;
     this._name = name;
 
