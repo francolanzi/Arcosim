@@ -1,15 +1,15 @@
 const { CpntOriginal, CpntInstance } = require('../Component');
 
 const type = 'Shifter';
-const image = 'img/cpnt/Shifter.png';
+const imageFile = 'img/cpnt/Shifter.png';
 
 class ShifterInstance extends CpntInstance {
   static get type() {
     return type;
   }
 
-  static get image() {
-    return image;
+  static get imageFile() {
+    return imageFile;
   }
 
   get cpnt() {
@@ -31,8 +31,8 @@ class ShifterOriginal extends CpntOriginal {
     return type;
   }
 
-  static get image() {
-    return image;
+  static get imageFile() {
+    return imageFile;
   }
 
   static get instance() {

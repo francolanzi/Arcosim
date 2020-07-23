@@ -1,15 +1,15 @@
 const { CpntOriginal, CpntInstance } = require('../Component');
 
 const type = 'MicroSequenceLogic';
-const image = 'img/cpnt/MicroSequenceLogic.png';
+const imageFile = 'img/cpnt/MicroSequenceLogic.png';
 
 class MicroSequenceLogicInstance extends CpntInstance {
   static get type() {
     return type;
   }
 
-  static get image() {
-    return image;
+  static get imageFile() {
+    return imageFile;
   }
 
   get cpnt() {
@@ -31,8 +31,8 @@ class MicroSequenceLogicOriginal extends CpntOriginal {
     return type;
   }
 
-  static get image() {
-    return image;
+  static get imageFile() {
+    return imageFile;
   }
 
   static get instance() {

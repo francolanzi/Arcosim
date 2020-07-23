@@ -1,15 +1,15 @@
 const { CpntOriginal, CpntInstance } = require('../Component');
 
 const type = 'MIR';
-const image = 'img/cpnt/MIR.png';
+const imageFile = 'img/cpnt/MIR.png';
 
 class MIRInstance extends CpntInstance {
   static get type() {
     return type;
   }
 
-  static get image() {
-    return image;
+  static get imageFile() {
+    return imageFile;
   }
 
   get cpnt() {
@@ -42,8 +42,8 @@ class MIROriginal extends CpntOriginal {
     return type;
   }
 
-  static get image() {
-    return image;
+  static get imageFile() {
+    return imageFile;
   }
 
   static get instance() {

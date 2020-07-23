@@ -1,15 +1,15 @@
 const { CpntOriginal, CpntInstance } = require('../Component');
 
 const type = 'MBR';
-const image = 'img/cpnt/MBR.png';
+const imageFile = 'img/cpnt/MBR.png';
 
 class MBRInstance extends CpntInstance {
   static get type() {
     return type;
   }
 
-  static get image() {
-    return image;
+  static get imageFile() {
+    return imageFile;
   }
 
   get cpnt() {
@@ -33,8 +33,8 @@ class MBROriginal extends CpntOriginal {
     return type;
   }
 
-  static get image() {
-    return image;
+  static get imageFile() {
+    return imageFile;
   }
 
   static get instance() {

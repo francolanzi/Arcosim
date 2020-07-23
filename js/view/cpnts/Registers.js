@@ -1,15 +1,15 @@
 const { CpntOriginal, CpntInstance } = require('../Component');
 
 const type = 'Registers';
-const image = 'img/cpnt/Registers.png';
+const imageFile = 'img/cpnt/Registers.png';
 
 class RegistersInstance extends CpntInstance {
   static get type() {
     return type;
   }
 
-  static get image() {
-    return image;
+  static get imageFile() {
+    return imageFile;
   }
 
   get cpnt() {
@@ -35,8 +35,8 @@ class RegistersOriginal extends CpntOriginal {
     return type;
   }
 
-  static get image() {
-    return image;
+  static get imageFile() {
+    return imageFile;
   }
 
   static get instance() {

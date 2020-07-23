@@ -7,8 +7,8 @@ class CpntElement extends StyledElement {
     throw new Error('type static property must be overrided');
   }
 
-  static get image() {
-    throw new Error('image static property must be overrided');
+  static get imageFile() {
+    throw new Error('imageFile static property must be overrided');
   }
 
   constructor() {
@@ -21,7 +21,7 @@ class CpntElement extends StyledElement {
     this.addStyles('css/Component/CpntElement.css');
 
     const img = new Image();
-    img.src = this.constructor.image;
+    img.src = this.constructor.imageFile;
     this.appendChild(img);
   }
 }
