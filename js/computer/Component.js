@@ -1,5 +1,5 @@
-const Input = require('./Input');
-const Output = require('./Output');
+const Input = require('./io/Input');
+const Output = require('./io/Output');
 
 class Component {
   static get type() {
