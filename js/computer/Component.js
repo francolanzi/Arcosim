@@ -35,34 +35,34 @@ class Component {
     return this._outputs.keys();
   }
 
-  addInput(id) {
-    if (!this._inputs.has(id)) {
-      this._inputs.set(id, new Input(id));
+  addInput(name) {
+    if (!this._inputs.has(name)) {
+      this._inputs.set(name, new Input(name));
     }
-    return this.getInput(id);
+    return this.getInput(name);
   }
 
-  addOutput(id) {
-    if (!this._outputs.has(id)) {
-      this._outputs.set(id, new Output(id));
+  addOutput(name) {
+    if (!this._outputs.has(name)) {
+      this._outputs.set(name, new Output(name));
     }
-    return this.getOutput(id);
+    return this.getOutput(name);
   }
 
-  getInput(id) {
-    return this._inputs.get(id);
+  getInput(name) {
+    return this._inputs.get(name);
   }
 
-  getOutput(id) {
-    return this._outputs.get(id);
+  getOutput(name) {
+    return this._outputs.get(name);
   }
 
-  removeInput(id) {
-    return this._inputs.delete(id);
+  removeInput(name) {
+    return this._inputs.delete(name);
   }
 
-  removeOutput(id) {
-    return this._outputs.delete(id);
+  removeOutput(name) {
+    return this._outputs.delete(name);
   }
 }
 

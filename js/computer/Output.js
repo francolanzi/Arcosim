@@ -1,6 +1,6 @@
 class Output {
-  constructor(id) {
-    this._id = id;
+  constructor(name) {
+    this._name = name;
   }
 }
 

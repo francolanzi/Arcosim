@@ -9,10 +9,10 @@ class IOElement extends StyledElement {
     this.style.visibility = show ? 'visible' : 'hidden';
   }
 
-  constructor(id, x, y) {
+  constructor(name, x, y) {
     super();
 
-    this._id = id;
+    this._name = name;
 
     this.addStyles('css/io/IOElement.css');
 
