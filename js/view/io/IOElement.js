@@ -1,6 +1,10 @@
 const StyledElement = require('../StyledElement');
 
 class IOElement extends StyledElement {
+  get name() {
+    return this._name;
+  }
+
   get show() {
     return this.style.visibility == 'visible';
   }
