@@ -44,7 +44,7 @@ class CpntOriginal extends CpntElement {
 
     this.addStyles('css/Component/CpntOriginal.css');
 
-    this.addEventListener('mousedown', ev => {
+    this.image.addEventListener('mousedown', ev => {
       const rect = this.getBoundingClientRect();
 
       const top = ev.pageY - ev.clientY + rect.top;
@@ -116,7 +116,7 @@ class CpntInstance extends CpntElement {
     this._mousemove = this.move.bind(this);
     this._mouseup = this.drop.bind(this);
 
-    this.addEventListener('mousedown', this._mousedown);
+    this.image.addEventListener('mousedown', this._mousedown);
   }
 
   drag(ev) {
