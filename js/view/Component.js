@@ -25,8 +25,8 @@ class CpntElement extends StyledElement {
     this.addStyles('css/Component/CpntElement.css');
 
     this._image = new Image();
-    this._image.src = this.constructor.imageFile;
-    this.appendChild(this._image);
+    this.image.src = this.constructor.imageFile;
+    this.appendChild(this.image);
   }
 }
 
