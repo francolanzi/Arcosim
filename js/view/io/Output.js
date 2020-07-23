@@ -1,4 +1,4 @@
-const IOElement = require('./IOElement');
+const IOElement = require('./IO');
 
 class OutputElement extends IOElement {}
 
