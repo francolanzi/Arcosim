@@ -5,15 +5,27 @@ class OutputElement extends IOElement {
     super(cpnt, name, x, y);
 
     let clicked = false;
+    let focused = false;
 
-    this.addEventListener('mousedown', () => clicked = true);
+    this.addEventListener('mousedown', () => {
+      if (focused) {
+        this.blur();
+      } else {
+        clicked = true;
+      }
+    });
+
     this.addEventListener('mouseup', () => clicked = false);
 
     this.addEventListener('focus', () => {
-      if (!clicked) {
+      if (clicked) {
+        focused = true;
+      } else {
         this.blur();
       }
     });
+
+    this.addEventListener('blur', () => focused = false);
   }
 }
 
