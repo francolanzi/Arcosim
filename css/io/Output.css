@@ -1,3 +1,8 @@
 cpnt-output.io {
   background-color: black;
 }
+
+cpnt-output.io:focus {
+  opacity: 1;
+  box-shadow: 0 0 5px black;
+}
