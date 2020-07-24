@@ -155,6 +155,8 @@ class CpntInstance extends CpntElement {
     } else {
       this.style.filter = 'none';
     }
+
+    this.dispatchEvent(new Event('move'));
   }
 
   drop(ev) {
