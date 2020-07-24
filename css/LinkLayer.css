@@ -1,0 +1,21 @@
+link-layer {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 1;
+  pointer-events: none;
+}
+
+link-layer svg {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+link-layer svg line {
+  stroke-width: 1;
+  stroke: black;
+}
