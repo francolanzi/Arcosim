@@ -6,6 +6,7 @@
 @import 'menu/MenuItem.css';
 @import 'FixedLayer.css';
 @import 'Gallery.css';
+@import 'LinkLayer.css';
 
 body {
   margin: 0;
