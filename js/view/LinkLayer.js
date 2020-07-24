@@ -1,3 +1,5 @@
+const LinkElement = require('./Link');
+
 class LinkLayer extends HTMLElement {
   constructor() {
     super();
@@ -27,49 +29,30 @@ class LinkLayer extends HTMLElement {
 
   addLink(input, output) {
     if (!this._links.has(input)) {
-      const link = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-
-      const inputCenter = input.center;
-      const outputCenter = output.center;
-
-      link.setAttribute('x1', inputCenter.x);
-      link.setAttribute('y1', inputCenter.y);
-      link.setAttribute('x2', outputCenter.x);
-      link.setAttribute('y2', outputCenter.y);
-
-      this._svg.appendChild(link);
-
-      this._links.set(input, { output, link });
+      const link = new LinkElement(input, output);
+      this._svg.appendChild(link.element);
+      this._links.set(input, link);
     }
   }
 
   moveInput(input) {
     if (this._links.has(input)) {
-      const link = this._links.get(input).link;
-      const center = input.center;
-
-      link.setAttribute('x1', center.x);
-      link.setAttribute('y1', center.y);
+      this._links.get(input).moveInput();
     }
   }
 
   moveOutput(output) {
     this._links.forEach(link => {
       if (output == link.output) {
-        const center = output.center;
-
-        link.link.setAttribute('x2', center.x);
-        link.link.setAttribute('y2', center.y);
+        link.moveOutput();
       }
     });
   }
 
   removeInput(input) {
     if (this._links.has(input)) {
-      const link = this._links.get(input).link;
-
+      this._links.get(input).remove();
       this._links.delete(input);
-      link.remove();
     }
   }
 
@@ -77,7 +60,7 @@ class LinkLayer extends HTMLElement {
     this._links.forEach((link, input) => {
       if (output == link.output) {
         this._links.delete(input);
-        link.link.remove();
+        link.element.remove();
       }
     });
   }
