@@ -97,6 +97,14 @@ class CpntInstance extends CpntElement {
     this._outputs.forEach(input => input.show = show);
   }
 
+  get inputs() {
+    return this._inputs.values();
+  }
+
+  get outputs() {
+    return this._outputs.values();
+  }
+
   constructor(top, left) {
     super();
 
