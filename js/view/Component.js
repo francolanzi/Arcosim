@@ -200,11 +200,11 @@ class CpntInstance extends CpntElement {
         && ev.clientX <= rect.right;
   }
 
-  addInput(id, x, y) {
-    if (!this._inputs.has(id)) {
-      const input = new InputElement(this, id, x, y);
+  addInput(name, x, y) {
+    if (!this._inputs.has(name)) {
+      const input = new InputElement(this, name, x, y);
 
-      this._inputs.set(id, input);
+      this._inputs.set(name, input);
       this.appendChild(input);
 
       input.addEventListener('link', ev =>
@@ -215,33 +215,33 @@ class CpntInstance extends CpntElement {
       input.addEventListener('unlink', () =>
         this.dispatchEvent(new CustomEvent('unlink', { detail: input })));
     }
-    return this.getInput(id);
+    return this.getInput(name);
   }
 
-  addOutput(id, x, y) {
-    if (!this._outputs.has(id)) {
-      const output = new OutputElement(this, id, x, y);
+  addOutput(name, x, y) {
+    if (!this._outputs.has(name)) {
+      const output = new OutputElement(this, name, x, y);
 
-      this._outputs.set(id, output);
+      this._outputs.set(name, output);
       this.appendChild(output);
     }
-    return this.getOutput(id);
+    return this.getOutput(name);
   }
 
-  getInput(id) {
-    return this._inputs.get(id);
+  getInput(name) {
+    return this._inputs.get(name);
   }
 
-  getOutput(id) {
-    return this._outputs.get(id);
+  getOutput(name) {
+    return this._outputs.get(name);
   }
 
-  removeInput(id) {
-    return this._inputs.delete(id);
+  removeInput(name) {
+    return this._inputs.delete(name);
   }
 
-  removeOutput(id) {
-    return this._outputs.delete(id);
+  removeOutput(name) {
+    return this._outputs.delete(name);
   }
 }
 
