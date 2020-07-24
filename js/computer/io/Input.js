@@ -1,6 +1,10 @@
 const IO = require('./IO');
 
 class Input extends IO {
+  get id() {
+    return this._id;
+  }
+
   get value() {
     return this._output ? this._output.value : null;
   }
@@ -11,6 +15,12 @@ class Input extends IO {
 
   constructor(name) {
     super(name);
+
+    if (!this.constructor._count) {
+      this.constructor._count = 0;
+    }
+    this._id = ++this.constructor._count;
+
     this._output = null;
 
     this._receive = (() => this.dispatchEvent(new Event('receive'))).bind(this);

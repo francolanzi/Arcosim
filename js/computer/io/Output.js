@@ -1,12 +1,22 @@
 const IO = require('./IO');
 
 class Output extends IO {
+  get id() {
+    return this._id;
+  }
+
   get value() {
     return this._value;
   }
 
   constructor(name) {
     super(name);
+
+    if (!this.constructor._count) {
+      this.constructor._count = 0;
+    }
+    this._id = ++this.constructor._count;
+
     this._value = null;
   }
 
