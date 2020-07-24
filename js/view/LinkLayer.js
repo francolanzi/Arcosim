@@ -4,7 +4,8 @@ class LinkLayer extends HTMLElement {
   constructor() {
     super();
 
-    this._links = new Map();
+    this._inputLinks = new Map();
+    this._outputLinks = new Map();
 
     this._svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     this.appendChild(this._svg);
@@ -28,41 +29,56 @@ class LinkLayer extends HTMLElement {
   }
 
   addLink(input, output) {
-    if (!this._links.has(input)) {
+    if (!this._inputLinks.has(input)) {
       const link = new LinkElement(input, output);
+
       this._svg.appendChild(link.element);
-      this._links.set(input, link);
+      this._inputLinks.set(input, link);
+
+      if (!this._outputLinks.has(output)) {
+        this._outputLinks.set(output, new Set());
+      }
+      this._outputLinks.get(output).add(link);
     }
   }
 
   moveInput(input) {
-    if (this._links.has(input)) {
-      this._links.get(input).moveInput();
+    if (this._inputLinks.has(input)) {
+      this._inputLinks.get(input).moveInput();
     }
   }
 
   moveOutput(output) {
-    this._links.forEach(link => {
-      if (output == link.output) {
-        link.moveOutput();
-      }
-    });
+    if (this._outputLinks.has(output)) {
+      this._outputLinks.get(output).forEach(link =>
+        link.moveOutput());
+    }
   }
 
   removeInput(input) {
-    if (this._links.has(input)) {
-      this._links.get(input).remove();
-      this._links.delete(input);
+    if (this._inputLinks.has(input)) {
+      const link = this._inputLinks.get(input);
+      const outputSet = this._outputLinks.get(link.output);
+
+      this._inputLinks.delete(input);
+
+      outputSet.delete(link);
+      if (outputSet.size == 0) {
+        this._outputLinks.delete(link.output);
+      }
+
+      link.remove();
     }
   }
 
   removeOutput(output) {
-    this._links.forEach((link, input) => {
-      if (output == link.output) {
-        this._links.delete(input);
-        link.element.remove();
-      }
-    });
+    if (this._outputLinks.has(output)) {
+      this._outputLinks.get(output).forEach(link => {
+        this._inputLinks.delete(link.input);
+        link.remove();
+      });
+      this._outputLinks.delete(output);
+    }
   }
 }
 
