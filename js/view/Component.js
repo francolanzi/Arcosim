@@ -206,6 +206,14 @@ class CpntInstance extends CpntElement {
 
       this._inputs.set(id, input);
       this.appendChild(input);
+
+      input.addEventListener('link', ev =>
+        this.dispatchEvent(new CustomEvent('link', {
+          detail: { input, output: ev.detail },
+        })));
+
+      input.addEventListener('unlink', () =>
+        this.dispatchEvent(new CustomEvent('unlink', { detail: input })));
     }
     return this.getInput(id);
   }
