@@ -71,6 +71,14 @@ class CpntInstance extends CpntElement {
     this._outputs.clear();
   }
 
+  get top() {
+    return this._top;
+  }
+
+  get left() {
+    return this._left;
+  }
+
   get trash() {
     return this._trash;
   }
@@ -101,6 +109,9 @@ class CpntInstance extends CpntElement {
     this.style.position = 'absolute';
     this.style.top = top + 'px';
     this.style.left = left + 'px';
+
+    this._top = top;
+    this._left = left;
 
     this._showIO = false;
 
@@ -133,11 +144,11 @@ class CpntInstance extends CpntElement {
   }
 
   move(ev) {
-    const top = ev.pageY - this._mouse.y;
-    const left = ev.pageX - this._mouse.x;
+    this._top = Math.max(ev.pageY - this._mouse.y, 0);
+    this._left = Math.max(ev.pageX - this._mouse.x, 0);
 
-    this.style.top = (top > 0 ? top : 0) + 'px';
-    this.style.left = (left > 0 ? left : 0) + 'px';
+    this.style.top = this.top + 'px';
+    this.style.left = this.left + 'px';
 
     if (this.trashed(ev)) {
       this.style.filter = 'invert(1)';
