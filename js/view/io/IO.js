@@ -15,6 +15,12 @@ class IOElement extends HTMLElement {
     this.style.visibility = show ? 'visible' : 'hidden';
   }
 
+  get center() {
+    const x = this._center.x + this._cpnt.left;
+    const y = this._center.y + this._cpnt.top;
+    return { x, y };
+  }
+
   constructor(cpnt, name, x, y) {
     super();
 
@@ -24,6 +30,7 @@ class IOElement extends HTMLElement {
 
     this._cpnt = cpnt;
     this._name = name;
+    this._center = { x, y };
 
     this.classList.add('io');
 
