@@ -1,20 +1,8 @@
-const CpntOriginal = require('../CpntOriginal');
-const CpntInstance = require('../CpntInstance');
+const Component = require('../Component');
 
-const type = 'Registers';
-const imageFile = 'img/cpnt/Registers.png';
-
-class RegistersInstance extends CpntInstance {
-  static get type() {
-    return type;
-  }
-
+class Registers extends Component {
   static get imageFile() {
-    return imageFile;
-  }
-
-  get cpnt() {
-    return super.cpnt;
+    return 'img/cpnt/Registers.png';
   }
 
   constructor(top, left) {
@@ -31,21 +19,6 @@ class RegistersInstance extends CpntInstance {
   }
 }
 
-class RegistersOriginal extends CpntOriginal {
-  static get type() {
-    return type;
-  }
+customElements.define('cpnt-registers', Registers);
 
-  static get imageFile() {
-    return imageFile;
-  }
-
-  static get instance() {
-    return RegistersInstance;
-  }
-}
-
-customElements.define('registers-instance', RegistersInstance);
-customElements.define('registers-original', RegistersOriginal);
-
-module.exports = RegistersOriginal;
+module.exports = Registers;

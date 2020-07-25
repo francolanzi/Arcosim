@@ -1,20 +1,8 @@
-const CpntOriginal = require('../CpntOriginal');
-const CpntInstance = require('../CpntInstance');
+const Component = require('../Component');
 
-const type = 'MBR';
-const imageFile = 'img/cpnt/MBR.png';
-
-class MBRInstance extends CpntInstance {
-  static get type() {
-    return type;
-  }
-
+class MBR extends Component {
   static get imageFile() {
-    return imageFile;
-  }
-
-  get cpnt() {
-    return super.cpnt;
+    return 'img/cpnt/MBR.png';
   }
 
   constructor(top, left) {
@@ -29,21 +17,6 @@ class MBRInstance extends CpntInstance {
   }
 }
 
-class MBROriginal extends CpntOriginal {
-  static get type() {
-    return type;
-  }
+customElements.define('cpnt-mbr', MBR);
 
-  static get imageFile() {
-    return imageFile;
-  }
-
-  static get instance() {
-    return MBRInstance;
-  }
-}
-
-customElements.define('mbr-instance', MBRInstance);
-customElements.define('mbr-original', MBROriginal);
-
-module.exports = MBROriginal;
+module.exports = MBR;

@@ -1,20 +1,8 @@
-const CpntOriginal = require('../CpntOriginal');
-const CpntInstance = require('../CpntInstance');
+const Component = require('../Component');
 
-const type = 'Shifter';
-const imageFile = 'img/cpnt/Shifter.png';
-
-class ShifterInstance extends CpntInstance {
-  static get type() {
-    return type;
-  }
-
+class Shifter extends Component {
   static get imageFile() {
-    return imageFile;
-  }
-
-  get cpnt() {
-    return super.cpnt;
+    return 'img/cpnt/Shifter.png';
   }
 
   constructor(top, left) {
@@ -27,21 +15,6 @@ class ShifterInstance extends CpntInstance {
   }
 }
 
-class ShifterOriginal extends CpntOriginal {
-  static get type() {
-    return type;
-  }
+customElements.define('cpnt-shifter', Shifter);
 
-  static get imageFile() {
-    return imageFile;
-  }
-
-  static get instance() {
-    return ShifterInstance;
-  }
-}
-
-customElements.define('shifter-instance', ShifterInstance);
-customElements.define('shifter-original', ShifterOriginal);
-
-module.exports = ShifterOriginal;
+module.exports = Shifter;

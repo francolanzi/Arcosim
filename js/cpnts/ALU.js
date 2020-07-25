@@ -1,16 +1,8 @@
-const CpntOriginal = require('../CpntOriginal');
-const CpntInstance = require('../CpntInstance');
+const Component = require('../Component');
 
-const type = 'ALU';
-const imageFile = 'img/cpnt/ALU.png';
-
-class ALUInstance extends CpntInstance {
-  static get type() {
-    return type;
-  }
-
+class ALU extends Component {
   static get imageFile() {
-    return imageFile;
+    return 'img/cpnt/ALU.png';
   }
 
   constructor(top, left) {
@@ -25,21 +17,6 @@ class ALUInstance extends CpntInstance {
   }
 }
 
-class ALUOriginal extends CpntOriginal {
-  static get type() {
-    return type;
-  }
+customElements.define('cpnt-alu', ALU);
 
-  static get imageFile() {
-    return imageFile;
-  }
-
-  static get instance() {
-    return ALUInstance;
-  }
-}
-
-customElements.define('alu-instance', ALUInstance);
-customElements.define('alu-original', ALUOriginal);
-
-module.exports = ALUOriginal;
+module.exports = ALU;

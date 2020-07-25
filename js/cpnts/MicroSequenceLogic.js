@@ -1,20 +1,8 @@
-const CpntOriginal = require('../CpntOriginal');
-const CpntInstance = require('../CpntInstance');
+const Component = require('../Component');
 
-const type = 'MicroSequenceLogic';
-const imageFile = 'img/cpnt/MicroSequenceLogic.png';
-
-class MicroSequenceLogicInstance extends CpntInstance {
-  static get type() {
-    return type;
-  }
-
+class MicroSequenceLogic extends Component {
   static get imageFile() {
-    return imageFile;
-  }
-
-  get cpnt() {
-    return super.cpnt;
+    return 'img/cpnt/MicroSequenceLogic.png';
   }
 
   constructor(top, left) {
@@ -27,21 +15,6 @@ class MicroSequenceLogicInstance extends CpntInstance {
   }
 }
 
-class MicroSequenceLogicOriginal extends CpntOriginal {
-  static get type() {
-    return type;
-  }
+customElements.define('cpnt-micro-sequence-logic', MicroSequenceLogic);
 
-  static get imageFile() {
-    return imageFile;
-  }
-
-  static get instance() {
-    return MicroSequenceLogicInstance;
-  }
-}
-
-customElements.define('micro-sequence-logic-instance', MicroSequenceLogicInstance);
-customElements.define('micro-sequence-logic-original', MicroSequenceLogicOriginal);
-
-module.exports = MicroSequenceLogicOriginal;
+module.exports = MicroSequenceLogic;

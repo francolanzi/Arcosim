@@ -1,20 +1,8 @@
-const CpntOriginal = require('../CpntOriginal');
-const CpntInstance = require('../CpntInstance');
+const Component = require('../Component');
 
-const type = 'Latch';
-const imageFile = 'img/cpnt/Latch.png';
-
-class LatchInstance extends CpntInstance {
-  static get type() {
-    return type;
-  }
-
+class Latch extends Component {
   static get imageFile() {
-    return imageFile;
-  }
-
-  get cpnt() {
-    return super.cpnt;
+    return 'img/cpnt/Latch.png';
   }
 
   constructor(top, left) {
@@ -27,21 +15,6 @@ class LatchInstance extends CpntInstance {
   }
 }
 
-class LatchOriginal extends CpntOriginal {
-  static get type() {
-    return type;
-  }
+customElements.define('cpnt-latch', Latch);
 
-  static get imageFile() {
-    return imageFile;
-  }
-
-  static get instance() {
-    return LatchInstance;
-  }
-}
-
-customElements.define('latch-instance', LatchInstance);
-customElements.define('latch-original', LatchOriginal);
-
-module.exports = LatchOriginal;
+module.exports = Latch;

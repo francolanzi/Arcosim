@@ -1,20 +1,8 @@
-const CpntOriginal = require('../CpntOriginal');
-const CpntInstance = require('../CpntInstance');
+const Component = require('../Component');
 
-const type = 'MIR';
-const imageFile = 'img/cpnt/MIR.png';
-
-class MIRInstance extends CpntInstance {
-  static get type() {
-    return type;
-  }
-
+class MIR extends Component {
   static get imageFile() {
-    return imageFile;
-  }
-
-  get cpnt() {
-    return super.cpnt;
+    return 'img/cpnt/MIR.png';
   }
 
   constructor(top, left) {
@@ -38,21 +26,6 @@ class MIRInstance extends CpntInstance {
   }
 }
 
-class MIROriginal extends CpntOriginal {
-  static get type() {
-    return type;
-  }
+customElements.define('cpnt-mir', MIR);
 
-  static get imageFile() {
-    return imageFile;
-  }
-
-  static get instance() {
-    return MIRInstance;
-  }
-}
-
-customElements.define('mir-instance', MIRInstance);
-customElements.define('mir-original', MIROriginal);
-
-module.exports = MIROriginal;
+module.exports = MIR;

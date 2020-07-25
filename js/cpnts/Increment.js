@@ -1,20 +1,8 @@
-const CpntOriginal = require('../CpntOriginal');
-const CpntInstance = require('../CpntInstance');
+const Component = require('../Component');
 
-const type = 'Increment';
-const imageFile = 'img/cpnt/Increment.png';
-
-class IncrementInstance extends CpntInstance {
-  static get type() {
-    return type;
-  }
-
+class Increment extends Component {
   static get imageFile() {
-    return imageFile;
-  }
-
-  get cpnt() {
-    return super.cpnt;
+    return 'img/cpnt/Increment.png';
   }
 
   constructor(top, left) {
@@ -26,21 +14,6 @@ class IncrementInstance extends CpntInstance {
   }
 }
 
-class IncrementOriginal extends CpntOriginal {
-  static get type() {
-    return type;
-  }
+customElements.define('cpnt-increment', Increment);
 
-  static get imageFile() {
-    return imageFile;
-  }
-
-  static get instance() {
-    return IncrementInstance;
-  }
-}
-
-customElements.define('increment-instance', IncrementInstance);
-customElements.define('increment-original', IncrementOriginal);
-
-module.exports = IncrementOriginal;
+module.exports = Increment;

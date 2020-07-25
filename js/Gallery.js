@@ -18,13 +18,13 @@ class Gallery extends HTMLElement {
     fs.readdirSync(path.resolve(__dirname, 'cpnts')).forEach(file => {
       file = path.parse(file);
       if (file.ext === '.js') {
-        const Component = require('./cpnts/' + file.name);
-        const cpnt = new Component();
+        const Cpnt = require('./cpnts/' + file.name);
+        const item = Cpnt.getItem();
 
-        cpnt.addEventListener('add', ev =>
+        item.addEventListener('add', ev =>
           this.dispatchEvent(new CustomEvent('add', { detail: ev.detail })));
 
-        this.appendChild(cpnt);
+        this.appendChild(item);
       }
     });
   }

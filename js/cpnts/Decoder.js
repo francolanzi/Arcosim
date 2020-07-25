@@ -1,20 +1,8 @@
-const CpntOriginal = require('../CpntOriginal');
-const CpntInstance = require('../CpntInstance');
+const Component = require('../Component');
 
-const type = 'Decoder';
-const imageFile = 'img/cpnt/Decoder.png';
-
-class DecoderInstance extends CpntInstance {
-  static get type() {
-    return type;
-  }
-
+class Decoder extends Component {
   static get imageFile() {
-    return imageFile;
-  }
-
-  get cpnt() {
-    return super.cpnt;
+    return 'img/cpnt/Decoder.png';
   }
 
   constructor(top, left) {
@@ -28,21 +16,6 @@ class DecoderInstance extends CpntInstance {
   }
 }
 
-class DecoderOriginal extends CpntOriginal {
-  static get type() {
-    return type;
-  }
+customElements.define('cpnt-decoder', Decoder);
 
-  static get imageFile() {
-    return imageFile;
-  }
-
-  static get instance() {
-    return DecoderInstance;
-  }
-}
-
-customElements.define('decoder-instance', DecoderInstance);
-customElements.define('decoder-original', DecoderOriginal);
-
-module.exports = DecoderOriginal;
+module.exports = Decoder;

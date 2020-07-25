@@ -1,20 +1,8 @@
-const CpntOriginal = require('../CpntOriginal');
-const CpntInstance = require('../CpntInstance');
+const Component = require('../Component');
 
-const type = 'MUX';
-const imageFile = 'img/cpnt/MUX.png';
-
-class MUXInstance extends CpntInstance {
-  static get type() {
-    return type;
-  }
-
+class MUX extends Component {
   static get imageFile() {
-    return imageFile;
-  }
-
-  get cpnt() {
-    return super.cpnt;
+    return 'img/cpnt/MUX.png';
   }
 
   constructor(top, left) {
@@ -28,21 +16,6 @@ class MUXInstance extends CpntInstance {
   }
 }
 
-class MUXOriginal extends CpntOriginal {
-  static get type() {
-    return type;
-  }
+customElements.define('cpnt-mux', MUX);
 
-  static get imageFile() {
-    return imageFile;
-  }
-
-  static get instance() {
-    return MUXInstance;
-  }
-}
-
-customElements.define('mux-instance', MUXInstance);
-customElements.define('mux-original', MUXOriginal);
-
-module.exports = MUXOriginal;
+module.exports = MUX;

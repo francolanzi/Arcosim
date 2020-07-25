@@ -1,20 +1,8 @@
-const CpntOriginal = require('../CpntOriginal');
-const CpntInstance = require('../CpntInstance');
+const Component = require('../Component');
 
-const type = 'Clock';
-const imageFile = 'img/cpnt/Clock.png';
-
-class ClockInstance extends CpntInstance {
-  static get type() {
-    return type;
-  }
-
+class Clock extends Component {
   static get imageFile() {
-    return imageFile;
-  }
-
-  get cpnt() {
-    return super.cpnt;
+    return 'img/cpnt/Clock.png';
   }
 
   constructor(top, left) {
@@ -27,21 +15,6 @@ class ClockInstance extends CpntInstance {
   }
 }
 
-class ClockOriginal extends CpntOriginal {
-  static get type() {
-    return type;
-  }
+customElements.define('cpnt-clock', Clock);
 
-  static get imageFile() {
-    return imageFile;
-  }
-
-  static get instance() {
-    return ClockInstance;
-  }
-}
-
-customElements.define('clock-instance', ClockInstance);
-customElements.define('clock-original', ClockOriginal);
-
-module.exports = ClockOriginal;
+module.exports = Clock;

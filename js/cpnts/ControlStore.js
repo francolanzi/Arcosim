@@ -1,20 +1,8 @@
-const CpntOriginal = require('../CpntOriginal');
-const CpntInstance = require('../CpntInstance');
+const Component = require('../Component');
 
-const type = 'ControlStore';
-const imageFile = 'img/cpnt/ControlStore.png';
-
-class ControlStoreInstance extends CpntInstance {
-  static get type() {
-    return type;
-  }
-
+class ControlStore extends Component {
   static get imageFile() {
-    return imageFile;
-  }
-
-  get cpnt() {
-    return super.cpnt;
+    return 'img/cpnt/ControlStore.png';
   }
 
   constructor(top, left) {
@@ -26,21 +14,6 @@ class ControlStoreInstance extends CpntInstance {
   }
 }
 
-class ControlStoreOriginal extends CpntOriginal {
-  static get type() {
-    return type;
-  }
+customElements.define('cpnt-control-store', ControlStore);
 
-  static get imageFile() {
-    return imageFile;
-  }
-
-  static get instance() {
-    return ControlStoreInstance;
-  }
-}
-
-customElements.define('control-store-instance', ControlStoreInstance);
-customElements.define('control-store-original', ControlStoreOriginal);
-
-module.exports = ControlStoreOriginal;
+module.exports = ControlStore;

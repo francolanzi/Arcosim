@@ -1,20 +1,8 @@
-const CpntOriginal = require('../CpntOriginal');
-const CpntInstance = require('../CpntInstance');
+const Component = require('../Component');
 
-const type = 'MPC';
-const imageFile = 'img/cpnt/MPC.png';
-
-class MPCInstance extends CpntInstance {
-  static get type() {
-    return type;
-  }
-
+class MPC extends Component {
   static get imageFile() {
-    return imageFile;
-  }
-
-  get cpnt() {
-    return super.cpnt;
+    return 'img/cpnt/MPC.png';
   }
 
   constructor(top, left) {
@@ -27,21 +15,6 @@ class MPCInstance extends CpntInstance {
   }
 }
 
-class MPCOriginal extends CpntOriginal {
-  static get type() {
-    return type;
-  }
+customElements.define('cpnt-mpc', MPC);
 
-  static get imageFile() {
-    return imageFile;
-  }
-
-  static get instance() {
-    return MPCInstance;
-  }
-}
-
-customElements.define('mpc-instance', MPCInstance);
-customElements.define('mpc-original', MPCOriginal);
-
-module.exports = MPCOriginal;
+module.exports = MPC;
