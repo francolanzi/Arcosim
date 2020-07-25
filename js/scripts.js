@@ -1,9 +1,9 @@
-const Computer = require('./js/computer');
+const Computer = require('./js/Computer');
 
-const LinkLayer = require('./js/view/LinkLayer');
-const FixedLayer = require('./js/view/FixedLayer');
-const Menu = require('./js/view/menu/Menu');
-const Gallery = require('./js/view/Gallery');
+const LinkLayer = require('./js/LinkLayer');
+const FixedLayer = require('./js/FixedLayer');
+const Menu = require('./js/menu/Menu');
+const Gallery = require('./js/Gallery');
 
 const computer = new Computer();
 
@@ -18,7 +18,8 @@ menu.getItem('cpnt').gallery = gallery;
 gallery.addEventListener('add', ev => {
   const instance = ev.detail;
 
-  instance.cpnt = computer.addCpnt(instance.constructor.type);
+  computer.addCpnt(instance);
+
   instance.trash = menu.getItem('trash');
 
   instance.addEventListener('remove', () => {
@@ -30,7 +31,7 @@ gallery.addEventListener('add', ev => {
       linkLayer.removeOutput(output);
     }
 
-    computer.removeCpnt(instance.constructor.type, instance.cpnt.id);
+    computer.removeCpnt(instance.constructor.type, instance.id);
   });
 
   instance.showIO = menu.getItem('link').show;
