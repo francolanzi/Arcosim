@@ -1,4 +1,4 @@
-class LinkElement {
+class Link {
   get input() {
     return this._input;
   }
@@ -45,4 +45,4 @@ class LinkElement {
   }
 }
 
-module.exports = LinkElement;
+module.exports = Link;

@@ -1,4 +1,4 @@
-const LinkElement = require('./Link');
+const Link = require('./Link');
 
 class LinkLayer extends HTMLElement {
   constructor() {
@@ -30,7 +30,7 @@ class LinkLayer extends HTMLElement {
 
   addLink(input, output) {
     if (!this._inputLinks.has(input)) {
-      const link = new LinkElement(input, output);
+      const link = new Link(input, output);
 
       this._svg.appendChild(link.element);
       this._inputLinks.set(input, link);
