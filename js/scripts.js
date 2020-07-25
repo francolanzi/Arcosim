@@ -13,7 +13,7 @@ const menu = new Menu();
 const linkLayer = new LinkLayer();
 const fixedLayer = new FixedLayer();
 
-menu.getItem('cpnt').gallery = gallery;
+menu.getItem('gallery').gallery = gallery;
 
 gallery.addEventListener('add', ev => {
   const instance = ev.detail;

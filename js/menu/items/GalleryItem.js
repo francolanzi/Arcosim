@@ -1,6 +1,6 @@
 const MenuItem = require('../MenuItem');
 
-class CpntItem extends MenuItem {
+class GalleryItem extends MenuItem {
   static get title() {
     return 'Componentes';
   }
@@ -28,6 +28,6 @@ class CpntItem extends MenuItem {
   }
 }
 
-customElements.define('cpnt-item', CpntItem);
+customElements.define('gallery-item', GalleryItem);
 
-module.exports = CpntItem;
+module.exports = GalleryItem;
