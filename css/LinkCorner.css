@@ -8,7 +8,7 @@ link-corner {
   height: 10px;
   box-sizing: border-box;
   background-color: black;
-  z-index: 2;
+  z-index: 1;
 }
 
 link-corner:hover {
@@ -18,4 +18,5 @@ link-corner:hover {
 link-corner:active {
   opacity: 1;
   box-shadow: 0 0 5px black;
+  z-index: 4;
 }

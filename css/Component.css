@@ -4,10 +4,11 @@
   line-height: 0;
   user-select: none;
   cursor: move;
+  z-index: 2;
 }
 
 .component.dragging {
-  z-index: 2;
+  z-index: 5;
 }
 
 .component.dragging img {
