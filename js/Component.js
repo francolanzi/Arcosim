@@ -108,6 +108,9 @@ class Component extends HTMLElement {
 
     this.classList.add('dragging');
 
+    this._inputs.forEach(input => input.show = false);
+    this._outputs.forEach(input => input.show = false);
+
     this.dispatchEvent(new Event('drag'));
   }
 
@@ -138,6 +141,9 @@ class Component extends HTMLElement {
     this.parentElement.style.height = '';
 
     this.classList.remove('dragging');
+
+    this._inputs.forEach(input => input.show = this._showIO);
+    this._outputs.forEach(input => input.show = this._showIO);
 
     this.dispatchEvent(new Event('drop'));
 
