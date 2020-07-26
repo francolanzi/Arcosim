@@ -3,12 +3,11 @@ link-corner {
   padding: 0;
   cursor: pointer;
   border-radius: 50%;
-  border: 1px solid black;
   opacity: 0;
   width: 10px;
   height: 10px;
   box-sizing: border-box;
-  background-color: gray;
+  background-color: black;
   z-index: 2;
 }
 
