@@ -8,6 +8,8 @@ link-corner {
   height: 10px;
   box-sizing: border-box;
   background-color: black;
+  background-clip: padding-box;
+  border: 2px solid transparent;
   z-index: 1;
 }
 
@@ -17,6 +19,5 @@ link-corner:hover {
 
 link-corner:active {
   opacity: 1;
-  box-shadow: 0 0 5px black;
-  z-index: 4;
+  filter: drop-shadow(0 0 2px black);
 }
