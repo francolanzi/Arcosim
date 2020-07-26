@@ -117,6 +117,12 @@ class Link {
     this._areas.splice(i, 1);
 
     this._line.points.removeItem(i + 1);
+
+    if (i > 0) {
+      this.moveCorner(this._corners[i - 1]);
+    } else {
+      this.moveInput();
+    }
   }
 }
 
