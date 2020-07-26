@@ -1,4 +1,13 @@
-link-layer svg path {
-  stroke-width: 1;
+polyline.cpnt-link {
+  stroke-width: 1px;
   stroke: black;
+  fill: none;
+}
+
+line.cpnt-link-area {
+  stroke-width: 10px;
+  stroke: transparent;
+  fill: none;
+  pointer-events: stroke;
+  cursor: pointer;
 }

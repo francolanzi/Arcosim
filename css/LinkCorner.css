@@ -1,0 +1,22 @@
+link-corner {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid black;
+  opacity: 0.5;
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
+  background-color: gray;
+  z-index: 2;
+}
+
+link-corner:hover {
+  opacity: 1;
+}
+
+link-corner:active {
+  opacity: 1;
+  box-shadow: 0 0 5px black;
+}

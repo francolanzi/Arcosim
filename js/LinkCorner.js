@@ -1,0 +1,65 @@
+class LinkCorner extends HTMLElement {
+  get center() {
+    return { ...this._center };
+  }
+
+  constructor(x, y) {
+    super();
+
+    this._center = { x, y };
+
+    this.style.position = 'absolute';
+    this.style.top = (y - 4.5) + 'px';
+    this.style.left = (x - 4.5) + 'px';
+
+    this._mouse = {};
+    this._mouse.x = null;
+    this._mouse.y = null;
+
+    this._mousedown = this.drag.bind(this);
+    this._mousemove = this.move.bind(this);
+    this._mouseup = this.drop.bind(this);
+
+    this.addEventListener('mousedown', this._mousedown);
+    this.addEventListener('dblclick', () => {
+      this.remove();
+      this.dispatchEvent(new Event('remove'));
+    });
+  }
+
+  drag(ev) {
+    const rect = this.getBoundingClientRect();
+
+    this._mouse.x = ev.clientX - rect.left;
+    this._mouse.y = ev.clientY - rect.top;
+
+    document.addEventListener('mousemove', this._mousemove);
+    document.addEventListener('mouseup', this._mouseup);
+
+    this.dispatchEvent(new Event('drag'));
+  }
+
+  move(ev) {
+    this._center.x = Math.max(ev.pageX - this._mouse.x, 4.5);
+    this._center.y = Math.max(ev.pageY - this._mouse.y, 4.5);
+
+    this.style.top = (this._center.y - 4.5) + 'px';
+    this.style.left = (this._center.x - 4.5) + 'px';
+
+    this.dispatchEvent(new Event('move'));
+  }
+
+  drop() {
+    document.removeEventListener('mousemove', this._mousemove);
+    document.removeEventListener('mouseup', this._mouseup);
+
+    this._mouse.x = null;
+    this._mouse.y = null;
+
+    this.dispatchEvent(new Event('drop'));
+  }
+}
+
+customElements.define('link-corner', LinkCorner);
+
+module.exports = LinkCorner;
