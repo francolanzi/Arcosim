@@ -7,11 +7,8 @@ class Link {
     return this._output;
   }
 
-  get element() {
-    return this._element;
-  }
-
-  constructor(input, output) {
+  constructor(layer, input, output) {
+    this._layer = layer;
     this._input = input;
     this._output = output;
 
@@ -20,28 +17,30 @@ class Link {
     const inputCenter = input.center;
     const outputCenter = output.center;
 
-    this.element.setAttribute('x1', inputCenter.x);
-    this.element.setAttribute('y1', inputCenter.y);
-    this.element.setAttribute('x2', outputCenter.x);
-    this.element.setAttribute('y2', outputCenter.y);
+    this._element.setAttribute('x1', inputCenter.x);
+    this._element.setAttribute('y1', inputCenter.y);
+    this._element.setAttribute('x2', outputCenter.x);
+    this._element.setAttribute('y2', outputCenter.y);
+
+    this._layer.svg.appendChild(this._element);
   }
 
   moveInput() {
     const center = this.input.center;
 
-    this.element.setAttribute('x1', center.x);
-    this.element.setAttribute('y1', center.y);
+    this._element.setAttribute('x1', center.x);
+    this._element.setAttribute('y1', center.y);
   }
 
   moveOutput() {
     const center = this.output.center;
 
-    this.element.setAttribute('x2', center.x);
-    this.element.setAttribute('y2', center.y);
+    this._element.setAttribute('x2', center.x);
+    this._element.setAttribute('y2', center.y);
   }
 
   remove() {
-    this.element.remove();
+    this._element.remove();
   }
 }
 

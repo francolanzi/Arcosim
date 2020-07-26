@@ -34,9 +34,8 @@ class LinkLayer extends HTMLElement {
 
   addLink(input, output) {
     if (!this._inputLinks.has(input)) {
-      const link = new Link(input, output);
+      const link = new Link(this, input, output);
 
-      this.svg.appendChild(link.element);
       this._inputLinks.set(input, link);
 
       if (!this._outputLinks.has(output)) {
