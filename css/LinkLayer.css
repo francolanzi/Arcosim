@@ -15,7 +15,7 @@ link-layer svg {
   box-sizing: border-box;
 }
 
-link-layer svg line {
+link-layer svg path {
   stroke-width: 1;
   stroke: black;
 }

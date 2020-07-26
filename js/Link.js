@@ -12,35 +12,21 @@ class Link {
     this._input = input;
     this._output = output;
 
-    this._element = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    this._path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    this._layer.svg.appendChild(this._path);
 
-    const inputCenter = input.center;
-    const outputCenter = output.center;
-
-    this._element.setAttribute('x1', inputCenter.x);
-    this._element.setAttribute('y1', inputCenter.y);
-    this._element.setAttribute('x2', outputCenter.x);
-    this._element.setAttribute('y2', outputCenter.y);
-
-    this._layer.svg.appendChild(this._element);
+    this.move();
   }
 
-  moveInput() {
-    const center = this.input.center;
+  move() {
+    const start = this.input.center;
+    const end = this.output.center;
 
-    this._element.setAttribute('x1', center.x);
-    this._element.setAttribute('y1', center.y);
-  }
-
-  moveOutput() {
-    const center = this.output.center;
-
-    this._element.setAttribute('x2', center.x);
-    this._element.setAttribute('y2', center.y);
+    this._path.setAttribute('d', `M ${start.x} ${start.y} L ${end.x} ${end.y}`);
   }
 
   remove() {
-    this._element.remove();
+    this._path.remove();
   }
 }
 
