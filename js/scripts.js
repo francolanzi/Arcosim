@@ -1,6 +1,6 @@
 const Computer = require('./js/Computer');
 
-const LinkLayer = require('./js/LinkLayer');
+const LinkLayer = require('./js/link/LinkLayer');
 const FixedLayer = require('./js/FixedLayer');
 const Menu = require('./js/menu/Menu');
 const Gallery = require('./js/Gallery');
