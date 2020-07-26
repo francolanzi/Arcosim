@@ -27,41 +27,50 @@ class Link {
 
     this._areas[0].addEventListener('dblclick', this.addCorner.bind(this));
 
-    this.move();
+    this._line.points.appendItem(this._layer.svg.createSVGPoint());
+    this._line.points.appendItem(this._layer.svg.createSVGPoint());
+
+    this.moveInput();
+    this.moveOutput();
   }
 
-  move() {
-    const start = this.input.center;
+  moveInput() {
+    const center = this.input.center;
+    const point = this._line.points.getItem(0);
 
-    let data = `${start.x},${start.y} `;
+    point.x = center.x;
+    point.y = center.y;
 
-    this._areas[0].setAttribute('x1', start.x);
-    this._areas[0].setAttribute('y1', start.y);
+    this._areas[0].setAttribute('x1', center.x);
+    this._areas[0].setAttribute('y1', center.y);
+  }
 
-    let i = 0;
+  moveOutput() {
+    const i = this._corners.length;
+    const center = this.output.center;
+    const point = this._line.points.getItem(i + 1);
 
-    while (i < this._corners.length) {
-      const center = this._corners[i].center;
+    point.x = center.x;
+    point.y = center.y;
 
-      data += `${center.x},${center.y} `;
+    this._areas[i].setAttribute('x2', center.x);
+    this._areas[i].setAttribute('y2', center.y);
+  }
 
-      this._areas[i].setAttribute('x2', center.x);
-      this._areas[i].setAttribute('y2', center.y);
+  moveCorner(corner) {
+    const center = corner.center;
+    const i = this._corners.indexOf(corner);
 
-      this._areas[i + 1].setAttribute('x1', center.x);
-      this._areas[i + 1].setAttribute('y1', center.y);
+    const point = this._line.points.getItem(i + 1);
 
-      i++;
-    }
+    point.x = center.x;
+    point.y = center.y;
 
-    const end = this.output.center;
+    this._areas[i].setAttribute('x2', center.x);
+    this._areas[i].setAttribute('y2', center.y);
 
-    data += `${end.x},${end.y}`;
-
-    this._areas[i].setAttribute('x2', end.x);
-    this._areas[i].setAttribute('y2', end.y);
-
-    this._line.setAttribute('points', data);
+    this._areas[i + 1].setAttribute('x1', center.x);
+    this._areas[i + 1].setAttribute('y1', center.y);
   }
 
   remove() {
@@ -79,7 +88,7 @@ class Link {
     area.classList.add('cpnt-link-area');
 
     area.addEventListener('dblclick', this.addCorner.bind(this));
-    corner.addEventListener('move', this.move.bind(this));
+    corner.addEventListener('move', () => this.moveCorner(corner));
     corner.addEventListener('remove', () => this.removeCorner(corner));
 
     document.body.appendChild(corner);
@@ -88,7 +97,12 @@ class Link {
     this._corners.splice(i, 0, corner);
     this._areas.splice(i, 0, area);
 
-    this.move();
+    area.setAttribute('x1', ev.target.getAttribute('x1'));
+    area.setAttribute('y1', ev.target.getAttribute('y1'));
+
+    this._line.points.insertItemBefore(this._layer.svg.createSVGPoint(), i + 1);
+
+    this.moveCorner(corner);
   }
 
   removeCorner(corner) {
@@ -102,7 +116,7 @@ class Link {
     this._corners.splice(i, 1);
     this._areas.splice(i, 1);
 
-    this.move();
+    this._line.points.removeItem(i + 1);
   }
 }
 

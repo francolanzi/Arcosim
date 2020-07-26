@@ -47,14 +47,14 @@ class LinkLayer extends HTMLElement {
 
   moveInput(input) {
     if (this._inputLinks.has(input)) {
-      this._inputLinks.get(input).move();
+      this._inputLinks.get(input).moveInput();
     }
   }
 
   moveOutput(output) {
     if (this._outputLinks.has(output)) {
       this._outputLinks.get(output).forEach(link =>
-        link.move());
+        link.moveOutput());
     }
   }
 
