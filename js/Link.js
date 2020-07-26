@@ -75,6 +75,7 @@ class Link {
 
   remove() {
     this._line.remove();
+    this._input.unlink();
     this._areas.forEach(area => area.remove());
     this._corners.forEach(corner => corner.remove());
   }
