@@ -30,8 +30,8 @@ class LinkCorner extends HTMLElement {
   drag(ev) {
     const rect = this.getBoundingClientRect();
 
-    this._mouse.x = ev.clientX - rect.left;
-    this._mouse.y = ev.clientY - rect.top;
+    this._mouse.x = ev.clientX - rect.left - 4.5;
+    this._mouse.y = ev.clientY - rect.top - 4.5;
 
     document.addEventListener('mousemove', this._mousemove);
     document.addEventListener('mouseup', this._mouseup);
