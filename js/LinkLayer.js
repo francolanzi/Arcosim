@@ -1,6 +1,10 @@
 const Link = require('./Link');
 
 class LinkLayer extends HTMLElement {
+  get svg() {
+    return this._svg;
+  }
+
   constructor() {
     super();
 
@@ -8,7 +12,7 @@ class LinkLayer extends HTMLElement {
     this._outputLinks = new Map();
 
     this._svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    this.appendChild(this._svg);
+    this.appendChild(this.svg);
 
     new ResizeObserver(this.resize.bind(this)).observe(this);
     window.addEventListener('resize', this.resize.bind(this));
@@ -23,16 +27,16 @@ class LinkLayer extends HTMLElement {
     const width = rect.width;
     const height = rect.height;
 
-    this._svg.setAttribute('width', width);
-    this._svg.setAttribute('height', height);
-    this._svg.setAttribute('viewBox', `${x} ${y} ${width} ${height}`);
+    this.svg.setAttribute('width', width);
+    this.svg.setAttribute('height', height);
+    this.svg.setAttribute('viewBox', `${x} ${y} ${width} ${height}`);
   }
 
   addLink(input, output) {
     if (!this._inputLinks.has(input)) {
       const link = new Link(input, output);
 
-      this._svg.appendChild(link.element);
+      this.svg.appendChild(link.element);
       this._inputLinks.set(input, link);
 
       if (!this._outputLinks.has(output)) {
