@@ -6,7 +6,7 @@ class GalleryItem extends MenuItem {
   }
 
   static get icon() {
-    return 'img/menu/cpnt.svg';
+    return 'img/menu/gallery.svg';
   }
 
   get gallery() {
