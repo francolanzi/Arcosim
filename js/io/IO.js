@@ -37,8 +37,8 @@ class IO extends HTMLElement {
     this.setAttribute('tabindex', 0);
 
     this.style.position = 'absolute';
-    this.style.top = (y - 4.5) + 'px';
-    this.style.left = (x - 4.5) + 'px';
+    this.style.top = (y - 5) + 'px';
+    this.style.left = (x - 5) + 'px';
     this.style.visibility = 'hidden';
   }
 }
