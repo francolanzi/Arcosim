@@ -1,12 +1,12 @@
 const MenuButton = require('../MenuButton');
 
-class GalleryButton extends MenuButton {
+class CpntButton extends MenuButton {
   static get title() {
     return 'Componentes';
   }
 
   static get icon() {
-    return 'img/menu/gallery.svg';
+    return 'img/menu/cpnt.svg';
   }
 
   get gallery() {
@@ -28,6 +28,6 @@ class GalleryButton extends MenuButton {
   }
 }
 
-customElements.define('gallery-button', GalleryButton);
+customElements.define('cpnt-button', CpntButton);
 
-module.exports = GalleryButton;
+module.exports = CpntButton;
