@@ -58,9 +58,7 @@ class Input extends IO {
 
   receive(value) {
     this._value = value;
-    if (this.cpnt.receive) {
-      this.cpnt.receive(this.name, this.value);
-    }
+    this.cpnt.receive(this.name, this.value);
   }
 }
 

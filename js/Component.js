@@ -97,6 +97,11 @@ class Component extends HTMLElement {
     image.addEventListener('mousedown', this._mousedown);
   }
 
+  // eslint-disable-next-line class-methods-use-this, no-unused-vars
+  receive(name, value) {
+    throw new Error('receive method must be overrided');
+  }
+
   drag(ev) {
     const rect = this.getBoundingClientRect();
 
