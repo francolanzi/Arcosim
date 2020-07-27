@@ -23,6 +23,7 @@ class CpntButton extends MenuButton {
     this.addEventListener('click', () => {
       if (this.gallery) {
         this.gallery.open = !this.gallery.open;
+        this.active = this.gallery.open;
       }
     });
   }

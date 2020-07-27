@@ -19,6 +19,7 @@ class LinkButton extends MenuButton {
     this._show = false;
     this.addEventListener('click', () => {
       this._show = !this._show;
+      this.active = this._show;
       this.dispatchEvent(new CustomEvent('show', { detail: this._show }));
     });
   }

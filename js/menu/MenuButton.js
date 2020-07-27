@@ -7,6 +7,14 @@ class MenuButton extends HTMLElement {
     throw new Error('icon static property must be overrided');
   }
 
+  get active() {
+    return this.classList.contains('active');
+  }
+
+  set active(active) {
+    this.classList.toggle('active', active);
+  }
+
   constructor() {
     super();
 

@@ -123,8 +123,10 @@ class Component extends HTMLElement {
 
     if (this.trashed(ev)) {
       this.style.filter = 'invert(1)';
+      this._trash.active = true;
     } else {
       this.style.filter = 'none';
+      this._trash.active = false;
     }
 
     this.dispatchEvent(new Event('move'));
@@ -144,6 +146,8 @@ class Component extends HTMLElement {
 
     this._inputs.forEach(input => input.show = this._showIO);
     this._outputs.forEach(input => input.show = this._showIO);
+
+    this._trash.active = false;
 
     this.dispatchEvent(new Event('drop'));
 

@@ -20,3 +20,8 @@
 .menu-button:hover {
   opacity: 1;
 }
+
+.menu-button.active {
+  opacity: 1;
+  background-color: #333;
+}
