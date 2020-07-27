@@ -1,6 +1,6 @@
-const MenuItem = require('../MenuItem');
+const MenuButton = require('../MenuButton');
 
-class GalleryItem extends MenuItem {
+class GalleryButton extends MenuButton {
   static get title() {
     return 'Componentes';
   }
@@ -28,6 +28,6 @@ class GalleryItem extends MenuItem {
   }
 }
 
-customElements.define('gallery-item', GalleryItem);
+customElements.define('gallery-button', GalleryButton);
 
-module.exports = GalleryItem;
+module.exports = GalleryButton;

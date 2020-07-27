@@ -13,14 +13,14 @@ const menu = new Menu();
 const linkLayer = new LinkLayer();
 const fixedLayer = new FixedLayer();
 
-menu.getItem('gallery').gallery = gallery;
+menu.getButton('gallery').gallery = gallery;
 
 gallery.addEventListener('add', ev => {
   const instance = ev.detail;
 
   computer.addCpnt(instance);
 
-  instance.trash = menu.getItem('trash');
+  instance.trash = menu.getButton('trash');
 
   instance.addEventListener('remove', () => {
     for (const input of instance.inputs) {
@@ -34,8 +34,8 @@ gallery.addEventListener('add', ev => {
     computer.removeCpnt(instance.constructor.type, instance.id);
   });
 
-  instance.showIO = menu.getItem('link').show;
-  menu.getItem('link').addEventListener('show', ev => instance.showIO = ev.detail);
+  instance.showIO = menu.getButton('link').show;
+  menu.getButton('link').addEventListener('show', ev => instance.showIO = ev.detail);
 
   instance.addEventListener('link', ev => {
     const input = ev.detail.input;

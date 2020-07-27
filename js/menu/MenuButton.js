@@ -1,4 +1,4 @@
-class MenuItem extends HTMLElement {
+class MenuButton extends HTMLElement {
   static get title() {
     throw new Error('title static property must be overrided');
   }
@@ -10,11 +10,11 @@ class MenuItem extends HTMLElement {
   constructor() {
     super();
 
-    if (this.constructor == MenuItem) {
-      throw new Error('MenuItem class can not be instantiated');
+    if (this.constructor == MenuButton) {
+      throw new Error('MenuButton class can not be instantiated');
     }
 
-    this.classList.add('menu-item');
+    this.classList.add('menu-button');
 
     this.setAttribute('title', this.constructor.title);
 
@@ -25,4 +25,4 @@ class MenuItem extends HTMLElement {
   }
 }
 
-module.exports = MenuItem;
+module.exports = MenuButton;

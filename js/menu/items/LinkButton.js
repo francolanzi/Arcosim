@@ -1,6 +1,6 @@
-const MenuItem = require('../MenuItem');
+const MenuButton = require('../MenuButton');
 
-class LinkItem extends MenuItem {
+class LinkButton extends MenuButton {
   static get title() {
     return 'Conectar';
   }
@@ -24,6 +24,6 @@ class LinkItem extends MenuItem {
   }
 }
 
-customElements.define('link-item', LinkItem);
+customElements.define('link-button', LinkButton);
 
-module.exports = LinkItem;
+module.exports = LinkButton;

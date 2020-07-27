@@ -1,4 +1,4 @@
-.menu-item {
+.menu-button {
   margin: 0;
   margin-right: 1rem;
   padding: 0;
@@ -9,10 +9,10 @@
   pointer-events: all;
 }
 
-.menu-item img {
+.menu-button img {
   height: 2rem;
 }
 
-.menu-item:hover {
+.menu-button:hover {
   opacity: 1;
 }

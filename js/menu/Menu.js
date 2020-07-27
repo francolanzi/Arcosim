@@ -1,35 +1,35 @@
-const TrashItem = require('./items/TrashItem');
-const LinkItem = require('./items/LinkItem');
-const GalleryItem = require('./items/GalleryItem');
+const TrashButton = require('./items/TrashButton');
+const LinkButton = require('./items/LinkButton');
+const GalleryButton = require('./items/GalleryButton');
 
 class Menu extends HTMLElement {
   constructor() {
     super();
 
-    this._items = new Map();
+    this._buttons = new Map();
 
-    this.addItem('trash', new TrashItem());
-    this.addItem('link', new LinkItem());
-    this.addItem('gallery', new GalleryItem());
+    this.addButton('trash', new TrashButton());
+    this.addButton('link', new LinkButton());
+    this.addButton('gallery', new GalleryButton());
   }
 
-  addItem(id, item) {
-    if (!this._items.has(id)) {
-      this._items.set(id, item);
-      this.appendChild(item);
+  addButton(name, button) {
+    if (!this._buttons.has(name)) {
+      this._buttons.set(name, button);
+      this.appendChild(button);
     }
-    return this.getItem(id);
+    return this.getButton(name);
   }
 
-  getItem(id) {
-    return this._items.get(id);
+  getButton(name) {
+    return this._buttons.get(name);
   }
 
-  removeItem(id) {
-    return this._items.delete(id);
+  removeButton(name) {
+    return this._buttons.delete(name);
   }
 }
 
-customElements.define('menu-items', Menu);
+customElements.define('main-menu', Menu);
 
 module.exports = Menu;
