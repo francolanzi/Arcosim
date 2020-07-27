@@ -3,11 +3,11 @@
   margin-right: 1rem;
   padding: 0.5rem;
   line-height: 0;
-  background-color: gray;
+  background-color: lightgray;
   border-radius: 0.5rem;
   cursor: pointer;
   user-select: none;
-  opacity: 0.5;
+  opacity: 0.8;
   pointer-events: all;
 }
 
@@ -23,5 +23,5 @@
 
 .menu-button.active {
   opacity: 1;
-  background-color: #333;
+  background-color: gray;
 }
