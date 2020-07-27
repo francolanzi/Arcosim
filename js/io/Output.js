@@ -17,7 +17,8 @@ class Output extends IO {
     }
     this._id = ++this.constructor._count;
 
-    this._value = null;
+    this._value = 0;
+    this._links = new Set();
 
     let clicked = false;
     let focused = false;
@@ -43,16 +44,17 @@ class Output extends IO {
     this.addEventListener('blur', () => focused = false);
   }
 
-  send(value) {
-    this._value = value;
-    this.dispatchEvent(new Event('send'));
+  addLink(link) {
+    this._links.add(link);
   }
 
-  stop() {
-    if (this._value !== null) {
-      this._value = null;
-      this.dispatchEvent(new Event('stop'));
-    }
+  removeLink(link) {
+    this._links.delete(link);
+  }
+
+  send(value) {
+    this._value = value;
+    this._links.forEach(link => link.send(this.value));
   }
 }
 

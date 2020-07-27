@@ -18,7 +18,7 @@ class Input extends IO {
     }
     this._id = ++this.constructor._count;
 
-    this._value = null;
+    this._value = 0;
 
     this._linked = false;
     this._clicked = false;
@@ -58,13 +58,8 @@ class Input extends IO {
 
   receive(value) {
     this._value = value;
-    this.dispatchEvent(new Event('receive'));
-  }
-
-  stop() {
-    if (this._value !== null) {
-      this._value = null;
-      this.dispatchEvent(new Event('stop'));
+    if (this.cpnt.receive) {
+      this.cpnt.receive(this.name, this.value);
     }
   }
 }
