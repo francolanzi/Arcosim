@@ -5,6 +5,7 @@
   user-select: none;
   cursor: move;
   z-index: 2;
+  position: absolute;
 }
 
 .component.dragging {

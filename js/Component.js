@@ -75,7 +75,6 @@ class Component extends HTMLElement {
 
     this.classList.add('component');
 
-    this.style.position = 'absolute';
     this.style.top = top + 'px';
     this.style.left = left + 'px';
 
