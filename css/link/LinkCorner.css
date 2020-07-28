@@ -11,6 +11,7 @@ link-corner {
   background-clip: padding-box;
   border: 2px solid transparent;
   z-index: 1;
+  position: absolute;
 }
 
 link-corner:hover {

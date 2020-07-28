@@ -8,7 +8,6 @@ class LinkCorner extends HTMLElement {
 
     this._center = { x, y };
 
-    this.style.position = 'absolute';
     this.style.top = (y - 5) + 'px';
     this.style.left = (x - 5) + 'px';
 
