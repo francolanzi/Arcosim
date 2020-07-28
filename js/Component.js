@@ -150,9 +150,6 @@ class Component extends HTMLElement {
     this._mouse.x = null;
     this._mouse.y = null;
 
-    this.parentElement.style.width = '';
-    this.parentElement.style.height = '';
-
     this.classList.remove('dragging');
 
     this._inputs.forEach(input => input.show = this._showIO);
