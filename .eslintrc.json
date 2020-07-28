@@ -17,6 +17,7 @@
     "curly": ["error", "all"],
     "default-case": "error",
     "default-case-last": "error",
+    "eqeqeq": ["error", "always"],
     "no-constructor-return": "error",
     "no-self-compare": "error",
     "no-useless-return": "error",

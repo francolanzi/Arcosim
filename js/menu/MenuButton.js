@@ -18,7 +18,7 @@ class MenuButton extends HTMLElement {
   constructor() {
     super();
 
-    if (this.constructor == MenuButton) {
+    if (this.constructor === MenuButton) {
       throw new Error('MenuButton class can not be instantiated');
     }
 

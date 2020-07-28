@@ -66,7 +66,7 @@ class LinkLayer extends HTMLElement {
       this._inputLinks.delete(input);
 
       outputSet.delete(link);
-      if (outputSet.size == 0) {
+      if (outputSet.size === 0) {
         this._outputLinks.delete(link.output);
       }
 

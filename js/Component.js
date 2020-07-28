@@ -56,7 +56,7 @@ class Component extends HTMLElement {
   constructor(top, left) {
     super();
 
-    if (this.constructor == Component) {
+    if (this.constructor === Component) {
       throw new Error('Component class can not be instantiated');
     }
 

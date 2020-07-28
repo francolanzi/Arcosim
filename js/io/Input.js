@@ -34,7 +34,7 @@ class Input extends IO {
           this.unlink();
         } else {
           const output = ev.relatedTarget;
-          if (output && output.constructor == Output) {
+          if (output && output.constructor === Output) {
             this.link(output);
           }
         }

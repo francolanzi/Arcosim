@@ -8,7 +8,7 @@ class IO extends HTMLElement {
   }
 
   get show() {
-    return this.style.visibility == 'visible';
+    return this.style.visibility === 'visible';
   }
 
   set show(show) {
@@ -24,7 +24,7 @@ class IO extends HTMLElement {
   constructor(cpnt, name, x, y) {
     super();
 
-    if (this.constructor == IO) {
+    if (this.constructor === IO) {
       throw new Error('IO class can not be instantiated');
     }
 
