@@ -86,9 +86,7 @@ class Component extends HTMLElement {
     this._inputs = new Map();
     this._outputs = new Map();
 
-    this._mouse = {};
-    this._mouse.x = null;
-    this._mouse.y = null;
+    this._mouse = { x: 0, y: 0 };
 
     this._mousedown = this.drag.bind(this);
     this._mousemove = this.move.bind(this);
@@ -141,9 +139,6 @@ class Component extends HTMLElement {
   drop(ev) {
     document.removeEventListener('mousemove', this._mousemove);
     document.removeEventListener('mouseup', this._mouseup);
-
-    this._mouse.x = null;
-    this._mouse.y = null;
 
     this.classList.remove('dragging');
 

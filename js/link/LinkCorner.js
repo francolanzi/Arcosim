@@ -11,9 +11,7 @@ class LinkCorner extends HTMLElement {
     this.style.top = (y - 5) + 'px';
     this.style.left = (x - 5) + 'px';
 
-    this._mouse = {};
-    this._mouse.x = null;
-    this._mouse.y = null;
+    this._mouse = { x: 0, y: 0 };
 
     this._mousedown = this.drag.bind(this);
     this._mousemove = this.move.bind(this);
@@ -51,9 +49,6 @@ class LinkCorner extends HTMLElement {
   drop() {
     document.removeEventListener('mousemove', this._mousemove);
     document.removeEventListener('mouseup', this._mouseup);
-
-    this._mouse.x = null;
-    this._mouse.y = null;
 
     this.dispatchEvent(new Event('drop'));
   }
