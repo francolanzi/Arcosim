@@ -3,17 +3,15 @@ const path = require('path');
 
 class Gallery extends HTMLElement {
   get open() {
-    return this.style.transform === 'scaleY(1)';
+    return this.classList.contains('open');
   }
 
   set open(open) {
-    this.style.transform = 'scaleY(' + (open ? 1 : 0) + ')';
+    this.classList.toggle('open', open);
   }
 
   constructor() {
     super();
-
-    this.style.transform = 'scaleY(0)';
 
     fs.readdirSync(path.resolve(__dirname, 'cpnts')).forEach(file => {
       file = path.parse(file);

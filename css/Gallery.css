@@ -11,4 +11,9 @@ cpnt-gallery {
   flex-direction: column;
   align-items: center;
   pointer-events: all;
+  transform: scaleY(0);
+}
+
+cpnt-gallery.open {
+  transform: scaleY(1);
 }
