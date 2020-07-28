@@ -9,12 +9,12 @@
   user-select: none;
   opacity: 0.8;
   pointer-events: all;
+  color: white;
 }
 
-.menu-button img {
+.menu-button svg {
   height: 2rem;
   width: 2rem;
-  filter: brightness(0) invert(1);
 }
 
 .menu-button:hover {

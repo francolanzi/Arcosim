@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 class MenuButton extends HTMLElement {
   static get title() {
     throw new Error('title static property must be overrided');
@@ -26,10 +28,7 @@ class MenuButton extends HTMLElement {
 
     this.title = this.constructor.title;
 
-    const img = new Image();
-    img.src = this.constructor.icon;
-
-    this.appendChild(img);
+    this.innerHTML = fs.readFileSync(this.constructor.icon);
   }
 }
 
