@@ -53,6 +53,11 @@ class Component extends HTMLElement {
     return this._outputs.values();
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  get config() {
+    throw new Error('config property must be overrided');
+  }
+
   constructor(top, left) {
     super();
 
@@ -95,6 +100,7 @@ class Component extends HTMLElement {
     this.appendChild(image);
 
     image.addEventListener('mousedown', this._mousedown);
+    image.addEventListener('dblclick', () => this.dispatchEvent(new Event('config')));
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars

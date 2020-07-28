@@ -24,6 +24,10 @@ gallery.addEventListener('add', ev => {
 
   instance.trash = menu.getButton('trash');
 
+  instance.addEventListener('config', () => {
+    modalLayer.show(instance.config);
+  });
+
   instance.addEventListener('remove', () => {
     for (const input of instance.inputs) {
       linkLayer.removeInput(input);
