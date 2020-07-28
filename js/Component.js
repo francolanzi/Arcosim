@@ -131,13 +131,9 @@ class Component extends HTMLElement {
     this.style.top = this.top + 'px';
     this.style.left = this.left + 'px';
 
-    if (this.trashed(ev)) {
-      this.style.filter = 'invert(1)';
-      this._trash.active = true;
-    } else {
-      this.style.filter = 'none';
-      this._trash.active = false;
-    }
+    const trashed = this.trashed(ev);
+    this.classList.toggle('trashed', trashed);
+    this._trash.active = trashed;
 
     this.dispatchEvent(new Event('move'));
   }
