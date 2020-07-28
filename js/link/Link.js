@@ -33,7 +33,7 @@ class Link {
     this._layer.svg.appendChild(this._line);
     this._layer.svg.appendChild(this._areas[0]);
 
-    this._areas[0].addEventListener('dblclick', this.addCorner.bind(this));
+    this._areas[0].addEventListener('dblclick', ev => this.addCorner(ev));
 
     this._line.points.appendItem(this._layer.svg.createSVGPoint());
     this._line.points.appendItem(this._layer.svg.createSVGPoint());
@@ -101,7 +101,7 @@ class Link {
 
     area.classList.add('cpnt-link-area');
 
-    area.addEventListener('dblclick', this.addCorner.bind(this));
+    area.addEventListener('dblclick', ev => this.addCorner(ev));
     corner.addEventListener('move', () => this.moveCorner(corner));
     corner.addEventListener('remove', () => this.removeCorner(corner));
 

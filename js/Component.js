@@ -88,15 +88,14 @@ class Component extends HTMLElement {
 
     this._mouse = { x: 0, y: 0 };
 
-    this._mousedown = this.drag.bind(this);
-    this._mousemove = this.move.bind(this);
-    this._mouseup = this.drop.bind(this);
+    this._move = ev => this.move(ev);
+    this._drop = ev => this.drop(ev);
 
     const image = new Image();
     image.src = this.constructor.imageFile;
     this.appendChild(image);
 
-    image.addEventListener('mousedown', this._mousedown);
+    image.addEventListener('mousedown', ev => this.drag(ev));
     image.addEventListener('dblclick', () => this.dispatchEvent(new Event('config')));
   }
 
@@ -111,8 +110,8 @@ class Component extends HTMLElement {
     this._mouse.x = ev.clientX - rect.left;
     this._mouse.y = ev.clientY - rect.top;
 
-    document.addEventListener('mousemove', this._mousemove);
-    document.addEventListener('mouseup', this._mouseup);
+    document.addEventListener('mousemove', this._move);
+    document.addEventListener('mouseup', this._drop);
 
     this.classList.add('dragging');
 
@@ -137,8 +136,8 @@ class Component extends HTMLElement {
   }
 
   drop(ev) {
-    document.removeEventListener('mousemove', this._mousemove);
-    document.removeEventListener('mouseup', this._mouseup);
+    document.removeEventListener('mousemove', this._move);
+    document.removeEventListener('mouseup', this._drop);
 
     this.classList.remove('dragging');
 

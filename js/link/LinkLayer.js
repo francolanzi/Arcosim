@@ -14,9 +14,9 @@ class LinkLayer extends HTMLElement {
     this._svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     this.appendChild(this.svg);
 
-    new ResizeObserver(this.resize.bind(this)).observe(this);
-    window.addEventListener('resize', this.resize.bind(this));
-    window.addEventListener('scroll', this.resize.bind(this));
+    new ResizeObserver(() => this.resize()).observe(this);
+    window.addEventListener('resize', () => this.resize());
+    window.addEventListener('scroll', () => this.resize());
   }
 
   resize() {

@@ -13,11 +13,10 @@ class LinkCorner extends HTMLElement {
 
     this._mouse = { x: 0, y: 0 };
 
-    this._mousedown = this.drag.bind(this);
-    this._mousemove = this.move.bind(this);
-    this._mouseup = this.drop.bind(this);
+    this._move = ev => this.move(ev);
+    this._drop = () => this.drop();
 
-    this.addEventListener('mousedown', this._mousedown);
+    this.addEventListener('mousedown', ev => this.drag(ev));
     this.addEventListener('dblclick', () => {
       this.remove();
       this.dispatchEvent(new Event('remove'));
@@ -30,8 +29,8 @@ class LinkCorner extends HTMLElement {
     this._mouse.x = ev.clientX - rect.left - 5;
     this._mouse.y = ev.clientY - rect.top - 5;
 
-    document.addEventListener('mousemove', this._mousemove);
-    document.addEventListener('mouseup', this._mouseup);
+    document.addEventListener('mousemove', this._move);
+    document.addEventListener('mouseup', this._drop);
 
     this.dispatchEvent(new Event('drag'));
   }
@@ -47,8 +46,8 @@ class LinkCorner extends HTMLElement {
   }
 
   drop() {
-    document.removeEventListener('mousemove', this._mousemove);
-    document.removeEventListener('mouseup', this._mouseup);
+    document.removeEventListener('mousemove', this._move);
+    document.removeEventListener('mouseup', this._drop);
 
     this.dispatchEvent(new Event('drop'));
   }
