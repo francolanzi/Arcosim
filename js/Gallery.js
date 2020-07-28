@@ -16,7 +16,7 @@ class Gallery extends HTMLElement {
     fs.readdirSync(path.resolve(__dirname, 'cpnts')).forEach(file => {
       file = path.parse(file);
       if (file.ext === '.js') {
-        const Cpnt = require('./cpnts/' + file.name);
+        const Cpnt = require(`./cpnts/${file.name}`);
         const item = Cpnt.getItem();
 
         item.addEventListener('add', ev =>

@@ -75,8 +75,8 @@ class Component extends HTMLElement {
 
     this.classList.add('component');
 
-    this.style.top = top + 'px';
-    this.style.left = left + 'px';
+    this.style.top = `${top}px`;
+    this.style.left = `${left}px`;
 
     this._top = top;
     this._left = left;
@@ -126,8 +126,8 @@ class Component extends HTMLElement {
     this._top = Math.max(ev.pageY - this._mouse.y, 0);
     this._left = Math.max(ev.pageX - this._mouse.x, 0);
 
-    this.style.top = this.top + 'px';
-    this.style.left = this.left + 'px';
+    this.style.top = `${this.top}px`;
+    this.style.left = `${this.left}px`;
 
     const trashed = this.trashed(ev);
     this.classList.toggle('trashed', trashed);

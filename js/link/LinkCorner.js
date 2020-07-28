@@ -8,8 +8,8 @@ class LinkCorner extends HTMLElement {
 
     this._center = { x, y };
 
-    this.style.top = (y - 5) + 'px';
-    this.style.left = (x - 5) + 'px';
+    this.style.top = `${y - 5}px`;
+    this.style.left = `${x - 5}px`;
 
     this._mouse = { x: 0, y: 0 };
 
@@ -40,8 +40,8 @@ class LinkCorner extends HTMLElement {
     this._center.x = Math.max(ev.pageX - this._mouse.x, 5);
     this._center.y = Math.max(ev.pageY - this._mouse.y, 5);
 
-    this.style.top = (this._center.y - 5) + 'px';
-    this.style.left = (this._center.x - 5) + 'px';
+    this.style.top = `${this._center.y - 5}px`;
+    this.style.left = `${this._center.x - 5}px`;
 
     this.dispatchEvent(new Event('move'));
   }

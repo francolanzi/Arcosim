@@ -36,8 +36,8 @@ class IO extends HTMLElement {
 
     this.tabIndex = 0;
 
-    this.style.top = (y - 5) + 'px';
-    this.style.left = (x - 5) + 'px';
+    this.style.top = `${y - 5}px`;
+    this.style.left = `${x - 5}px`;
   }
 }
 
