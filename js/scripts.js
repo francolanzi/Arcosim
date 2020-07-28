@@ -2,6 +2,7 @@ const Computer = require('./js/Computer');
 
 const LinkLayer = require('./js/link/LinkLayer');
 const FixedLayer = require('./js/FixedLayer');
+const ModalLayer = require('./js/ModalLayer');
 const Menu = require('./js/menu/Menu');
 const Gallery = require('./js/Gallery');
 
@@ -12,6 +13,7 @@ const menu = new Menu();
 
 const linkLayer = new LinkLayer();
 const fixedLayer = new FixedLayer();
+const modalLayer = new ModalLayer();
 
 menu.getButton('cpnt').gallery = gallery;
 
@@ -66,5 +68,7 @@ fixedLayer.appendChild(gallery);
 
 document.body.appendChild(linkLayer);
 document.body.appendChild(fixedLayer);
+
+document.body.appendChild(modalLayer);
 
 document.ondragstart = () => false;
