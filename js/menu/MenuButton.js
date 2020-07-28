@@ -24,7 +24,7 @@ class MenuButton extends HTMLElement {
 
     this.classList.add('menu-button');
 
-    this.setAttribute('title', this.constructor.title);
+    this.title = this.constructor.title;
 
     const img = new Image();
     img.src = this.constructor.icon;
