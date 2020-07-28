@@ -8,11 +8,11 @@ class IO extends HTMLElement {
   }
 
   get show() {
-    return this.style.visibility === 'visible';
+    return this.classList.contains('show');
   }
 
   set show(show) {
-    this.style.visibility = show ? 'visible' : 'hidden';
+    this.classList.toggle('show', show);
   }
 
   get center() {
@@ -36,10 +36,8 @@ class IO extends HTMLElement {
 
     this.setAttribute('tabindex', 0);
 
-    this.style.position = 'absolute';
     this.style.top = (y - 5) + 'px';
     this.style.left = (x - 5) + 'px';
-    this.style.visibility = 'hidden';
   }
 }
 
