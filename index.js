@@ -1,7 +1,12 @@
 const { app, BrowserWindow } = require('electron');
 
 app.whenReady().then(() => {
-  const win = new BrowserWindow({ webPreferences: { nodeIntegration: true } });
+  const win = new BrowserWindow({
+    icon: 'img/logo.ico',
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  });
   win.setMenuBarVisibility(false);
   win.setMenu(null);
   win.maximize();
