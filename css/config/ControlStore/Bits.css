@@ -1,0 +1,36 @@
+control-store-bits {
+  display: block;
+  width: min-content;
+  white-space: nowrap;
+  margin: auto;
+  padding: 0;
+}
+
+control-store-bits label {
+  color: black;
+  line-height: 0;
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+control-store-bits input {
+  width: 2.5rem;
+  height: 1.75rem;
+  text-align: center;
+  border: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+  color: black;
+  line-height: 0;
+  background-color: transparent;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+control-store-bits input:focus {
+  outline: none;
+}
+
+control-store-bits input::selection {
+  color: white;
+  background-color: gray;
+}
