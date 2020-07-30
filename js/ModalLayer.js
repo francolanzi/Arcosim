@@ -1,20 +1,40 @@
+const fs = require('fs');
+
 class ModalLayer extends HTMLElement {
   constructor() {
     super();
 
-    this._modal = document.createElement('div');
-    this._modal.classList.add('modal');
-    this.appendChild(this._modal);
+    const modal = document.createElement('div');
+    modal.classList.add('modal');
+    this.appendChild(modal);
 
-    this.addEventListener('click', ev => {
-      if (ev.target === this) {
-        this.classList.remove('show');
+    this._title = document.createElement('div');
+    this._title.classList.add('modal-title');
+    modal.appendChild(this._title);
+
+    this._content = document.createElement('div');
+    this._content.classList.add('modal-content');
+    modal.appendChild(this._content);
+
+    this._close = document.createElement('span');
+    this._close.classList.add('modal-close');
+    this._close.innerHTML = fs.readFileSync('img/modal/times.svg');
+    modal.appendChild(this._close);
+
+    this._close.addEventListener('click', () =>
+      this.classList.remove('show'));
+
+    this.addEventListener('transitionend', () => {
+      if (!this.classList.contains('show')) {
+        this._title.textContent = '';
+        this._content.removeChild(this._content.lastChild);
       }
     });
   }
 
-  show(content) {
-    this._modal.innerHTML = content;
+  show(title, content) {
+    this._title.textContent = title;
+    this._content.appendChild(content);
     this.classList.add('show');
   }
 }
