@@ -6,7 +6,6 @@
   background-color: lightgray;
   border-radius: 0.5rem;
   cursor: pointer;
-  user-select: none;
   opacity: 0.8;
   pointer-events: all;
   color: white;
