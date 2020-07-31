@@ -63,15 +63,15 @@ class MicroInstructionRegister extends Component {
   makeMasks() {
     const space = 329 / (this._masks.length + 1);
 
-    let x = space;
+    let x = 329;
     this._bits = 0;
 
     this._masks.forEach(mask => {
+      x -= space;
+      mask.output.x = x;
+
       mask.mask = -1 >>> (32 - mask.size);
       mask.mask = mask.mask << this._bits;
-
-      mask.output.x = x;
-      x += space;
 
       this._bits += mask.size;
     });
