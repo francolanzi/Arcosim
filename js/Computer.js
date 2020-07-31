@@ -7,18 +7,22 @@ class Computer {
     const type = cpnt.constructor.type;
     const id = cpnt.id;
 
-    this._cpnts.set(type + id, cpnt);
-    console.log(`${type} ${id} added`);
+    const key = `${type} ${id}`;
+    console.log(`${key} added`);
+    this._cpnts.set(key, cpnt);
     return cpnt;
   }
 
   getCpnt(type, id) {
-    return this._cpnts.get(type + id);
+    const key = `${type} ${id}`;
+    return this._cpnts.get(key);
   }
 
   removeCpnt(type, id) {
-    console.log(`${type} ${id} removed`);
-    return this._cpnts.delete(type + id);
+    const key = `${type} ${id}`;
+
+    console.log(`${key} removed`);
+    return this._cpnts.delete(key);
   }
 }
 
