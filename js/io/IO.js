@@ -4,11 +4,11 @@ class IO extends HTMLElement {
   }
 
   get name() {
-    return this._name;
+    return this.title;
   }
 
   set name(name) {
-    this._name = name;
+    this.title = name;
   }
 
   get show() {
@@ -51,7 +51,7 @@ class IO extends HTMLElement {
     }
 
     this._cpnt = cpnt;
-    this._name = name;
+    this.name = name;
     this._center = { x, y };
 
     this.classList.add('io');
