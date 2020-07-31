@@ -1,8 +1,8 @@
 const Component = require('../Component');
 
-class MIR extends Component {
+class MicroInstructionRegister extends Component {
   static get imageFile() {
-    return 'img/cpnt/MIR.png';
+    return 'img/cpnt/MicroInstructionRegister.png';
   }
 
   constructor(top, left) {
@@ -26,6 +26,6 @@ class MIR extends Component {
   }
 }
 
-customElements.define('cpnt-mir', MIR);
+customElements.define('cpnt-mir', MicroInstructionRegister);
 
-module.exports = MIR;
+module.exports = MicroInstructionRegister;
