@@ -4,7 +4,7 @@ const Output = require('./io/Output');
 
 class Component extends HTMLElement {
   static get type() {
-    return this.name;
+    return this.name.replace(/([a-z])([A-Z])/g, '$1 $2');
   }
 
   static get imageFile() {
