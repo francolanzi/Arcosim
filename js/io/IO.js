@@ -7,6 +7,10 @@ class IO extends HTMLElement {
     return this._name;
   }
 
+  set name(name) {
+    this._name = name;
+  }
+
   get show() {
     return this.classList.contains('show');
   }
