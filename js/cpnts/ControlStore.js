@@ -1,4 +1,5 @@
 const Component = require('../Component');
+const Config = require('../config/ControlStore');
 
 class ControlStore extends Component {
   static get imageFile() {
@@ -6,7 +7,6 @@ class ControlStore extends Component {
   }
 
   get config() {
-    const Config = require('../config/ControlStore');
     return new Config(this);
   }
 
