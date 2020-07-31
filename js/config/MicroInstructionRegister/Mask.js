@@ -13,7 +13,7 @@ class MicroInstructionRegisterMask extends HTMLElement {
   }
 
   get size() {
-    return this._maskSize.value;
+    return parseInt(this._maskSize.value);
   }
 
   constructor(name, size) {
