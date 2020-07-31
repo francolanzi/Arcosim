@@ -1,0 +1,29 @@
+cpnt-mir-mask-button {
+  margin: 0 0.1rem;
+  padding: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+  opacity: 0.8;
+  color: white;
+  cursor: pointer;
+}
+
+cpnt-mir-mask-button:hover {
+  opacity: 1;
+}
+
+cpnt-mir-mask-button:active {
+  opacity: 1;
+  background-color: gray;
+}
+
+cpnt-mir-mask-button svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}

@@ -1,0 +1,14 @@
+cpnt-mir-label {
+  margin: 0;
+  padding: 0.5rem;
+  display: block;
+  width: 100%;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  /*background-color: gray;*/
+  text-align: center;
+  /*color: white;*/
+  font-size: 1rem;
+  /*font-weight: bold;*/
+  font-family: 'Courier New', Courier, monospace;
+}
