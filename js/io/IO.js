@@ -21,6 +21,24 @@ class IO extends HTMLElement {
     return { x, y };
   }
 
+  get x() {
+    return this._center.x;
+  }
+
+  set x(x) {
+    this._center.x = x;
+    this.style.left = `${x - 5}px`;
+  }
+
+  get y() {
+    return this._center.y;
+  }
+
+  set y(y) {
+    this._center.y = y;
+    this.style.top = `${y - 5}px`;
+  }
+
   constructor(cpnt, name, x, y) {
     super();
 
@@ -36,8 +54,8 @@ class IO extends HTMLElement {
 
     this.tabIndex = 0;
 
-    this.style.top = `${y - 5}px`;
-    this.style.left = `${x - 5}px`;
+    this.x = x;
+    this.y = y;
   }
 }
 
