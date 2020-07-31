@@ -202,11 +202,19 @@ class Component extends HTMLElement {
   }
 
   removeInput(id) {
-    return this._inputs.delete(id);
+    const input = this._inputs.get(id);
+    if (input) {
+      this._inputs.delete(id);
+      input.remove();
+    }
   }
 
   removeOutput(id) {
-    return this._outputs.delete(id);
+    const output = this._outputs.get(id);
+    if (output) {
+      this._outputs.delete(id);
+      output.remove();
+    }
   }
 }
 
