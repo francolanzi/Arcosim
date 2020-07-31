@@ -173,6 +173,8 @@ class Component extends HTMLElement {
     this._inputs.set(input.id, input);
     this.appendChild(input);
 
+    input.show = this.showIO;
+
     input.addEventListener('link', ev =>
       this.dispatchEvent(new CustomEvent('link', {
         detail: { input, output: ev.detail },
@@ -189,6 +191,8 @@ class Component extends HTMLElement {
 
     this._outputs.set(output.id, output);
     this.appendChild(output);
+
+    output.show = this.showIO;
 
     return output;
   }
