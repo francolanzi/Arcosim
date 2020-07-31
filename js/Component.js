@@ -168,47 +168,45 @@ class Component extends HTMLElement {
   }
 
   addInput(name, x, y) {
-    if (!this._inputs.has(name)) {
-      const input = new Input(this, name, x, y);
+    const input = new Input(this, name, x, y);
 
-      this._inputs.set(name, input);
-      this.appendChild(input);
+    this._inputs.set(input.id, input);
+    this.appendChild(input);
 
-      input.addEventListener('link', ev =>
-        this.dispatchEvent(new CustomEvent('link', {
-          detail: { input, output: ev.detail },
-        })));
+    input.addEventListener('link', ev =>
+      this.dispatchEvent(new CustomEvent('link', {
+        detail: { input, output: ev.detail },
+      })));
 
-      input.addEventListener('unlink', () =>
-        this.dispatchEvent(new CustomEvent('unlink', { detail: input })));
-    }
-    return this.getInput(name);
+    input.addEventListener('unlink', () =>
+      this.dispatchEvent(new CustomEvent('unlink', { detail: input })));
+
+    return input;
   }
 
   addOutput(name, x, y) {
-    if (!this._outputs.has(name)) {
-      const output = new Output(this, name, x, y);
+    const output = new Output(this, name, x, y);
 
-      this._outputs.set(name, output);
-      this.appendChild(output);
-    }
-    return this.getOutput(name);
+    this._outputs.set(output.id, output);
+    this.appendChild(output);
+
+    return output;
   }
 
-  getInput(name) {
-    return this._inputs.get(name);
+  getInput(id) {
+    return this._inputs.get(id);
   }
 
-  getOutput(name) {
-    return this._outputs.get(name);
+  getOutput(id) {
+    return this._outputs.get(id);
   }
 
-  removeInput(name) {
-    return this._inputs.delete(name);
+  removeInput(id) {
+    return this._inputs.delete(id);
   }
 
-  removeOutput(name) {
-    return this._outputs.delete(name);
+  removeOutput(id) {
+    return this._outputs.delete(id);
   }
 }
 
