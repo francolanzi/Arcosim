@@ -52,6 +52,6 @@ class ControlStoreStore extends HTMLElement {
   }
 }
 
-customElements.define('control-store-store', ControlStoreStore);
+customElements.define('cpnt-cs-store', ControlStoreStore);
 
 module.exports = ControlStoreStore;

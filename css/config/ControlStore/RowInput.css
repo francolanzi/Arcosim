@@ -1,4 +1,4 @@
-control-store-row input {
+cpnt-cs-row input {
   margin: 0.1rem 0;
   padding: 0;
   width: 1.25rem;
@@ -13,11 +13,11 @@ control-store-row input {
   font-family: 'Courier New', Courier, monospace;
 }
 
-control-store-row input:focus {
+cpnt-cs-row input:focus {
   outline: none;
 }
 
-control-store-row input::selection {
+cpnt-cs-row input::selection {
   color: white;
   background-color: gray;
 }

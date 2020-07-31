@@ -1,4 +1,4 @@
 {
-  "name": "control-store-config",
+  "name": "cs-config",
   "main": "Config.js"
 }

@@ -15,6 +15,6 @@ class ControlStoreConfig extends HTMLElement {
   }
 }
 
-customElements.define('control-store-config', ControlStoreConfig);
+customElements.define('cpnt-cs-config', ControlStoreConfig);
 
 module.exports = ControlStoreConfig;

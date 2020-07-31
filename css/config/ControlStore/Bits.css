@@ -1,4 +1,4 @@
-control-store-bits {
+cpnt-cs-bits {
   display: block;
   width: min-content;
   white-space: nowrap;
@@ -6,14 +6,14 @@ control-store-bits {
   padding: 0;
 }
 
-control-store-bits label {
+cpnt-cs-bits label {
   color: black;
   line-height: 0;
   font-size: 1rem;
   font-family: 'Courier New', Courier, monospace;
 }
 
-control-store-bits input {
+cpnt-cs-bits input {
   width: 2.5rem;
   height: 1.75rem;
   text-align: center;
@@ -26,11 +26,11 @@ control-store-bits input {
   font-family: 'Courier New', Courier, monospace;
 }
 
-control-store-bits input:focus {
+cpnt-cs-bits input:focus {
   outline: none;
 }
 
-control-store-bits input::selection {
+cpnt-cs-bits input::selection {
   color: white;
   background-color: gray;
 }

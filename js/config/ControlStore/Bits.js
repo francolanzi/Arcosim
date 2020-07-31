@@ -40,6 +40,6 @@ class ControlStoreBits extends HTMLElement {
   }
 }
 
-customElements.define('control-store-bits', ControlStoreBits);
+customElements.define('cpnt-cs-bits', ControlStoreBits);
 
 module.exports = ControlStoreBits;

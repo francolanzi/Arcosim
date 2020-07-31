@@ -58,6 +58,6 @@ class ControlStore extends Component {
   }
 }
 
-customElements.define('cpnt-control-store', ControlStore);
+customElements.define('cpnt-cs', ControlStore);
 
 module.exports = ControlStore;

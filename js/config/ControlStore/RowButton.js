@@ -8,6 +8,6 @@ class ControlStoreRowButton extends HTMLElement {
   }
 }
 
-customElements.define('control-store-row-button', ControlStoreRowButton);
+customElements.define('cpnt-cs-row-button', ControlStoreRowButton);
 
 module.exports = ControlStoreRowButton;

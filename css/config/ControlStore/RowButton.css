@@ -1,4 +1,4 @@
-control-store-row-button {
+cpnt-cs-row-button {
   margin: 0 0.1rem;
   padding: 0;
   width: 1.75rem;
@@ -14,16 +14,16 @@ control-store-row-button {
   cursor: pointer;
 }
 
-control-store-row-button:hover {
+cpnt-cs-row-button:hover {
   opacity: 1;
 }
 
-control-store-row-button:active {
+cpnt-cs-row-button:active {
   opacity: 1;
   background-color: gray;
 }
 
-control-store-row-button svg {
+cpnt-cs-row-button svg {
   width: 0.75rem;
   height: 0.75rem;
 }

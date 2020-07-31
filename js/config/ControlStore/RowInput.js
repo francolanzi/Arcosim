@@ -25,6 +25,6 @@ class ControlStoreRowInput extends HTMLInputElement {
   }
 }
 
-customElements.define('control-store-row-input', ControlStoreRowInput, { extends: 'input' });
+customElements.define('cpnt-cs-row-input', ControlStoreRowInput, { extends: 'input' });
 
 module.exports = ControlStoreRowInput;

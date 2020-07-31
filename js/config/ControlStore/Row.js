@@ -81,6 +81,6 @@ class ControlStoreRow extends HTMLElement {
   }
 }
 
-customElements.define('control-store-row', ControlStoreRow);
+customElements.define('cpnt-cs-row', ControlStoreRow);
 
 module.exports = ControlStoreRow;
