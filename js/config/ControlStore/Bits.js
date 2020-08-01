@@ -9,6 +9,7 @@ class ControlStoreBits extends HTMLElement {
     super();
 
     this._input = new UintInput(bits, 1, 32, true);
+    this._input.id = 'bits';
     this.appendChild(this._input);
 
     const label = document.createElement('label');
