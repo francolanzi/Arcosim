@@ -15,22 +15,4 @@ cpnt-cs-bits label {
 
 cpnt-cs-bits input {
   width: 2.5rem;
-  height: 1.75rem;
-  text-align: center;
-  border: 0;
-  box-sizing: border-box;
-  font-size: 1rem;
-  color: black;
-  line-height: 0;
-  background-color: transparent;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-cpnt-cs-bits input:focus {
-  outline: none;
-}
-
-cpnt-cs-bits input::selection {
-  color: white;
-  background-color: gray;
 }

@@ -68,3 +68,26 @@ modal-layer .modal .modal-close svg {
   width: 1rem;
   height: 1rem;
 }
+
+modal-layer input {
+  margin: 0;
+  padding: 0;
+  height: 1.75rem;
+  text-align: center;
+  border: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+  color: black;
+  line-height: 0;
+  background-color: transparent;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+modal-layer input:focus {
+  outline: none;
+}
+
+modal-layer input::selection {
+  color: white;
+  background-color: gray;
+}

@@ -3,4 +3,5 @@ cpnt-cs-row {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin: 0.25rem 0;
 }
