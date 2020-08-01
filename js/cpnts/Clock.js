@@ -1,17 +1,54 @@
 const Component = require('../Component');
+const Config = require('../config/Clock');
 
 class Clock extends Component {
   static get imageFile() {
     return 'img/cpnt/Clock.png';
   }
 
+  get config() {
+    return new Config(this);
+  }
+
+  get subcycles() {
+    return this._subcycles.length;
+  }
+
   constructor(top, left) {
     super(top, left);
 
-    this.addOutput('Subcycle1', 0, 49.4);
-    this.addOutput('Subcycle2', 0, 35.8);
-    this.addOutput('Subcycle3', 0, 22.2);
-    this.addOutput('Subcycle4', 0, 8.6);
+    this._subcycles = [];
+
+    this.addSubcycle();
+  }
+
+  addSubcycle() {
+    const name = `Subciclo ${this.subcycles + 1}`;
+    const subcycle = this.addOutput(name, 0, 0);
+    this._subcycles.push(subcycle);
+    this.makeSubcycles();
+  }
+
+  removeSubcycle() {
+    if (this.subcycles > 1) {
+      const subcycle = this._subcycles.pop();
+      this.removeOutput(subcycle.id);
+      this.makeSubcycles();
+    }
+  }
+
+  makeSubcycles() {
+    if (this.subcycles === 1) {
+      this._subcycles[0].y = 58 / 2;
+    } else {
+      const space = 58 / (this.subcycles - 1);
+
+      let y = 58;
+      this._subcycles.forEach(subcycle => {
+        subcycle.y = y;
+        y -= space;
+      });
+    }
   }
 }
 

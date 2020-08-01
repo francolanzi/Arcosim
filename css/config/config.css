@@ -1,6 +1,8 @@
 @import 'UintInput.css';
 @import 'SVGButton.css';
 
+@import 'Clock/Subcycles.css';
+
 @import 'ControlStore/Bits.css';
 @import 'ControlStore/Row.css';
 
