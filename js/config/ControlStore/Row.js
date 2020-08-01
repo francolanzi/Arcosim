@@ -1,4 +1,4 @@
-const Input = require('./RowInput');
+const UintInput = require('../UintInput');
 const SVGButton = require('../SVGButton');
 
 class ControlStoreRow extends HTMLElement {
@@ -58,7 +58,7 @@ class ControlStoreRow extends HTMLElement {
     for (let i = 0; i < this.bits; i++) {
       const value = (this.instruction >> i) & 1;
 
-      this._inputs[i] = new Input(value);
+      this._inputs[i] = new UintInput(value, 0, 0xFFFFFFFF, false);
 
       this._inputs[i].addEventListener('change', ev => {
         let i = this._inputs.indexOf(ev.target);
