@@ -1,36 +1,36 @@
 class ControlStoreBits extends HTMLElement {
+  get value() {
+    return this._input.value;
+  }
+
   constructor(bits) {
     super();
 
-    const input = document.createElement('input');
-    input.type = 'number';
-    input.min = 1;
-    input.max = 32;
-    input.step = 1;
-    input.value = bits;
-    input.id = 'bits';
-    this.appendChild(input);
+    this._input = document.createElement('input');
+    this._input.type = 'number';
+    this._input.min = 1;
+    this._input.max = 32;
+    this._input.step = 1;
+    this._input.value = bits;
+    this._input.id = 'bits';
+    this.appendChild(this._input);
 
-    input.addEventListener('keydown', ev => {
+    this._input.addEventListener('keydown', ev => {
       if (ev.key.length === 1 && (ev.key < '0' || ev.key > '9')) {
         ev.preventDefault();
       }
     });
 
-    input.addEventListener('keyup', ev => {
+    this._input.addEventListener('keyup', ev => {
       if (ev.target.value) {
         ev.target.value = Math.max(Math.min(parseInt(ev.target.value), 32), 1);
       }
     });
 
-    input.addEventListener('change', () => {
-      if (!input.value) {
-        input.value = 1;
+    this._input.addEventListener('change', () => {
+      if (!this._input.value) {
+        this._input.value = 1;
       }
-
-      const value = parseInt(input.value);
-      const event = new CustomEvent('bits', { detail: value });
-      this.dispatchEvent(event);
     });
 
     const label = document.createElement('label');

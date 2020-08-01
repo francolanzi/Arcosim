@@ -11,7 +11,7 @@ class ControlStoreConfig extends HTMLElement {
     const store = new Store(cpnt);
     this.appendChild(store);
 
-    bits.addEventListener('bits', ev => store.bits = ev.detail);
+    bits.addEventListener('change', () => store.bits = bits.value);
   }
 }
 
