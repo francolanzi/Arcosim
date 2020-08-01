@@ -31,12 +31,11 @@ modal-layer .modal {
 
 modal-layer .modal .modal-title {
   margin: 0;
-  padding: 0.5rem;
+  padding: 0.5rem 2.25rem 0.5rem 0.75rem;
   width: 100%;
   box-sizing: border-box;
   background-color: dimgray;
   color: white;
-  text-align: center;
   font-size: 1rem;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
@@ -54,7 +53,7 @@ modal-layer .modal .modal-content {
 
 modal-layer .modal .modal-close {
   margin: 0;
-  padding: 0rem;
+  padding: 0;
   box-sizing: border-box;
   position: absolute;
   top: 0.5rem;
