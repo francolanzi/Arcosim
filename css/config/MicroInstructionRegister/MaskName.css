@@ -1,3 +1,3 @@
-cpnt-mir-mask input[type='text'] {
+input[is='cpnt-mir-mask-name'] {
   width: 10rem;
 }

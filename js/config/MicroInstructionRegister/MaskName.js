@@ -4,6 +4,8 @@ class MicroInstructionRegisterMaskName extends HTMLInputElement {
 
     this.type = 'text';
     this.value = name;
+
+    this.setAttribute('is', 'cpnt-mir-mask-name');
   }
 }
 
