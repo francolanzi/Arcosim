@@ -1,5 +1,5 @@
 const Input = require('./RowInput');
-const Button = require('./RowButton');
+const SVGButton = require('../SVGButton');
 
 class ControlStoreRow extends HTMLElement {
   get position() {
@@ -28,9 +28,9 @@ class ControlStoreRow extends HTMLElement {
     this._bits = bits;
     this._inputs = [];
 
-    const addBefore = new Button('img/modal/plus.svg');
-    const addAfter = new Button('img/modal/plus.svg');
-    const remove = new Button('img/modal/minus.svg');
+    const addBefore = new SVGButton('img/modal/plus.svg');
+    const addAfter = new SVGButton('img/modal/plus.svg');
+    const remove = new SVGButton('img/modal/minus.svg');
 
     this.appendChild(addBefore);
     this.appendChild(remove);

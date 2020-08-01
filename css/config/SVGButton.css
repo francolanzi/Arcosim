@@ -1,4 +1,4 @@
-cpnt-cs-row-button {
+svg-button {
   margin: 0 0.1rem;
   padding: 0;
   width: 1.75rem;
@@ -14,16 +14,16 @@ cpnt-cs-row-button {
   cursor: pointer;
 }
 
-cpnt-cs-row-button:hover {
+svg-button:hover {
   opacity: 1;
 }
 
-cpnt-cs-row-button:active {
+svg-button:active {
   opacity: 1;
   background-color: gray;
 }
 
-cpnt-cs-row-button svg {
+svg-button svg {
   width: 0.75rem;
   height: 0.75rem;
 }

@@ -1,11 +1,11 @@
+@import 'SVGButton.css';
+
 @import 'ControlStore/Bits.css';
 @import 'ControlStore/Row.css';
-@import 'ControlStore/RowButton.css';
 @import 'ControlStore/RowInput.css';
 
 @import 'MicroInstructionRegister/Label.css';
 @import 'MicroInstructionRegister/List.css';
 @import 'MicroInstructionRegister/Mask.css';
-@import 'MicroInstructionRegister/MaskButton.css';
 @import 'MicroInstructionRegister/MaskName.css';
 @import 'MicroInstructionRegister/MaskSize.css';
