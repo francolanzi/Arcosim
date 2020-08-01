@@ -12,12 +12,12 @@ class MicroInstructionRegisterList extends HTMLElement {
       });
 
       mask.addEventListener('addbefore', () => {
-        cpnt.addMask(mask.position, '', 1);
+        cpnt.addMask(mask.position + 1, '', 1);
         mask.insertAdjacentElement('beforebegin', newMask('', 1));
       });
 
       mask.addEventListener('addafter', () => {
-        cpnt.addMask(mask.position + 1, '', 1);
+        cpnt.addMask(mask.position, '', 1);
         mask.insertAdjacentElement('afterend', newMask('', 1));
       });
 
