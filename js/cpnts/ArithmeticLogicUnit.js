@@ -1,8 +1,8 @@
 const Component = require('../Component');
 
-class ALU extends Component {
+class ArithmeticLogicUnit extends Component {
   static get imageFile() {
-    return 'img/cpnt/ALU.png';
+    return 'img/cpnt/ArithmeticLogicUnit.png';
   }
 
   constructor(top, left) {
@@ -17,6 +17,6 @@ class ALU extends Component {
   }
 }
 
-customElements.define('cpnt-alu', ALU);
+customElements.define('cpnt-alu', ArithmeticLogicUnit);
 
-module.exports = ALU;
+module.exports = ArithmeticLogicUnit;
