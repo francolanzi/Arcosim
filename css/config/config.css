@@ -1,5 +1,10 @@
-@import 'UintInput.css';
+@import 'CustomSelect.css';
 @import 'SVGButton.css';
+@import 'UintInput.css';
+
+@import 'ArithmeticLogicUnit/Config.css';
+@import 'ArithmeticLogicUnit/Func.css';
+@import 'ArithmeticLogicUnit/FuncList.css';
 
 @import 'Clock/Subcycles.css';
 
