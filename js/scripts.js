@@ -25,7 +25,11 @@ gallery.addEventListener('add', ev => {
   instance.trash = menu.getButton('trash');
 
   instance.addEventListener('config', () => {
-    modalLayer.show(instance.constructor.type, instance.config);
+    const type = instance.constructor.type;
+    const config = instance.config;
+    if (config) {
+      modalLayer.show(type, config);
+    }
   });
 
   instance.addEventListener('remove', () => {

@@ -55,7 +55,7 @@ class Component extends HTMLElement {
 
   // eslint-disable-next-line class-methods-use-this
   get config() {
-    throw new Error('config property must be overrided');
+    return null;
   }
 
   constructor(top, left) {
