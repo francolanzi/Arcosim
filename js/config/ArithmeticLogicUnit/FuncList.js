@@ -15,7 +15,7 @@ class ArithmeticLogicUnitFuncList extends HTMLElement {
       add.insertAdjacentElement('beforebegin', func);
 
       func.addEventListener('change', () => {
-        cpnt.setFunction(index, value);
+        cpnt.setFunction(func.index, func.func);
       });
 
       func.addEventListener('remove', () => {

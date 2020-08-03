@@ -4,7 +4,7 @@ const CustomSelect = require('../CustomSelect');
 
 class ArithmeticLogicUnitFunc extends HTMLElement {
   get index() {
-    return this._index.value;
+    return parseInt(this._index.value);
   }
 
   get func() {
