@@ -1,8 +1,8 @@
 const Component = require('../Component');
 
-class MBR extends Component {
+class MemoryBufferRegister extends Component {
   static get imageFile() {
-    return 'img/cpnt/MBR.png';
+    return 'img/cpnt/MemoryBufferRegister.png';
   }
 
   constructor(top, left) {
@@ -17,6 +17,6 @@ class MBR extends Component {
   }
 }
 
-customElements.define('cpnt-mbr', MBR);
+customElements.define('cpnt-mbr', MemoryBufferRegister);
 
-module.exports = MBR;
+module.exports = MemoryBufferRegister;
