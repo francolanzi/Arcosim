@@ -1,8 +1,8 @@
 const Component = require('../Component');
 
-class MAR extends Component {
+class MemoryAddressRegister extends Component {
   static get imageFile() {
-    return 'img/cpnt/MAR.png';
+    return 'img/cpnt/MemoryAddressRegister.png';
   }
 
   constructor(top, left) {
@@ -14,6 +14,6 @@ class MAR extends Component {
   }
 }
 
-customElements.define('cpnt-mar', MAR);
+customElements.define('cpnt-mar', MemoryAddressRegister);
 
-module.exports = MAR;
+module.exports = MemoryAddressRegister;
