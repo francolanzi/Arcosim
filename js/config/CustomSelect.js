@@ -4,13 +4,21 @@ class CustomSelect extends HTMLElement {
   }
 
   set value(value) {
-    let option = this._options.get(this._value);
-    option.toggleAttribute('selected', false);
+    if (this._value !== value) {
+      if (this._value !== undefined) {
+        const option = this._options.get(this._value);
+        option.toggleAttribute('selected', false);
+      }
 
-    this._value = value;
-    option = this._options.get(value);
-    option.toggleAttribute('selected', true);
-    this._text.textContent = option.textContent;
+      this._value = value;
+
+      const option = this._options.get(value);
+      option.toggleAttribute('selected', true);
+
+      this._text.textContent = option.textContent;
+
+      this.dispatchEvent(new Event('change', { bubbles: true }));
+    }
   }
 
   constructor(value, options) {
@@ -37,7 +45,6 @@ class CustomSelect extends HTMLElement {
       });
     });
 
-    this._value = value;
     this.value = value;
   }
 }

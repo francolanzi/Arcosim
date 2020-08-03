@@ -15,3 +15,7 @@
 @import 'MicroInstructionRegister/List.css';
 @import 'MicroInstructionRegister/Mask.css';
 @import 'MicroInstructionRegister/MaskName.css';
+
+@import 'MicroSequenceLogic/Config.css';
+@import 'MicroSequenceLogic/Cond.css';
+@import 'MicroSequenceLogic/CondList.css';
