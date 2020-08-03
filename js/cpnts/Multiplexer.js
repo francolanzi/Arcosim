@@ -1,8 +1,8 @@
 const Component = require('../Component');
 
-class MUX extends Component {
+class Multiplexer extends Component {
   static get imageFile() {
-    return 'img/cpnt/MUX.png';
+    return 'img/cpnt/Multiplexer.png';
   }
 
   constructor(top, left) {
@@ -16,6 +16,6 @@ class MUX extends Component {
   }
 }
 
-customElements.define('cpnt-mux', MUX);
+customElements.define('cpnt-mux', Multiplexer);
 
-module.exports = MUX;
+module.exports = Multiplexer;
