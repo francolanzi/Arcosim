@@ -19,3 +19,8 @@
 @import 'MicroSequenceLogic/Config.css';
 @import 'MicroSequenceLogic/Cond.css';
 @import 'MicroSequenceLogic/CondList.css';
+
+@import 'Registers/Config.css';
+@import 'Registers/Count.css';
+@import 'Registers/List.css';
+@import 'Registers/Register.css';
