@@ -6,7 +6,7 @@ class RegistersRegister extends HTMLElement {
   }
 
   get value() {
-    return this._input.value;
+    return parseInt(this._input.value);
   }
 
   constructor(index, value) {
