@@ -22,6 +22,15 @@ class Clock extends Component {
     this.addSubcycle();
   }
 
+  run(time) {
+    const current = time % this._subcycles.length;
+
+    this._subcycles.forEach((subcycle, index) =>
+      subcycle.value = index === current ? 1 : 0);
+
+    return super.run();
+  }
+
   addSubcycle() {
     const name = `Subciclo ${this.subcycles + 1}`;
     const subcycle = this.addOutput(name, 0, 0);
