@@ -17,13 +17,27 @@ class MicroInstructionRegister extends Component {
   constructor(top, left) {
     super(top, left);
 
-    this._bits = 0;
     this._masks = [];
 
-    this.addInput('Instruction', 164.5, 0);
-    this.addInput('Clock', 0, 21);
+    this._instruction = this.addInput('Instruction', 164.5, 0);
+    this._clock = this.addInput('Clock', 0, 21);
 
     this.addMask(0, '', 1);
+  }
+
+  run() {
+    if (this._clock.value) {
+      let bits = 0;
+
+      this._masks.forEach(mask => {
+        let value = -1 >>> (32 - mask.size);
+        value &= this._instruction.value >>> bits;
+        mask.output.value = value;
+        bits += mask.size;
+      });
+    }
+
+    return super.run();
   }
 
   addMask(position, name, size) {
@@ -64,16 +78,9 @@ class MicroInstructionRegister extends Component {
     const space = 329 / (this._masks.length + 1);
 
     let x = 329;
-    this._bits = 0;
-
     this._masks.forEach(mask => {
       x -= space;
       mask.output.x = x;
-
-      mask.mask = -1 >>> (32 - mask.size);
-      mask.mask = mask.mask << this._bits;
-
-      this._bits += mask.size;
     });
   }
 }
