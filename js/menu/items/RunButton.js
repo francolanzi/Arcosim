@@ -8,6 +8,13 @@ class RunButton extends MenuButton {
   static get icon() {
     return 'img/menu/run.svg';
   }
+
+  constructor() {
+    super();
+
+    this.addEventListener('click', () =>
+      this.dispatchEvent(new Event('run')));
+  }
 }
 
 customElements.define('run-button', RunButton);
