@@ -40,8 +40,11 @@ class IO extends HTMLElement {
   }
 
   set x(x) {
-    this._center.x = x;
-    this.style.left = `${x - 5}px`;
+    if (x !== this._center.x) {
+      this._center.x = x;
+      this.style.left = `${x - 5}px`;
+      this.dispatchEvent(new Event('move', { bubbles: true }));
+    }
   }
 
   get y() {
@@ -49,8 +52,11 @@ class IO extends HTMLElement {
   }
 
   set y(y) {
-    this._center.y = y;
-    this.style.top = `${y - 5}px`;
+    if (y !== this._center.y) {
+      this._center.y = y;
+      this.style.top = `${y - 5}px`;
+      this.dispatchEvent(new Event('move', { bubbles: true }));
+    }
   }
 
   constructor(cpnt, name, x, y) {
@@ -64,7 +70,7 @@ class IO extends HTMLElement {
 
     this._cpnt = cpnt;
     this.name = name;
-    this._center = { x, y };
+    this._center = {};
 
     this.classList.add('io');
 
