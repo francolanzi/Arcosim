@@ -99,9 +99,21 @@ class Component extends HTMLElement {
     image.addEventListener('dblclick', () => this.dispatchEvent(new Event('config')));
   }
 
-  // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  receive(name, value) {
-    throw new Error('receive method must be overrided');
+  // eslint-disable-next-line no-unused-vars
+  run() {
+    let changed = false;
+    this._inputs.forEach(input =>
+      changed = changed || input.changed);
+    return changed;
+  }
+
+  stop() {
+    this.dispatchEvent(new Event('stop'));
+  }
+
+  reset() {
+    this._inputs.forEach(input => input.reset());
+    this._outputs.forEach(output => output.reset());
   }
 
   drag(ev) {
