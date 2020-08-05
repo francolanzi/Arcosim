@@ -2,6 +2,7 @@ const TrashButton = require('./items/TrashButton');
 const LinkButton = require('./items/LinkButton');
 const CpntButton = require('./items/CpntButton');
 const RunButton = require('./items/RunButton');
+const ResetButton = require('./items/ResetButton');
 
 class Menu extends HTMLElement {
   constructor() {
@@ -13,6 +14,7 @@ class Menu extends HTMLElement {
     this.addButton('link', new LinkButton());
     this.addButton('cpnt', new CpntButton());
     this.addButton('run', new RunButton());
+    this.addButton('reset', new ResetButton());
   }
 
   addButton(name, button) {
