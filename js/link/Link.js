@@ -13,14 +13,19 @@ class Link {
     return this._value;
   }
 
+  set value(value) {
+    this._value = value;
+    this.input.value = value;
+  }
+
   constructor(layer, input, output) {
     this._layer = layer;
     this._input = input;
     this._output = output;
 
-    output.addLink(this);
+    this.value = 0;
 
-    this._value = 0;
+    output.addLink(this);
 
     this._corners = [];
 
@@ -40,11 +45,6 @@ class Link {
 
     this.moveInput();
     this.moveOutput();
-  }
-
-  send(value) {
-    this._value = value;
-    this.input.receive(this.value);
   }
 
   moveInput() {

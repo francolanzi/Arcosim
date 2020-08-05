@@ -4,11 +4,21 @@ class IO extends HTMLElement {
   }
 
   get name() {
-    return this.title;
+    return this._name;
   }
 
   set name(name) {
-    this.title = name;
+    this._name = name;
+    this.title = `${name} = ${this._value}`;
+  }
+
+  get value() {
+    return this._value;
+  }
+
+  set value(value) {
+    this._value = value;
+    this.title = `${this._name} = ${value}`;
   }
 
   get show() {
@@ -50,6 +60,8 @@ class IO extends HTMLElement {
       throw new Error('IO class can not be instantiated');
     }
 
+    this._value = 0;
+
     this._cpnt = cpnt;
     this.name = name;
     this._center = { x, y };
@@ -60,6 +72,10 @@ class IO extends HTMLElement {
 
     this.x = x;
     this.y = y;
+  }
+
+  reset() {
+    this.value = 0;
   }
 }
 

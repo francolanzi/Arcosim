@@ -6,7 +6,12 @@ class Output extends IO {
   }
 
   get value() {
-    return this._value;
+    return super.value;
+  }
+
+  set value(value) {
+    super.value = value;
+    this._links.forEach(link => link.value = value);
   }
 
   constructor(cpnt, name, x, y) {
@@ -17,7 +22,6 @@ class Output extends IO {
     }
     this._id = ++this.constructor._count;
 
-    this._value = 0;
     this._links = new Set();
 
     let clicked = false;
@@ -46,15 +50,11 @@ class Output extends IO {
 
   addLink(link) {
     this._links.add(link);
+    link.value = this.value;
   }
 
   removeLink(link) {
     this._links.delete(link);
-  }
-
-  send(value) {
-    this._value = value;
-    this._links.forEach(link => link.send(this.value));
   }
 }
 

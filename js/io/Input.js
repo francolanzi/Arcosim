@@ -6,8 +6,25 @@ class Input extends IO {
     return this._id;
   }
 
+  get linked() {
+    return this._linked;
+  }
+
   get value() {
-    return this._value;
+    return super.value;
+  }
+
+  set value(value) {
+    if (super.value !== value) {
+      super.value = value;
+      this._changed = true;
+    }
+  }
+
+  get changed() {
+    const changed = this._changed;
+    this._changed = false;
+    return changed;
   }
 
   constructor(cpnt, name, x, y) {
@@ -17,8 +34,6 @@ class Input extends IO {
       this.constructor._count = 0;
     }
     this._id = ++this.constructor._count;
-
-    this._value = 0;
 
     this._linked = false;
     this._clicked = false;
@@ -51,14 +66,10 @@ class Input extends IO {
 
   unlink() {
     if (this._linked) {
+      this.value = 0;
       this._linked = false;
       this.dispatchEvent(new Event('unlink'));
     }
-  }
-
-  receive(value) {
-    this._value = value;
-    this.cpnt.receive(this.name, this.value);
   }
 }
 
