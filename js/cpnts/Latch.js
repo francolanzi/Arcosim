@@ -8,10 +8,18 @@ class Latch extends Component {
   constructor(top, left) {
     super(top, left);
 
-    this.addInput('Input', 31.5, 0);
-    this.addInput('Clock', 63, 9.5);
+    this._input = this.addInput('Input', 31.5, 0);
+    this._clock = this.addInput('Clock', 63, 9.5);
 
-    this.addOutput('Output', 31.5, 19);
+    this._output = this.addOutput('Output', 31.5, 19);
+  }
+
+  run() {
+    if (this._clock.value) {
+      this._output.value = this._input.value;
+    }
+
+    return super.run();
   }
 }
 
