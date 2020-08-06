@@ -34,14 +34,37 @@ class Shifter extends Component {
 
     this._functions = new Map();
 
-    this.addInput('Input', 37.5, 0);
-    this.addInput('Function', 75, 13.5);
+    this._input = this.addInput('Input', 37.5, 0);
+    this._function = this.addInput('Function', 75, 13.5);
 
-    this.addOutput('Result', 37.5, 27);
+    this._result = this.addOutput('Result', 37.5, 27);
 
     this.setFunction(0, 0, 0);
     this.setFunction(1, 2, 1);
     this.setFunction(2, 1, 1);
+  }
+
+  run() {
+    const { func, value } = this._functions.get(this._function.value);
+
+    switch(func) {
+    case 0:
+      this._result.value = this._input.value;
+      break;
+    case 1:
+      this._result.value = this._input.value << value;
+      break;
+    case 2:
+      this._result.value = this._input.value >> value;
+      break;
+    case 3:
+      this._result.value = this._input.value >>> value;
+      break;
+    default:
+      break;
+    }
+
+    return super.run();
   }
 
   getFunction(index) {
