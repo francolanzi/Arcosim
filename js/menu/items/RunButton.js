@@ -15,6 +15,9 @@ class RunButton extends MenuButton {
 
   set computer(computer) {
     this._computer = computer;
+
+    computer.addEventListener('run', () => this.active = true);
+    computer.addEventListener('stop', () => this.active = false);
   }
 
   constructor() {
@@ -27,7 +30,6 @@ class RunButton extends MenuButton {
         } else {
           this.computer.run();
         }
-        this.active = this.computer.running;
       }
     });
   }
