@@ -67,7 +67,9 @@ class Computer extends EventTarget {
   }
 
   reset() {
-    this._cpnts.forEach(cpnt => cpnt.reset());
+    if (!this.running) {
+      this._cpnts.forEach(cpnt => cpnt.reset());
+    }
   }
 }
 
