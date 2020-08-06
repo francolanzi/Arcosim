@@ -1,4 +1,8 @@
 class Computer extends EventTarget {
+  get running() {
+    return this._running;
+  }
+
   constructor() {
     super();
 
@@ -32,7 +36,7 @@ class Computer extends EventTarget {
   }
 
   run() {
-    if (!this._running) {
+    if (!this.running) {
       this._running = true;
       this.dispatchEvent(new Event('run'));
       this.step(0);
@@ -48,15 +52,15 @@ class Computer extends EventTarget {
       changed = false;
       this._cpnts.forEach(cpnt =>
         changed = cpnt.run(time) || changed);
-    } while (this._running && changed);
+    } while (this.running && changed);
 
-    if (this._running) {
+    if (this.running) {
       setTimeout(() => this.step(time + 1), 0);
     }
   }
 
   stop() {
-    if (this._running) {
+    if (this.running) {
       this._running = false;
       this.dispatchEvent(new Event('stop'));
     }
