@@ -47,7 +47,7 @@ class ControlStoreStore extends HTMLElement {
     }
 
     for (const instruction of cpnt.instructions) {
-      this.appendChild(newRow(instruction));
+      this.append(newRow(instruction));
     }
   }
 }

@@ -6,7 +6,7 @@ class MicroSequenceLogicConfig extends HTMLElement {
 
     const condList = new CondList(cpnt);
 
-    this.appendChild(condList);
+    this.append(condList);
   }
 }
 

@@ -22,7 +22,7 @@ class Gallery extends HTMLElement {
         item.addEventListener('add', ev =>
           this.dispatchEvent(new CustomEvent('add', { detail: ev.detail })));
 
-        this.appendChild(item);
+        this.append(item);
       }
     });
   }

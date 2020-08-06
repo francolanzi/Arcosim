@@ -10,12 +10,12 @@ class ControlStoreBits extends HTMLElement {
 
     this._input = new UintInput(bits, 1, 32, true);
     this._input.id = 'bits';
-    this.appendChild(this._input);
+    this.append(this._input);
 
     const label = document.createElement('label');
     label.textContent = 'bits';
     label.setAttribute('for', 'bits');
-    this.appendChild(label);
+    this.append(label);
   }
 }
 

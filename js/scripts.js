@@ -71,15 +71,15 @@ gallery.addEventListener('add', ev => {
     linkLayer.removeInput(ev.detail);
   });
 
-  document.body.appendChild(instance);
+  document.body.append(instance);
 });
 
-fixedLayer.appendChild(menu);
-fixedLayer.appendChild(gallery);
+fixedLayer.append(menu);
+fixedLayer.append(gallery);
 
-document.body.appendChild(linkLayer);
-document.body.appendChild(fixedLayer);
+document.body.append(linkLayer);
+document.body.append(fixedLayer);
 
-document.body.appendChild(modalLayer);
+document.body.append(modalLayer);
 
 document.ondragstart = () => false;

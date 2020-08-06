@@ -32,9 +32,9 @@ class ControlStoreRow extends HTMLElement {
     const addAfter = new SVGButton('img/modal/plus.svg');
     const remove = new SVGButton('img/modal/minus.svg');
 
-    this.appendChild(addBefore);
-    this.appendChild(remove);
-    this.appendChild(addAfter);
+    this.append(addBefore);
+    this.append(remove);
+    this.append(addAfter);
 
     addBefore.addEventListener('click', () =>
       this.dispatchEvent(new Event('addbefore')));

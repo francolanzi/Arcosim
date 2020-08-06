@@ -35,8 +35,8 @@ class Link {
     this._line.classList.add('cpnt-link');
     this._areas[0].classList.add('cpnt-link-area');
 
-    this._layer.svg.appendChild(this._line);
-    this._layer.svg.appendChild(this._areas[0]);
+    this._layer.svg.append(this._line);
+    this._layer.svg.append(this._areas[0]);
 
     this._areas[0].addEventListener('dblclick', ev => this.addCorner(ev));
 
@@ -106,8 +106,8 @@ class Link {
     corner.addEventListener('move', () => this.moveCorner(corner));
     corner.addEventListener('remove', () => this.removeCorner(corner));
 
-    document.body.appendChild(corner);
-    this._layer.svg.appendChild(area);
+    document.body.append(corner);
+    this._layer.svg.append(area);
 
     this._corners.splice(i, 0, corner);
     this._areas.splice(i, 0, area);

@@ -6,10 +6,10 @@ class RegistersConfig extends HTMLElement {
     super();
 
     const count = new Count(cpnt.count);
-    this.appendChild(count);
+    this.append(count);
 
     const list = new List(cpnt);
-    this.appendChild(list);
+    this.append(list);
 
     count.addEventListener('change', () => list.count = count.value);
   }

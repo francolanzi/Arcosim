@@ -6,10 +6,10 @@ class ControlStoreConfig extends HTMLElement {
     super();
 
     const bits = new Bits(cpnt.bits);
-    this.appendChild(bits);
+    this.append(bits);
 
     const store = new Store(cpnt);
-    this.appendChild(store);
+    this.append(store);
 
     bits.addEventListener('change', () => store.bits = bits.value);
   }

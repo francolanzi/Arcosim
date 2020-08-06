@@ -19,9 +19,9 @@ class MicroSequenceLogicCond extends HTMLElement {
 
     const remove = new SVGButton('img/modal/minus.svg');
 
-    this.appendChild(this._index);
-    this.appendChild(this._cond);
-    this.appendChild(remove);
+    this.append(this._index);
+    this.append(this._cond);
+    this.append(remove);
 
     remove.addEventListener('click', () =>
       this.dispatchEvent(new Event('remove')));

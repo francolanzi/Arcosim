@@ -9,9 +9,9 @@ class MicroInstructionRegisterConfig extends HTMLElement {
     const lsb = new Label('Less Significant Bit');
     const list = new List(cpnt);
 
-    this.appendChild(msb);
-    this.appendChild(list);
-    this.appendChild(lsb);
+    this.append(msb);
+    this.append(list);
+    this.append(lsb);
   }
 }
 

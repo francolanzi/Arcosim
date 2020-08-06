@@ -93,7 +93,7 @@ class Component extends HTMLElement {
 
     const image = new Image();
     image.src = this.constructor.imageFile;
-    this.appendChild(image);
+    this.append(image);
 
     image.addEventListener('mousedown', ev => this.drag(ev));
     image.addEventListener('dblclick', () => this.dispatchEvent(new Event('config')));
@@ -185,7 +185,7 @@ class Component extends HTMLElement {
     const input = new Input(this, name, x, y);
 
     this._inputs.set(input.id, input);
-    this.appendChild(input);
+    this.append(input);
 
     input.show = this.showIO;
 
@@ -204,7 +204,7 @@ class Component extends HTMLElement {
     const output = new Output(this, name, x, y);
 
     this._outputs.set(output.id, output);
-    this.appendChild(output);
+    this.append(output);
 
     output.show = this.showIO;
 

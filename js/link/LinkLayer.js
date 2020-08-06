@@ -12,7 +12,7 @@ class LinkLayer extends HTMLElement {
     this._outputLinks = new Map();
 
     this._svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    this.appendChild(this.svg);
+    this.append(this.svg);
 
     new ResizeObserver(() => this.resize()).observe(this);
     window.addEventListener('resize', () => this.resize());

@@ -10,12 +10,12 @@ class ClockSubcycles extends HTMLElement {
 
     this._input = new UintInput(subcycles, 1, 8, true);
     this._input.id = 'subcycles';
-    this.appendChild(this._input);
+    this.append(this._input);
 
     const label = document.createElement('label');
     label.textContent = 'subciclos';
     label.setAttribute('for', 'subcycles');
-    this.appendChild(label);
+    this.append(label);
   }
 }
 

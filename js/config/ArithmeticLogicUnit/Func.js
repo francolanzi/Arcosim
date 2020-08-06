@@ -19,9 +19,9 @@ class ArithmeticLogicUnitFunc extends HTMLElement {
 
     const remove = new SVGButton('img/modal/minus.svg');
 
-    this.appendChild(this._index);
-    this.appendChild(this._func);
-    this.appendChild(remove);
+    this.append(this._index);
+    this.append(this._func);
+    this.append(remove);
 
     remove.addEventListener('click', () =>
       this.dispatchEvent(new Event('remove')));

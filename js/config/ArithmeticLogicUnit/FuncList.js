@@ -8,7 +8,7 @@ class ArithmeticLogicUnitFuncList extends HTMLElement {
     const supported = cpnt.constructor.supported;
 
     const add = new SVGButton('img/modal/plus.svg');
-    this.appendChild(add);
+    this.append(add);
 
     function addFunc(index, value) {
       const func = new Func(index, value, supported);

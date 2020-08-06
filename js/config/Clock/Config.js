@@ -5,7 +5,7 @@ class ClockConfig extends HTMLElement {
     super();
 
     const subcycles = new Subcycles(cpnt.subcycles);
-    this.appendChild(subcycles);
+    this.append(subcycles);
 
     subcycles.addEventListener('change', () => {
       while (subcycles.value > cpnt.subcycles) {

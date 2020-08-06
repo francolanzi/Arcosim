@@ -6,7 +6,7 @@ class ArithmeticLogicUnitConfig extends HTMLElement {
 
     const funcList = new FuncList(cpnt);
 
-    this.appendChild(funcList);
+    this.append(funcList);
   }
 }
 

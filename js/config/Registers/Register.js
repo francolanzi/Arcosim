@@ -16,7 +16,7 @@ class RegistersRegister extends HTMLElement {
 
     this._input = new UintInput(value, 0, 0xFFFFFFFF, true);
     this._input.id = `register${index}`;
-    this.appendChild(this._input);
+    this.append(this._input);
 
     const label = document.createElement('label');
     label.textContent = `Registro ${index} = `;

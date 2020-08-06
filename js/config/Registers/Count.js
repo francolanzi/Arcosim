@@ -10,12 +10,12 @@ class RegistersCount extends HTMLElement {
 
     this._input = new UintInput(count, 1, 32, true);
     this._input.id = 'count';
-    this.appendChild(this._input);
+    this.append(this._input);
 
     const label = document.createElement('label');
     label.textContent = 'registros';
     label.setAttribute('for', this._input.id);
-    this.appendChild(label);
+    this.append(label);
   }
 }
 

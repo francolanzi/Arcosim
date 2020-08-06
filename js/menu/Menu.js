@@ -20,7 +20,7 @@ class Menu extends HTMLElement {
   addButton(name, button) {
     if (!this._buttons.has(name)) {
       this._buttons.set(name, button);
-      this.appendChild(button);
+      this.append(button);
     }
     return this.getButton(name);
   }

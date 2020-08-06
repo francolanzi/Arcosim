@@ -27,17 +27,17 @@ class CustomSelect extends HTMLElement {
     this.tabIndex = 0;
 
     this._text = document.createElement('span');
-    this.appendChild(this._text);
+    this.append(this._text);
 
     const dropdown = document.createElement('div');
-    this.appendChild(dropdown);
+    this.append(dropdown);
 
     this._options = new Map();
 
     options.forEach((text, value) => {
       const option = document.createElement('span');
       option.textContent = text;
-      dropdown.appendChild(option);
+      dropdown.append(option);
       this._options.set(value, option);
       option.addEventListener('click', () => {
         this.value = value;

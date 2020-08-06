@@ -6,20 +6,20 @@ class ModalLayer extends HTMLElement {
 
     const modal = document.createElement('div');
     modal.classList.add('modal');
-    this.appendChild(modal);
+    this.append(modal);
 
     this._title = document.createElement('div');
     this._title.classList.add('modal-title');
-    modal.appendChild(this._title);
+    modal.append(this._title);
 
     this._content = document.createElement('div');
     this._content.classList.add('modal-content');
-    modal.appendChild(this._content);
+    modal.append(this._content);
 
     this._close = document.createElement('span');
     this._close.classList.add('modal-close');
     this._close.innerHTML = fs.readFileSync('img/modal/times.svg');
-    modal.appendChild(this._close);
+    modal.append(this._close);
 
     this._close.addEventListener('click', () =>
       this.classList.remove('show'));
@@ -34,7 +34,7 @@ class ModalLayer extends HTMLElement {
 
   show(title, content) {
     this._title.textContent = title;
-    this._content.appendChild(content);
+    this._content.append(content);
     this.classList.add('show');
   }
 }
