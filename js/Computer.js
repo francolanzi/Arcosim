@@ -12,8 +12,7 @@ class Computer {
     console.log(`${key} added`);
     this._cpnts.set(key, cpnt);
 
-    cpnt.addEventListener('stop', () =>
-      this._running = false);
+    cpnt.addEventListener('stop', () => this.stop());
 
     return cpnt;
   }
@@ -31,8 +30,10 @@ class Computer {
   }
 
   run() {
-    this._running = true;
-    this.step(0);
+    if (!this._running) {
+      this._running = true;
+      this.step(0);
+    }
   }
 
   step(time) {
@@ -48,6 +49,12 @@ class Computer {
 
     if (this._running) {
       setTimeout(() => this.step(time + 1), 0);
+    }
+  }
+
+  stop() {
+    if (this._running) {
+      this._running = false;
     }
   }
 
