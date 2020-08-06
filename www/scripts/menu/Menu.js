@@ -1,8 +1,8 @@
-const TrashButton = require('./items/TrashButton');
-const LinkButton = require('./items/LinkButton');
-const CpntButton = require('./items/CpntButton');
-const RunButton = require('./items/RunButton');
-const ResetButton = require('./items/ResetButton');
+const TrashButton = require('./buttons/TrashButton');
+const LinkButton = require('./buttons/LinkButton');
+const CpntButton = require('./buttons/CpntButton');
+const RunButton = require('./buttons/RunButton');
+const ResetButton = require('./buttons/ResetButton');
 
 class Menu extends HTMLElement {
   constructor() {
