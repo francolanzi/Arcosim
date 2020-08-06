@@ -10,23 +10,6 @@ class Input extends IO {
     return this._linked;
   }
 
-  get value() {
-    return super.value;
-  }
-
-  set value(value) {
-    if (super.value !== value) {
-      super.value = value;
-      this._changed = true;
-    }
-  }
-
-  get changed() {
-    const changed = this._changed;
-    this._changed = false;
-    return changed;
-  }
-
   constructor(cpnt, name, x, y) {
     super(cpnt, name, x, y);
 

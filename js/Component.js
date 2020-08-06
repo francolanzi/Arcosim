@@ -104,6 +104,8 @@ class Component extends HTMLElement {
     let changed = false;
     this._inputs.forEach(input =>
       changed = changed || input.changed);
+    this._outputs.forEach(output =>
+      changed = changed || output.changed);
     return changed;
   }
 

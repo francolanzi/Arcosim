@@ -17,8 +17,17 @@ class IO extends HTMLElement {
   }
 
   set value(value) {
-    this._value = value;
+    if (this._value !== value) {
+      this._value = value;
+      this._changed = true;
+    }
     this.title = `${this._name} = ${value}`;
+  }
+
+  get changed() {
+    const changed = this._changed;
+    this._changed = false;
+    return changed;
   }
 
   get show() {
@@ -67,6 +76,7 @@ class IO extends HTMLElement {
     }
 
     this._value = 0;
+    this._changed = true;
 
     this._cpnt = cpnt;
     this.name = name;
