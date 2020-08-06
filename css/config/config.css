@@ -24,3 +24,7 @@
 @import 'Registers/Count.css';
 @import 'Registers/List.css';
 @import 'Registers/Register.css';
+
+@import 'Shifter/Config.css';
+@import 'Shifter/Func.css';
+@import 'Shifter/List.css';
