@@ -1,4 +1,4 @@
-cpnt-msl-cond-list {
+cpnt-msl-list {
   width: min-content;
   margin: 0;
   padding: 0;
@@ -8,7 +8,7 @@ cpnt-msl-cond-list {
   align-items: center;
 }
 
-cpnt-msl-cond-list > svg-button {
+cpnt-msl-list > svg-button {
   align-self: flex-end;
   margin: 0.1rem;
 }

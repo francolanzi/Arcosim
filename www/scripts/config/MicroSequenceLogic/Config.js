@@ -1,12 +1,12 @@
-const CondList = require('./CondList');
+const List = require('./List');
 
 class MicroSequenceLogicConfig extends HTMLElement {
   constructor(cpnt) {
     super();
 
-    const condList = new CondList(cpnt);
+    const list = new List(cpnt);
 
-    this.append(condList);
+    this.append(list);
   }
 }
 

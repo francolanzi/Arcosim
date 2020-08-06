@@ -1,7 +1,7 @@
 const Cond = require('./Cond');
 const SVGButton = require('../SVGButton');
 
-class MicroSequenceLogicCondList extends HTMLElement {
+class MicroSequenceLogicList extends HTMLElement {
   constructor(cpnt) {
     super();
 
@@ -41,6 +41,6 @@ class MicroSequenceLogicCondList extends HTMLElement {
   }
 }
 
-customElements.define('cpnt-msl-cond-list', MicroSequenceLogicCondList);
+customElements.define('cpnt-msl-list', MicroSequenceLogicList);
 
-module.exports = MicroSequenceLogicCondList;
+module.exports = MicroSequenceLogicList;
