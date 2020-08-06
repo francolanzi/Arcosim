@@ -27,6 +27,7 @@ class RunButton extends MenuButton {
         } else {
           this.computer.run();
         }
+        this.active = this.computer.running;
       }
     });
   }
