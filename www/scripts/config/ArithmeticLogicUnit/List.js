@@ -1,7 +1,7 @@
 const Func = require('./Func');
 const SVGButton = require('../SVGButton');
 
-class ArithmeticLogicUnitFuncList extends HTMLElement {
+class ArithmeticLogicUnitList extends HTMLElement {
   constructor(cpnt) {
     super();
 
@@ -41,6 +41,6 @@ class ArithmeticLogicUnitFuncList extends HTMLElement {
   }
 }
 
-customElements.define('cpnt-alu-func-list', ArithmeticLogicUnitFuncList);
+customElements.define('cpnt-alu-list', ArithmeticLogicUnitList);
 
-module.exports = ArithmeticLogicUnitFuncList;
+module.exports = ArithmeticLogicUnitList;

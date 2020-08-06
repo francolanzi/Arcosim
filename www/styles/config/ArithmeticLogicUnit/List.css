@@ -1,4 +1,4 @@
-cpnt-alu-func-list {
+cpnt-alu-list {
   width: min-content;
   margin: 0;
   padding: 0;
@@ -8,7 +8,7 @@ cpnt-alu-func-list {
   align-items: center;
 }
 
-cpnt-alu-func-list > svg-button {
+cpnt-alu-list > svg-button {
   align-self: flex-end;
   margin: 0.1rem;
 }

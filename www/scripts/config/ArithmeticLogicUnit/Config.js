@@ -1,12 +1,12 @@
-const FuncList = require('./FuncList');
+const List = require('./List');
 
 class ArithmeticLogicUnitConfig extends HTMLElement {
   constructor(cpnt) {
     super();
 
-    const funcList = new FuncList(cpnt);
+    const list = new List(cpnt);
 
-    this.append(funcList);
+    this.append(list);
   }
 }
 
