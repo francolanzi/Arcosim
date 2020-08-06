@@ -1,0 +1,25 @@
+@import 'styles/config/config.css';
+@import 'styles/Component.css';
+@import 'styles/CpntItem.css';
+@import 'styles/io/IO.css';
+@import 'styles/io/Input.css';
+@import 'styles/io/Output.css';
+@import 'styles/menu/Menu.css';
+@import 'styles/menu/MenuButton.css';
+@import 'styles/FixedLayer.css';
+@import 'styles/Gallery.css';
+@import 'styles/ModalLayer.css';
+@import 'styles/link/Link.css';
+@import 'styles/link/LinkCorner.css';
+@import 'styles/link/LinkLayer.css';
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: whitesmoke;
+}
+
+* {
+  user-select: none;
+}
