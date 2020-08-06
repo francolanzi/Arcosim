@@ -1,5 +1,7 @@
-class Computer {
+class Computer extends EventTarget {
   constructor() {
+    super();
+
     this._cpnts = new Map();
     this._running = false;
   }
@@ -32,6 +34,7 @@ class Computer {
   run() {
     if (!this._running) {
       this._running = true;
+      this.dispatchEvent(new Event('run'));
       this.step(0);
     }
   }
@@ -55,6 +58,7 @@ class Computer {
   stop() {
     if (this._running) {
       this._running = false;
+      this.dispatchEvent(new Event('stop'));
     }
   }
 
