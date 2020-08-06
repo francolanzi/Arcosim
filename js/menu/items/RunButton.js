@@ -9,11 +9,26 @@ class RunButton extends MenuButton {
     return 'img/menu/run.svg';
   }
 
+  get computer() {
+    return this._computer;
+  }
+
+  set computer(computer) {
+    this._computer = computer;
+  }
+
   constructor() {
     super();
 
-    this.addEventListener('click', () =>
-      this.dispatchEvent(new Event('run')));
+    this.addEventListener('click', () => {
+      if (this.computer) {
+        if (this.computer.running) {
+          this.computer.stop();
+        } else {
+          this.computer.run();
+        }
+      }
+    });
   }
 }
 
