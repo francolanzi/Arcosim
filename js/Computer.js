@@ -44,7 +44,7 @@ class Computer {
       do {
         changed = false;
         this._cpnts.forEach(cpnt =>
-          changed = changed || cpnt.run(time));
+          changed = cpnt.run(time) || changed);
       } while (running && changed);
       time++;
     } while(running);
