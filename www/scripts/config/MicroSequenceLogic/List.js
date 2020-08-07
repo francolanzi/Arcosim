@@ -10,17 +10,28 @@ class MicroSequenceLogicList extends HTMLElement {
     const add = new SVGButton('www/images/modal/plus.svg');
     this.append(add);
 
+    const indexes = [];
+
     function addCond(index, cond) {
       const elem = new Cond(index, cond, supported);
       add.insertAdjacentElement('beforebegin', elem);
 
+      indexes.push(index);
+
       elem.addEventListener('change', () => {
+        if (indexes.indexOf(elem.index) >= 0) {
+          elem.index = indexes[elem.position];
+        } else if (elem.index !== indexes[elem.position]) {
+          cpnt.removeCondition(indexes[elem.position]);
+          indexes[elem.position] = elem.index;
+        }
         cpnt.setCondition(elem.index, elem.cond);
       });
 
       elem.addEventListener('remove', () => {
         if (cpnt.conditionCount > 1) {
           cpnt.removeCondition(elem.index);
+          indexes.splice(elem.position, 1);
           elem.remove();
         }
       });
