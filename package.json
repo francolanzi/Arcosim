@@ -1,5 +1,11 @@
 {
   "name": "arcosim",
+  "version": "1.0.0-beta",
+  "description": "Simulador de Arquitecturas de Computadoras",
+  "author": {
+    "name": "Franco Lanzillotta",
+    "email": "flanzi@fi.mdp.edu.ar"
+  },
   "main": "index.js",
   "scripts": {
     "start": "electron ."
