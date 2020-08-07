@@ -2,7 +2,7 @@ const { app, BrowserWindow } = require('electron');
 
 app.whenReady().then(() => {
   const win = new BrowserWindow({
-    icon: 'www/img/logo.ico',
+    icon: 'www/images/logo.ico',
     webPreferences: {
       nodeIntegration: true,
     },
