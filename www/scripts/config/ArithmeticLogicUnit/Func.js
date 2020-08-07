@@ -3,8 +3,17 @@ const SVGButton = require('../SVGButton');
 const CustomSelect = require('../CustomSelect');
 
 class ArithmeticLogicUnitFunc extends HTMLElement {
+  get position() {
+    const childs = this.parentNode.childNodes;
+    return Array.prototype.indexOf.call(childs, this);
+  }
+
   get index() {
     return parseInt(this._index.value);
+  }
+
+  set index(index) {
+    this._index.value = index;
   }
 
   get func() {

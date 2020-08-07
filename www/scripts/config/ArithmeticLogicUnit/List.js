@@ -10,17 +10,28 @@ class ArithmeticLogicUnitList extends HTMLElement {
     const add = new SVGButton('www/images/modal/plus.svg');
     this.append(add);
 
+    const indexes = [];
+
     function addFunc(index, func) {
       const elem = new Func(index, func, supported);
       add.insertAdjacentElement('beforebegin', elem);
 
+      indexes.push(index);
+
       elem.addEventListener('change', () => {
+        if (indexes.indexOf(elem.index) >= 0) {
+          elem.index = indexes[elem.position];
+        } else if (elem.index !== indexes[elem.position]) {
+          cpnt.removeFunction(indexes[elem.position]);
+          indexes[elem.position] = elem.index;
+        }
         cpnt.setFunction(elem.index, elem.func);
       });
 
       elem.addEventListener('remove', () => {
         if (cpnt.functionCount > 1) {
           cpnt.removeFunction(index);
+          indexes.splice(elem.position, 1);
           elem.remove();
         }
       });
