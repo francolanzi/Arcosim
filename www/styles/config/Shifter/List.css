@@ -8,7 +8,7 @@ cpnt-shifter-list {
   align-items: center;
 }
 
-cpnt-shifter-list > svg-button {
+cpnt-shifter-list > img-button {
   align-self: flex-end;
   margin: 0.1rem;
 }

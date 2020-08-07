@@ -1,6 +1,6 @@
 const MaskName = require('./MaskName');
 const UintInput = require('../UintInput');
-const SVGButton = require('../SVGButton');
+const ImgButton = require('../ImgButton');
 
 class MicroInstructionRegisterMask extends HTMLElement {
   get position() {
@@ -22,9 +22,9 @@ class MicroInstructionRegisterMask extends HTMLElement {
     this._maskName = new MaskName(name);
     this._maskSize = new UintInput(size, 1, 32, true);
 
-    const addBefore = new SVGButton('www/images/modal/plus.svg');
-    const addAfter = new SVGButton('www/images/modal/plus.svg');
-    const remove = new SVGButton('www/images/modal/minus.svg');
+    const addBefore = new ImgButton('images/modal/plus.svg');
+    const addAfter = new ImgButton('images/modal/plus.svg');
+    const remove = new ImgButton('images/modal/minus.svg');
 
     this.append(addBefore);
     this.append(this._maskName);

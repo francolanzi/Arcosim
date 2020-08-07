@@ -1,5 +1,5 @@
 const Func = require('./Func');
-const SVGButton = require('../SVGButton');
+const ImgButton = require('../ImgButton');
 
 class ShifterList extends HTMLElement {
   constructor(cpnt) {
@@ -7,7 +7,7 @@ class ShifterList extends HTMLElement {
 
     const supported = cpnt.constructor.supported;
 
-    const add = new SVGButton('www/images/modal/plus.svg');
+    const add = new ImgButton('images/modal/plus.svg');
     this.append(add);
 
     const indexes = [];

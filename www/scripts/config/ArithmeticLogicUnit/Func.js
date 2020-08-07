@@ -1,5 +1,5 @@
 const UintInput = require('../UintInput');
-const SVGButton = require('../SVGButton');
+const ImgButton = require('../ImgButton');
 const CustomSelect = require('../CustomSelect');
 
 class ArithmeticLogicUnitFunc extends HTMLElement {
@@ -26,7 +26,7 @@ class ArithmeticLogicUnitFunc extends HTMLElement {
     this._index = new UintInput(index, 0, 0xFFFFFFFF, false);
     this._func = new CustomSelect(func, supported);
 
-    const remove = new SVGButton('www/images/modal/minus.svg');
+    const remove = new ImgButton('images/modal/minus.svg');
 
     this.append(this._index);
     this.append(this._func);

@@ -1,5 +1,5 @@
 const UintInput = require('../UintInput');
-const SVGButton = require('../SVGButton');
+const ImgButton = require('../ImgButton');
 const CustomSelect = require('../CustomSelect');
 
 class ShifterFunc extends HTMLElement {
@@ -31,7 +31,7 @@ class ShifterFunc extends HTMLElement {
     this._func = new CustomSelect(func, supported);
     this._value = new UintInput(value, 0, 32, true);
 
-    const remove = new SVGButton('www/images/modal/minus.svg');
+    const remove = new ImgButton('images/modal/minus.svg');
 
     this.append(this._index);
     this.append(this._func);

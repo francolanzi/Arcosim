@@ -1,5 +1,5 @@
 const Cond = require('./Cond');
-const SVGButton = require('../SVGButton');
+const ImgButton = require('../ImgButton');
 
 class MicroSequenceLogicList extends HTMLElement {
   constructor(cpnt) {
@@ -7,7 +7,7 @@ class MicroSequenceLogicList extends HTMLElement {
 
     const supported = cpnt.constructor.supported;
 
-    const add = new SVGButton('www/images/modal/plus.svg');
+    const add = new ImgButton('images/modal/plus.svg');
     this.append(add);
 
     const indexes = [];
