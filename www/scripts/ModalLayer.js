@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 class ModalLayer extends HTMLElement {
   constructor() {
     super();
@@ -16,9 +14,9 @@ class ModalLayer extends HTMLElement {
     this._content.classList.add('modal-content');
     modal.append(this._content);
 
-    this._close = document.createElement('span');
+    this._close = document.createElement('img');
     this._close.classList.add('modal-close');
-    this._close.innerHTML = fs.readFileSync('www/images/modal/times.svg');
+    this._close.src = 'images/modal/times.svg';
     modal.append(this._close);
 
     this._close.addEventListener('click', () =>

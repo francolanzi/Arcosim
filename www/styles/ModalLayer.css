@@ -52,20 +52,16 @@ modal-layer .modal .modal-content {
 }
 
 modal-layer .modal .modal-close {
+  width: 1rem;
+  height: 1rem;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   position: absolute;
   top: 0.5rem;
   right: 0.75rem;
-  color: white;
-  line-height: 0;
   cursor: pointer;
-}
-
-modal-layer .modal .modal-close svg {
-  width: 1rem;
-  height: 1rem;
+  filter: brightness(0) invert(1);
 }
 
 modal-layer input {
