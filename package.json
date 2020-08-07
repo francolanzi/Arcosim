@@ -14,15 +14,14 @@
     "dist": "electron-builder"
   },
   "devDependencies": {
-    "electron": "^9.1.2",
+    "electron": "^9.2.0",
     "electron-builder": "^22.8.0",
-    "eslint": "^7.5.0",
+    "eslint": "^7.6.0",
     "eslint-config-prettier": "^6.11.0",
     "prettier": "^2.0.5"
   },
   "build": {
     "appId": "arcosim-1.0.0-beta",
     "productName": "ArCoSim"
-  },
-  "dependencies": {}
+  }
 }
