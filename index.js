@@ -3,7 +3,7 @@ const path = require('path');
 
 app.whenReady().then(() => {
   const win = new BrowserWindow({
-    icon: path.resolve(__dirname, 'build/icon.ico'),
+    icon: path.resolve(__dirname, 'www/images/favicon.ico'),
     webPreferences: {
       nodeIntegration: true,
     },
