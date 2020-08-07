@@ -68,7 +68,12 @@ class Shifter extends Component {
   }
 
   getFunction(index) {
-    return { ...this._functions.get(index) };
+    const func = this._functions.get(index);
+    if (func !== undefined) {
+      return { ...func };
+    } else {
+      return undefined;
+    }
   }
 
   setFunction(index, func, value) {

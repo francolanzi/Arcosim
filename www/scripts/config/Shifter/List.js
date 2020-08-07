@@ -43,7 +43,7 @@ class ShifterList extends HTMLElement {
         index++;
       }
       cpnt.setFunction(index, 0, 0);
-      addFunc(index, 0, 0);
+      addFunc(index, { func: 0, value: 0 });
     });
 
     for (const func of cpnt.functions) {
