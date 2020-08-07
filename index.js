@@ -1,8 +1,9 @@
 const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
 app.whenReady().then(() => {
   const win = new BrowserWindow({
-    icon: 'www/images/logo.ico',
+    icon: path.resolve(__dirname, 'www/images/logo.ico'),
     webPreferences: {
       nodeIntegration: true,
     },
@@ -10,6 +11,6 @@ app.whenReady().then(() => {
   win.setMenuBarVisibility(false);
   win.setMenu(null);
   win.maximize();
-  win.loadFile('www/index.html');
+  win.loadFile(path.resolve(__dirname, 'www/index.html'));
   //win.webContents.openDevTools();
 });
