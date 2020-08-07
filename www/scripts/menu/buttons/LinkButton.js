@@ -6,7 +6,7 @@ class LinkButton extends MenuButton {
   }
 
   static get icon() {
-    return 'www/images/menu/link.svg';
+    return 'images/menu/link.svg';
   }
 
   get show() {

@@ -6,7 +6,7 @@ class RunButton extends MenuButton {
   }
 
   static get icon() {
-    return 'www/images/menu/run.svg';
+    return 'images/menu/run.svg';
   }
 
   get computer() {

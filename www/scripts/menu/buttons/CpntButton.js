@@ -6,7 +6,7 @@ class CpntButton extends MenuButton {
   }
 
   static get icon() {
-    return 'www/images/menu/cpnt.svg';
+    return 'images/menu/cpnt.svg';
   }
 
   get gallery() {

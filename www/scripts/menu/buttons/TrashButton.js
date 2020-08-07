@@ -6,7 +6,7 @@ class TrashButton extends MenuButton {
   }
 
   static get icon() {
-    return 'www/images/menu/trash.svg';
+    return 'images/menu/trash.svg';
   }
 }
 

@@ -8,12 +8,12 @@
   cursor: pointer;
   opacity: 0.8;
   pointer-events: all;
-  color: white;
 }
 
-.menu-button svg {
+.menu-button img {
   height: 2rem;
   width: 2rem;
+  filter: brightness(0) invert(1);
 }
 
 .menu-button:hover {

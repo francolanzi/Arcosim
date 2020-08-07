@@ -6,7 +6,7 @@ class ResetButton extends MenuButton {
   }
 
   static get icon() {
-    return 'www/images/menu/reset.svg';
+    return 'images/menu/reset.svg';
   }
 
   get computer() {
