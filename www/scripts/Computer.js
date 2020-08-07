@@ -8,6 +8,7 @@ class Computer extends EventTarget {
 
     this._cpnts = new Map();
     this._running = false;
+    this._time = 0;
   }
 
   addCpnt(cpnt) {
@@ -39,23 +40,25 @@ class Computer extends EventTarget {
     if (!this.running) {
       this._running = true;
       this.dispatchEvent(new Event('run'));
-      this.step(0);
+      this.step();
     }
   }
 
-  step(time) {
-    console.log(`Time = ${time}`);
+  step() {
+    console.log(`Time = ${this._time}`);
 
     let changed = false;
 
     do {
       changed = false;
       this._cpnts.forEach(cpnt =>
-        changed = cpnt.run(time) || changed);
+        changed = cpnt.run(this._time) || changed);
     } while (this.running && changed);
 
+    this._time++;
+
     if (this.running) {
-      setTimeout(() => this.step(time + 1), 0);
+      setTimeout(() => this.step(), 0);
     }
   }
 
@@ -68,6 +71,7 @@ class Computer extends EventTarget {
 
   reset() {
     if (!this.running) {
+      this._time = 0;
       this._cpnts.forEach(cpnt => cpnt.reset());
     }
   }
