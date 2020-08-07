@@ -1,11 +1,6 @@
-cpnt-alu-list {
+cpnt-mir-config {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-cpnt-alu-list > img-button {
-  align-self: flex-end;
-  margin: 0.1rem;
 }

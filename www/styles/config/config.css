@@ -6,11 +6,15 @@
 @import 'ArithmeticLogicUnit/Func.css';
 @import 'ArithmeticLogicUnit/List.css';
 
+@import 'Clock/Config.css';
 @import 'Clock/Subcycles.css';
 
+@import 'ControlStore/Config.css';
 @import 'ControlStore/Bits.css';
 @import 'ControlStore/Row.css';
+@import 'ControlStore/Store.css';
 
+@import 'MicroInstructionRegister/Config.css';
 @import 'MicroInstructionRegister/Label.css';
 @import 'MicroInstructionRegister/List.css';
 @import 'MicroInstructionRegister/Mask.css';
