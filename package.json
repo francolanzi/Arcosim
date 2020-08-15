@@ -22,6 +22,11 @@
   },
   "build": {
     "appId": "arcosim-1.0.0-beta",
-    "productName": "ArCoSim"
+    "productName": "ArCoSim",
+    "files": [
+      "www",
+      "index.js",
+      "package.json"
+    ]
   }
 }
