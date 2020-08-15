@@ -53,7 +53,7 @@ class Computer extends EventTarget {
       changed = false;
       this._cpnts.forEach(cpnt =>
         changed = cpnt.run(this._time) || changed);
-    } while (this.running && changed);
+    } while (changed);
 
     this._time++;
 

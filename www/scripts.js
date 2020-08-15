@@ -16,6 +16,7 @@ const fixedLayer = new FixedLayer();
 const modalLayer = new ModalLayer();
 
 menu.getButton('run').computer = computer;
+menu.getButton('step').computer = computer;
 menu.getButton('reset').computer = computer;
 
 menu.getButton('cpnt').gallery = gallery;
