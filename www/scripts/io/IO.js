@@ -30,14 +30,6 @@ class IO extends HTMLElement {
     return changed;
   }
 
-  get show() {
-    return this.classList.contains('show');
-  }
-
-  set show(show) {
-    this.classList.toggle('show', show);
-  }
-
   get center() {
     const x = this._center.x + this._cpnt.left;
     const y = this._center.y + this._cpnt.top;

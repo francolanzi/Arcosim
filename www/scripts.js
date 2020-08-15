@@ -48,9 +48,6 @@ gallery.addEventListener('add', ev => {
     computer.removeCpnt(instance.constructor.type, instance.id);
   });
 
-  instance.showIO = menu.getButton('link').show;
-  menu.getButton('link').addEventListener('show', ev => instance.showIO = ev.detail);
-
   instance.addEventListener('link', ev => {
     const input = ev.detail.input;
     const output = ev.detail.output;

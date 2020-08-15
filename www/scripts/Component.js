@@ -35,16 +35,6 @@ class Component extends HTMLElement {
     this._trash = trash;
   }
 
-  get showIO() {
-    return this._showIO;
-  }
-
-  set showIO(show) {
-    this._showIO = show;
-    this._inputs.forEach(input => input.show = show);
-    this._outputs.forEach(input => input.show = show);
-  }
-
   get inputs() {
     return this._inputs.values();
   }
@@ -80,8 +70,6 @@ class Component extends HTMLElement {
 
     this._top = top;
     this._left = left;
-
-    this._showIO = false;
 
     this._inputs = new Map();
     this._outputs = new Map();
@@ -129,9 +117,6 @@ class Component extends HTMLElement {
 
     this.classList.add('dragging');
 
-    this._inputs.forEach(input => input.show = false);
-    this._outputs.forEach(input => input.show = false);
-
     this.dispatchEvent(new Event('drag'));
   }
 
@@ -154,9 +139,6 @@ class Component extends HTMLElement {
     document.removeEventListener('mouseup', this._drop);
 
     this.classList.remove('dragging');
-
-    this._inputs.forEach(input => input.show = this._showIO);
-    this._outputs.forEach(input => input.show = this._showIO);
 
     this._trash.active = false;
 
@@ -187,8 +169,6 @@ class Component extends HTMLElement {
     this._inputs.set(input.id, input);
     this.append(input);
 
-    input.show = this.showIO;
-
     input.addEventListener('link', ev =>
       this.dispatchEvent(new CustomEvent('link', {
         detail: { input, output: ev.detail },
@@ -205,8 +185,6 @@ class Component extends HTMLElement {
 
     this._outputs.set(output.id, output);
     this.append(output);
-
-    output.show = this.showIO;
 
     return output;
   }

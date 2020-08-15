@@ -9,7 +9,6 @@
   height: 10px;
   box-sizing: border-box;
   position: absolute;
-  visibility: hidden;
 }
 
 .io:hover {
@@ -18,8 +17,4 @@
 
 .io:focus {
   outline: none;
-}
-
-.io.show {
-  visibility: visible;
 }
