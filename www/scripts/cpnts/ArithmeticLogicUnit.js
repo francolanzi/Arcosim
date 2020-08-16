@@ -2,16 +2,12 @@ const Component = require('../Component');
 const Config = require('../config/ArithmeticLogicUnit');
 
 class ArithmeticLogicUnit extends Component {
-  static get imageFile() {
-    return 'images/cpnt/ArithmeticLogicUnit.svg';
-  }
-
-  static get imageWidth() {
-    return 81;
-  }
-
-  static get imageHeight() {
-    return 45;
+  static get svg() {
+    return {
+      src: 'images/cpnt/ArithmeticLogicUnit.svg',
+      width: 81,
+      height: 45,
+    };
   }
 
   get config() {

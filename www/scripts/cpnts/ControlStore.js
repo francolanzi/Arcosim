@@ -2,16 +2,12 @@ const Component = require('../Component');
 const Config = require('../config/ControlStore');
 
 class ControlStore extends Component {
-  static get imageFile() {
-    return 'images/cpnt/ControlStore.svg';
-  }
-
-  static get imageWidth() {
-    return 329;
-  }
-
-  static get imageHeight() {
-    return 64;
+  static get svg() {
+    return {
+      src: 'images/cpnt/ControlStore.svg',
+      width: 329,
+      height: 64,
+    };
   }
 
   get config() {

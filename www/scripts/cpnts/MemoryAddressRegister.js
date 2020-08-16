@@ -1,16 +1,12 @@
 const Component = require('../Component');
 
 class MemoryAddressRegister extends Component {
-  static get imageFile() {
-    return 'images/cpnt/MemoryAddressRegister.svg';
-  }
-
-  static get imageWidth() {
-    return 47;
-  }
-
-  static get imageHeight() {
-    return 16;
+  static get svg() {
+    return {
+      src: 'images/cpnt/MemoryAddressRegister.svg',
+      width: 47,
+      height: 16,
+    };
   }
 
   constructor(top, left) {

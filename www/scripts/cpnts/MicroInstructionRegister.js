@@ -2,16 +2,12 @@ const Component = require('../Component');
 const Config = require('../config/MicroInstructionRegister');
 
 class MicroInstructionRegister extends Component {
-  static get imageFile() {
-    return 'images/cpnt/MicroInstructionRegister.svg';
-  }
-
-  static get imageWidth() {
-    return 330;
-  }
-
-  static get imageHeight() {
-    return 43;
+  static get svg() {
+    return {
+      src: 'images/cpnt/MicroInstructionRegister.svg',
+      width: 330,
+      height: 43,
+    };
   }
 
   get config() {

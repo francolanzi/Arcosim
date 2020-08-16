@@ -2,16 +2,12 @@ const Component = require('../Component');
 const Config = require('../config/Registers');
 
 class Registers extends Component {
-  static get imageFile() {
-    return 'images/cpnt/Registers.svg';
-  }
-
-  static get imageWidth() {
-    return 94;
-  }
-
-  static get imageHeight() {
-    return 90;
+  static get svg() {
+    return {
+      src: 'images/cpnt/Registers.svg',
+      width: 94,
+      height: 90,
+    };
   }
 
   get config() {

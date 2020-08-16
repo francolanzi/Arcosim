@@ -1,16 +1,12 @@
 const Component = require('../Component');
 
 class Latch extends Component {
-  static get imageFile() {
-    return 'images/cpnt/Latch.svg';
-  }
-
-  static get imageWidth() {
-    return 64;
-  }
-
-  static get imageHeight() {
-    return 20;
+  static get svg() {
+    return {
+      src: 'images/cpnt/Latch.svg',
+      width: 64,
+      height: 20,
+    };
   }
 
   constructor(top, left) {

@@ -1,16 +1,12 @@
 const Component = require('../Component');
 
 class Multiplexer extends Component {
-  static get imageFile() {
-    return 'images/cpnt/Multiplexer.svg';
-  }
-
-  static get imageWidth() {
-    return 62;
-  }
-
-  static get imageHeight() {
-    return 23;
+  static get svg() {
+    return {
+      src: 'images/cpnt/Multiplexer.svg',
+      width: 62,
+      height: 23,
+    };
   }
 
   constructor(top, left) {

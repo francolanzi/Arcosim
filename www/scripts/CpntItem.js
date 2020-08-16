@@ -1,13 +1,14 @@
 class CpntItem extends HTMLElement {
-  constructor(Cpnt, imageFile, imageWidth, imageHeight) {
+  constructor(Cpnt, svg) {
     super();
 
     const image = new Image();
-    image.src = imageFile;
-    this.append(image);
 
-    image.width = imageWidth;
-    image.height = imageHeight;
+    image.src = svg.src;
+    image.width = svg.width;
+    image.height = svg.height;
+
+    this.append(image);
 
     image.addEventListener('mousedown', ev => {
       const rect = this.getBoundingClientRect();

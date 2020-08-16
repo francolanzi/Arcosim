@@ -2,16 +2,12 @@ const Component = require('../Component');
 const Config = require('../config/Clock');
 
 class Clock extends Component {
-  static get imageFile() {
-    return 'images/cpnt/Clock.svg';
-  }
-
-  static get imageWidth() {
-    return 61;
-  }
-
-  static get imageHeight() {
-    return 59;
+  static get svg() {
+    return {
+      src: 'images/cpnt/Clock.svg',
+      width: 61,
+      height: 59,
+    };
   }
 
   get config() {

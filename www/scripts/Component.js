@@ -7,20 +7,12 @@ class Component extends HTMLElement {
     return this.name.replace(/([a-z])([A-Z])/g, '$1 $2');
   }
 
-  static get imageFile() {
-    throw new Error('imageFile static property must be overrided');
-  }
-
-  static get imageWidth() {
-    throw new Error('imageWidth static property must be overrided');
-  }
-
-  static get imageHeight() {
-    throw new Error('imageHeight static property must be overrided');
+  static get svg() {
+    throw new Error('svg static property must be overrided');
   }
 
   static getItem() {
-    return new CpntItem(this, this.imageFile, this.imageWidth, this.imageHeight);
+    return new CpntItem(this, this.svg);
   }
 
   get id() {
@@ -88,11 +80,13 @@ class Component extends HTMLElement {
     this._drop = ev => this.drop(ev);
 
     const image = new Image();
-    image.src = this.constructor.imageFile;
-    this.append(image);
+    const svg = this.constructor.svg;
 
-    image.width = this.constructor.imageWidth;
-    image.height = this.constructor.imageHeight;
+    image.src = svg.src;
+    image.width = svg.width;
+    image.height = svg.height;
+
+    this.append(image);
 
     image.addEventListener('mousedown', ev => this.drag(ev));
     image.addEventListener('dblclick', () => this.dispatchEvent(new Event('config')));

@@ -2,16 +2,12 @@ const Component = require('../Component');
 const Config = require('../config/MicroSequenceLogic');
 
 class MicroSequenceLogic extends Component {
-  static get imageFile() {
-    return 'images/cpnt/MicroSequenceLogic.svg';
-  }
-
-  static get imageWidth() {
-    return 62;
-  }
-
-  static get imageHeight() {
-    return 42;
+  static get svg() {
+    return {
+      src: 'images/cpnt/MicroSequenceLogic.svg',
+      width: 62,
+      height: 42,
+    };
   }
 
   get config() {

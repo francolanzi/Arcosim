@@ -1,16 +1,12 @@
 const Component = require('../Component');
 
 class MemoryBufferRegister extends Component {
-  static get imageFile() {
-    return 'images/cpnt/MemoryBufferRegister.svg';
-  }
-
-  static get imageWidth() {
-    return 47;
-  }
-
-  static get imageHeight() {
-    return 16;
+  static get svg() {
+    return {
+      src: 'images/cpnt/MemoryBufferRegister.svg',
+      width: 47,
+      height: 16,
+    };
   }
 
   constructor(top, left) {
