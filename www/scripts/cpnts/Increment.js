@@ -2,7 +2,15 @@ const Component = require('../Component');
 
 class Increment extends Component {
   static get imageFile() {
-    return 'images/cpnt/Increment.png';
+    return 'images/cpnt/Increment.svg';
+  }
+
+  static get imageWidth() {
+    return 68;
+  }
+
+  static get imageHeight() {
+    return 23;
   }
 
   constructor(top, left) {

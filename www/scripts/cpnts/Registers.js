@@ -3,7 +3,15 @@ const Config = require('../config/Registers');
 
 class Registers extends Component {
   static get imageFile() {
-    return 'images/cpnt/Registers.png';
+    return 'images/cpnt/Registers.svg';
+  }
+
+  static get imageWidth() {
+    return 94;
+  }
+
+  static get imageHeight() {
+    return 90;
   }
 
   get config() {

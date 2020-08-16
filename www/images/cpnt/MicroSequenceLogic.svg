@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62 42">
+  <rect fill="white" stroke="black" stroke-width="1" stroke-linejoin="round" transform="translate(0.5,0.5)" width="61" height="41" />
+  <text x="50%" y="20%" dominant-baseline="middle" text-anchor="middle" font-family="monospace" font-size="12" fill="black">Micro</text>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="monospace" font-size="12" fill="black">Sequence</text>
+  <text x="50%" y="80%" dominant-baseline="middle" text-anchor="middle" font-family="monospace" font-size="12" fill="black">Logic</text>
+</svg>

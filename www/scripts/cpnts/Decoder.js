@@ -2,7 +2,15 @@ const Component = require('../Component');
 
 class Decoder extends Component {
   static get imageFile() {
-    return 'images/cpnt/Decoder.png';
+    return 'images/cpnt/Decoder.svg';
+  }
+
+  static get imageWidth() {
+    return 78;
+  }
+
+  static get imageHeight() {
+    return 30;
   }
 
   constructor(top, left) {

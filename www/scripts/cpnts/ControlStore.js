@@ -3,7 +3,15 @@ const Config = require('../config/ControlStore');
 
 class ControlStore extends Component {
   static get imageFile() {
-    return 'images/cpnt/ControlStore.png';
+    return 'images/cpnt/ControlStore.svg';
+  }
+
+  static get imageWidth() {
+    return 329;
+  }
+
+  static get imageHeight() {
+    return 64;
   }
 
   get config() {

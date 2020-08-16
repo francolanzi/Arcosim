@@ -3,7 +3,15 @@ const Config = require('../config/Clock');
 
 class Clock extends Component {
   static get imageFile() {
-    return 'images/cpnt/Clock.png';
+    return 'images/cpnt/Clock.svg';
+  }
+
+  static get imageWidth() {
+    return 61;
+  }
+
+  static get imageHeight() {
+    return 59;
   }
 
   get config() {

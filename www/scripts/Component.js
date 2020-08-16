@@ -11,8 +11,16 @@ class Component extends HTMLElement {
     throw new Error('imageFile static property must be overrided');
   }
 
+  static get imageWidth() {
+    throw new Error('imageWidth static property must be overrided');
+  }
+
+  static get imageHeight() {
+    throw new Error('imageHeight static property must be overrided');
+  }
+
   static getItem() {
-    return new CpntItem(this, this.imageFile);
+    return new CpntItem(this, this.imageFile, this.imageWidth, this.imageHeight);
   }
 
   get id() {
@@ -82,6 +90,9 @@ class Component extends HTMLElement {
     const image = new Image();
     image.src = this.constructor.imageFile;
     this.append(image);
+
+    image.width = this.constructor.imageWidth;
+    image.height = this.constructor.imageHeight;
 
     image.addEventListener('mousedown', ev => this.drag(ev));
     image.addEventListener('dblclick', () => this.dispatchEvent(new Event('config')));

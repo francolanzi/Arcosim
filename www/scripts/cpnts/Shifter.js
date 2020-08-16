@@ -3,7 +3,15 @@ const Config = require('../config/Shifter');
 
 class Shifter extends Component {
   static get imageFile() {
-    return 'images/cpnt/Shifter.png';
+    return 'images/cpnt/Shifter.svg';
+  }
+
+  static get imageWidth() {
+    return 76;
+  }
+
+  static get imageHeight() {
+    return 28;
   }
 
   get config() {

@@ -3,7 +3,15 @@ const Config = require('../config/ArithmeticLogicUnit');
 
 class ArithmeticLogicUnit extends Component {
   static get imageFile() {
-    return 'images/cpnt/ArithmeticLogicUnit.png';
+    return 'images/cpnt/ArithmeticLogicUnit.svg';
+  }
+
+  static get imageWidth() {
+    return 81;
+  }
+
+  static get imageHeight() {
+    return 45;
   }
 
   get config() {
