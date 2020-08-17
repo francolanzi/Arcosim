@@ -18,7 +18,7 @@ class Gallery extends HTMLElement {
       for (const path of files) {
         const file = parse(path);
         if (file.ext === '.js') {
-          const Cpnt = (await import(`./cpnts/${file.name}.js`)).default;
+          const Cpnt = (await import(`../cpnts/${file.name}.js`)).default;
           const image = new Image(Cpnt.svg.width, Cpnt.svg.height);
 
           image.src = Cpnt.svg.src;

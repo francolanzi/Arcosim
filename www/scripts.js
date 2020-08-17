@@ -1,28 +1,20 @@
 import Computer from './scripts/Computer.js';
 import LinkLayer from './scripts/link/LinkLayer.js';
-import FixedLayer from './scripts/FixedLayer.js';
+import MenuLayer from './scripts/menu/MenuLayer.js';
 import ModalLayer from './scripts/ModalLayer.js';
-import Menu from './scripts/menu/Menu.js';
-import Gallery from './scripts/Gallery.js';
 
 const computer = new Computer();
 
-const gallery = new Gallery();
-const menu = new Menu();
-
 const linkLayer = new LinkLayer();
-const fixedLayer = new FixedLayer();
+const menuLayer = new MenuLayer();
 const modalLayer = new ModalLayer();
 
-menu.computer = computer;
-menu.gallery = gallery;
-
-gallery.addEventListener('add', ev => {
+menuLayer.gallery.addEventListener('add', ev => {
   const instance = ev.detail;
 
   computer.addCpnt(instance);
 
-  instance.trash = menu.getButton('trash');
+  instance.trash = menuLayer.menu.getButton('trash');
 
   instance.addEventListener('config', () => {
     const type = instance.constructor.type;
@@ -68,11 +60,8 @@ gallery.addEventListener('add', ev => {
   document.body.append(instance);
 });
 
-fixedLayer.append(menu);
-fixedLayer.append(gallery);
-
 document.body.append(linkLayer);
-document.body.append(fixedLayer);
+document.body.append(menuLayer);
 
 document.body.append(modalLayer);
 
