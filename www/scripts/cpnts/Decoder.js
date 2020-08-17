@@ -12,11 +12,11 @@ class Decoder extends Component {
   constructor(top, left) {
     super(top, left);
 
-    this._encoded = this.addInput('Encoded', 77, 14.5);
-    this._enable = this.addInput('Enable', 38.5, 0);
+    this._encoded = this.addInput('Codificado', 77, 14.5);
+    this._enable = this.addInput('Habilitar', 38.5, 0);
     this._clock = this.addInput('Clock', 38.5, 29);
 
-    this._decoded = this.addOutput('Decoded', 0, 14.5);
+    this._decoded = this.addOutput('Decodificado', 0, 14.5);
   }
 
   run() {

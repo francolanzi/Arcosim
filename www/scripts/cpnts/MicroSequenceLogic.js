@@ -41,10 +41,10 @@ class MicroSequenceLogic extends Component {
 
     this._conditions = new Map();
 
-    this._condition = this.addInput('Condition', 61, 20.5);
+    this._condition = this.addInput('Condición', 61, 20.5);
     this._control = this.addInput('Control', 0, 20.5);
 
-    this._jump = this.addOutput('Jump', 30.5, 0);
+    this._jump = this.addOutput('Saltar', 30.5, 0);
 
     this.setCondition(0, 0);
     this.setCondition(1, 2);

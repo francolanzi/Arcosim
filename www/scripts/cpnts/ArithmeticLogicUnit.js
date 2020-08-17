@@ -48,9 +48,9 @@ class ArithmeticLogicUnit extends Component {
 
     this._inputA = this.addInput('A', 11.5, 0);
     this._inputB = this.addInput('B', 69, 0);
-    this._function = this.addInput('Function', 70, 29.5);
+    this._function = this.addInput('Función', 70, 29.5);
 
-    this._result = this.addOutput('Result', 39.5, 44);
+    this._result = this.addOutput('Resultado', 39.5, 44);
     this._control = this.addOutput('Control', 75, 14.5);
 
     this.setFunction(0, 0);

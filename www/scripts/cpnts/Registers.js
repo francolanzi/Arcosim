@@ -23,14 +23,14 @@ class Registers extends Component {
 
     this._registers = new Array(16).fill(0);
 
-    this._decoderA = this.addInput('Decoder A', 20.75, 0);
-    this._decoderB = this.addInput('Decoder B', 46.5, 0);
-    this._decoderC = this.addInput('Decoder C', 72.25, 0);
-    this._inputC = this.addInput('C', 0, 44.5);
+    this._decoderA = this.addInput('Posición A', 20.75, 0);
+    this._decoderB = this.addInput('Posición B', 46.5, 0);
+    this._decoderC = this.addInput('Posición C', 72.25, 0);
+    this._inputC = this.addInput('Valor C', 0, 44.5);
     this._clock = this.addInput('Clock', 0, 19.75);
 
-    this._outputA = this.addOutput('A', 93, 28);
-    this._outputB = this.addOutput('B', 93, 61);
+    this._outputA = this.addOutput('Valor A', 93, 28);
+    this._outputB = this.addOutput('Valor B', 93, 61);
   }
 
   run() {

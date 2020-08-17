@@ -40,13 +40,13 @@ class ControlStore extends Component {
     this._instructions = [0];
     this._bits = 32;
 
-    this._number = this.addInput('Number', 164, 0);
+    this._position = this.addInput('Posición', 164, 0);
 
-    this._instruction = this.addOutput('Instruction', 164, 63);
+    this._instruction = this.addOutput('Instrucción', 164, 63);
   }
 
   run() {
-    const index = this._number.value;
+    const index = this._position.value;
 
     if (index < this._instructions.length) {
       this._instruction.value = this._instructions[index];

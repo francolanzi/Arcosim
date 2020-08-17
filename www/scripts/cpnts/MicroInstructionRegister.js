@@ -23,7 +23,7 @@ class MicroInstructionRegister extends Component {
 
     this._masks = [];
 
-    this._instruction = this.addInput('Instruction', 164.5, 0);
+    this._instruction = this.addInput('Instrucción', 164.5, 0);
     this._clock = this.addInput('Clock', 0, 21);
 
     this.addMask(0, '', 1);

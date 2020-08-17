@@ -16,7 +16,7 @@ class Multiplexer extends Component {
     this._inputB = this.addInput('B', 42.5, 0);
     this._control = this.addInput('Control', 61, 11);
 
-    this._output = this.addOutput('Output', 30.5, 22);
+    this._output = this.addOutput('Salida', 30.5, 22);
   }
 
   run() {
