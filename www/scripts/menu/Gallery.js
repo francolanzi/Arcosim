@@ -1,5 +1,5 @@
 const { readdirSync } = window.require('fs');
-const { resolve, parse } = window.require('path');
+const { resolve } = window.require('path');
 
 class Gallery extends HTMLElement {
   get open() {
@@ -14,11 +14,11 @@ class Gallery extends HTMLElement {
     super();
 
     (async () => {
-      const files = readdirSync(resolve(__dirname, 'scripts/cpnts'));
-      for (const path of files) {
-        const file = parse(path);
-        if (file.ext === '.js') {
-          const Cpnt = (await import(`../cpnts/${file.name}.js`)).default;
+      const dir = resolve(__dirname, 'scripts/cpnts');
+      const files = readdirSync(dir);
+      for (const file of files) {
+        if (file.split('.').pop() === 'js') {
+          const Cpnt = (await import(`${dir}/${file}`)).default;
           const image = new Image(Cpnt.svg.width, Cpnt.svg.height);
 
           image.src = Cpnt.svg.src;
