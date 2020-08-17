@@ -1,4 +1,3 @@
-const CpntItem = require('./CpntItem');
 const fs = require('fs');
 const path = require('path');
 
@@ -18,18 +17,19 @@ class Gallery extends HTMLElement {
       file = path.parse(file);
       if (file.ext === '.js') {
         const Cpnt = require(`./cpnts/${file.name}`);
-        const item = new CpntItem(Cpnt.svg);
+        const image = new Image(Cpnt.svg.width, Cpnt.svg.height);
 
-        item.addEventListener('mousedown', ev => {
-          const rect = item.getBoundingClientRect();
+        image.src = Cpnt.svg.src;
+        this.append(image);
+
+        image.addEventListener('mousedown', ev => {
+          const rect = image.getBoundingClientRect();
           const top = ev.pageY - ev.clientY + rect.top;
           const left = ev.pageX - ev.clientX + rect.left;
           const cpnt = new Cpnt(top, left);
           this.dispatchEvent(new CustomEvent('add', { detail: cpnt }));
           cpnt.drag(ev);
         });
-
-        this.append(item);
       }
     });
   }
