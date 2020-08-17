@@ -5,6 +5,17 @@ import StepButton from './buttons/StepButton.js';
 import ResetButton from './buttons/ResetButton.js';
 
 class Menu extends HTMLElement {
+  get computer() {
+    return this._computer;
+  }
+
+  set computer(computer) {
+    this._computer = computer;
+    this.getButton('run').computer = computer;
+    this.getButton('step').computer = computer;
+    this.getButton('reset').computer = computer;
+  }
+
   constructor() {
     super();
 

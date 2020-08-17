@@ -14,10 +14,7 @@ const linkLayer = new LinkLayer();
 const fixedLayer = new FixedLayer();
 const modalLayer = new ModalLayer();
 
-menu.getButton('run').computer = computer;
-menu.getButton('step').computer = computer;
-menu.getButton('reset').computer = computer;
-
+menu.computer = computer;
 menu.getButton('cpnt').gallery = gallery;
 
 gallery.addEventListener('add', ev => {
