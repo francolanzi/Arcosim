@@ -2,14 +2,6 @@ import Menu from './Menu.js';
 import Gallery from './Gallery.js';
 
 class MenuLayer extends HTMLElement {
-  get computer() {
-    return this._menu.computer;
-  }
-
-  set computer(computer) {
-    this._menu.computer = computer;
-  }
-
   get menu() {
     return this._menu;
   }
@@ -18,11 +10,11 @@ class MenuLayer extends HTMLElement {
     return this._gallery;
   }
 
-  constructor() {
+  constructor(computer) {
     super();
 
     this._gallery = new Gallery();
-    this._menu = new Menu(this._gallery);
+    this._menu = new Menu(computer, this._gallery);
 
     this.append(this._menu);
     this.append(this._gallery);

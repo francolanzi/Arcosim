@@ -6,8 +6,8 @@ import ModalLayer from './scripts/ModalLayer.js';
 const computer = new Computer();
 
 const linkLayer = new LinkLayer();
-const menuLayer = new MenuLayer();
 const modalLayer = new ModalLayer();
+const menuLayer = new MenuLayer(computer);
 
 menuLayer.gallery.addEventListener('add', ev => {
   const instance = ev.detail;

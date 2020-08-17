@@ -9,22 +9,10 @@ class StepButton extends MenuButton {
     return 'images/menu/step.svg';
   }
 
-  get computer() {
-    return this._computer;
-  }
-
-  set computer(computer) {
-    this._computer = computer;
-  }
-
-  constructor() {
+  constructor(computer) {
     super();
 
-    this.addEventListener('click', () => {
-      if (this.computer) {
-        this.computer.step();
-      }
-    });
+    this.addEventListener('click', () => computer.step());
   }
 }
 

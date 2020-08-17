@@ -9,22 +9,10 @@ class ResetButton extends MenuButton {
     return 'images/menu/reset.svg';
   }
 
-  get computer() {
-    return this._computer;
-  }
-
-  set computer(computer) {
-    this._computer = computer;
-  }
-
-  constructor() {
+  constructor(computer) {
     super();
 
-    this.addEventListener('click', () => {
-      if (this.computer) {
-        this.computer.reset();
-      }
-    });
+    this.addEventListener('click', () => computer.reset());
   }
 }
 

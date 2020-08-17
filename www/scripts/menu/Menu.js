@@ -5,27 +5,16 @@ import StepButton from './buttons/StepButton.js';
 import ResetButton from './buttons/ResetButton.js';
 
 class Menu extends HTMLElement {
-  get computer() {
-    return this._computer;
-  }
-
-  set computer(computer) {
-    this._computer = computer;
-    this.getButton('run').computer = computer;
-    this.getButton('step').computer = computer;
-    this.getButton('reset').computer = computer;
-  }
-
-  constructor(gallery) {
+  constructor(computer, gallery) {
     super();
 
     this._buttons = new Map();
 
     this.addButton('trash', new TrashButton());
     this.addButton('cpnt', new CpntButton(gallery));
-    this.addButton('run', new RunButton());
-    this.addButton('step', new StepButton());
-    this.addButton('reset', new ResetButton());
+    this.addButton('run', new RunButton(computer));
+    this.addButton('step', new StepButton(computer));
+    this.addButton('reset', new ResetButton(computer));
   }
 
   addButton(name, button) {
