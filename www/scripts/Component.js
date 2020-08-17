@@ -1,4 +1,3 @@
-const CpntItem = require('./CpntItem');
 const Input = require('./io/Input');
 const Output = require('./io/Output');
 
@@ -9,10 +8,6 @@ class Component extends HTMLElement {
 
   static get svg() {
     throw new Error('svg static property must be overrided');
-  }
-
-  static getItem() {
-    return new CpntItem(this, this.svg);
   }
 
   get id() {
