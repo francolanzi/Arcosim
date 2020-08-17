@@ -1,4 +1,4 @@
-const Row = require('./Row');
+import Row from './Row.js';
 
 class ControlStoreStore extends HTMLElement {
   get cpnt() {
@@ -54,4 +54,4 @@ class ControlStoreStore extends HTMLElement {
 
 customElements.define('cpnt-cs-store', ControlStoreStore);
 
-module.exports = ControlStoreStore;
+export default ControlStoreStore;

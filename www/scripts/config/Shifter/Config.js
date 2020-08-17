@@ -1,4 +1,4 @@
-const List = require('./List');
+import List from './List.js';
 
 class ShifterConfig extends HTMLElement {
   constructor(cpnt) {
@@ -12,4 +12,4 @@ class ShifterConfig extends HTMLElement {
 
 customElements.define('cpnt-shifter-config', ShifterConfig);
 
-module.exports = ShifterConfig;
+export default ShifterConfig;

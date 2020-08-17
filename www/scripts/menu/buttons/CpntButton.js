@@ -1,4 +1,4 @@
-const MenuButton = require('../MenuButton');
+import MenuButton from '../MenuButton.js';
 
 class CpntButton extends MenuButton {
   static get title() {
@@ -31,4 +31,4 @@ class CpntButton extends MenuButton {
 
 customElements.define('cpnt-button', CpntButton);
 
-module.exports = CpntButton;
+export default CpntButton;

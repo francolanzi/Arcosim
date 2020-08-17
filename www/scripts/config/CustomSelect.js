@@ -51,4 +51,4 @@ class CustomSelect extends HTMLElement {
 
 customElements.define('custom-select', CustomSelect);
 
-module.exports = CustomSelect;
+export default CustomSelect;

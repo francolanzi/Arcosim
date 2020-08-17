@@ -39,4 +39,4 @@ class ModalLayer extends HTMLElement {
 
 customElements.define('modal-layer', ModalLayer);
 
-module.exports = ModalLayer;
+export default ModalLayer;

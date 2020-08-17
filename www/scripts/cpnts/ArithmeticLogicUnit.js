@@ -1,5 +1,5 @@
-const Component = require('../Component');
-const Config = require('../config/ArithmeticLogicUnit');
+import Component from '../Component.js';
+import Config from '../config/ArithmeticLogicUnit/Config.js';
 
 class ArithmeticLogicUnit extends Component {
   static get svg() {
@@ -127,4 +127,4 @@ class ArithmeticLogicUnit extends Component {
 
 customElements.define('cpnt-alu', ArithmeticLogicUnit);
 
-module.exports = ArithmeticLogicUnit;
+export default ArithmeticLogicUnit;

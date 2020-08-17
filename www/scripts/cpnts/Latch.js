@@ -1,4 +1,4 @@
-const Component = require('../Component');
+import Component from '../Component.js';
 
 class Latch extends Component {
   static get svg() {
@@ -29,4 +29,4 @@ class Latch extends Component {
 
 customElements.define('cpnt-latch', Latch);
 
-module.exports = Latch;
+export default Latch;

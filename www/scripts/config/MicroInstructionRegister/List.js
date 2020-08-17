@@ -1,4 +1,4 @@
-const Mask = require('./Mask');
+import Mask from './Mask.js';
 
 class MicroInstructionRegisterList extends HTMLElement {
   constructor(cpnt) {
@@ -43,4 +43,4 @@ class MicroInstructionRegisterList extends HTMLElement {
 
 customElements.define('cpnt-mir-list', MicroInstructionRegisterList);
 
-module.exports = MicroInstructionRegisterList;
+export default MicroInstructionRegisterList;

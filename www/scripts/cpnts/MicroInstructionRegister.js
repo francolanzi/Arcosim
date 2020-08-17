@@ -1,5 +1,5 @@
-const Component = require('../Component');
-const Config = require('../config/MicroInstructionRegister');
+import Component from '../Component.js';
+import Config from '../config/MicroInstructionRegister/Config.js';
 
 class MicroInstructionRegister extends Component {
   static get svg() {
@@ -91,4 +91,4 @@ class MicroInstructionRegister extends Component {
 
 customElements.define('cpnt-mir', MicroInstructionRegister);
 
-module.exports = MicroInstructionRegister;
+export default MicroInstructionRegister;

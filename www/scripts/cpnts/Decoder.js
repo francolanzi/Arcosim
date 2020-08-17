@@ -1,4 +1,4 @@
-const Component = require('../Component');
+import Component from '../Component.js';
 
 class Decoder extends Component {
   static get svg() {
@@ -33,4 +33,4 @@ class Decoder extends Component {
 
 customElements.define('cpnt-decoder', Decoder);
 
-module.exports = Decoder;
+export default Decoder;

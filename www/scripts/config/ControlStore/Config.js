@@ -1,5 +1,5 @@
-const Store = require('./Store');
-const Bits = require('./Bits');
+import Store from './Store.js';
+import Bits from './Bits.js';
 
 class ControlStoreConfig extends HTMLElement {
   constructor(cpnt) {
@@ -17,4 +17,4 @@ class ControlStoreConfig extends HTMLElement {
 
 customElements.define('cpnt-cs-config', ControlStoreConfig);
 
-module.exports = ControlStoreConfig;
+export default ControlStoreConfig;

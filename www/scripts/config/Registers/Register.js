@@ -1,4 +1,4 @@
-const UintInput = require('../UintInput');
+import UintInput from '../UintInput.js';
 
 class RegistersRegister extends HTMLElement {
   get index() {
@@ -27,4 +27,4 @@ class RegistersRegister extends HTMLElement {
 
 customElements.define('cpnt-registers-register', RegistersRegister);
 
-module.exports = RegistersRegister;
+export default RegistersRegister;

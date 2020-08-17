@@ -1,5 +1,5 @@
-const Count = require('./Count');
-const List = require('./List');
+import Count from './Count.js';
+import List from './List.js';
 
 class RegistersConfig extends HTMLElement {
   constructor(cpnt) {
@@ -17,4 +17,4 @@ class RegistersConfig extends HTMLElement {
 
 customElements.define('cpnt-registers-config', RegistersConfig);
 
-module.exports = RegistersConfig;
+export default RegistersConfig;

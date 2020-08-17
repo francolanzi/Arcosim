@@ -1,6 +1,6 @@
-const UintInput = require('../UintInput');
-const ImgButton = require('../ImgButton');
-const CustomSelect = require('../CustomSelect');
+import UintInput from '../UintInput.js';
+import ImgButton from '../ImgButton.js';
+import CustomSelect from '../CustomSelect.js';
 
 class ShifterFunc extends HTMLElement {
   get position() {
@@ -45,4 +45,4 @@ class ShifterFunc extends HTMLElement {
 
 customElements.define('cpnt-shifter-func', ShifterFunc);
 
-module.exports = ShifterFunc;
+export default ShifterFunc;

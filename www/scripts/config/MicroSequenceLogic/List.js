@@ -1,5 +1,5 @@
-const Cond = require('./Cond');
-const ImgButton = require('../ImgButton');
+import Cond from './Cond.js';
+import ImgButton from '../ImgButton.js';
 
 class MicroSequenceLogicList extends HTMLElement {
   constructor(cpnt) {
@@ -54,4 +54,4 @@ class MicroSequenceLogicList extends HTMLElement {
 
 customElements.define('cpnt-msl-list', MicroSequenceLogicList);
 
-module.exports = MicroSequenceLogicList;
+export default MicroSequenceLogicList;

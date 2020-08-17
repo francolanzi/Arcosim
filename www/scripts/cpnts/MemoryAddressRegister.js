@@ -1,4 +1,4 @@
-const Component = require('../Component');
+import Component from '../Component.js';
 
 class MemoryAddressRegister extends Component {
   static get svg() {
@@ -20,4 +20,4 @@ class MemoryAddressRegister extends Component {
 
 customElements.define('cpnt-mar', MemoryAddressRegister);
 
-module.exports = MemoryAddressRegister;
+export default MemoryAddressRegister;

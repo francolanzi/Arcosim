@@ -77,4 +77,4 @@ class Computer extends EventTarget {
   }
 }
 
-module.exports = Computer;
+export default Computer;

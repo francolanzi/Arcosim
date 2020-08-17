@@ -1,4 +1,4 @@
-const UintInput = require('../UintInput');
+import UintInput from '../UintInput.js';
 
 class RegistersCount extends HTMLElement {
   get value() {
@@ -21,4 +21,4 @@ class RegistersCount extends HTMLElement {
 
 customElements.define('cpnt-registers-count', RegistersCount);
 
-module.exports = RegistersCount;
+export default RegistersCount;

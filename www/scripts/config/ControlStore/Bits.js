@@ -1,4 +1,4 @@
-const UintInput = require('../UintInput');
+import UintInput from '../UintInput.js';
 
 class ControlStoreBits extends HTMLElement {
   get value() {
@@ -21,4 +21,4 @@ class ControlStoreBits extends HTMLElement {
 
 customElements.define('cpnt-cs-bits', ControlStoreBits);
 
-module.exports = ControlStoreBits;
+export default ControlStoreBits;

@@ -1,5 +1,5 @@
-const Input = require('./io/Input');
-const Output = require('./io/Output');
+import Input from './io/Input.js';
+import Output from './io/Output.js';
 
 class Component extends HTMLElement {
   static get type() {
@@ -211,4 +211,4 @@ class Component extends HTMLElement {
   }
 }
 
-module.exports = Component;
+export default Component;

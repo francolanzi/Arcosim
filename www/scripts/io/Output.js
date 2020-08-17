@@ -1,4 +1,4 @@
-const IO = require('./IO');
+import IO from './IO.js';
 
 class Output extends IO {
   get id() {
@@ -60,4 +60,4 @@ class Output extends IO {
 
 customElements.define('cpnt-output', Output);
 
-module.exports = Output;
+export default Output;

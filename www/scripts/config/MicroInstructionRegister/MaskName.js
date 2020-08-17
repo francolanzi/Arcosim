@@ -11,4 +11,4 @@ class MicroInstructionRegisterMaskName extends HTMLInputElement {
 
 customElements.define('cpnt-mir-mask-name', MicroInstructionRegisterMaskName, { extends: 'input' });
 
-module.exports = MicroInstructionRegisterMaskName;
+export default MicroInstructionRegisterMaskName;

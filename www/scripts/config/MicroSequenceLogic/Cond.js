@@ -1,6 +1,6 @@
-const UintInput = require('../UintInput');
-const ImgButton = require('../ImgButton');
-const CustomSelect = require('../CustomSelect');
+import UintInput from '../UintInput.js';
+import ImgButton from '../ImgButton.js';
+import CustomSelect from '../CustomSelect.js';
 
 class MicroSequenceLogicCond extends HTMLElement {
   get position() {
@@ -39,4 +39,4 @@ class MicroSequenceLogicCond extends HTMLElement {
 
 customElements.define('cpnt-msl-cond', MicroSequenceLogicCond);
 
-module.exports = MicroSequenceLogicCond;
+export default MicroSequenceLogicCond;

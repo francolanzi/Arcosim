@@ -1,4 +1,4 @@
-const List = require('./List');
+import List from './List.js';
 
 class MicroSequenceLogicConfig extends HTMLElement {
   constructor(cpnt) {
@@ -12,4 +12,4 @@ class MicroSequenceLogicConfig extends HTMLElement {
 
 customElements.define('cpnt-msl-config', MicroSequenceLogicConfig);
 
-module.exports = MicroSequenceLogicConfig;
+export default MicroSequenceLogicConfig;

@@ -1,4 +1,4 @@
-const MenuButton = require('../MenuButton');
+import MenuButton from '../MenuButton.js';
 
 class RunButton extends MenuButton {
   static get title() {
@@ -37,4 +37,4 @@ class RunButton extends MenuButton {
 
 customElements.define('run-button', RunButton);
 
-module.exports = RunButton;
+export default RunButton;

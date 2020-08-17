@@ -1,4 +1,4 @@
-const MenuButton = require('../MenuButton');
+import MenuButton from '../MenuButton.js';
 
 class TrashButton extends MenuButton {
   static get title() {
@@ -12,4 +12,4 @@ class TrashButton extends MenuButton {
 
 customElements.define('trash-button', TrashButton);
 
-module.exports = TrashButton;
+export default TrashButton;

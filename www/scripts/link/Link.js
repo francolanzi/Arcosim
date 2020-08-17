@@ -1,4 +1,4 @@
-const LinkCorner = require('./LinkCorner');
+import LinkCorner from './LinkCorner.js';
 
 class Link {
   get input() {
@@ -141,4 +141,4 @@ class Link {
   }
 }
 
-module.exports = Link;
+export default Link;

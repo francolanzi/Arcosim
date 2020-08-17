@@ -1,6 +1,6 @@
-const UintInput = require('../UintInput');
-const ImgButton = require('../ImgButton');
-const CustomSelect = require('../CustomSelect');
+import UintInput from '../UintInput.js';
+import ImgButton from '../ImgButton.js';
+import CustomSelect from '../CustomSelect.js';
 
 class ArithmeticLogicUnitFunc extends HTMLElement {
   get position() {
@@ -39,4 +39,4 @@ class ArithmeticLogicUnitFunc extends HTMLElement {
 
 customElements.define('cpnt-alu-func', ArithmeticLogicUnitFunc);
 
-module.exports = ArithmeticLogicUnitFunc;
+export default ArithmeticLogicUnitFunc;

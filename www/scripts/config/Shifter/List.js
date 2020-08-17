@@ -1,5 +1,5 @@
-const Func = require('./Func');
-const ImgButton = require('../ImgButton');
+import Func from './Func.js';
+import ImgButton from '../ImgButton.js';
 
 class ShifterList extends HTMLElement {
   constructor(cpnt) {
@@ -54,4 +54,4 @@ class ShifterList extends HTMLElement {
 
 customElements.define('cpnt-shifter-list', ShifterList);
 
-module.exports = ShifterList;
+export default ShifterList;

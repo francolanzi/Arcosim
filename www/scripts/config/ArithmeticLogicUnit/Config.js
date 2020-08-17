@@ -1,4 +1,4 @@
-const List = require('./List');
+import List from './List.js';
 
 class ArithmeticLogicUnitConfig extends HTMLElement {
   constructor(cpnt) {
@@ -12,4 +12,4 @@ class ArithmeticLogicUnitConfig extends HTMLElement {
 
 customElements.define('cpnt-alu-config', ArithmeticLogicUnitConfig);
 
-module.exports = ArithmeticLogicUnitConfig;
+export default ArithmeticLogicUnitConfig;

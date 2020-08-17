@@ -1,4 +1,4 @@
-const MenuButton = require('../MenuButton');
+import MenuButton from '../MenuButton.js';
 
 class StepButton extends MenuButton {
   static get title() {
@@ -30,4 +30,4 @@ class StepButton extends MenuButton {
 
 customElements.define('step-button', StepButton);
 
-module.exports = StepButton;
+export default StepButton;

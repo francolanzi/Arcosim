@@ -43,4 +43,4 @@ class UintInput extends HTMLInputElement {
 
 customElements.define('uint-input', UintInput, { extends: 'input' });
 
-module.exports = UintInput;
+export default UintInput;

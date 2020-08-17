@@ -1,6 +1,6 @@
-const MaskName = require('./MaskName');
-const UintInput = require('../UintInput');
-const ImgButton = require('../ImgButton');
+import MaskName from './MaskName.js';
+import UintInput from '../UintInput.js';
+import ImgButton from '../ImgButton.js';
 
 class MicroInstructionRegisterMask extends HTMLElement {
   get position() {
@@ -45,4 +45,4 @@ class MicroInstructionRegisterMask extends HTMLElement {
 
 customElements.define('cpnt-mir-mask', MicroInstructionRegisterMask);
 
-module.exports = MicroInstructionRegisterMask;
+export default MicroInstructionRegisterMask;

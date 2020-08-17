@@ -10,4 +10,4 @@ class ImgButton extends HTMLElement {
 
 customElements.define('img-button', ImgButton);
 
-module.exports = ImgButton;
+export default ImgButton;

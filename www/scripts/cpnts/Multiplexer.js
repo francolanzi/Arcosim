@@ -1,4 +1,4 @@
-const Component = require('../Component');
+import Component from '../Component.js';
 
 class Multiplexer extends Component {
   static get svg() {
@@ -29,4 +29,4 @@ class Multiplexer extends Component {
 
 customElements.define('cpnt-mux', Multiplexer);
 
-module.exports = Multiplexer;
+export default Multiplexer;

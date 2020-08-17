@@ -8,4 +8,4 @@ class MicroInstructionRegisterLabel extends HTMLElement {
 
 customElements.define('cpnt-mir-label', MicroInstructionRegisterLabel);
 
-module.exports = MicroInstructionRegisterLabel;
+export default MicroInstructionRegisterLabel;

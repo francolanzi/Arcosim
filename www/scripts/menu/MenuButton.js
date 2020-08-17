@@ -32,4 +32,4 @@ class MenuButton extends HTMLElement {
   }
 }
 
-module.exports = MenuButton;
+export default MenuButton;

@@ -1,5 +1,5 @@
-const Component = require('../Component');
-const Config = require('../config/Clock');
+import Component from '../Component.js';
+import Config from '../config/Clock/Config.js';
 
 class Clock extends Component {
   static get svg() {
@@ -67,4 +67,4 @@ class Clock extends Component {
 
 customElements.define('cpnt-clock', Clock);
 
-module.exports = Clock;
+export default Clock;

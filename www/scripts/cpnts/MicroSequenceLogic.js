@@ -1,5 +1,5 @@
-const Component = require('../Component');
-const Config = require('../config/MicroSequenceLogic');
+import Component from '../Component.js';
+import Config from '../config/MicroSequenceLogic/Config.js';
 
 class MicroSequenceLogic extends Component {
   static get svg() {
@@ -96,4 +96,4 @@ class MicroSequenceLogic extends Component {
 
 customElements.define('cpnt-msl', MicroSequenceLogic);
 
-module.exports = MicroSequenceLogic;
+export default MicroSequenceLogic;

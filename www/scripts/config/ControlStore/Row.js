@@ -1,5 +1,5 @@
-const UintInput = require('../UintInput');
-const ImgButton = require('../ImgButton');
+import UintInput from '../UintInput.js';
+import ImgButton from '../ImgButton.js';
 
 class ControlStoreRow extends HTMLElement {
   get position() {
@@ -83,4 +83,4 @@ class ControlStoreRow extends HTMLElement {
 
 customElements.define('cpnt-cs-row', ControlStoreRow);
 
-module.exports = ControlStoreRow;
+export default ControlStoreRow;

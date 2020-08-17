@@ -1,5 +1,5 @@
-const Component = require('../Component');
-const Config = require('../config/Shifter');
+import Component from '../Component.js';
+import Config from '../config/Shifter/Config.js';
 
 class Shifter extends Component {
   static get svg() {
@@ -91,4 +91,4 @@ class Shifter extends Component {
 
 customElements.define('cpnt-shifter', Shifter);
 
-module.exports = Shifter;
+export default Shifter;

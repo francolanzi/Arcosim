@@ -55,4 +55,4 @@ class LinkCorner extends HTMLElement {
 
 customElements.define('link-corner', LinkCorner);
 
-module.exports = LinkCorner;
+export default LinkCorner;

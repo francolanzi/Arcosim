@@ -1,10 +1,9 @@
-const Computer = require('./scripts/Computer');
-
-const LinkLayer = require('./scripts/link/LinkLayer');
-const FixedLayer = require('./scripts/FixedLayer');
-const ModalLayer = require('./scripts/ModalLayer');
-const Menu = require('./scripts/menu/Menu');
-const Gallery = require('./scripts/Gallery');
+import Computer from './scripts/Computer.js';
+import LinkLayer from './scripts/link/LinkLayer.js';
+import FixedLayer from './scripts/FixedLayer.js';
+import ModalLayer from './scripts/ModalLayer.js';
+import Menu from './scripts/menu/Menu.js';
+import Gallery from './scripts/Gallery.js';
 
 const computer = new Computer();
 

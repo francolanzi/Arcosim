@@ -1,8 +1,8 @@
-const TrashButton = require('./buttons/TrashButton');
-const CpntButton = require('./buttons/CpntButton');
-const RunButton = require('./buttons/RunButton');
-const StepButton = require('./buttons/StepButton');
-const ResetButton = require('./buttons/ResetButton');
+import TrashButton from './buttons/TrashButton.js';
+import CpntButton from './buttons/CpntButton.js';
+import RunButton from './buttons/RunButton.js';
+import StepButton from './buttons/StepButton.js';
+import ResetButton from './buttons/ResetButton.js';
 
 class Menu extends HTMLElement {
   constructor() {
@@ -36,4 +36,4 @@ class Menu extends HTMLElement {
 
 customElements.define('main-menu', Menu);
 
-module.exports = Menu;
+export default Menu;

@@ -1,5 +1,5 @@
-const Func = require('./Func');
-const ImgButton = require('../ImgButton');
+import Func from './Func.js';
+import ImgButton from '../ImgButton.js';
 
 class ArithmeticLogicUnitList extends HTMLElement {
   constructor(cpnt) {
@@ -54,4 +54,4 @@ class ArithmeticLogicUnitList extends HTMLElement {
 
 customElements.define('cpnt-alu-list', ArithmeticLogicUnitList);
 
-module.exports = ArithmeticLogicUnitList;
+export default ArithmeticLogicUnitList;

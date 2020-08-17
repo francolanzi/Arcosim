@@ -1,4 +1,4 @@
-const Link = require('./Link');
+import Link from './Link.js';
 
 class LinkLayer extends HTMLElement {
   get svg() {
@@ -87,4 +87,4 @@ class LinkLayer extends HTMLElement {
 
 customElements.define('link-layer', LinkLayer);
 
-module.exports = LinkLayer;
+export default LinkLayer;

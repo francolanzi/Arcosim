@@ -1,4 +1,4 @@
-const Component = require('../Component');
+import Component from '../Component.js';
 
 class Increment extends Component {
   static get svg() {
@@ -29,4 +29,4 @@ class Increment extends Component {
 
 customElements.define('cpnt-increment', Increment);
 
-module.exports = Increment;
+export default Increment;

@@ -1,4 +1,4 @@
-const Register = require('./Register');
+import Register from './Register.js';
 
 class RegistersList extends HTMLElement {
   get cpnt() {
@@ -45,4 +45,4 @@ class RegistersList extends HTMLElement {
 
 customElements.define('cpnt-registers-list', RegistersList);
 
-module.exports = RegistersList;
+export default RegistersList;

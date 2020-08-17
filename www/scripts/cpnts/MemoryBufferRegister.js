@@ -1,4 +1,4 @@
-const Component = require('../Component');
+import Component from '../Component.js';
 
 class MemoryBufferRegister extends Component {
   static get svg() {
@@ -23,4 +23,4 @@ class MemoryBufferRegister extends Component {
 
 customElements.define('cpnt-mbr', MemoryBufferRegister);
 
-module.exports = MemoryBufferRegister;
+export default MemoryBufferRegister;

@@ -1,5 +1,5 @@
-const Component = require('../Component');
-const Config = require('../config/ControlStore');
+import Component from '../Component.js';
+import Config from '../config/ControlStore/Config.js';
 
 class ControlStore extends Component {
   static get svg() {
@@ -76,4 +76,4 @@ class ControlStore extends Component {
 
 customElements.define('cpnt-cs', ControlStore);
 
-module.exports = ControlStore;
+export default ControlStore;

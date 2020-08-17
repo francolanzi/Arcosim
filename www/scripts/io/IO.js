@@ -87,4 +87,4 @@ class IO extends HTMLElement {
   }
 }
 
-module.exports = IO;
+export default IO;

@@ -1,4 +1,4 @@
-const UintInput = require('../UintInput');
+import UintInput from '../UintInput.js';
 
 class ClockSubcycles extends HTMLElement {
   get value() {
@@ -21,4 +21,4 @@ class ClockSubcycles extends HTMLElement {
 
 customElements.define('cpnt-clock-subcycles', ClockSubcycles);
 
-module.exports = ClockSubcycles;
+export default ClockSubcycles;

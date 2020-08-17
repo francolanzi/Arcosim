@@ -1,5 +1,5 @@
-const List = require('./List');
-const Label = require('./Label');
+import List from './List.js';
+import Label from './Label.js';
 
 class MicroInstructionRegisterConfig extends HTMLElement {
   constructor(cpnt) {
@@ -17,4 +17,4 @@ class MicroInstructionRegisterConfig extends HTMLElement {
 
 customElements.define('cpnt-mir-config', MicroInstructionRegisterConfig);
 
-module.exports = MicroInstructionRegisterConfig;
+export default MicroInstructionRegisterConfig;

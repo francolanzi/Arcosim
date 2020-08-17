@@ -1,4 +1,4 @@
-const Subcycles = require('./Subcycles');
+import Subcycles from './Subcycles.js';
 
 class ClockConfig extends HTMLElement {
   constructor(cpnt) {
@@ -20,4 +20,4 @@ class ClockConfig extends HTMLElement {
 
 customElements.define('cpnt-clock-config', ClockConfig);
 
-module.exports = ClockConfig;
+export default ClockConfig;

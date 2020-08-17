@@ -1,4 +1,4 @@
-const MenuButton = require('../MenuButton');
+import MenuButton from '../MenuButton.js';
 
 class ResetButton extends MenuButton {
   static get title() {
@@ -30,4 +30,4 @@ class ResetButton extends MenuButton {
 
 customElements.define('reset-button', ResetButton);
 
-module.exports = ResetButton;
+export default ResetButton;

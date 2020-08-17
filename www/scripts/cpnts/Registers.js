@@ -1,5 +1,5 @@
-const Component = require('../Component');
-const Config = require('../config/Registers');
+import Component from '../Component.js';
+import Config from '../config/Registers/Config.js';
 
 class Registers extends Component {
   static get svg() {
@@ -85,4 +85,4 @@ class Registers extends Component {
 
 customElements.define('cpnt-registers', Registers);
 
-module.exports = Registers;
+export default Registers;
