@@ -15,7 +15,7 @@ const fixedLayer = new FixedLayer();
 const modalLayer = new ModalLayer();
 
 menu.computer = computer;
-menu.getButton('cpnt').gallery = gallery;
+menu.gallery = gallery;
 
 gallery.addEventListener('add', ev => {
   const instance = ev.detail;

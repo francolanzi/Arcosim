@@ -16,6 +16,15 @@ class Menu extends HTMLElement {
     this.getButton('reset').computer = computer;
   }
 
+  get gallery() {
+    return this._gallery;
+  }
+
+  set gallery(gallery) {
+    this._gallery = gallery;
+    this.getButton('cpnt').gallery = gallery;
+  }
+
   constructor() {
     super();
 
