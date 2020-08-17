@@ -74,13 +74,10 @@ class Component extends HTMLElement {
     this._move = ev => this.move(ev);
     this._drop = ev => this.drop(ev);
 
-    const image = new Image();
     const svg = this.constructor.svg;
+    const image = new Image(svg.width, svg.height);
 
     image.src = svg.src;
-    image.width = svg.width;
-    image.height = svg.height;
-
     this.append(image);
 
     image.addEventListener('mousedown', ev => this.drag(ev));
