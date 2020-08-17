@@ -16,22 +16,13 @@ class Menu extends HTMLElement {
     this.getButton('reset').computer = computer;
   }
 
-  get gallery() {
-    return this._gallery;
-  }
-
-  set gallery(gallery) {
-    this._gallery = gallery;
-    this.getButton('cpnt').gallery = gallery;
-  }
-
-  constructor() {
+  constructor(gallery) {
     super();
 
     this._buttons = new Map();
 
     this.addButton('trash', new TrashButton());
-    this.addButton('cpnt', new CpntButton());
+    this.addButton('cpnt', new CpntButton(gallery));
     this.addButton('run', new RunButton());
     this.addButton('step', new StepButton());
     this.addButton('reset', new ResetButton());

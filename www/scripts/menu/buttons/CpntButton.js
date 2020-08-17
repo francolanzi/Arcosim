@@ -9,22 +9,12 @@ class CpntButton extends MenuButton {
     return 'images/menu/cpnt.svg';
   }
 
-  get gallery() {
-    return this._gallery;
-  }
-
-  set gallery(gallery) {
-    this._gallery = gallery;
-  }
-
-  constructor() {
+  constructor(gallery) {
     super();
 
     this.addEventListener('click', () => {
-      if (this.gallery) {
-        this.gallery.open = !this.gallery.open;
-        this.active = this.gallery.open;
-      }
+      gallery.open = !gallery.open;
+      this.active = gallery.open;
     });
   }
 }

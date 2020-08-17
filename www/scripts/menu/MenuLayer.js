@@ -21,10 +21,8 @@ class MenuLayer extends HTMLElement {
   constructor() {
     super();
 
-    this._menu = new Menu();
     this._gallery = new Gallery();
-
-    this._menu.gallery = this._gallery;
+    this._menu = new Menu(this._gallery);
 
     this.append(this._menu);
     this.append(this._gallery);
