@@ -1,7 +1,7 @@
 import Computer from './scripts/Computer.js';
 import LinkLayer from './scripts/link/LinkLayer.js';
 import MenuLayer from './scripts/menu/MenuLayer.js';
-import ModalLayer from './scripts/ModalLayer.js';
+import ModalLayer from './scripts/modal/ModalLayer.js';
 
 const computer = new Computer();
 
