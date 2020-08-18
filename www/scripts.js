@@ -10,54 +10,54 @@ const modalLayer = new ModalLayer();
 const menuLayer = new MenuLayer(computer);
 
 menuLayer.gallery.addEventListener('add', ev => {
-  const instance = ev.detail;
+  const cpnt = ev.detail;
 
-  computer.addCpnt(instance);
+  computer.addCpnt(cpnt);
 
-  instance.trash = menuLayer.menu.getButton('trash');
+  cpnt.trash = menuLayer.menu.getButton('trash');
 
-  instance.addEventListener('config', () => {
-    const type = instance.constructor.type;
-    const config = instance.config;
+  cpnt.addEventListener('config', () => {
+    const type = cpnt.constructor.type;
+    const config = cpnt.config;
     if (config) {
       modalLayer.show(type, config);
     }
   });
 
-  instance.addEventListener('remove', () => {
-    for (const input of instance.inputs) {
+  cpnt.addEventListener('remove', () => {
+    for (const input of cpnt.inputs) {
       linkLayer.removeInput(input);
     }
 
-    for (const output of instance.outputs) {
+    for (const output of cpnt.outputs) {
       linkLayer.removeOutput(output);
     }
 
-    computer.removeCpnt(instance.constructor.type, instance.id);
+    computer.removeCpnt(cpnt.constructor.type, cpnt.id);
   });
 
-  instance.addEventListener('link', ev => {
+  cpnt.addEventListener('link', ev => {
     const input = ev.detail.input;
     const output = ev.detail.output;
 
     linkLayer.addLink(input, output);
   });
 
-  instance.addEventListener('move', () => {
-    for (const input of instance.inputs) {
+  cpnt.addEventListener('move', () => {
+    for (const input of cpnt.inputs) {
       linkLayer.moveInput(input);
     }
 
-    for (const output of instance.outputs) {
+    for (const output of cpnt.outputs) {
       linkLayer.moveOutput(output);
     }
   });
 
-  instance.addEventListener('unlink', ev => {
+  cpnt.addEventListener('unlink', ev => {
     linkLayer.removeInput(ev.detail);
   });
 
-  document.body.append(instance);
+  document.body.append(cpnt);
 });
 
 document.body.append(linkLayer);
