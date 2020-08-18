@@ -1,5 +1,5 @@
 import Component from '../Component.js';
-import Config from '../config/MicroInstructionRegister/Config.js';
+import Config from '../modal/MicroInstructionRegister/Config.js';
 
 class MicroInstructionRegister extends Component {
   static get svg() {

@@ -1,5 +1,5 @@
 import Component from '../Component.js';
-import Config from '../config/ControlStore/Config.js';
+import Config from '../modal/ControlStore/Config.js';
 
 class ControlStore extends Component {
   static get svg() {

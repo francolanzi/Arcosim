@@ -1,5 +1,5 @@
 import Component from '../Component.js';
-import Config from '../config/ArithmeticLogicUnit/Config.js';
+import Config from '../modal/ArithmeticLogicUnit/Config.js';
 
 class ArithmeticLogicUnit extends Component {
   static get svg() {

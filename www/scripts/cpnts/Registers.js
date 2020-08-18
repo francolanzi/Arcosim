@@ -1,5 +1,5 @@
 import Component from '../Component.js';
-import Config from '../config/Registers/Config.js';
+import Config from '../modal/Registers/Config.js';
 
 class Registers extends Component {
   static get svg() {

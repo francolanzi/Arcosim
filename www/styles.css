@@ -1,4 +1,3 @@
-@import 'styles/config/config.css';
 @import 'styles/Component.css';
 @import 'styles/io/IO.css';
 @import 'styles/io/Input.css';
@@ -7,6 +6,7 @@
 @import 'styles/menu/Menu.css';
 @import 'styles/menu/MenuButton.css';
 @import 'styles/menu/MenuLayer.css';
+@import 'styles/modal/config.css';
 @import 'styles/ModalLayer.css';
 @import 'styles/link/Link.css';
 @import 'styles/link/LinkCorner.css';

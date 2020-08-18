@@ -1,5 +1,5 @@
 import Component from '../Component.js';
-import Config from '../config/Clock/Config.js';
+import Config from '../modal/Clock/Config.js';
 
 class Clock extends Component {
   static get svg() {

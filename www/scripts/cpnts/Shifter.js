@@ -1,5 +1,5 @@
 import Component from '../Component.js';
-import Config from '../config/Shifter/Config.js';
+import Config from '../modal/Shifter/Config.js';
 
 class Shifter extends Component {
   static get svg() {

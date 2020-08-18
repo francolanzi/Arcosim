@@ -1,5 +1,5 @@
 import Component from '../Component.js';
-import Config from '../config/MicroSequenceLogic/Config.js';
+import Config from '../modal/MicroSequenceLogic/Config.js';
 
 class MicroSequenceLogic extends Component {
   static get svg() {
