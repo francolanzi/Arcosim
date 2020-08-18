@@ -14,6 +14,11 @@
 @import 'ControlStore/Row.css';
 @import 'ControlStore/Store.css';
 
+@import 'Memory/Cell.css';
+@import 'Memory/Config.css';
+@import 'Memory/Memory.css';
+@import 'Memory/Range.css';
+
 @import 'MicroInstructionRegister/Config.css';
 @import 'MicroInstructionRegister/Label.css';
 @import 'MicroInstructionRegister/List.css';

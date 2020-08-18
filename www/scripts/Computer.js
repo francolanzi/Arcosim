@@ -7,6 +7,7 @@ class Computer extends EventTarget {
     super();
 
     this._cpnts = new Map();
+    this._mem = new Map();
     this._running = false;
     this._time = 0;
   }
@@ -73,6 +74,19 @@ class Computer extends EventTarget {
     if (!this.running) {
       this._time = 0;
       this._cpnts.forEach(cpnt => cpnt.reset());
+    }
+  }
+
+  getMemoryCell(index) {
+    const value = this._mem.get(index);
+    return value ? value : 0;
+  }
+
+  setMemoryCell(index, value) {
+    if (value) {
+      this._mem.set(index, value);
+    } else {
+      this._mem.delete(index);
     }
   }
 }

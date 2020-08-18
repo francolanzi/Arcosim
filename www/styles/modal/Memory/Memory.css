@@ -1,0 +1,8 @@
+memory-cells {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  overflow-y: scroll;
+}
