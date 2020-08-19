@@ -6,6 +6,6 @@ cpnt-shifter-func {
   margin: 0.1rem 0;
 }
 
-cpnt-alu-shifter > custom-select {
+cpnt-alu-shifter > select[is='custom-select'] {
   margin: 0 0.5rem;
 }
