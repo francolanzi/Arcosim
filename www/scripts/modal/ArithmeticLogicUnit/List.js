@@ -12,9 +12,9 @@ class ArithmeticLogicUnitList extends HTMLElement {
 
     const indexes = [];
 
-    function addFunc(index, func) {
+    const addFunc = (index, func) => {
       const elem = new Func(index, func, supported);
-      add.insertAdjacentElement('beforebegin', elem);
+      this.append(elem);
 
       indexes.push(index);
 
@@ -35,7 +35,7 @@ class ArithmeticLogicUnitList extends HTMLElement {
           elem.remove();
         }
       });
-    }
+    };
 
     add.addEventListener('click', () => {
       let index = 0;

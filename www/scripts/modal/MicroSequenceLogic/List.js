@@ -12,9 +12,9 @@ class MicroSequenceLogicList extends HTMLElement {
 
     const indexes = [];
 
-    function addCond(index, cond) {
+    const addCond = (index, cond) => {
       const elem = new Cond(index, cond, supported);
-      add.insertAdjacentElement('beforebegin', elem);
+      this.append(elem);
 
       indexes.push(index);
 
@@ -35,7 +35,7 @@ class MicroSequenceLogicList extends HTMLElement {
           elem.remove();
         }
       });
-    }
+    };
 
     add.addEventListener('click', () => {
       let index = 0;

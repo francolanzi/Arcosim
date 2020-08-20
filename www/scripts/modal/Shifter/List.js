@@ -12,9 +12,9 @@ class ShifterList extends HTMLElement {
 
     const indexes = [];
 
-    function addFunc(index, { func, value }) {
+    const addFunc = (index, { func, value }) => {
       const elem = new Func(index, func, value, supported);
-      add.insertAdjacentElement('beforebegin', elem);
+      this.append(elem);
 
       indexes.push(index);
 
@@ -35,7 +35,7 @@ class ShifterList extends HTMLElement {
           elem.remove();
         }
       });
-    }
+    };
 
     add.addEventListener('click', () => {
       let index = 0;
