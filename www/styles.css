@@ -1,15 +1,8 @@
 @import 'styles/Component.css';
-@import 'styles/io/IO.css';
-@import 'styles/io/Input.css';
-@import 'styles/io/Output.css';
-@import 'styles/menu/Gallery.css';
-@import 'styles/menu/Menu.css';
-@import 'styles/menu/MenuButton.css';
-@import 'styles/menu/MenuLayer.css';
-@import 'styles/modal/modal.css';
-@import 'styles/link/Link.css';
-@import 'styles/link/LinkCorner.css';
-@import 'styles/link/LinkLayer.css';
+@import 'styles/io.css';
+@import 'styles/menu.css';
+@import 'styles/modal.css';
+@import 'styles/link.css';
 
 body {
   margin: 0;

@@ -1,0 +1,14 @@
+@import 'modal/ModalLayer.css';
+
+@import 'modal/CustomSelect.css';
+@import 'modal/ImgButton.css';
+@import 'modal/UintInput.css';
+
+@import 'modal/ArithmeticLogicUnit.css';
+@import 'modal/Clock.css';
+@import 'modal/ControlStore.css';
+@import 'modal/Memory.css';
+@import 'modal/MicroInstructionRegister.css';
+@import 'modal/MicroSequenceLogic.css';
+@import 'modal/Registers.css';
+@import 'modal/Shifter.css';
