@@ -12,9 +12,16 @@ class MemoryAddressRegister extends Component {
   constructor(computer, top, left) {
     super(computer, top, left);
 
-    this.addInput('Control', 23, 15);
-    this.addInput('Input', 46, 7.5);
-    this.addInput('Clock', 23, 0);
+    this._control = this.addInput('Control', 23, 15);
+    this._address = this.addInput('Dirección', 46, 7.5);
+    this._clock= this.addInput('Clock', 23, 0);
+  }
+
+  run() {
+    if (this._control.value && this._clock.value) {
+      this.computer.memory.address = this._address.value;
+    }
+    return super.run();
   }
 }
 
