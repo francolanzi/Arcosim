@@ -1,0 +1,54 @@
+memory-config {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+memory-range {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+memory-range label {
+  margin-right: 0.25rem;
+  color: black;
+  line-height: 0;
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+memory-range input[type='number'][is='uint-input'] {
+  width: 3.5rem;
+}
+
+memory-cells {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+memory-cell {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+memory-cell label {
+  margin-right: 0.25rem;
+  color: black;
+  line-height: 0;
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+memory-cell input[type='number'][is='uint-input'] {
+  width: 3.5rem;
+}

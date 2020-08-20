@@ -1,7 +1,0 @@
-cpnt-cs-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: 0.1rem 0;
-}
