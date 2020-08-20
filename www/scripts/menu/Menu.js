@@ -13,7 +13,7 @@ class Menu extends HTMLElement {
 
     this.addButton('trash', new TrashButton());
     this.addButton('cpnt', new CpntButton(gallery));
-    this.addButton('mem', new MemButton(computer));
+    this.addButton('mem', new MemButton(computer.memory));
     this.addButton('run', new RunButton(computer));
     this.addButton('step', new StepButton(computer));
     this.addButton('reset', new ResetButton(computer));

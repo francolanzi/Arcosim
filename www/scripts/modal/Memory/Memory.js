@@ -1,10 +1,10 @@
 import Cell from './Cell.js';
 
 class Memory extends HTMLElement {
-  constructor(computer) {
+  constructor(memory) {
     super();
 
-    this._computer = computer;
+    this._memory = memory;
   }
 
   showCells(from, to) {
@@ -13,10 +13,10 @@ class Memory extends HTMLElement {
     }
 
     for (let index = from; index <= to; index++) {
-      const value = this._computer.getMemoryCell(index);
+      const value = this._memory.getCell(index);
       const cell = new Cell(index, value);
       cell.addEventListener('change', () =>
-        this._computer.setMemoryCell(cell.index, cell.value));
+        this._memory.setCell(cell.index, cell.value));
       this.append(cell);
     }
   }

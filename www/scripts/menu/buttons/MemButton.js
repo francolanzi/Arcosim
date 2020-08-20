@@ -10,11 +10,11 @@ class MemButton extends MenuButton {
     return 'images/menu/mem.svg';
   }
 
-  constructor(computer) {
+  constructor(memory) {
     super();
 
     this.addEventListener('click', () =>
-      this.dispatchEvent(new CustomEvent('config', { detail: new Config(computer) })));
+      this.dispatchEvent(new CustomEvent('config', { detail: new Config(memory) })));
   }
 }
 
