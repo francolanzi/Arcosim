@@ -18,8 +18,8 @@ class Registers extends Component {
     return this._registers.length;
   }
 
-  constructor(top, left) {
-    super(top, left);
+  constructor(computer, top, left) {
+    super(computer, top, left);
 
     this._registers = new Array(16).fill(0);
 

@@ -36,8 +36,8 @@ class MicroSequenceLogic extends Component {
     return this._conditions.size;
   }
 
-  constructor(top, left) {
-    super(top, left);
+  constructor(computer, top, left) {
+    super(computer, top, left);
 
     this._conditions = new Map();
 

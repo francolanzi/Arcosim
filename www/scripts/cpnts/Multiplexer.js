@@ -9,8 +9,8 @@ class Multiplexer extends Component {
     };
   }
 
-  constructor(top, left) {
-    super(top, left);
+  constructor(computer, top, left) {
+    super(computer, top, left);
 
     this._inputA = this.addInput('A', 18.5, 0);
     this._inputB = this.addInput('B', 42.5, 0);

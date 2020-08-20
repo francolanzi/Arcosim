@@ -9,8 +9,8 @@ class Increment extends Component {
     };
   }
 
-  constructor(top, left) {
-    super(top, left);
+  constructor(computer, top, left) {
+    super(computer, top, left);
 
     this._current = this.addInput('Actual', 67, 11);
     this._clock = this.addInput('Clock', 0, 11);

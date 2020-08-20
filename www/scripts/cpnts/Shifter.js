@@ -33,8 +33,8 @@ class Shifter extends Component {
     return this._functions.size;
   }
 
-  constructor(top, left) {
-    super(top, left);
+  constructor(computer, top, left) {
+    super(computer, top, left);
 
     this._functions = new Map();
 

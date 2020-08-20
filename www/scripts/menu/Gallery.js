@@ -10,7 +10,7 @@ class Gallery extends HTMLElement {
     this.classList.toggle('open', open);
   }
 
-  constructor() {
+  constructor(computer) {
     super();
 
     (async () => {
@@ -28,7 +28,7 @@ class Gallery extends HTMLElement {
             const rect = image.getBoundingClientRect();
             const top = ev.pageY - ev.clientY + rect.top;
             const left = ev.pageX - ev.clientX + rect.left;
-            const cpnt = new Cpnt(top, left);
+            const cpnt = new Cpnt(computer, top, left);
             this.dispatchEvent(new CustomEvent('add', { detail: cpnt }));
             cpnt.drag(ev);
           });

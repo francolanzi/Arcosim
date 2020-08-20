@@ -9,8 +9,8 @@ class Decoder extends Component {
     };
   }
 
-  constructor(top, left) {
-    super(top, left);
+  constructor(computer, top, left) {
+    super(computer, top, left);
 
     this._encoded = this.addInput('Codificado', 77, 14.5);
     this._enable = this.addInput('Habilitar', 38.5, 0);

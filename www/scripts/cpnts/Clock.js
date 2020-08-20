@@ -18,8 +18,8 @@ class Clock extends Component {
     return this._subcycles.length;
   }
 
-  constructor(top, left) {
-    super(top, left);
+  constructor(computer, top, left) {
+    super(computer, top, left);
 
     this._subcycles = [];
 

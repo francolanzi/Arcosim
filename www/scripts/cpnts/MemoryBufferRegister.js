@@ -9,8 +9,8 @@ class MemoryBufferRegister extends Component {
     };
   }
 
-  constructor(top, left) {
-    super(top, left);
+  constructor(computer, top, left) {
+    super(computer, top, left);
 
     this.addInput('Control', 37, 15);
     this.addInput('RDWR', 9, 15);

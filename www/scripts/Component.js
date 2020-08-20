@@ -14,6 +14,10 @@ class Component extends HTMLElement {
     return this._id;
   }
 
+  get computer() {
+    return this._computer;
+  }
+
   get top() {
     return this._top;
   }
@@ -43,7 +47,7 @@ class Component extends HTMLElement {
     return null;
   }
 
-  constructor(top, left) {
+  constructor(computer, top, left) {
     super();
 
     if (this.constructor === Component) {
@@ -59,6 +63,8 @@ class Component extends HTMLElement {
     this.constructor._count.set(this.constructor.name, this._id);
 
     this.classList.add('component');
+
+    this._computer = computer;
 
     this.style.top = `${top}px`;
     this.style.left = `${left}px`;

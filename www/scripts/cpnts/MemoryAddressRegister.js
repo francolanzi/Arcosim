@@ -9,8 +9,8 @@ class MemoryAddressRegister extends Component {
     };
   }
 
-  constructor(top, left) {
-    super(top, left);
+  constructor(computer, top, left) {
+    super(computer, top, left);
 
     this.addInput('Control', 23, 15);
     this.addInput('Input', 46, 7.5);

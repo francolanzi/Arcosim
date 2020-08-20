@@ -34,8 +34,8 @@ class ControlStore extends Component {
     return this._instructions.values();
   }
 
-  constructor(top, left) {
-    super(top, left);
+  constructor(computer, top, left) {
+    super(computer, top, left);
 
     this._instructions = [0];
     this._bits = 32;
