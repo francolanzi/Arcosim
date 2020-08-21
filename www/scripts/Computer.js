@@ -1,19 +1,12 @@
-import Memory from './Memory.js';
-
 class Computer extends EventTarget {
   get running() {
     return this._running;
-  }
-
-  get memory() {
-    return this._memory;
   }
 
   constructor() {
     super();
 
     this._cpnts = new Map();
-    this._memory = new Memory();
     this._running = false;
     this._time = 0;
   }

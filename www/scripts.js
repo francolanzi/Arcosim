@@ -9,9 +9,6 @@ const linkLayer = new LinkLayer();
 const modalLayer = new ModalLayer();
 const menuLayer = new MenuLayer(computer);
 
-menuLayer.menu.getButton('mem').addEventListener('config', ev =>
-  modalLayer.show('Memoria', ev.detail));
-
 menuLayer.gallery.addEventListener('add', ev => {
   const cpnt = ev.detail;
 

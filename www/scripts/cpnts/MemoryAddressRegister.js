@@ -5,21 +5,25 @@ class MemoryAddressRegister extends Component {
     return {
       src: 'images/cpnt/MemoryAddressRegister.svg',
       width: 47,
-      height: 16,
+      height: 20,
     };
   }
 
   constructor(computer, top, left) {
     super(computer, top, left);
 
-    this._control = this.addInput('Control', 23, 15);
-    this._address = this.addInput('Dirección', 46, 7.5);
+    this._control = this.addInput('Control', 23, 19);
     this._clock= this.addInput('Clock', 23, 0);
+    this._addrin = this.addInput('Dirección', 46, 9.5);
+
+    this._addrout = this.addOutput('Bus de direcciones', 0, 9.5);
   }
 
   run() {
-    if (this._control.value && this._clock.value) {
-      this.computer.memory.address = this._address.value;
+    if (this._clock.value) {
+      if (this._control.value) {
+        this._addrout.value = this._addrin.value;
+      }
     }
     return super.run();
   }
