@@ -2,6 +2,7 @@
   "name": "arcosim",
   "version": "1.0.0-beta",
   "description": "Simulador de Arquitecturas de Computadoras",
+  "license": "GPL-3.0-only",
   "author": {
     "name": "Franco Lanzillotta",
     "email": "flanzi@fi.mdp.edu.ar"
