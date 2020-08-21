@@ -42,7 +42,8 @@ class MicroSequenceLogic extends Component {
     this._conditions = new Map();
 
     this._condition = this.addInput('Condición', 61, 20.5);
-    this._control = this.addInput('Control', 0, 20.5);
+    this._controlN = this.addInput('N', 0, 15);
+    this._controlZ = this.addInput('Z', 0, 26);
 
     this._jump = this.addOutput('Saltar', 30.5, 0);
 
@@ -58,19 +59,19 @@ class MicroSequenceLogic extends Component {
       this._jump.value = 0;
       break;
     case 1:
-      this._jump.value = this._control.value === 0b00 ? 1 : 0;
+      this._jump.value = 1 - this._controlN.value - this._controlZ.value;
       break;
     case 2:
-      this._jump.value = this._control.value === 0b10 ? 1 : 0;
+      this._jump.value = this._controlN.value;
       break;
     case 3:
-      this._jump.value = this._control.value === 0b01 ? 1 : 0;
+      this._jump.value = this._controlZ.value;
       break;
     case 4:
-      this._jump.value = this._control.value !== 0b10 ? 1 : 0;
+      this._jump.value = 1 - this._controlN.value;
       break;
     case 5:
-      this._jump.value = this._control.value !== 0b00 ? 1 : 0;
+      this._jump.value = this._controlN.value + this._controlZ.value;
       break;
     case 6:
       this._jump.value = 1;

@@ -48,10 +48,11 @@ class ArithmeticLogicUnit extends Component {
 
     this._inputA = this.addInput('A', 11.5, 0);
     this._inputB = this.addInput('B', 69, 0);
-    this._function = this.addInput('Función', 70, 29.5);
+    this._function = this.addInput('Función', 70, 33);
 
-    this._result = this.addOutput('Resultado', 39.5, 44);
-    this._control = this.addOutput('Control', 75, 14.5);
+    this._result = this.addOutput('Resultado', 40, 44);
+    this._controlN = this.addOutput('N', 77, 11);
+    this._controlZ = this.addOutput('Z', 74, 22);
 
     this.setFunction(0, 0);
     this.setFunction(1, 5);
@@ -101,13 +102,8 @@ class ArithmeticLogicUnit extends Component {
       break;
     }
 
-    if (this._result.value > 0) {
-      this._control.value = 0b00;
-    } else if (this._result.value === 0) {
-      this._control.value = 0b01;
-    } else {
-      this._control.value = 0b10;
-    }
+    this._controlN.value = (this._result.value < 0) ? 1 : 0;
+    this._controlZ.value = (this._result.value === 0) ? 1 : 0;
 
     return super.run();
   }
