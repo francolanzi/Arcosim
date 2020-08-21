@@ -9,6 +9,9 @@ const linkLayer = new LinkLayer();
 const modalLayer = new ModalLayer();
 const menuLayer = new MenuLayer(computer);
 
+menuLayer.addEventListener('modal', ev =>
+  modalLayer.show(ev.detail.title, ev.detail.content));
+
 menuLayer.gallery.addEventListener('add', ev => {
   const cpnt = ev.detail;
 
