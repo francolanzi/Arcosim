@@ -12,8 +12,9 @@ class MemoryBufferRegister extends Component {
   constructor(computer, top, left) {
     super(computer, top, left);
 
-    this._control = this.addInput('Control', 31, 19);
-    this._rdwr = this.addInput('RDWR', 15, 19);
+    this._read = this.addInput('Leer', 11.5, 19);
+    this._write = this.addInput('Escribir', 23, 19);
+    this._control = this.addInput('Control', 34.5, 19);
     this._clock = this.addInput('Clock', 23, 0);
     this._datain = this.addInput('Entrada de datos', 46, 15);
     this._busin = this.addInput('Bus de datos', 0, 4);
@@ -23,17 +24,14 @@ class MemoryBufferRegister extends Component {
   }
 
   run() {
-    const read = (this._rdwr.value >> 1) & 1;
-    const write = (this._rdwr.value >> 0) & 1;
-
     if (this._clock.value) {
       if (this._control.value) {
         this._dataout.value = this._datain.value;
-      } else if (read) {
+      } else if (this._read.value) {
         this._dataout.value = this._busin.value;
       }
 
-      if (write) {
+      if (this._write.value) {
         this._busout.value = this._dataout.value;
       }
     }

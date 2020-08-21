@@ -19,7 +19,8 @@ class Memory extends Component {
 
     this._cells = new Map();
 
-    this._rdwr = this.addInput('RDWR', 82, 63);
+    this._read = this.addInput('Leer', 76.5, 63);
+    this._write = this.addInput('Escribir', 87.5, 63);
     this._address = this.addInput('Dirección', 164, 63);
     this._datain = this.addInput('Dato', 240.5, 63);
 
@@ -27,13 +28,10 @@ class Memory extends Component {
   }
 
   run() {
-    const read = (this._rdwr.value >> 1) & 1;
-    const write = (this._rdwr.value >> 0) & 1;
-
-    if (read) {
+    if (this._read.value) {
       this._dataout.value = this.getCell(this._address.value);
     }
-    if (write) {
+    if (this._write.value) {
       this.setCell(this._address.value, this._datain.value);
     }
 
