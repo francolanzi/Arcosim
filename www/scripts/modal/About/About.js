@@ -13,12 +13,12 @@ class About extends HTMLElement {
     iconImg.src = 'images/icon.svg';
 
     const icon = document.createElement('a');
-    icon.href = 'https://github.com/francolanzi/ArCoSim';
+    icon.href = pckg.repository.url;
     icon.append(iconImg);
 
     const nameLink = document.createElement('a');
     nameLink.textContent = `ArCoSim ${pckg.version}`;
-    nameLink.href = 'https://github.com/francolanzi/ArCoSim';
+    nameLink.href = pckg.repository.url;
 
     const name = document.createElement('h6');
     name.append(nameLink);

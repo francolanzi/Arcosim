@@ -6,6 +6,10 @@
     "name": "Franco Lanzillotta",
     "email": "flanzi@fi.mdp.edu.ar"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/francolanzi/ArCoSim"
+  },
   "main": "index.js",
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
