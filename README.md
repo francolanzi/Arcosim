@@ -1,6 +1,6 @@
 # ArCoSim
 
-Computer Architecture Simulator
+Computer architecture simulator based on Tanenbaum architectures
 
 ## Install dependencies
 

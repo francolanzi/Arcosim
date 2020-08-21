@@ -1,7 +1,7 @@
 {
   "name": "arcosim",
   "version": "1.0.0-beta",
-  "description": "Simulador de Arquitecturas de Computadoras",
+  "description": "Computer architecture simulator based on Tanenbaum architectures",
   "license": "GPL-3.0-only",
   "author": {
     "name": "Franco Lanzillotta",
