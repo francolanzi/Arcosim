@@ -5,7 +5,7 @@ import CustomSelect from '../CustomSelect.js';
 class ArithmeticLogicUnitFunc extends HTMLElement {
   get position() {
     const childs = this.parentNode.childNodes;
-    return Array.prototype.indexOf.call(childs, this);
+    return Array.prototype.indexOf.call(childs, this) - 1;
   }
 
   get index() {
@@ -17,7 +17,7 @@ class ArithmeticLogicUnitFunc extends HTMLElement {
   }
 
   get func() {
-    return this._func.value;
+    return parseInt(this._func.value);
   }
 
   constructor(index, func, supported) {

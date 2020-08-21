@@ -5,7 +5,7 @@ import CustomSelect from '../CustomSelect.js';
 class MicroSequenceLogicCond extends HTMLElement {
   get position() {
     const childs = this.parentNode.childNodes;
-    return Array.prototype.indexOf.call(childs, this);
+    return Array.prototype.indexOf.call(childs, this) - 1;
   }
 
   get index() {
@@ -17,7 +17,7 @@ class MicroSequenceLogicCond extends HTMLElement {
   }
 
   get cond() {
-    return this._cond.value;
+    return parseInt(this._cond.value);
   }
 
   constructor(index, cond, supported) {
