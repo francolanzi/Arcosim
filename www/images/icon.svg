@@ -1,7 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-  <path fill="darkblue" d="M 0 499 L 82 0 L 417 0 L 418 10 L 244 38 L 216 208 L 284 208 L 285 207 L 447 180 L 470 323 L 298 295 L 292 253 L 208 253 L 167 499 L 0 499"></path>
-  <path fill="darkblue" d="M 477 499 L 328 475 L 332 499 L 477 499"></path>
-  <path fill="darkgreen" d="M 66 71 L 0 82 L 0 417 L 9 418 L 66 71"></path>
-  <path fill="darkgreen" d="M 499 0 L 247 41 L 220 204 L 280 204 L 499 167 L 499 0"></path>
-  <path fill="darkgreen" d="M 499 499 L 180 447 L 211 257 L 253 257 L 253 292 L 499 332 L 499 499"></path>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 519 519">
+  <path fill="mediumblue" stroke="black" stroke-width="20" stroke-linejoin="round" d="M 10 509 L 92 10 427 10 509 509 342 509 301 263 218 263 177 509 Z M 254 48 L 226 218 293 218 265 48 Z"></path>
+  <path fill="forestgreen" stroke="black" stroke-width="20" stroke-linejoin="round" d="M 80.5 80 L 10 92 10 427 23.1 429 Z"></path>
+  <path fill="forestgreen" stroke="black" stroke-width="20" stroke-linejoin="round" d="M 509 10 L 253.4 52 226 218 265 218 509 177 Z"></path>
+  <path fill="forestgreen" stroke="black" stroke-width="20" stroke-linejoin="round" d="M 509 509 L 185.9 456 218 263 263 263 263 302 509 342 Z"></path>
 </svg>
