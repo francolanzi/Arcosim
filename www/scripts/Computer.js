@@ -8,6 +8,7 @@ class Computer extends EventTarget {
 
     this._cpnts = new Map();
     this._running = false;
+    this._stopped = true;
     this._time = 0;
   }
 
@@ -39,6 +40,7 @@ class Computer extends EventTarget {
   run() {
     if (!this.running) {
       this._running = true;
+      this._stopped = false;
       this.dispatchEvent(new Event('run'));
       this.step();
     }
@@ -55,15 +57,19 @@ class Computer extends EventTarget {
     } else {
       console.log(`Time = ${this._time++}`);
       if (this.running) {
-        setTimeout(() => this.step(), 0);
+        if (!this._stopped) {
+          setTimeout(() => this.step(), 0);
+        } else {
+          this._running = false;
+          this.dispatchEvent(new Event('stop'));
+        }
       }
     }
   }
 
   stop() {
     if (this.running) {
-      this._running = false;
-      this.dispatchEvent(new Event('stop'));
+      this._stopped = true;
     }
   }
 
