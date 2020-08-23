@@ -3,10 +3,15 @@ class Computer extends EventTarget {
     return this._running;
   }
 
+  get stepping() {
+    return this._stepping;
+  }
+
   constructor() {
     super();
 
     this._cpnts = new Map();
+    this._stepping = false;
     this._running = false;
     this._stopped = true;
     this._count = 0;
@@ -39,15 +44,23 @@ class Computer extends EventTarget {
   }
 
   run() {
-    if (!this.running) {
+    if (!this.running && !this.stepping) {
       this._running = true;
       this._stopped = false;
       this.dispatchEvent(new Event('run'));
-      this.step();
+      this.continue();
     }
   }
 
   step() {
+    if (!this.running && !this.stepping) {
+      this._stepping = true;
+      this.dispatchEvent(new Event('step'));
+      this.continue();
+    }
+  }
+
+  continue() {
     let changed = false;
 
     this._cpnts.forEach(cpnt =>
@@ -56,13 +69,16 @@ class Computer extends EventTarget {
     const timeout = ++this._count < 1000;
 
     if (changed && timeout) {
-      setTimeout(() => this.step(), 0);
+      setTimeout(() => this.continue(), 0);
     } else {
       console.log(`Time = ${this._time++}`);
       this._count = 0;
-      if (this.running) {
+      if (this.stepping) {
+        this._stepping = false;
+        this.dispatchEvent(new Event('pause'));
+      } else if (this.running) {
         if (!this._stopped && timeout) {
-          setTimeout(() => this.step(), 0);
+          setTimeout(() => this.continue(), 0);
         } else {
           this._running = false;
           this.dispatchEvent(new Event('stop'));
@@ -78,7 +94,7 @@ class Computer extends EventTarget {
   }
 
   reset() {
-    if (!this.running) {
+    if (!this.running && !this.stepping) {
       this._time = 0;
       this._cpnts.forEach(cpnt => cpnt.reset());
     }
