@@ -12,7 +12,20 @@ class StepButton extends MenuButton {
   constructor(computer) {
     super();
 
-    this.addEventListener('click', () => computer.step());
+    this.addEventListener('click', () => {
+      if (!computer.stepping) {
+        computer.step();
+      }
+    });
+
+    computer.addEventListener('step', () => {
+      this.active = true;
+      document.documentElement.style.cursor = 'progress';
+    });
+    computer.addEventListener('pause', () => {
+      this.active = false;
+      document.documentElement.style.cursor = 'auto';
+    });
   }
 }
 
