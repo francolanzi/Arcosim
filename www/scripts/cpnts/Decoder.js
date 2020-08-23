@@ -17,13 +17,13 @@ class Decoder extends Component {
     this._clock = this.addInput('Clock', 38.5, 29);
 
     this._decoded = this.addOutput('Decodificado', 0, 14.5);
+
+    this._enable.default = 1;
+    this._clock.default = 1;
   }
 
   run() {
-    const clock = !this._clock.linked || this._clock.value;
-    const enable = !this._enable.linked || this._enable.value;
-
-    if (clock && enable) {
+    if (this._clock.value && this._enable.value) {
       this._decoded.value = 1 << this._encoded.value;
     }
 
