@@ -1,12 +1,11 @@
 import MenuButton from '../MenuButton.js';
 
 class TrashButton extends MenuButton {
-  static get title() {
-    return 'Eliminar';
-  }
+  constructor() {
+    const title = 'Eliminar';
+    const icon = 'images/menu/trash.svg';
 
-  static get icon() {
-    return 'images/menu/trash.svg';
+    super(title, icon);
   }
 }
 

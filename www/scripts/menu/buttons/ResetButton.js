@@ -1,16 +1,11 @@
 import MenuButton from '../MenuButton.js';
 
 class ResetButton extends MenuButton {
-  static get title() {
-    return 'Reiniciar';
-  }
-
-  static get icon() {
-    return 'images/menu/reset.svg';
-  }
-
   constructor(computer) {
-    super();
+    const title = 'Reiniciar';
+    const icon = 'images/menu/reset.svg';
+
+    super(title, icon);
 
     this.addEventListener('click', () => computer.reset());
   }

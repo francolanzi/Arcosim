@@ -2,16 +2,12 @@ import MenuButton from '../MenuButton.js';
 import About from '../../modal/About/About.js';
 
 class AboutButton extends MenuButton {
-  static get title() {
-    return 'Acerca de';
-  }
-
-  static get icon() {
-    return 'images/menu/about.svg';
-  }
-
   constructor() {
-    super();
+    const title = 'Acerca de';
+    const icon = 'images/menu/about.svg';
+
+    super(title, icon);
+
     this.addEventListener('click', () => {
       const init = {
         detail: {

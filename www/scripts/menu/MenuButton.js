@@ -1,10 +1,10 @@
 class MenuButton extends HTMLElement {
-  static get title() {
-    throw new Error('title static property must be overrided');
+  get icon() {
+    return this._image.src;
   }
 
-  static get icon() {
-    throw new Error('icon static property must be overrided');
+  set icon(icon) {
+    this._image.src = icon;
   }
 
   get active() {
@@ -15,7 +15,7 @@ class MenuButton extends HTMLElement {
     this.classList.toggle('active', active);
   }
 
-  constructor() {
+  constructor(title, icon) {
     super();
 
     if (this.constructor === MenuButton) {
@@ -24,11 +24,11 @@ class MenuButton extends HTMLElement {
 
     this.classList.add('menu-button');
 
-    this.title = this.constructor.title;
+    this._image = document.createElement('img');
+    this.append(this._image);
 
-    const image = document.createElement('img');
-    image.src = this.constructor.icon;
-    this.append(image);
+    this.icon = icon;
+    this.title = title;
   }
 }
 

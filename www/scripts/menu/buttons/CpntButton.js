@@ -1,16 +1,11 @@
 import MenuButton from '../MenuButton.js';
 
 class CpntButton extends MenuButton {
-  static get title() {
-    return 'Componentes';
-  }
-
-  static get icon() {
-    return 'images/menu/cpnt.svg';
-  }
-
   constructor(gallery) {
-    super();
+    const title = 'Componentes';
+    const icon = 'images/menu/cpnt.svg';
+
+    super(title, icon);
 
     this.addEventListener('click', () => {
       gallery.open = !gallery.open;

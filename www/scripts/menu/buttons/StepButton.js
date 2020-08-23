@@ -1,16 +1,11 @@
 import MenuButton from '../MenuButton.js';
 
 class StepButton extends MenuButton {
-  static get title() {
-    return 'Avanzar';
-  }
-
-  static get icon() {
-    return 'images/menu/step.svg';
-  }
-
   constructor(computer) {
-    super();
+    const title = 'Avanzar';
+    const icon = 'images/menu/step.svg';
+
+    super(title, icon);
 
     this.addEventListener('click', () => {
       if (!computer.stepping) {

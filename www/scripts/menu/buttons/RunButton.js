@@ -1,16 +1,11 @@
 import MenuButton from '../MenuButton.js';
 
 class RunButton extends MenuButton {
-  static get title() {
-    return 'Ejecutar';
-  }
-
-  static get icon() {
-    return 'images/menu/run.svg';
-  }
-
   constructor(computer) {
-    super();
+    const title = 'Ejecutar';
+    const icon = 'images/menu/run.svg';
+
+    super(title, icon);
 
     this.addEventListener('click', () => {
       if (computer.running) {
