@@ -49,7 +49,7 @@ class Input extends IO {
 
   unlink() {
     if (this._linked) {
-      this.value = 0;
+      this.reset();
       this._linked = false;
       this.dispatchEvent(new Event('unlink'));
     }

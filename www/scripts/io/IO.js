@@ -24,6 +24,17 @@ class IO extends HTMLElement {
     this.title = `${this._name} = ${value}`;
   }
 
+  get default() {
+    return this._default;
+  }
+
+  set default(_default) {
+    this._default = _default;
+    if (!this.linked) {
+      this.value = this.default;
+    }
+  }
+
   get changed() {
     const changed = this._changed;
     this._changed = false;
@@ -68,6 +79,7 @@ class IO extends HTMLElement {
     }
 
     this._value = 0;
+    this._default = 0;
     this._changed = true;
 
     this._cpnt = cpnt;
@@ -83,7 +95,7 @@ class IO extends HTMLElement {
   }
 
   reset() {
-    this.value = 0;
+    this.value = this.default;
   }
 }
 
