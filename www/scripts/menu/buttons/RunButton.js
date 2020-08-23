@@ -20,8 +20,14 @@ class RunButton extends MenuButton {
       }
     });
 
-    computer.addEventListener('run', () => this.active = true);
-    computer.addEventListener('stop', () => this.active = false);
+    computer.addEventListener('run', () => {
+      this.active = true;
+      document.documentElement.style.cursor = 'progress';
+    });
+    computer.addEventListener('stop', () => {
+      this.active = false;
+      document.documentElement.style.cursor = 'auto';
+    });
   }
 }
 
