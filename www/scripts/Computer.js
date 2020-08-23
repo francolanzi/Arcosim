@@ -9,6 +9,7 @@ class Computer extends EventTarget {
     this._cpnts = new Map();
     this._running = false;
     this._stopped = true;
+    this._count = 0;
     this._time = 0;
   }
 
@@ -52,12 +53,15 @@ class Computer extends EventTarget {
     this._cpnts.forEach(cpnt =>
       changed = cpnt.run(this._time) || changed);
 
-    if (changed) {
+    const timeout = ++this._count < 1000;
+
+    if (changed && timeout) {
       setTimeout(() => this.step(), 0);
     } else {
       console.log(`Time = ${this._time++}`);
+      this._count = 0;
       if (this.running) {
-        if (!this._stopped) {
+        if (!this._stopped && timeout) {
           setTimeout(() => this.step(), 0);
         } else {
           this._running = false;
