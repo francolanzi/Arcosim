@@ -45,20 +45,18 @@ class Computer extends EventTarget {
   }
 
   step() {
-    console.log(`Time = ${this._time}`);
-
     let changed = false;
 
-    do {
-      changed = false;
-      this._cpnts.forEach(cpnt =>
-        changed = cpnt.run(this._time) || changed);
-    } while (changed);
+    this._cpnts.forEach(cpnt =>
+      changed = cpnt.run(this._time) || changed);
 
-    this._time++;
-
-    if (this.running) {
+    if (changed) {
       setTimeout(() => this.step(), 0);
+    } else {
+      console.log(`Time = ${this._time++}`);
+      if (this.running) {
+        setTimeout(() => this.step(), 0);
+      }
     }
   }
 
