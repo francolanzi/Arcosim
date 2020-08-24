@@ -14,7 +14,10 @@ class Display extends Component {
   }
 
   set value(value) {
-    this._display.textContent = value.toString(16).toUpperCase();
+    value = value >>> 0;
+    value = value.toString(16);
+    value = value.toUpperCase();
+    this._display.textContent = value;
   }
 
   constructor(computer, top, left) {
