@@ -18,6 +18,20 @@ class MenuLayer extends HTMLElement {
 
     this.append(this._menu);
     this.append(this._gallery);
+
+    this.style.pointerEvents = 'none';
+
+    computer.addEventListener('run', () =>
+      this.style.pointerEvents = 'all');
+
+    computer.addEventListener('stop', () =>
+      this.style.pointerEvents = 'none');
+
+    computer.addEventListener('step', () =>
+      this.style.pointerEvents = 'all');
+
+    computer.addEventListener('pause', () =>
+      this.style.pointerEvents = 'none');
   }
 }
 

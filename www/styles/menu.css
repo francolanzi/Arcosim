@@ -6,7 +6,6 @@ menu-layer {
   box-sizing: border-box;
   position: fixed;
   z-index: 3;
-  pointer-events: none;
 }
 
 main-menu {
