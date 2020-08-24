@@ -39,6 +39,8 @@ class Clock extends Component {
     const name = `Subciclo ${this.subcycles + 1}`;
     const subcycle = this.addOutput(name, 0, 0);
     this._subcycles.push(subcycle);
+    subcycle.color = 'gray';
+    subcycle.dashed = true;
     this.makeSubcycles();
   }
 
