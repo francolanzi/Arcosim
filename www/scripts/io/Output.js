@@ -14,6 +14,33 @@ class Output extends IO {
     this._links.forEach(link => link.value = value);
   }
 
+  get width() {
+    return this._width;
+  }
+
+  set width(width) {
+    this._width = width;
+    this._links.forEach(link => link.width = width);
+  }
+
+  get color() {
+    return this._color;
+  }
+
+  set color(color) {
+    this._color = color;
+    this._links.forEach(link => link.color = color);
+  }
+
+  get dashed() {
+    return this._dashed;
+  }
+
+  set dashed(dashed) {
+    this._dashed = dashed;
+    this._links.forEach(link => link.dashed = dashed);
+  }
+
   constructor(cpnt, name, x, y) {
     super(cpnt, name, x, y);
 
@@ -23,6 +50,10 @@ class Output extends IO {
     this._id = ++this.constructor._count;
 
     this._links = new Set();
+
+    this.width = 1;
+    this.color = 'black';
+    this.dashed = false;
 
     let clicked = false;
     let focused = false;
@@ -51,6 +82,9 @@ class Output extends IO {
   addLink(link) {
     this._links.add(link);
     link.value = this.value;
+    link.width = this.width;
+    link.color = this.color;
+    link.dashed = this.dashed;
   }
 
   removeLink(link) {
