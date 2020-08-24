@@ -4,7 +4,7 @@ class Display extends Component {
   static get svg() {
     return {
       src: 'images/cpnt/Display.svg',
-      width: 58,
+      width: 99,
       height: 46,
     };
   }
@@ -17,15 +17,16 @@ class Display extends Component {
     value = value >>> 0;
     value = value.toString(16);
     value = value.toUpperCase();
+    value = value.padStart(8, '0');
     this._display.textContent = value;
   }
 
   constructor(computer, top, left) {
     super(computer, top, left);
 
-    this._input = this.addInput('Entrada', 29, 0);
+    this._input = this.addInput('Entrada', 49, 0);
 
-    this._output = this.addOutput('Salida', 29, 46);
+    this._output = this.addOutput('Salida', 49, 46);
 
     this._display = document.createElement('div');
     this.append(this._display);
