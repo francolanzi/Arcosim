@@ -30,9 +30,6 @@ class IO extends HTMLElement {
 
   set default(_default) {
     this._default = _default;
-    if (!this.linked) {
-      this.value = this.default;
-    }
   }
 
   get changed() {

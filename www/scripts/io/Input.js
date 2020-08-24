@@ -6,6 +6,17 @@ class Input extends IO {
     return this._id;
   }
 
+  get default() {
+    return super.default;
+  }
+
+  set default(_default) {
+    super.default = _default;
+    if (!this.linked) {
+      this.value = _default;
+    }
+  }
+
   get linked() {
     return this._linked;
   }

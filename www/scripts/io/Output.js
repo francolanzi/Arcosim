@@ -14,6 +14,15 @@ class Output extends IO {
     this._links.forEach(link => link.value = value);
   }
 
+  get default() {
+    return super.default;
+  }
+
+  set default(_default) {
+    super.default = _default;
+    this.value = _default;
+  }
+
   get width() {
     return this._width;
   }
