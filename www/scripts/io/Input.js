@@ -65,6 +65,12 @@ class Input extends IO {
       this.dispatchEvent(new Event('unlink'));
     }
   }
+
+  reset() {
+    if (!this.linked) {
+      super.reset();
+    }
+  }
 }
 
 customElements.define('cpnt-input', Input);
