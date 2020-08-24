@@ -35,12 +35,12 @@ class Registers extends Component {
 
   run() {
     function encode(decoded) {
-      let count = -1;
+      let encoded = -1;
       while (decoded) {
-        decoded = decoded >> 1;
-        count++;
+        decoded = decoded >>> 1;
+        encoded++;
       }
-      return count;
+      return encoded;
     }
 
     const indexA = encode(this._decoderA.value);

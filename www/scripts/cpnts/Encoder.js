@@ -25,14 +25,14 @@ class Encoder extends Component {
   run() {
     if (this._clock.value && this._enable.value) {
       let decoded = this._decoded.value;
-      let count = -1;
+      let encoded = -1;
 
       while (decoded) {
-        decoded = decoded >> 1;
-        count++;
+        decoded = decoded >>> 1;
+        encoded++;
       }
 
-      this._encoded.value = count;
+      this._encoded.value = encoded;
     }
 
     return super.run();
