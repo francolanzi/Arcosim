@@ -6,6 +6,7 @@
 
 @import 'modal/ArithmeticLogicUnit.css';
 @import 'modal/Clock.css';
+@import 'modal/Const.css';
 @import 'modal/ControlStore.css';
 @import 'modal/Memory.css';
 @import 'modal/MicroInstructionRegister.css';
