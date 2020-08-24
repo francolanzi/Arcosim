@@ -16,6 +16,8 @@ class Increment extends Component {
     this._clock = this.addInput('Clock', 0, 11);
 
     this._next = this.addOutput('Siguiente', 33.5, 0);
+
+    this._clock.default = 1;
   }
 
   run() {

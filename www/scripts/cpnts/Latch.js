@@ -16,6 +16,8 @@ class Latch extends Component {
     this._clock = this.addInput('Clock', 63, 9.5);
 
     this._output = this.addOutput('Salida', 31.5, 19);
+
+    this._clock.default = 1;
   }
 
   run() {
