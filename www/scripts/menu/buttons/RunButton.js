@@ -17,10 +17,12 @@ class RunButton extends MenuButton {
 
     computer.addEventListener('run', () => {
       this.active = true;
+      this.icon = 'images/menu/stop.svg';
       document.documentElement.style.cursor = 'progress';
     });
     computer.addEventListener('stop', () => {
       this.active = false;
+      this.icon = 'images/menu/run.svg';
       document.documentElement.style.cursor = 'auto';
     });
   }
