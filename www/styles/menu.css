@@ -6,6 +6,10 @@ menu-layer {
   box-sizing: border-box;
   position: fixed;
   z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
 }
 
 main-menu {
@@ -48,7 +52,7 @@ main-menu {
 }
 
 cpnt-gallery {
-  float: left;
+  overflow-y: auto;
   border-radius: 0.5rem;
   margin: 0;
   padding: 0.5rem;
