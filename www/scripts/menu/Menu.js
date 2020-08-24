@@ -17,10 +17,39 @@ class Menu extends HTMLElement {
     this.addButton('step', new StepButton(computer));
     this.addButton('reset', new ResetButton(computer));
     this.addButton('about', new AboutButton());
+
+    computer.addEventListener('run', () => {
+      this._buttons.forEach((button, key) => {
+        if (key !== 'run') {
+          button.style.pointerEvents = 'none';
+          this.getButton('cpnt').open = false;
+        }
+      });
+    });
+
+    computer.addEventListener('stop', () => {
+      this._buttons.forEach(button => {
+        button.style.pointerEvents = 'all';
+      });
+    });
+
+    computer.addEventListener('step', () => {
+      this._buttons.forEach(button => {
+        button.style.pointerEvents = 'none';
+        this.getButton('cpnt').open = false;
+      });
+    });
+
+    computer.addEventListener('pause', () => {
+      this._buttons.forEach(button => {
+        button.style.pointerEvents = 'all';
+      });
+    });
   }
 
   addButton(name, button) {
     if (!this._buttons.has(name)) {
+      button.style.pointerEvents = 'all';
       this._buttons.set(name, button);
       this.append(button);
     }
