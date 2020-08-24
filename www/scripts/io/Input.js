@@ -60,8 +60,8 @@ class Input extends IO {
 
   unlink() {
     if (this._linked) {
-      this.reset();
       this._linked = false;
+      this.reset();
       this.dispatchEvent(new Event('unlink'));
     }
   }
