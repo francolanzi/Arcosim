@@ -16,8 +16,8 @@ link-layer svg {
 }
 
 polyline.cpnt-link {
-  stroke-width: 1px;
-  stroke: black;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   fill: none;
 }
 

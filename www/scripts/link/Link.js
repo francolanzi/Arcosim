@@ -18,14 +18,38 @@ class Link {
     this.input.value = value;
   }
 
+  get width() {
+    return this._width;
+  }
+
+  set width(width) {
+    width = Math.min(Math.max(width, 1), 10);
+    this._width = width;
+    this._line.style.strokeWidth = `${width}px`;
+  }
+
+  get color() {
+    return this._line.style.stroke;
+  }
+
+  set color(color) {
+    this._line.style.stroke = color;
+  }
+
+  get dashed() {
+    return this._line.style.strokeDasharray !== 'none';
+  }
+
+  set dashed(dashed) {
+    this._line.style.strokeDasharray = dashed ? '10,10' : 'none';
+  }
+
   constructor(layer, input, output) {
     this._layer = layer;
     this._input = input;
     this._output = output;
 
     this.value = 0;
-
-    output.addLink(this);
 
     this._corners = [];
 
@@ -42,6 +66,12 @@ class Link {
 
     this._line.points.appendItem(this._layer.svg.createSVGPoint());
     this._line.points.appendItem(this._layer.svg.createSVGPoint());
+
+    this.width = 1;
+    this.color = 'black';
+    this.dashed = false;
+
+    output.addLink(this);
 
     this.moveInput();
     this.moveOutput();
