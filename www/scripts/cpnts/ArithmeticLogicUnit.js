@@ -21,14 +21,13 @@ class ArithmeticLogicUnit extends Component {
       this._supported[1] = 'A - B';
       this._supported[2] = 'A * B';
       this._supported[3] = 'A / B';
-      this._supported[4] = 'B / A';
-      this._supported[5] = 'A & B';
-      this._supported[6] = 'A | B';
-      this._supported[7] = 'A ^ B';
-      this._supported[8] = 'A';
-      this._supported[9] = 'B';
-      this._supported[10] = '~ A';
-      this._supported[11] = '~ B';
+      this._supported[4] = 'A & B';
+      this._supported[5] = 'A | B';
+      this._supported[6] = 'A ^ B';
+      this._supported[7] = 'A';
+      this._supported[8] = 'B';
+      this._supported[9] = '~ A';
+      this._supported[10] = '~ B';
     }
     return [...this._supported];
   }
@@ -55,9 +54,9 @@ class ArithmeticLogicUnit extends Component {
     this._controlZ = this.addOutput('Z', 74, 22);
 
     this.setFunction(0, 0);
-    this.setFunction(1, 5);
-    this.setFunction(2, 8);
-    this.setFunction(3, 10);
+    this.setFunction(1, 4);
+    this.setFunction(2, 7);
+    this.setFunction(3, 9);
   }
 
   run() {
@@ -75,27 +74,24 @@ class ArithmeticLogicUnit extends Component {
       this._result.value = this._inputA.value / this._inputB.value;
       break;
     case 4:
-      this._result.value = this._inputB.value / this._inputA.value;
-      break;
-    case 5:
       this._result.value = this._inputA.value & this._inputB.value;
       break;
-    case 6:
+    case 5:
       this._result.value = this._inputA.value | this._inputB.value;
       break;
-    case 7:
+    case 6:
       this._result.value = this._inputA.value ^ this._inputB.value;
       break;
-    case 8:
+    case 7:
       this._result.value = this._inputA.value;
       break;
-    case 9:
+    case 8:
       this._result.value = this._inputB.value;
       break;
-    case 10:
+    case 9:
       this._result.value = ~ this._inputA.value;
       break;
-    case 11:
+    case 10:
       this._result.value = ~ this._inputB.value;
       break;
     default:
