@@ -60,6 +60,14 @@ menuLayer.gallery.addEventListener('add', ev => {
     linkLayer.removeInput(ev.detail);
   });
 
+  cpnt.addEventListener('removeinput', ev => {
+    linkLayer.removeInput(ev.detail);
+  });
+
+  cpnt.addEventListener('removeoutput', ev => {
+    linkLayer.removeOutput(ev.detail);
+  });
+
   document.body.append(cpnt);
 });
 

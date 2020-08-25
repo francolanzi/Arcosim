@@ -205,6 +205,7 @@ class Component extends HTMLElement {
     if (input) {
       this._inputs.delete(id);
       input.remove();
+      this.dispatchEvent(new CustomEvent('removeinput', { detail: input }));
     }
   }
 
@@ -213,6 +214,7 @@ class Component extends HTMLElement {
     if (output) {
       this._outputs.delete(id);
       output.remove();
+      this.dispatchEvent(new CustomEvent('removeoutput', { detail: output }));
     }
   }
 }
