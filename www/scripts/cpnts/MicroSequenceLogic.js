@@ -21,9 +21,10 @@ class MicroSequenceLogic extends Component {
       this._supported[1] = '> 0';
       this._supported[2] = '< 0';
       this._supported[3] = '= 0';
-      this._supported[4] = '>= 0';
-      this._supported[5] = '<= 0';
-      this._supported[6] = 'Siempre';
+      this._supported[4] = '!= 0';
+      this._supported[5] = '>= 0';
+      this._supported[6] = '<= 0';
+      this._supported[7] = 'Siempre';
     }
     return [...this._supported];
   }
@@ -50,7 +51,7 @@ class MicroSequenceLogic extends Component {
     this.setCondition(0, 0);
     this.setCondition(1, 2);
     this.setCondition(2, 3);
-    this.setCondition(3, 6);
+    this.setCondition(3, 7);
   }
 
   run() {
@@ -68,12 +69,15 @@ class MicroSequenceLogic extends Component {
       this._jump.value = this._controlZ.value;
       break;
     case 4:
-      this._jump.value = 1 - this._controlN.value;
+      this._jump.value = 1 - this._controlZ.value;
       break;
     case 5:
-      this._jump.value = this._controlN.value + this._controlZ.value;
+      this._jump.value = 1 - this._controlN.value;
       break;
     case 6:
+      this._jump.value = this._controlN.value + this._controlZ.value;
+      break;
+    case 7:
       this._jump.value = 1;
       break;
     default:
