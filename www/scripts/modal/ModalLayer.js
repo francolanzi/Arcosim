@@ -25,7 +25,10 @@ class ModalLayer extends HTMLElement {
     this.addEventListener('transitionend', () => {
       if (!this.classList.contains('show')) {
         this._title.textContent = '';
-        this._content.removeChild(this._content.lastChild);
+        const content = this._content.lastChild;
+        if (content) {
+          this._content.removeChild(this._content.lastChild);
+        }
       }
     });
   }
