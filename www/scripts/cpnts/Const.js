@@ -5,8 +5,8 @@ class Const extends Component {
   static get svg() {
     return {
       src: 'images/cpnt/Const.svg',
-      width: 64,
-      height: 20,
+      width: 99,
+      height: 46,
     };
   }
 
@@ -20,12 +20,22 @@ class Const extends Component {
 
   set value(value) {
     this._const.default = value;
+    value = value >>> 0;
+    value = value.toString(16);
+    value = value.toUpperCase();
+    value = value.padStart(8, '0');
+    this._display.textContent = value;
   }
 
   constructor(computer, top, left) {
     super(computer, top, left);
 
-    this._const = this.addOutput('Constante', 31.5, 19);
+    this._const = this.addOutput('Constante', 49, 46);
+
+    this._display = document.createElement('div');
+    this.append(this._display);
+
+    this.value = this._const.value;
   }
 }
 
