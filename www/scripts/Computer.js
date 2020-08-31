@@ -1,4 +1,29 @@
+const { readdirSync } = window.require('fs');
+const { resolve } = window.require('path');
+
 class Computer extends EventTarget {
+  static async cpntClasses() {
+    if (!this._cpntClasses) {
+      const dir = resolve(__dirname, 'scripts/cpnts');
+      const files = readdirSync(dir);
+
+      this._cpntClasses = new Map();
+
+      for (const file of files) {
+        if (file.split('.').pop() === 'js') {
+          const Cpnt = (await import(`${dir}/${file}`)).default;
+          this._cpntClasses.set(Cpnt.type, Cpnt);
+        }
+      }
+    }
+    return Array.from(this._cpntClasses.values());
+  }
+
+  static async cpntClass(type) {
+    await Computer.cpntClasses();
+    return this._cpntClasses.get(type);
+  }
+
   get running() {
     return this._running;
   }
@@ -28,7 +53,7 @@ class Computer extends EventTarget {
 
     cpnt.addEventListener('stop', () => this.stop());
 
-    return cpnt;
+    this.dispatchEvent(new CustomEvent('add', { detail: cpnt }));
   }
 
   getCpnt(type, id) {

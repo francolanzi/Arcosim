@@ -1,7 +1,12 @@
 import Menu from './Menu.js';
 import Gallery from './Gallery.js';
+import Computer from '../Computer.js';
 
 class MenuLayer extends HTMLElement {
+  get computer() {
+    return this._computer;
+  }
+
   get menu() {
     return this._menu;
   }
@@ -10,27 +15,32 @@ class MenuLayer extends HTMLElement {
     return this._gallery;
   }
 
-  constructor(computer) {
+  constructor() {
     super();
 
-    this._gallery = new Gallery(computer);
-    this._menu = new Menu(computer, this._gallery);
+    this._computer = new Computer();
+
+    this._gallery = new Gallery(this._computer);
+    this._menu = new Menu(this._computer, this._gallery);
 
     this.append(this._menu);
     this.append(this._gallery);
 
     this.style.pointerEvents = 'none';
 
-    computer.addEventListener('run', () =>
+    this._computer.addEventListener('add', ev =>
+      ev.detail.trash = this._menu.getButton('trash'));
+
+    this._computer.addEventListener('run', () =>
       this.style.pointerEvents = 'all');
 
-    computer.addEventListener('stop', () =>
+    this._computer.addEventListener('stop', () =>
       this.style.pointerEvents = 'none');
 
-    computer.addEventListener('step', () =>
+    this._computer.addEventListener('step', () =>
       this.style.pointerEvents = 'all');
 
-    computer.addEventListener('pause', () =>
+    this._computer.addEventListener('pause', () =>
       this.style.pointerEvents = 'none');
   }
 }

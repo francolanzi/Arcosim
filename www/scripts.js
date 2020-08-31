@@ -1,23 +1,16 @@
-import Computer from './scripts/Computer.js';
 import LinkLayer from './scripts/link/LinkLayer.js';
 import MenuLayer from './scripts/menu/MenuLayer.js';
 import ModalLayer from './scripts/modal/ModalLayer.js';
 
-const computer = new Computer();
-
+const menuLayer = new MenuLayer();
 const linkLayer = new LinkLayer();
 const modalLayer = new ModalLayer();
-const menuLayer = new MenuLayer(computer);
 
 menuLayer.addEventListener('modal', ev =>
   modalLayer.show(ev.detail.title, ev.detail.content));
 
-menuLayer.gallery.addEventListener('add', ev => {
+menuLayer.computer.addEventListener('add', ev => {
   const cpnt = ev.detail;
-
-  computer.addCpnt(cpnt);
-
-  cpnt.trash = menuLayer.menu.getButton('trash');
 
   cpnt.addEventListener('config', () => {
     const type = cpnt.constructor.type;
@@ -35,8 +28,6 @@ menuLayer.gallery.addEventListener('add', ev => {
     for (const output of cpnt.outputs) {
       linkLayer.removeOutput(output);
     }
-
-    computer.removeCpnt(cpnt.constructor.type, cpnt.id);
   });
 
   cpnt.addEventListener('link', ev => {
@@ -73,7 +64,6 @@ menuLayer.gallery.addEventListener('add', ev => {
 
 document.body.append(linkLayer);
 document.body.append(menuLayer);
-
 document.body.append(modalLayer);
 
 document.ondragstart = () => false;

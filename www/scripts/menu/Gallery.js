@@ -1,5 +1,4 @@
-const { readdirSync } = window.require('fs');
-const { resolve } = window.require('path');
+import Computer from '../Computer.js';
 
 class Gallery extends HTMLElement {
   get open() {
@@ -13,28 +12,27 @@ class Gallery extends HTMLElement {
   constructor(computer) {
     super();
 
-    (async () => {
-      const dir = resolve(__dirname, 'scripts/cpnts');
-      const files = readdirSync(dir);
-      for (const file of files) {
-        if (file.split('.').pop() === 'js') {
-          const Cpnt = (await import(`${dir}/${file}`)).default;
-          const image = new Image(Cpnt.svg.width, Cpnt.svg.height);
+    Computer.cpntClasses().then(classes => {
+      classes.forEach(Cpnt => {
+        const image = new Image(Cpnt.svg.width, Cpnt.svg.height);
 
-          image.src = Cpnt.svg.src;
-          this.append(image);
+        image.src = Cpnt.svg.src;
+        this.append(image);
 
-          image.addEventListener('mousedown', ev => {
-            const rect = image.getBoundingClientRect();
-            const top = ev.pageY - ev.clientY + rect.top;
-            const left = ev.pageX - ev.clientX + rect.left;
-            const cpnt = new Cpnt(computer, top, left);
-            this.dispatchEvent(new CustomEvent('add', { detail: cpnt }));
-            cpnt.drag(ev);
-          });
-        }
-      }
-    })();
+        image.addEventListener('mousedown', ev => {
+          const rect = image.getBoundingClientRect();
+          const top = ev.pageY - ev.clientY + rect.top;
+          const left = ev.pageX - ev.clientX + rect.left;
+          const cpnt = new Cpnt(computer, top, left);
+
+          computer.addCpnt(cpnt);
+          cpnt.addEventListener('remove', () =>
+            computer.removeCpnt(Cpnt.type, cpnt.id));
+
+          cpnt.drag(ev);
+        });
+      });
+    });
   }
 }
 
