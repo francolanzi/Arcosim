@@ -62,6 +62,18 @@ class Registers extends Component {
     return super.run();
   }
 
+  serialize() {
+    const cpnt = super.serialize();
+    cpnt.registers = this._registers;
+    return cpnt;
+  }
+
+  deserialize(obj) {
+    if (obj.registers) {
+      this._registers = obj.registers;
+    }
+  }
+
   addRegister() {
     this._registers.push(0);
     return this._registers.length - 1;

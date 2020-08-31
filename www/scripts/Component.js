@@ -217,6 +217,17 @@ class Component extends HTMLElement {
       this.dispatchEvent(new CustomEvent('removeoutput', { detail: output }));
     }
   }
+
+  serialize() {
+    return {
+      type: this.constructor.type,
+      top: this.top,
+      left: this.left,
+    };
+  }
+
+  // eslint-disable-next-line class-methods-use-this, no-unused-vars
+  deserialize(obj) {}
 }
 
 export default Component;

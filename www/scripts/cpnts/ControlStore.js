@@ -57,6 +57,23 @@ class ControlStore extends Component {
     return super.run();
   }
 
+  serialize() {
+    const cpnt = super.serialize();
+    cpnt.bits = this.bits;
+    cpnt.instructions = this._instructions;
+    return cpnt;
+  }
+
+  deserialize(obj) {
+    if (obj.instructions) {
+      this._instructions = obj.instructions;
+    }
+
+    if (obj.bits) {
+      this.bits = obj.bits;
+    }
+  }
+
   addInstruction(position, instruction) {
     this._instructions.splice(position, 0, instruction);
   }

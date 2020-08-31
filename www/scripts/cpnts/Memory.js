@@ -50,6 +50,18 @@ class Memory extends Component {
       this._cells.delete(address);
     }
   }
+
+  serialize() {
+    const cpnt = super.serialize();
+    cpnt.cells = Array.from(this._cells.entries());
+    return cpnt;
+  }
+
+  deserialize(obj) {
+    if (obj.cells) {
+      this._cells = new Map(obj.cells);
+    }
+  }
 }
 
 customElements.define('cpnt-memory', Memory);

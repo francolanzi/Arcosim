@@ -124,6 +124,37 @@ class Computer extends EventTarget {
       this._cpnts.forEach(cpnt => cpnt.reset());
     }
   }
+
+  serialize() {
+    const cpnts = [];
+
+    this._cpnts.forEach(cpnt =>
+      cpnts.push(cpnt.serialize()));
+
+    return { cpnts };
+  }
+
+  deserialize(obj) {
+    if (obj.cpnts) {
+      this.stop();
+
+      this._cpnts.forEach(cpnt => {
+        this.removeCpnt(cpnt.constructor.type, cpnt.id);
+        cpnt.remove();
+      });
+
+      obj.cpnts.forEach(cpntObj => {
+        const Cpnt = this.constructor._cpntClasses.get(cpntObj.type);
+        if (Cpnt) {
+          const cpnt = new Cpnt(this, cpntObj.top, cpntObj.left);
+          cpnt.deserialize(cpntObj);
+          this.addCpnt(cpnt);
+        }
+      });
+
+      this.reset();
+    }
+  }
 }
 
 export default Computer;

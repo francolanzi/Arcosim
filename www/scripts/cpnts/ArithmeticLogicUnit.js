@@ -104,6 +104,18 @@ class ArithmeticLogicUnit extends Component {
     return super.run();
   }
 
+  serialize() {
+    const cpnt = super.serialize();
+    cpnt.functions = Array.from(this.functions);
+    return cpnt;
+  }
+
+  deserialize(obj) {
+    if (obj.functions) {
+      this._functions = new Map(obj.functions);
+    }
+  }
+
   getFunction(index) {
     return this._functions.get(index);
   }

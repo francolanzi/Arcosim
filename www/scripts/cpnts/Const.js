@@ -37,6 +37,18 @@ class Const extends Component {
 
     this.value = this._const.value;
   }
+
+  serialize() {
+    const cpnt = super.serialize();
+    cpnt.value = this.value;
+    return cpnt;
+  }
+
+  deserialize(obj) {
+    if (obj.value) {
+      this.value = obj.value;
+    }
+  }
 }
 
 customElements.define('cpnt-const', Const);

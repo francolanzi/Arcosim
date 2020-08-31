@@ -46,6 +46,25 @@ class MicroInstructionRegister extends Component {
     return super.run();
   }
 
+  serialize() {
+    const cpnt = super.serialize();
+    cpnt.masks = this._masks.map(mask => {
+      return {
+        name: mask.output.name,
+        size: mask.size,
+      };
+    });
+    return cpnt;
+  }
+
+  deserialize(obj) {
+    if (obj.masks) {
+      this._masks = [];
+      obj.masks.forEach(({ name, size }, position) =>
+        this.addMask(position, name, size));
+    }
+  }
+
   addMask(position, name, size) {
     const output = this.addOutput(name, 0, 42);
     const mask = { output, size };

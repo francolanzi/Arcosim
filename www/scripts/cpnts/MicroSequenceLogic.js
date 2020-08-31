@@ -86,6 +86,18 @@ class MicroSequenceLogic extends Component {
     return super.run();
   }
 
+  serialize() {
+    const cpnt = super.serialize();
+    cpnt.conditions = Array.from(this.conditions);
+    return cpnt;
+  }
+
+  deserialize(obj) {
+    if (obj.conditions) {
+      this._conditions = new Map(obj.conditions);
+    }
+  }
+
   getCondition(index) {
     return this._conditions.get(index);
   }

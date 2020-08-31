@@ -1,3 +1,5 @@
+import OpenButton from './buttons/OpenButton.js';
+import SaveButton from './buttons/SaveButton.js';
 import TrashButton from './buttons/TrashButton.js';
 import CpntButton from './buttons/CpntButton.js';
 import RunButton from './buttons/RunButton.js';
@@ -11,6 +13,8 @@ class Menu extends HTMLElement {
 
     this._buttons = new Map();
 
+    this.addButton('open', new OpenButton(computer));
+    this.addButton('save', new SaveButton(computer));
     this.addButton('trash', new TrashButton());
     this.addButton('cpnt', new CpntButton(gallery));
     this.addButton('run', new RunButton(computer));

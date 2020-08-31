@@ -35,6 +35,27 @@ class Clock extends Component {
     return super.run();
   }
 
+  serialize() {
+    const cpnt = super.serialize();
+    cpnt.subcycles = this.subcycles;
+    return cpnt;
+  }
+
+  deserialize(obj) {
+    if (obj.subcycles) {
+      while (this._subcycles.length) {
+        const subcycle = this._subcycles.pop();
+        this.removeOutput(subcycle.id);
+      }
+
+      for (let i = 0; i < obj.subcycles; i++) {
+        this.addSubcycle();
+      }
+
+      this.makeSubcycles();
+    }
+  }
+
   addSubcycle() {
     const name = `Subciclo ${this.subcycles + 1}`;
     const subcycle = this.addOutput(name, 0, 0);
