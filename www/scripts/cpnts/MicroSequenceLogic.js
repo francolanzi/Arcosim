@@ -29,18 +29,14 @@ class MicroSequenceLogic extends Component {
     return [...this._supported];
   }
 
-  get conditions() {
-    return this._conditions.entries();
-  }
-
-  get conditionCount() {
-    return this._conditions.size;
+  get count() {
+    return this._conditions.length;
   }
 
   constructor(computer, top, left) {
     super(computer, top, left);
 
-    this._conditions = new Map();
+    this._conditions = [];
 
     this._condition = this.addInput('Condición', 61, 20.5);
     this._controlN = this.addInput('N', 0, 15);
@@ -48,14 +44,14 @@ class MicroSequenceLogic extends Component {
 
     this._jump = this.addOutput('Saltar', 30.5, 0);
 
-    this.setCondition(0, 0);
-    this.setCondition(1, 2);
-    this.setCondition(2, 3);
-    this.setCondition(3, 7);
+    this.addCondition(0);
+    this.addCondition(2);
+    this.addCondition(3);
+    this.addCondition(7);
   }
 
   run() {
-    switch (this._conditions.get(this._condition.value)) {
+    switch (this._conditions[this._condition.value]) {
     case 0:
       this._jump.value = 0;
       break;
@@ -88,26 +84,34 @@ class MicroSequenceLogic extends Component {
 
   serialize() {
     const cpnt = super.serialize();
-    cpnt.conditions = Array.from(this.conditions);
+    cpnt.conditions = [...this._conditions];
     return cpnt;
   }
 
   deserialize(obj) {
     if (obj.conditions) {
-      this._conditions = new Map(obj.conditions);
+      this._conditions = [...obj.conditions];
     }
   }
 
+  addCondition(cond) {
+    this._conditions.push(cond);
+    return this._conditions.length - 1;
+  }
+
   getCondition(index) {
-    return this._conditions.get(index);
+    return this._conditions[index];
   }
 
   setCondition(index, cond) {
-    this._conditions.set(index, cond);
+    if (index >= 0 && index < this._conditions.length) {
+      this._conditions[index] = cond;
+    }
   }
 
-  removeCondition(index) {
-    this._conditions.delete(index);
+  removeCondition() {
+    this._conditions.pop();
+    return this._conditions.length;
   }
 }
 

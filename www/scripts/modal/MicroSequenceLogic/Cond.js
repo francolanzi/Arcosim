@@ -1,19 +1,8 @@
-import UintInput from '../UintInput.js';
-import ImgButton from '../ImgButton.js';
 import CustomSelect from '../CustomSelect.js';
 
 class MicroSequenceLogicCond extends HTMLElement {
-  get position() {
-    const childs = this.parentNode.childNodes;
-    return Array.prototype.indexOf.call(childs, this) - 1;
-  }
-
   get index() {
-    return parseInt(this._index.value);
-  }
-
-  set index(index) {
-    this._index.value = index;
+    return this._index;
   }
 
   get cond() {
@@ -23,17 +12,16 @@ class MicroSequenceLogicCond extends HTMLElement {
   constructor(index, cond, supported) {
     super();
 
-    this._index = new UintInput(index, 0, 0xFFFFFFFF, false);
+    this._index = index;
+
     this._cond = new CustomSelect(cond, supported);
-
-    const remove = new ImgButton('images/modal/minus.svg');
-
-    this.append(this._index);
+    this._cond.id = `condition${index}`;
     this.append(this._cond);
-    this.append(remove);
 
-    remove.addEventListener('click', () =>
-      this.dispatchEvent(new Event('remove')));
+    const label = document.createElement('label');
+    label.textContent = `${index} = `;
+    label.setAttribute('for', this._cond.id);
+    this.prepend(label);
   }
 }
 

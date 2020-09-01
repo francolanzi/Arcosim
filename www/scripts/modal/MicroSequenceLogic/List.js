@@ -1,54 +1,35 @@
 import Cond from './Cond.js';
-import ImgButton from '../ImgButton.js';
 
 class MicroSequenceLogicList extends HTMLElement {
+  get supported() {
+    return this._cpnt.constructor.supported;
+  }
+
   constructor(cpnt) {
     super();
 
-    const supported = cpnt.constructor.supported;
+    this._cpnt = cpnt;
 
-    const add = new ImgButton('images/modal/plus.svg');
-    this.append(add);
-
-    const indexes = [];
-
-    const addCond = (index, cond) => {
-      const elem = new Cond(index, cond, supported);
+    for (let index = 0; index < cpnt.count; index++) {
+      const cond = cpnt.getCondition(index);
+      const elem = new Cond(index, cond, this.supported);
+      elem.addEventListener('change', () =>
+        cpnt.setCondition(elem.index, elem.cond));
       this.append(elem);
-
-      indexes.push(index);
-
-      elem.addEventListener('change', () => {
-        if (indexes.indexOf(elem.index) >= 0) {
-          elem.index = indexes[elem.position];
-        } else if (elem.index !== indexes[elem.position]) {
-          cpnt.removeCondition(indexes[elem.position]);
-          indexes[elem.position] = elem.index;
-        }
-        cpnt.setCondition(elem.index, elem.cond);
-      });
-
-      elem.addEventListener('remove', () => {
-        if (cpnt.conditionCount > 1) {
-          cpnt.removeCondition(elem.index);
-          indexes.splice(elem.position, 1);
-          elem.remove();
-        }
-      });
-    };
-
-    add.addEventListener('click', () => {
-      let index = 0;
-      while(cpnt.getCondition(index) !== undefined) {
-        index++;
-      }
-      cpnt.setCondition(index, 0);
-      addCond(index, 0);
-    });
-
-    for (const cond of cpnt.conditions) {
-      addCond(...cond);
     }
+  }
+
+  addCondition() {
+    const index = this._cpnt.addCondition(0);
+    const elem = new Cond(index, 0, this.supported);
+    elem.addEventListener('change', () =>
+      this._cpnt.setCondition(elem.index, elem.cond));
+    this.append(elem);
+  }
+
+  removeCondition() {
+    this._cpnt.removeCondition();
+    this.removeChild(this.lastChild);
   }
 }
 
