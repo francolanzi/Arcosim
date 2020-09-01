@@ -1,19 +1,8 @@
-import UintInput from '../UintInput.js';
-import ImgButton from '../ImgButton.js';
 import CustomSelect from '../CustomSelect.js';
 
 class ArithmeticLogicUnitFunc extends HTMLElement {
-  get position() {
-    const childs = this.parentNode.childNodes;
-    return Array.prototype.indexOf.call(childs, this) - 1;
-  }
-
   get index() {
-    return parseInt(this._index.value);
-  }
-
-  set index(index) {
-    this._index.value = index;
+    return this._index;
   }
 
   get func() {
@@ -23,17 +12,16 @@ class ArithmeticLogicUnitFunc extends HTMLElement {
   constructor(index, func, supported) {
     super();
 
-    this._index = new UintInput(index, 0, 0xFFFFFFFF, false);
+    this._index = index;
+
     this._func = new CustomSelect(func, supported);
-
-    const remove = new ImgButton('images/modal/minus.svg');
-
-    this.append(this._index);
+    this._func.id = `function${index}`;
     this.append(this._func);
-    this.append(remove);
 
-    remove.addEventListener('click', () =>
-      this.dispatchEvent(new Event('remove')));
+    const label = document.createElement('label');
+    label.textContent = `${index} = `;
+    label.setAttribute('for', this._func.id);
+    this.prepend(label);
   }
 }
 

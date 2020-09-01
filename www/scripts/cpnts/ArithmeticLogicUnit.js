@@ -32,18 +32,14 @@ class ArithmeticLogicUnit extends Component {
     return [...this._supported];
   }
 
-  get functions() {
-    return this._functions.entries();
-  }
-
-  get functionCount() {
-    return this._functions.size;
+  get count() {
+    return this._functions.length;
   }
 
   constructor(computer, top, left) {
     super(computer, top, left);
 
-    this._functions = new Map();
+    this._functions = [];
 
     this._inputA = this.addInput('A', 11.5, 0);
     this._inputB = this.addInput('B', 69, 0);
@@ -53,14 +49,14 @@ class ArithmeticLogicUnit extends Component {
     this._controlN = this.addOutput('N', 77, 11);
     this._controlZ = this.addOutput('Z', 74, 22);
 
-    this.setFunction(0, 0);
-    this.setFunction(1, 4);
-    this.setFunction(2, 7);
-    this.setFunction(3, 9);
+    this.addFunction(0);
+    this.addFunction(4);
+    this.addFunction(7);
+    this.addFunction(9);
   }
 
   run() {
-    switch(this._functions.get(this._function.value)) {
+    switch(this._functions[this._function.value]) {
     case 0:
       this._result.value = this._inputA.value + this._inputB.value;
       break;
@@ -106,26 +102,34 @@ class ArithmeticLogicUnit extends Component {
 
   serialize() {
     const cpnt = super.serialize();
-    cpnt.functions = Array.from(this.functions);
+    cpnt.functions = [...this._functions];
     return cpnt;
   }
 
   deserialize(obj) {
     if (obj.functions) {
-      this._functions = new Map(obj.functions);
+      this._functions = [...obj.functions];
     }
   }
 
+  addFunction(func) {
+    this._functions.push(func);
+    return this._functions.length - 1;
+  }
+
   getFunction(index) {
-    return this._functions.get(index);
+    return this._functions[index];
   }
 
   setFunction(index, func) {
-    this._functions.set(index, func);
+    if (index >= 0 && index < this._functions.length) {
+      this._functions[index] = func;
+    }
   }
 
-  removeFunction(index) {
-    this._functions.delete(index);
+  removeFunction() {
+    this._functions.pop();
+    return this._functions.length;
   }
 }
 
