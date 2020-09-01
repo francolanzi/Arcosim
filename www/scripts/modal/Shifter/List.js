@@ -1,54 +1,35 @@
 import Func from './Func.js';
-import ImgButton from '../ImgButton.js';
 
 class ShifterList extends HTMLElement {
+  get supported() {
+    return this._cpnt.constructor.supported;
+  }
+
   constructor(cpnt) {
     super();
 
-    const supported = cpnt.constructor.supported;
+    this._cpnt = cpnt;
 
-    const add = new ImgButton('images/modal/plus.svg');
-    this.append(add);
-
-    const indexes = [];
-
-    const addFunc = (index, { func, value }) => {
-      const elem = new Func(index, func, value, supported);
+    for (let index = 0; index < cpnt.count; index++) {
+      const { func, value } = cpnt.getFunction(index);
+      const elem = new Func(index, func, value, this.supported);
+      elem.addEventListener('change', () =>
+        cpnt.setFunction(elem.index, elem.func, elem.value));
       this.append(elem);
-
-      indexes.push(index);
-
-      elem.addEventListener('change', () => {
-        if (indexes.indexOf(elem.index) >= 0) {
-          elem.index = indexes[elem.position];
-        } else if (elem.index !== indexes[elem.position]) {
-          cpnt.removeFunction(indexes[elem.position]);
-          indexes[elem.position] = elem.index;
-        }
-        cpnt.setFunction(elem.index, elem.func, elem.value);
-      });
-
-      elem.addEventListener('remove', () => {
-        if (cpnt.functionCount > 1) {
-          cpnt.removeFunction(index);
-          indexes.splice(elem.position, 1);
-          elem.remove();
-        }
-      });
-    };
-
-    add.addEventListener('click', () => {
-      let index = 0;
-      while(cpnt.getFunction(index) !== undefined) {
-        index++;
-      }
-      cpnt.setFunction(index, 0, 0);
-      addFunc(index, { func: 0, value: 0 });
-    });
-
-    for (const func of cpnt.functions) {
-      addFunc(...func);
     }
+  }
+
+  addFunction() {
+    const index = this._cpnt.addFunction(0, 0);
+    const elem = new Func(index, 0, 0, this.supported);
+    elem.addEventListener('change', () =>
+      this._cpnt.setFunction(elem.index, elem.func, elem.value));
+    this.append(elem);
+  }
+
+  removeFunction() {
+    this._cpnt.removeFunction();
+    this.removeChild(this.lastChild);
   }
 }
 

@@ -1,4 +1,19 @@
 cpnt-shifter-config {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+cpnt-shifter-count {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0.1rem 0;
+}
+
+cpnt-shifter-list {
   width: 100%;
   height: 50vh;
   display: flex;
@@ -8,26 +23,20 @@ cpnt-shifter-config {
   overflow-y: scroll;
 }
 
-cpnt-shifter-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-cpnt-shifter-list > img-button {
-  align-self: flex-end;
-  margin: 0.1rem;
-}
-
 cpnt-shifter-func {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 0.1rem 0;
 }
 
-cpnt-shifter-func > select[is='custom-select'] {
+cpnt-shifter-func label {
+  color: black;
+  line-height: 0;
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+cpnt-shifter-func select[is='custom-select'] {
   margin: 0 0.5rem;
 }

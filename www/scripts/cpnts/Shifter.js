@@ -29,27 +29,27 @@ class Shifter extends Component {
     return this._functions.entries();
   }
 
-  get functionCount() {
-    return this._functions.size;
+  get count() {
+    return this._functions.length;
   }
 
   constructor(computer, top, left) {
     super(computer, top, left);
 
-    this._functions = new Map();
+    this._functions = [];
 
     this._input = this.addInput('Entrada', 37.5, 0);
     this._function = this.addInput('Función', 75, 13.5);
 
     this._result = this.addOutput('Resultado', 37.5, 27);
 
-    this.setFunction(0, 0, 0);
-    this.setFunction(1, 2, 1);
-    this.setFunction(2, 1, 1);
+    this.addFunction(0, 0);
+    this.addFunction(2, 1);
+    this.addFunction(1, 1);
   }
 
   run() {
-    const { func, value } = this._functions.get(this._function.value);
+    const { func, value } = this._functions[this._function.value];
 
     switch(func) {
     case 0:
@@ -73,18 +73,23 @@ class Shifter extends Component {
 
   serialize() {
     const cpnt = super.serialize();
-    cpnt.functions = Array.from(this.functions);
+    cpnt.functions = [...this._functions];
     return cpnt;
   }
 
   deserialize(obj) {
     if (obj.functions) {
-      this._functions = new Map(obj.functions);
+      this._functions = [...obj.functions];
     }
   }
 
+  addFunction(func, value) {
+    this._functions.push({ func, value });
+    return this._functions.length - 1;
+  }
+
   getFunction(index) {
-    const func = this._functions.get(index);
+    const func = this._functions[index];
     if (func !== undefined) {
       return { ...func };
     } else {
@@ -93,11 +98,15 @@ class Shifter extends Component {
   }
 
   setFunction(index, func, value) {
-    this._functions.set(index, { func, value });
+    if (index >= 0 && index < this._functions.length) {
+      this._functions[index].func = func;
+      this._functions[index].value = value;
+    }
   }
 
-  removeFunction(index) {
-    this._functions.delete(index);
+  removeFunction() {
+    this._functions.pop();
+    return this._functions.length;
   }
 }
 
