@@ -14,7 +14,7 @@ class MicroInstructionRegister extends Component {
     return new Config(this);
   }
 
-  get maskCount() {
+  get count() {
     return this._masks.length;
   }
 
@@ -28,7 +28,7 @@ class MicroInstructionRegister extends Component {
 
     this._clock.default = 1;
 
-    this.addMask(0, '', 1);
+    this.addMask('', 1);
   }
 
   run() {
@@ -60,20 +60,20 @@ class MicroInstructionRegister extends Component {
   deserialize(obj) {
     if (obj.masks) {
       this._masks = [];
-      obj.masks.forEach(({ name, size }, position) =>
-        this.addMask(position, name, size));
+      obj.masks.forEach(({ name, size }) =>
+        this.addMask(name, size));
     }
   }
 
-  addMask(position, name, size) {
+  addMask(name, size) {
     const output = this.addOutput(name, 0, 42);
-    const mask = { output, size };
-    this._masks.splice(position, 0, mask);
+    this._masks.push({ output, size });
     this.makeMasks();
+    return this._masks.length - 1;
   }
 
-  getMask(position) {
-    const mask = this._masks[position];
+  getMask(index) {
+    const mask = this._masks[index];
     if (!mask) {
       return undefined;
     } else {
@@ -83,20 +83,20 @@ class MicroInstructionRegister extends Component {
     }
   }
 
-  setMask(position, name, size) {
-    const mask = this._masks[position];
-    if (mask) {
+  setMask(index, name, size) {
+    if (index >= 0 && index < this._masks.length) {
+      const mask = this._masks[index];
       mask.output.name = name;
       mask.size = size;
       this.makeMasks();
     }
   }
 
-  removeMask(position) {
-    const mask = this._masks[position];
+  removeMask() {
+    const mask = this._masks.pop();
     this.removeOutput(mask.output.id);
-    this._masks.splice(position, 1);
     this.makeMasks();
+    return this._masks.length;
   }
 
   makeMasks() {
