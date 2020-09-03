@@ -93,9 +93,11 @@ class MicroInstructionRegister extends Component {
   }
 
   removeMask() {
-    const mask = this._masks.pop();
-    this.removeOutput(mask.output.id);
-    this.makeMasks();
+    if (this._masks.length > 1) {
+      const mask = this._masks.pop();
+      this.removeOutput(mask.output.id);
+      this.makeMasks();
+    }
     return this._masks.length;
   }
 

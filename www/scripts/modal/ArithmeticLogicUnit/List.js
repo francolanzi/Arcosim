@@ -28,8 +28,10 @@ class ArithmeticLogicUnitList extends HTMLElement {
   }
 
   removeFunction() {
-    this._cpnt.removeFunction();
-    this.removeChild(this.lastChild);
+    if (this._cpnt.count > 1) {
+      this._cpnt.removeFunction();
+      this.removeChild(this.lastChild);
+    }
   }
 }
 

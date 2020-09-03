@@ -28,8 +28,10 @@ class MicroSequenceLogicList extends HTMLElement {
   }
 
   removeCondition() {
-    this._cpnt.removeCondition();
-    this.removeChild(this.lastChild);
+    if (this._cpnt.count > 1) {
+      this._cpnt.removeCondition();
+      this.removeChild(this.lastChild);
+    }
   }
 }
 

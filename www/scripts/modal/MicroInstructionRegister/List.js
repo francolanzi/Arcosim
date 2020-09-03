@@ -24,8 +24,10 @@ class MicroInstructionRegisterList extends HTMLElement {
   }
 
   removeMask() {
-    this._cpnt.removeMask();
-    this.removeChild(this.lastChild);
+    if (this._cpnt.count > 1) {
+      this._cpnt.removeMask();
+      this.removeChild(this.lastChild);
+    }
   }
 }
 

@@ -110,7 +110,9 @@ class MicroSequenceLogic extends Component {
   }
 
   removeCondition() {
-    this._conditions.pop();
+    if (this._conditions.length > 1) {
+      this._conditions.pop();
+    }
     return this._conditions.length;
   }
 }

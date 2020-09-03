@@ -105,7 +105,9 @@ class Shifter extends Component {
   }
 
   removeFunction() {
-    this._functions.pop();
+    if (this._functions.length > 1) {
+      this._functions.pop();
+    }
     return this._functions.length;
   }
 }
