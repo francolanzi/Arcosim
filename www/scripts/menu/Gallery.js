@@ -10,10 +10,9 @@ class Gallery extends HTMLElement {
   constructor(computer) {
     super();
 
-    computer.items().then(items => {
-      items.forEach(item =>
-        this.append(item));
-    });
+    for (const item of computer.items) {
+      this.append(item);
+    }
   }
 }
 

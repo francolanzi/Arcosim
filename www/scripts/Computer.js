@@ -1,27 +1,11 @@
-const { readdirSync } = window.require('fs');
-const { resolve } = window.require('path');
+import CpntItems from './CpntItems.js';
 
 class Computer extends EventTarget {
-  async items() {
-    if (!this._items) {
-      const dir = resolve(__dirname, 'scripts/cpnts');
-      const files = readdirSync(dir);
-
-      this._items = new Map();
-
-      for (const file of files) {
-        if (file.split('.').pop() === 'js') {
-          const Item = (await import(`${dir}/${file}`)).default;
-          const item = new Item(this);
-          this._items.set(item.type, item);
-        }
-      }
-    }
-    return Array.from(this._items.values());
+  get items() {
+    return this._items.list();
   }
 
-  async item(type) {
-    await this.items();
+  item(type) {
     return this._items.get(type);
   }
 
@@ -35,6 +19,8 @@ class Computer extends EventTarget {
 
   constructor() {
     super();
+
+    this._items = new CpntItems(this);
 
     this._cpnts = new Map();
     this._stepping = false;
