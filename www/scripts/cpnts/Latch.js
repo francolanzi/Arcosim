@@ -1,14 +1,7 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 
 class Latch extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/Latch.svg',
-      width: 64,
-      height: 20,
-    };
-  }
-
   constructor(computer, top, left) {
     super(computer, top, left);
 
@@ -29,6 +22,29 @@ class Latch extends Component {
   }
 }
 
-customElements.define('cpnt-latch', Latch);
+class LatchItem extends CpntItem {
+  get type() {
+    return 'Latch';
+  }
 
-export default Latch;
+  get image() {
+    return 'images/cpnt/Latch.svg';
+  }
+
+  get width() {
+    return 64;
+  }
+
+  get height() {
+    return 20;
+  }
+
+  cpnt(top, left) {
+    return new Latch(this, top, left);
+  }
+}
+
+customElements.define('cpnt-latch', Latch);
+customElements.define('cpnt-item-latch', LatchItem);
+
+export default LatchItem;

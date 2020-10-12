@@ -1,14 +1,7 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 
 class Encoder extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/Encoder.svg',
-      width: 78,
-      height: 30,
-    };
-  }
-
   constructor(computer, top, left) {
     super(computer, top, left);
 
@@ -39,6 +32,29 @@ class Encoder extends Component {
   }
 }
 
-customElements.define('cpnt-encoder', Encoder);
+class EncoderItem extends CpntItem {
+  get type() {
+    return 'Encoder';
+  }
 
-export default Encoder;
+  get image() {
+    return 'images/cpnt/Encoder.svg';
+  }
+
+  get width() {
+    return 78;
+  }
+
+  get height() {
+    return 30;
+  }
+
+  cpnt(top, left) {
+    return new Encoder(this, top, left);
+  }
+}
+
+customElements.define('cpnt-encoder', Encoder);
+customElements.define('cpnt-item-encoder', EncoderItem);
+
+export default EncoderItem;

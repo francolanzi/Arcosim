@@ -2,26 +2,27 @@ const { readdirSync } = window.require('fs');
 const { resolve } = window.require('path');
 
 class Computer extends EventTarget {
-  static async cpntClasses() {
-    if (!this._cpntClasses) {
+  async items() {
+    if (!this._items) {
       const dir = resolve(__dirname, 'scripts/cpnts');
       const files = readdirSync(dir);
 
-      this._cpntClasses = new Map();
+      this._items = new Map();
 
       for (const file of files) {
         if (file.split('.').pop() === 'js') {
-          const Cpnt = (await import(`${dir}/${file}`)).default;
-          this._cpntClasses.set(Cpnt.type, Cpnt);
+          const Item = (await import(`${dir}/${file}`)).default;
+          const item = new Item(this);
+          this._items.set(item.type, item);
         }
       }
     }
-    return Array.from(this._cpntClasses.values());
+    return Array.from(this._items.values());
   }
 
-  static async cpntClass(type) {
-    await Computer.cpntClasses();
-    return this._cpntClasses.get(type);
+  async item(type) {
+    await this.items();
+    return this._items.get(type);
   }
 
   get running() {
@@ -44,7 +45,7 @@ class Computer extends EventTarget {
   }
 
   addCpnt(cpnt) {
-    const type = cpnt.constructor.type;
+    const type = cpnt.type;
     const id = cpnt.id;
 
     const key = `${type} ${id}`;
@@ -52,6 +53,10 @@ class Computer extends EventTarget {
     this._cpnts.set(key, cpnt);
 
     cpnt.addEventListener('stop', () => this.stop());
+
+    cpnt.addEventListener('remove', () => {
+      this.removeCpnt(cpnt.type, cpnt.id);
+    });
 
     this.dispatchEvent(new CustomEvent('add', { detail: cpnt }));
   }
@@ -139,14 +144,14 @@ class Computer extends EventTarget {
       this.stop();
 
       this._cpnts.forEach(cpnt => {
-        this.removeCpnt(cpnt.constructor.type, cpnt.id);
+        this.removeCpnt(cpnt.type, cpnt.id);
         cpnt.remove();
       });
 
-      obj.cpnts.forEach(cpntObj => {
-        const Cpnt = this.constructor._cpntClasses.get(cpntObj.type);
-        if (Cpnt) {
-          const cpnt = new Cpnt(this, cpntObj.top, cpntObj.left);
+      obj.cpnts.forEach(async cpntObj => {
+        const item = await this.item(cpntObj.type);
+        if (item) {
+          const cpnt = item.cpnt(cpntObj.top, cpntObj.left);
           cpnt.deserialize(cpntObj);
           this.addCpnt(cpnt);
         }

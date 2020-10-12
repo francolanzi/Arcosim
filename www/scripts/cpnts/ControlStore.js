@@ -1,15 +1,8 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 import Config from '../modal/ControlStore/Config.js';
 
 class ControlStore extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/ControlStore.svg',
-      width: 329,
-      height: 64,
-    };
-  }
-
   get config() {
     return new Config(this);
   }
@@ -91,6 +84,29 @@ class ControlStore extends Component {
   }
 }
 
-customElements.define('cpnt-cs', ControlStore);
+class ControlStoreItem extends CpntItem {
+  get type() {
+    return 'Control Store';
+  }
 
-export default ControlStore;
+  get image() {
+    return 'images/cpnt/ControlStore.svg';
+  }
+
+  get width() {
+    return 329;
+  }
+
+  get height() {
+    return 64;
+  }
+
+  cpnt(top, left) {
+    return new ControlStore(this, top, left);
+  }
+}
+
+customElements.define('cpnt-cs', ControlStore);
+customElements.define('cpnt-item-cs', ControlStoreItem);
+
+export default ControlStoreItem;

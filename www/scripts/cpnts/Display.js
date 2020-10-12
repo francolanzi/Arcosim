@@ -1,14 +1,7 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 
 class Display extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/Display.svg',
-      width: 99,
-      height: 46,
-    };
-  }
-
   get value() {
     return parseInt(this._display.textContent, 16);
   }
@@ -47,6 +40,29 @@ class Display extends Component {
   }
 }
 
-customElements.define('cpnt-display', Display);
+class DisplayItem extends CpntItem {
+  get type() {
+    return 'Display';
+  }
 
-export default Display;
+  get image() {
+    return 'images/cpnt/Display.svg';
+  }
+
+  get width() {
+    return 99;
+  }
+
+  get height() {
+    return 46;
+  }
+
+  cpnt(top, left) {
+    return new Display(this, top, left);
+  }
+}
+
+customElements.define('cpnt-display', Display);
+customElements.define('cpnt-item-display', DisplayItem);
+
+export default DisplayItem;

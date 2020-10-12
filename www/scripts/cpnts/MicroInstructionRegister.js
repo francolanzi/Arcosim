@@ -1,15 +1,8 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 import Config from '../modal/MicroInstructionRegister/Config.js';
 
 class MicroInstructionRegister extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/MicroInstructionRegister.svg',
-      width: 330,
-      height: 43,
-    };
-  }
-
   get config() {
     return new Config(this);
   }
@@ -112,6 +105,29 @@ class MicroInstructionRegister extends Component {
   }
 }
 
-customElements.define('cpnt-mir', MicroInstructionRegister);
+class MicroInstructionRegisterItem extends CpntItem {
+  get type() {
+    return 'Micro Instruction Register';
+  }
 
-export default MicroInstructionRegister;
+  get image() {
+    return 'images/cpnt/MicroInstructionRegister.svg';
+  }
+
+  get width() {
+    return 330;
+  }
+
+  get height() {
+    return 43;
+  }
+
+  cpnt(top, left) {
+    return new MicroInstructionRegister(this, top, left);
+  }
+}
+
+customElements.define('cpnt-mir', MicroInstructionRegister);
+customElements.define('cpnt-item-mir', MicroInstructionRegisterItem);
+
+export default MicroInstructionRegisterItem;

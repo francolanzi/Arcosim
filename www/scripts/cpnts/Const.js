@@ -1,15 +1,8 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 import Config from '../modal/Const/Config.js';
 
 class Const extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/Const.svg',
-      width: 99,
-      height: 46,
-    };
-  }
-
   get config() {
     return new Config(this);
   }
@@ -51,6 +44,29 @@ class Const extends Component {
   }
 }
 
-customElements.define('cpnt-const', Const);
+class ConstItem extends CpntItem {
+  get type() {
+    return 'Const';
+  }
 
-export default Const;
+  get image() {
+    return 'images/cpnt/Const.svg';
+  }
+
+  get width() {
+    return 99;
+  }
+
+  get height() {
+    return 46;
+  }
+
+  cpnt(top, left) {
+    return new Const(this, top, left);
+  }
+}
+
+customElements.define('cpnt-const', Const);
+customElements.define('cpnt-item-const', ConstItem);
+
+export default ConstItem;

@@ -1,15 +1,8 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 import Config from '../modal/Memory/Config.js';
 
 class Memory extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/Memory.svg',
-      width: 329,
-      height: 64,
-    };
-  }
-
   get config() {
     return new Config(this);
   }
@@ -64,6 +57,29 @@ class Memory extends Component {
   }
 }
 
-customElements.define('cpnt-memory', Memory);
+class MemoryItem extends CpntItem {
+  get type() {
+    return 'Memory';
+  }
 
-export default Memory;
+  get image() {
+    return 'images/cpnt/Memory.svg';
+  }
+
+  get width() {
+    return 329;
+  }
+
+  get height() {
+    return 64;
+  }
+
+  cpnt(top, left) {
+    return new Memory(this, top, left);
+  }
+}
+
+customElements.define('cpnt-memory', Memory);
+customElements.define('cpnt-item-memory', MemoryItem);
+
+export default MemoryItem;

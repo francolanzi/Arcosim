@@ -1,14 +1,7 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 
 class Decoder extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/Decoder.svg',
-      width: 78,
-      height: 30,
-    };
-  }
-
   constructor(computer, top, left) {
     super(computer, top, left);
 
@@ -31,6 +24,29 @@ class Decoder extends Component {
   }
 }
 
-customElements.define('cpnt-decoder', Decoder);
+class DecoderItem extends CpntItem {
+  get type() {
+    return 'Decoder';
+  }
 
-export default Decoder;
+  get image() {
+    return 'images/cpnt/Decoder.svg';
+  }
+
+  get width() {
+    return 78;
+  }
+
+  get height() {
+    return 30;
+  }
+
+  cpnt(top, left) {
+    return new Decoder(this, top, left);
+  }
+}
+
+customElements.define('cpnt-decoder', Decoder);
+customElements.define('cpnt-item-decoder', DecoderItem);
+
+export default DecoderItem;

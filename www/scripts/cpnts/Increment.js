@@ -1,14 +1,7 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 
 class Increment extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/Increment.svg',
-      width: 68,
-      height: 23,
-    };
-  }
-
   constructor(computer, top, left) {
     super(computer, top, left);
 
@@ -29,6 +22,29 @@ class Increment extends Component {
   }
 }
 
-customElements.define('cpnt-increment', Increment);
+class IncrementItem extends CpntItem {
+  get type() {
+    return 'Increment';
+  }
 
-export default Increment;
+  get image() {
+    return 'images/cpnt/Increment.svg';
+  }
+
+  get width() {
+    return 68;
+  }
+
+  get height() {
+    return 23;
+  }
+
+  cpnt(top, left) {
+    return new Increment(this, top, left);
+  }
+}
+
+customElements.define('cpnt-increment', Increment);
+customElements.define('cpnt-item-increment', IncrementItem);
+
+export default IncrementItem;

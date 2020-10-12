@@ -1,15 +1,8 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 import Config from '../modal/Registers/Config.js';
 
 class Registers extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/Registers.svg',
-      width: 94,
-      height: 90,
-    };
-  }
-
   get config() {
     return new Config(this);
   }
@@ -95,6 +88,29 @@ class Registers extends Component {
   }
 }
 
-customElements.define('cpnt-registers', Registers);
+class RegistersItem extends CpntItem {
+  get type() {
+    return 'Registers';
+  }
 
-export default Registers;
+  get image() {
+    return 'images/cpnt/Registers.svg';
+  }
+
+  get width() {
+    return 94;
+  }
+
+  get height() {
+    return 90;
+  }
+
+  cpnt(top, left) {
+    return new Registers(this, top, left);
+  }
+}
+
+customElements.define('cpnt-registers', Registers);
+customElements.define('cpnt-item-registers', RegistersItem);
+
+export default RegistersItem;

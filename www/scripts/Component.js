@@ -2,12 +2,8 @@ import Input from './io/Input.js';
 import Output from './io/Output.js';
 
 class Component extends HTMLElement {
-  static get type() {
-    return this.name.replace(/([a-z])([A-Z])/g, '$1 $2');
-  }
-
-  static get svg() {
-    throw new Error('svg static property must be overrided');
+  get type() {
+    return this._item.type;
   }
 
   get id() {
@@ -15,7 +11,7 @@ class Component extends HTMLElement {
   }
 
   get computer() {
-    return this._computer;
+    return this._item.computer;
   }
 
   get top() {
@@ -47,24 +43,24 @@ class Component extends HTMLElement {
     return null;
   }
 
-  constructor(computer, top, left) {
+  constructor(item, top, left) {
     super();
 
     if (this.constructor === Component) {
       throw new Error('Component class can not be instantiated');
     }
 
+    this._item = item;
+
     if (!this.constructor._count) {
       this.constructor._count = new Map();
     }
 
-    const count = this.constructor._count.get(this.constructor.name);
+    const count = this.constructor._count.get(this.type);
     this._id = count ? count + 1 : 1;
-    this.constructor._count.set(this.constructor.name, this._id);
+    this.constructor._count.set(this.type, this._id);
 
     this.classList.add('component');
-
-    this._computer = computer;
 
     this.style.top = `${top}px`;
     this.style.left = `${left}px`;
@@ -80,14 +76,13 @@ class Component extends HTMLElement {
     this._move = ev => this.move(ev);
     this._drop = ev => this.drop(ev);
 
-    const svg = this.constructor.svg;
-    const image = new Image(svg.width, svg.height);
+    const img = new Image(item.width, item.height);
 
-    image.src = svg.src;
-    this.append(image);
+    img.src = item.image;
+    this.append(img);
 
-    image.addEventListener('mousedown', ev => this.drag(ev));
-    image.addEventListener('dblclick', () => this.dispatchEvent(new Event('config')));
+    img.addEventListener('mousedown', ev => this.drag(ev));
+    img.addEventListener('dblclick', () => this.dispatchEvent(new Event('config')));
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -220,7 +215,7 @@ class Component extends HTMLElement {
 
   serialize() {
     return {
-      type: this.constructor.type,
+      type: this.type,
       top: this.top,
       left: this.left,
     };

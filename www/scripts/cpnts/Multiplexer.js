@@ -1,14 +1,7 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 
 class Multiplexer extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/Multiplexer.svg',
-      width: 62,
-      height: 23,
-    };
-  }
-
   constructor(computer, top, left) {
     super(computer, top, left);
 
@@ -27,6 +20,29 @@ class Multiplexer extends Component {
   }
 }
 
-customElements.define('cpnt-mux', Multiplexer);
+class MultiplexerItem extends CpntItem {
+  get type() {
+    return 'Multiplexer';
+  }
 
-export default Multiplexer;
+  get image() {
+    return 'images/cpnt/Multiplexer.svg';
+  }
+
+  get width() {
+    return 62;
+  }
+
+  get height() {
+    return 23;
+  }
+
+  cpnt(top, left) {
+    return new Multiplexer(this, top, left);
+  }
+}
+
+customElements.define('cpnt-mux', Multiplexer);
+customElements.define('cpnt-item-mux', MultiplexerItem);
+
+export default MultiplexerItem;

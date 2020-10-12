@@ -1,15 +1,8 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 import Config from '../modal/MicroSequenceLogic/Config.js';
 
 class MicroSequenceLogic extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/MicroSequenceLogic.svg',
-      width: 62,
-      height: 42,
-    };
-  }
-
   get config() {
     return new Config(this);
   }
@@ -117,6 +110,29 @@ class MicroSequenceLogic extends Component {
   }
 }
 
-customElements.define('cpnt-msl', MicroSequenceLogic);
+class MicroSequenceLogicItem extends CpntItem {
+  get type() {
+    return 'Micro Sequence Logic';
+  }
 
-export default MicroSequenceLogic;
+  get image() {
+    return 'images/cpnt/MicroSequenceLogic.svg';
+  }
+
+  get width() {
+    return 62;
+  }
+
+  get height() {
+    return 42;
+  }
+
+  cpnt(top, left) {
+    return new MicroSequenceLogic(this, top, left);
+  }
+}
+
+customElements.define('cpnt-msl', MicroSequenceLogic);
+customElements.define('cpnt-item-msl', MicroSequenceLogicItem);
+
+export default MicroSequenceLogicItem;

@@ -1,15 +1,8 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 import Config from '../modal/ArithmeticLogicUnit/Config.js';
 
 class ArithmeticLogicUnit extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/ArithmeticLogicUnit.svg',
-      width: 81,
-      height: 45,
-    };
-  }
-
   get config() {
     return new Config(this);
   }
@@ -36,8 +29,8 @@ class ArithmeticLogicUnit extends Component {
     return this._functions.length;
   }
 
-  constructor(computer, top, left) {
-    super(computer, top, left);
+  constructor(item, top, left) {
+    super(item, top, left);
 
     this._functions = [];
 
@@ -135,6 +128,29 @@ class ArithmeticLogicUnit extends Component {
   }
 }
 
-customElements.define('cpnt-alu', ArithmeticLogicUnit);
+class ArithmeticLogicUnitItem extends CpntItem {
+  get type() {
+    return 'Arithmetic Logic Unit';
+  }
 
-export default ArithmeticLogicUnit;
+  get image() {
+    return 'images/cpnt/ArithmeticLogicUnit.svg';
+  }
+
+  get width() {
+    return 81;
+  }
+
+  get height() {
+    return 45;
+  }
+
+  cpnt(top, left) {
+    return new ArithmeticLogicUnit(this, top, left);
+  }
+}
+
+customElements.define('cpnt-alu', ArithmeticLogicUnit);
+customElements.define('cpnt-item-alu', ArithmeticLogicUnitItem);
+
+export default ArithmeticLogicUnitItem;

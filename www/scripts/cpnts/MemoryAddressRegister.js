@@ -1,14 +1,7 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 
 class MemoryAddressRegister extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/MemoryAddressRegister.svg',
-      width: 47,
-      height: 20,
-    };
-  }
-
   constructor(computer, top, left) {
     super(computer, top, left);
 
@@ -29,6 +22,29 @@ class MemoryAddressRegister extends Component {
   }
 }
 
-customElements.define('cpnt-mar', MemoryAddressRegister);
+class MemoryAddressRegisterItem extends CpntItem {
+  get type() {
+    return 'Memory Address Register';
+  }
 
-export default MemoryAddressRegister;
+  get image() {
+    return 'images/cpnt/MemoryAddressRegister.svg';
+  }
+
+  get width() {
+    return 47;
+  }
+
+  get height() {
+    return 20;
+  }
+
+  cpnt(top, left) {
+    return new MemoryAddressRegister(this, top, left);
+  }
+}
+
+customElements.define('cpnt-mar', MemoryAddressRegister);
+customElements.define('cpnt-item-mar', MemoryAddressRegisterItem);
+
+export default MemoryAddressRegisterItem;

@@ -1,15 +1,8 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 import Config from '../modal/Clock/Config.js';
 
 class Clock extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/Clock.svg',
-      width: 61,
-      height: 59,
-    };
-  }
-
   get config() {
     return new Config(this);
   }
@@ -88,6 +81,29 @@ class Clock extends Component {
   }
 }
 
-customElements.define('cpnt-clock', Clock);
+class ClockItem extends CpntItem {
+  get type() {
+    return 'Clock';
+  }
 
-export default Clock;
+  get image() {
+    return 'images/cpnt/Clock.svg';
+  }
+
+  get width() {
+    return 61;
+  }
+
+  get height() {
+    return 59;
+  }
+
+  cpnt(top, left) {
+    return new Clock(this, top, left);
+  }
+}
+
+customElements.define('cpnt-clock', Clock);
+customElements.define('cpnt-item-clock', ClockItem);
+
+export default ClockItem;

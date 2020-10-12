@@ -1,15 +1,8 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 import Config from '../modal/Shifter/Config.js';
 
 class Shifter extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/Shifter.svg',
-      width: 76,
-      height: 28,
-    };
-  }
-
   get config() {
     return new Config(this);
   }
@@ -112,6 +105,29 @@ class Shifter extends Component {
   }
 }
 
-customElements.define('cpnt-shifter', Shifter);
+class ShifterItem extends CpntItem {
+  get type() {
+    return 'Shifter';
+  }
 
-export default Shifter;
+  get image() {
+    return 'images/cpnt/Shifter.svg';
+  }
+
+  get width() {
+    return 76;
+  }
+
+  get height() {
+    return 28;
+  }
+
+  cpnt(top, left) {
+    return new Shifter(this, top, left);
+  }
+}
+
+customElements.define('cpnt-shifter', Shifter);
+customElements.define('cpnt-item-shifter', ShifterItem);
+
+export default ShifterItem;

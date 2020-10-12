@@ -1,14 +1,7 @@
 import Component from '../Component.js';
+import CpntItem from '../CpntItem.js';
 
 class MemoryBufferRegister extends Component {
-  static get svg() {
-    return {
-      src: 'images/cpnt/MemoryBufferRegister.svg',
-      width: 47,
-      height: 20,
-    };
-  }
-
   constructor(computer, top, left) {
     super(computer, top, left);
 
@@ -40,6 +33,29 @@ class MemoryBufferRegister extends Component {
   }
 }
 
-customElements.define('cpnt-mbr', MemoryBufferRegister);
+class MemoryBufferRegisterItem extends CpntItem {
+  get type() {
+    return 'Memory Buffer Register';
+  }
 
-export default MemoryBufferRegister;
+  get image() {
+    return 'images/cpnt/MemoryBufferRegister.svg';
+  }
+
+  get width() {
+    return 47;
+  }
+
+  get height() {
+    return 20;
+  }
+
+  cpnt(top, left) {
+    return new MemoryBufferRegister(this, top, left);
+  }
+}
+
+customElements.define('cpnt-mbr', MemoryBufferRegister);
+customElements.define('cpnt-item-mbr', MemoryBufferRegisterItem);
+
+export default MemoryBufferRegisterItem;
