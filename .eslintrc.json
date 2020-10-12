@@ -14,7 +14,6 @@
     "no-unreachable-loop": "error",
 
     // Best Practices
-    "class-methods-use-this": "error",
     "curly": ["error", "all"],
     "default-case": "error",
     "default-case-last": "error",
