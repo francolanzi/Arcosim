@@ -13,17 +13,26 @@
   },
   "main": "index.js",
   "scripts": {
+    "remove": "rm -rf www/*",
+    "copy": "cpy **/* !**/*.ts ../www --cwd=src --parents",
+    "compile": "tsc",
+    "build": "npm run remove && npm run copy && npm run compile",
+    "start": "npm run build && electron .",
     "postinstall": "electron-builder install-app-deps",
-    "start": "electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "npm run build && electron-builder"
   },
   "devDependencies": {
+    "@types/resize-observer-browser": "^0.1.4",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.4.1",
+    "cpy-cli": "^3.1.1",
     "electron": "^9.2.0",
     "electron-builder": "^22.8.0",
     "eslint": "^7.6.0",
-    "eslint-config-prettier": "^6.11.0",
-    "prettier": "^2.0.5"
+    "eslint-config-prettier": "^6.13.0",
+    "prettier": "^2.0.5",
+    "typescript": "^4.0.3"
   },
   "build": {
     "appId": "arcosim-1.0.0-beta",
