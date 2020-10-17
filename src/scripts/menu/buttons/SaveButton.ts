@@ -20,7 +20,7 @@ class SaveButton extends MenuButton {
     this.addEventListener('click', () => {
       if (!this._file) {
         this._file = remote.dialog.showSaveDialogSync(window, {
-          filters: [{ name: 'ArCoSim', extensions: ['arcosim'] }],
+          filters: [{ name: 'Arcosim', extensions: ['arcosim'] }],
         });
       }
 

@@ -19,7 +19,7 @@ class OpenButton extends MenuButton {
 
     this.addEventListener('click', () => {
       const file = remote.dialog.showOpenDialogSync(window, {
-        filters: [{ name: 'ArCoSim', extensions: ['arcosim'] }],
+        filters: [{ name: 'Arcosim', extensions: ['arcosim'] }],
         properties: ['openFile'],
       });
       if (file) {

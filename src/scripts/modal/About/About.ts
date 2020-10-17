@@ -17,7 +17,7 @@ class About extends HTMLElement {
     icon.append(iconImg);
 
     const nameLink = document.createElement('a');
-    nameLink.textContent = `ArCoSim ${pckg.version}`;
+    nameLink.textContent = `Arcosim ${pckg.version}`;
     nameLink.href = pckg.repository.url;
 
     const name = document.createElement('h6');

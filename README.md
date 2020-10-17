@@ -1,4 +1,4 @@
-# ArCoSim
+# Arcosim
 
 Computer architecture simulator based on Tanenbaum architectures
 
