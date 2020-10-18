@@ -100,12 +100,14 @@ class MicroInstructionRegister extends Component {
   }
 
   public removeMask(): number {
-    const mask = this._masks.pop();
-    if (mask) {
-      this.removeOutput(mask.output.ioId);
-      this.makeMasks();
+    if (this.count > 1) {
+      const mask = this._masks.pop();
+      if (mask) {
+        this.removeOutput(mask.output.ioId);
+        this.makeMasks();
+      }
     }
-    return this._masks.length;
+    return this.count;
   }
 
   public makeMasks(): void {
