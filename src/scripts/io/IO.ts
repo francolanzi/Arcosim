@@ -83,6 +83,7 @@ abstract class IO extends HTMLElement {
     super();
 
     this._name = name;
+    this._value = 0;
     this._center = { x: -1, y: -1 };
 
     this.cpnt = cpnt;
@@ -91,7 +92,6 @@ abstract class IO extends HTMLElement {
     this.x = Math.max(x, 0);
     this.y = Math.max(y, 0);
 
-    this._value = 0;
     this._changed = true;
 
     this._default = 0;
