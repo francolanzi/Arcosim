@@ -65,10 +65,12 @@ class Clock extends Component {
   }
 
   public removeSubcycle(): void {
-    const subcycle = this._subcycles.pop();
-    if (subcycle) {
-      this.removeOutput(subcycle.ioId);
-      this.makeSubcycles();
+    if (this.subcycles > 1) {
+      const subcycle = this._subcycles.pop();
+      if (subcycle) {
+        this.removeOutput(subcycle.ioId);
+        this.makeSubcycles();
+      }
     }
   }
 
