@@ -6,6 +6,7 @@ app.whenReady().then(() => {
     icon: path.resolve(__dirname, 'www/images/favicon.ico'),
     webPreferences: {
       nodeIntegration: true,
+      enableRemoteModule: true,
     },
   });
   win.setMenuBarVisibility(false);
