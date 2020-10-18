@@ -28,7 +28,7 @@ class Const extends Component {
   public constructor(item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
-    this._const = this.addOutput('Constante', 49, 46);
+    this._const = this.addOutput('const', 'Constante', 49, 46);
 
     this._display = document.createElement('div');
     this.append(this._display);

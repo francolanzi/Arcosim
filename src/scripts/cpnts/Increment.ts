@@ -12,10 +12,10 @@ class Increment extends Component {
   public constructor(item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
-    this._current = this.addInput('Actual', 67, 11);
-    this._clock = this.addInput('Clock', 0, 11);
+    this._current = this.addInput('current', 'Actual', 67, 11);
+    this._clock = this.addInput('clock', 'Clock', 0, 11);
 
-    this._next = this.addOutput('Siguiente', 33.5, 0);
+    this._next = this.addOutput('next', 'Siguiente', 33.5, 0);
 
     this._clock.default = 1;
   }

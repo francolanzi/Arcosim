@@ -29,8 +29,8 @@ class MicroInstructionRegister extends Component {
 
     this._masks = [];
 
-    this._instruction = this.addInput('Instrucción', 164.5, 0);
-    this._clock = this.addInput('Clock', 0, 21);
+    this._instruction = this.addInput('instruction', 'Instrucción', 164.5, 0);
+    this._clock = this.addInput('clock', 'Clock', 0, 21);
 
     this._clock.default = 1;
 
@@ -72,7 +72,8 @@ class MicroInstructionRegister extends Component {
   }
 
   public addMask(name: string, size: number): number {
-    const output = this.addOutput(name, 0, 42);
+    const id = `mask${this.count + 1}`;
+    const output = this.addOutput(id, name, 0, 42);
     this._masks.push({ output, size });
     this.makeMasks();
     return this._masks.length - 1;
@@ -101,7 +102,7 @@ class MicroInstructionRegister extends Component {
   public removeMask(): number {
     const mask = this._masks.pop();
     if (mask) {
-      this.removeOutput(mask.output.outputId);
+      this.removeOutput(mask.output.ioId);
       this.makeMasks();
     }
     return this._masks.length;

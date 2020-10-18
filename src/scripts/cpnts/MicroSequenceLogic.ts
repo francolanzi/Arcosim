@@ -40,11 +40,11 @@ class MicroSequenceLogic extends Component {
 
     this._conditions = [];
 
-    this._condition = this.addInput('Condición', 61, 20.5);
-    this._controlN = this.addInput('N', 0, 15);
-    this._controlZ = this.addInput('Z', 0, 26);
+    this._condition = this.addInput('condition', 'Condición', 61, 20.5);
+    this._controlN = this.addInput('controlN', 'N', 0, 15);
+    this._controlZ = this.addInput('controlZ', 'Z', 0, 26);
 
-    this._jump = this.addOutput('Saltar', 30.5, 0);
+    this._jump = this.addOutput('jump', 'Saltar', 30.5, 0);
 
     this.addCondition(0);
     this.addCondition(2);

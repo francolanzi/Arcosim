@@ -17,15 +17,15 @@ class MemoryBufferRegister extends Component {
   public constructor(item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
-    this._read = this.addInput('Leer', 11.5, 19);
-    this._write = this.addInput('Escribir', 23, 19);
-    this._control = this.addInput('Control', 34.5, 19);
-    this._clock = this.addInput('Clock', 23, 0);
-    this._datain = this.addInput('Entrada de datos', 46, 15);
-    this._busin = this.addInput('Bus de datos', 0, 4);
+    this._read = this.addInput('read', 'Leer', 11.5, 19);
+    this._write = this.addInput('write', 'Escribir', 23, 19);
+    this._control = this.addInput('control', 'Control', 34.5, 19);
+    this._clock = this.addInput('clock', 'Clock', 23, 0);
+    this._datain = this.addInput('datain', 'Entrada de datos', 46, 15);
+    this._busin = this.addInput('busin', 'Bus de datos', 0, 4);
 
-    this._dataout = this.addOutput('Salida de datos', 46, 4);
-    this._busout = this.addOutput('Bus de datos', 0, 15);
+    this._dataout = this.addOutput('dataout', 'Salida de datos', 46, 4);
+    this._busout = this.addOutput('busout', 'Bus de datos', 0, 15);
   }
 
   public run(time: number): boolean {

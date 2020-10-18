@@ -13,11 +13,11 @@ class Encoder extends Component {
   public constructor(item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
-    this._decoded = this.addInput('Decodificado', 77, 14.5);
-    this._enable = this.addInput('Habilitar', 38.5, 0);
-    this._clock = this.addInput('Clock', 38.5, 29);
+    this._decoded = this.addInput('decoded', 'Decodificado', 77, 14.5);
+    this._enable = this.addInput('enable', 'Habilitar', 38.5, 0);
+    this._clock = this.addInput('clock', 'Clock', 38.5, 29);
 
-    this._encoded = this.addOutput('Codificado', 0, 14.5);
+    this._encoded = this.addOutput('encoded', 'Codificado', 0, 14.5);
 
     this._enable.default = 1;
     this._clock.default = 1;

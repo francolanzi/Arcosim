@@ -4,11 +4,12 @@ import Center from '../ifaces/Center.js';
 abstract class IO extends HTMLElement {
   private _name: string;
   private _value: number;
+  private _default: number;
   private _changed: boolean;
   private readonly _center: Center;
 
-  private _default: number;
   public readonly cpnt: Component;
+  public readonly ioId: string;
 
   public get name(): string {
     return this._name;
@@ -79,7 +80,7 @@ abstract class IO extends HTMLElement {
     }
   }
 
-  public constructor(cpnt: Component, name: string, x: number, y: number) {
+  public constructor(cpnt: Component, id: string, name: string, x: number, y: number) {
     super();
 
     this._name = name;
@@ -87,6 +88,7 @@ abstract class IO extends HTMLElement {
     this._center = { x: -1, y: -1 };
 
     this.cpnt = cpnt;
+    this.ioId = id;
     this.name = this._name;
 
     this.x = Math.max(x, 0);

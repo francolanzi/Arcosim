@@ -13,8 +13,8 @@ abstract class Component extends HTMLElement {
   private _left: number;
 
   private readonly _item: CpntItem;
-  private readonly _inputs: Map<number, Input>;
-  private readonly _outputs: Map<number, Output>;
+  private readonly _inputs: Map<string, Input>;
+  private readonly _outputs: Map<string, Output>;
   private readonly _move: (ev: MouseEvent) => void;
   private readonly _drop: (ev: MouseEvent) => void;
   private readonly _mouse: Center;
@@ -168,10 +168,17 @@ abstract class Component extends HTMLElement {
         && ev.clientX <= rect.right;
   }
 
-  public addInput(name: string, x: number, y: number): Input {
-    const input = new Input(this, name, x, y);
+  public addInput(id: string, name: string, x: number, y: number): Input {
+    let input = this._inputs.get(id);
 
-    this._inputs.set(input.inputId, input);
+    if (input) {
+      this._inputs.delete(id);
+      input.remove();
+    }
+
+    input = new Input(this, id, name, x, y);
+
+    this._inputs.set(input.ioId, input);
     this.append(input);
 
     input.addEventListener('link', ev => {
@@ -187,24 +194,31 @@ abstract class Component extends HTMLElement {
     return input;
   }
 
-  public addOutput(name: string, x: number, y: number): Output {
-    const output = new Output(this, name, x, y);
+  public addOutput(id: string, name: string, x: number, y: number): Output {
+    let output = this._outputs.get(id);
 
-    this._outputs.set(output.outputId, output);
+    if (output) {
+      this._outputs.delete(id);
+      output.remove();
+    }
+
+    output = new Output(this, id, name, x, y);
+
+    this._outputs.set(output.ioId, output);
     this.append(output);
 
     return output;
   }
 
-  public getInput(id: number): Input | undefined {
+  public getInput(id: string): Input | undefined {
     return this._inputs.get(id);
   }
 
-  public getOutput(id: number): Output | undefined {
+  public getOutput(id: string): Output | undefined {
     return this._outputs.get(id);
   }
 
-  public removeInput(id: number): void {
+  public removeInput(id: string): void {
     const input = this._inputs.get(id);
     if (input) {
       this._inputs.delete(id);
@@ -213,7 +227,7 @@ abstract class Component extends HTMLElement {
     }
   }
 
-  public removeOutput(id: number): void {
+  public removeOutput(id: string): void {
     const output = this._outputs.get(id);
     if (output) {
       this._outputs.delete(id);

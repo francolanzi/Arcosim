@@ -44,9 +44,9 @@ class ControlStore extends Component {
     this._instructions = [0];
     this._bits = 32;
 
-    this._position = this.addInput('Posición', 164, 0);
+    this._position = this.addInput('position', 'Posición', 164, 0);
 
-    this._instruction = this.addOutput('Instrucción', 164, 63);
+    this._instruction = this.addOutput('instruction', 'Instrucción', 164, 63);
   }
 
   public run(time: number): boolean {

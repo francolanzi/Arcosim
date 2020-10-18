@@ -3,12 +3,8 @@ import IO from './IO.js';
 import Output from './Output.js';
 
 class Input extends IO {
-  private static _count = 0;
-
   private _linked: boolean;
   private _clicked: boolean;
-
-  public readonly inputId: number;
 
   public get default(): number {
     return super.default;
@@ -25,10 +21,8 @@ class Input extends IO {
     return this._linked;
   }
 
-  public constructor(cpnt: Component, name: string, x: number, y: number) {
-    super(cpnt, name, x, y);
-
-    this.inputId = Input._count++;
+  public constructor(cpnt: Component, id: string, name: string, x: number, y: number) {
+    super(cpnt, id, name, x, y);
 
     this._linked = false;
     this._clicked = false;

@@ -42,7 +42,7 @@ class Clock extends Component {
     if (obj.subcycles) {
       let subcycle = this._subcycles.pop();
       while (subcycle) {
-        this.removeOutput(subcycle.outputId);
+        this.removeOutput(subcycle.ioId);
         subcycle = this._subcycles.pop();
       }
 
@@ -55,8 +55,9 @@ class Clock extends Component {
   }
 
   public addSubcycle(): void {
+    const id = `subcycle${this.subcycles + 1}`;
     const name = `Subciclo ${this.subcycles + 1}`;
-    const subcycle = this.addOutput(name, 0, 0);
+    const subcycle = this.addOutput(id, name, 0, 0);
     this._subcycles.push(subcycle);
     subcycle.color = 'gray';
     subcycle.dashed = true;
@@ -66,7 +67,7 @@ class Clock extends Component {
   public removeSubcycle(): void {
     const subcycle = this._subcycles.pop();
     if (subcycle) {
-      this.removeOutput(subcycle.outputId);
+      this.removeOutput(subcycle.ioId);
       this.makeSubcycles();
     }
   }

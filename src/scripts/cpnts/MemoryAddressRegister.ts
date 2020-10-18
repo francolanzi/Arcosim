@@ -13,11 +13,11 @@ class MemoryAddressRegister extends Component {
   public constructor(item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
-    this._control = this.addInput('Control', 23, 19);
-    this._clock= this.addInput('Clock', 23, 0);
-    this._addrin = this.addInput('Dirección', 46, 9.5);
+    this._control = this.addInput('control', 'Control', 23, 19);
+    this._clock = this.addInput('clock', 'Clock', 23, 0);
+    this._addrin = this.addInput('addrin', 'Dirección', 46, 9.5);
 
-    this._addrout = this.addOutput('Bus de direcciones', 0, 9.5);
+    this._addrout = this.addOutput('addrout', 'Bus de direcciones', 0, 9.5);
   }
 
   public run(time: number): boolean {

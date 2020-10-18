@@ -44,10 +44,10 @@ class Shifter extends Component {
 
     this._functions = [];
 
-    this._input = this.addInput('Entrada', 37.5, 0);
-    this._function = this.addInput('Función', 75, 13.5);
+    this._input = this.addInput('input', 'Entrada', 37.5, 0);
+    this._function = this.addInput('function', 'Función', 75, 13.5);
 
-    this._result = this.addOutput('Resultado', 37.5, 27);
+    this._result = this.addOutput('result', 'Resultado', 37.5, 27);
 
     this.addFunction(0, 0);
     this.addFunction(2, 1);

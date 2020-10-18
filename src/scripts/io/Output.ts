@@ -3,14 +3,10 @@ import Link from '../link/Link.js';
 import IO from './IO.js';
 
 class Output extends IO {
-  private static _count = 0;
-
   private _width: number;
   private _color: string;
   private _dashed: boolean;
   private readonly _links: Set<Link>;
-
-  public readonly outputId: number;
 
   public get value(): number {
     return super.value;
@@ -57,10 +53,8 @@ class Output extends IO {
     this._links.forEach(link => link.dashed = value);
   }
 
-  public constructor(cpnt: Component, name: string, x: number, y: number) {
-    super(cpnt, name, x, y);
-
-    this.outputId = Output._count++;
+  public constructor(cpnt: Component, id: string, name: string, x: number, y: number) {
+    super(cpnt, id, name, x, y);
 
     this._links = new Set();
 

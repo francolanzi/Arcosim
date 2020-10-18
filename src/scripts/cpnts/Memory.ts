@@ -24,12 +24,12 @@ class Memory extends Component {
 
     this._cells = new Map();
 
-    this._read = this.addInput('Leer', 76.5, 63);
-    this._write = this.addInput('Escribir', 87.5, 63);
-    this._address = this.addInput('Dirección', 164, 63);
-    this._datain = this.addInput('Dato', 240.5, 63);
+    this._read = this.addInput('read', 'Leer', 76.5, 63);
+    this._write = this.addInput('write', 'Escribir', 87.5, 63);
+    this._address = this.addInput('address', 'Dirección', 164, 63);
+    this._datain = this.addInput('datain', 'Dato', 240.5, 63);
 
-    this._dataout = this.addOutput('Dato', 251.5, 63);
+    this._dataout = this.addOutput('dataout', 'Dato', 251.5, 63);
   }
 
   public run(time: number): boolean {

@@ -25,9 +25,9 @@ class Display extends Component {
   public constructor(item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
-    this._input = this.addInput('Entrada', 49, 0);
+    this._input = this.addInput('input', 'Entrada', 49, 0);
 
-    this._output = this.addOutput('Salida', 49, 46);
+    this._output = this.addOutput('output', 'Salida', 49, 46);
 
     this._display = document.createElement('div');
     this.append(this._display);
