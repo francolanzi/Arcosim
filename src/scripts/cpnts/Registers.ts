@@ -41,18 +41,9 @@ class Registers extends Component {
   }
 
   public run(time: number): boolean {
-    function encode(decoded: number): number {
-      let encoded = -1;
-      while (decoded) {
-        decoded = decoded >>> 1;
-        encoded++;
-      }
-      return encoded;
-    }
-
-    const indexA = encode(this._decoderA.value);
-    const indexB = encode(this._decoderB.value);
-    const indexC = encode(this._decoderC.value);
+    const indexA = this.encode(this._decoderA.value);
+    const indexB = this.encode(this._decoderB.value);
+    const indexC = this.encode(this._decoderC.value);
 
     if (indexA >= 0 && indexA < this._registers.length) {
       this._outputA.value = this._registers[indexA];
@@ -67,6 +58,15 @@ class Registers extends Component {
     }
 
     return super.run(time);
+  }
+
+  private encode(decoded: number): number {
+    let encoded = -1;
+    while (decoded) {
+      decoded = decoded >>> 1;
+      encoded++;
+    }
+    return encoded;
   }
 
   public serialize(): RegistersInfo {

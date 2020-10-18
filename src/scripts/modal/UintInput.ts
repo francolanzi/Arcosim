@@ -2,15 +2,9 @@ class UintInput extends HTMLInputElement {
   public constructor(value: number, min: number, max: number, arrows: boolean) {
     super();
 
-    function clamp(value: number, min: number, max: number) {
-      value = Math.min(value, max);
-      value = Math.max(value, min);
-      return value;
-    }
-
     min = Math.max(min, 0);
     max = Math.max(max, 0);
-    value = clamp(value, min, max);
+    value = this.clamp(value, min, max);
 
     this.type = arrows ? 'number' : 'text';
     this.value = value.toString();
@@ -29,7 +23,7 @@ class UintInput extends HTMLInputElement {
     this.addEventListener('keyup', () => {
       if (this.value) {
         const value = parseInt(this.value);
-        this.value = clamp(value, min, max).toString();
+        this.value = this.clamp(value, min, max).toString();
       }
     });
 
@@ -38,6 +32,12 @@ class UintInput extends HTMLInputElement {
         this.value = min.toString();
       }
     });
+  }
+
+  private clamp(value: number, min: number, max: number) {
+    value = Math.min(value, max);
+    value = Math.max(value, min);
+    return value;
   }
 }
 
