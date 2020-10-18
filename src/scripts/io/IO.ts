@@ -71,7 +71,7 @@ abstract class IO extends HTMLElement {
   }
 
   public set y(value: number) {
-    if (value !== this._center.x) {
+    if (value !== this._center.y) {
       this._center.y = value;
       this.style.top = `${value - 5}px`;
 
