@@ -3,7 +3,7 @@ import IO from './IO.js';
 import Output from './Output.js';
 
 class Input extends IO {
-  private _linked: boolean;
+  private _output: Output | undefined;
   private _clicked: boolean;
 
   public get default(): number {
@@ -18,13 +18,13 @@ class Input extends IO {
   }
 
   public get linked(): boolean {
-    return this._linked;
+    return this._output !== undefined;
   }
 
   public constructor(cpnt: Component, id: string, name: string, x: number, y: number) {
     super(cpnt, id, name, x, y);
 
-    this._linked = false;
+    this._output = undefined;
     this._clicked = false;
 
     this.addEventListener('mousedown', () => this._clicked = true);
@@ -48,7 +48,7 @@ class Input extends IO {
 
   public link(output: Output): void {
     if (!this.linked) {
-      this._linked = true;
+      this._output = output;
 
       const ev = new CustomEvent('link', { detail: output });
       this.dispatchEvent(ev);
@@ -57,7 +57,7 @@ class Input extends IO {
 
   public unlink(): void {
     if (this.linked) {
-      this._linked = false;
+      this._output = undefined;
       this.reset();
 
       const ev = new Event('unlink');
