@@ -1,8 +1,8 @@
 # node dependencies directory
 node_modules/
 
-# dist output files
-dist
+# dist output directory
+dist/
 
-# build output files
+# build output directory
 www/
