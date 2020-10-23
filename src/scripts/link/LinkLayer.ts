@@ -3,10 +3,9 @@ import Output from '../io/Output.js';
 import Link from './Link.js';
 
 class LinkLayer extends HTMLElement {
+  private readonly _svg: SVGSVGElement;
   private readonly _inputLinks: Map<Input, Link>;
   private readonly _outputLinks: Map<Output, Set<Link>>;
-
-  public readonly svg: SVGSVGElement;
 
   public constructor() {
     super();
@@ -16,8 +15,8 @@ class LinkLayer extends HTMLElement {
 
     const uri = 'http://www.w3.org/2000/svg';
 
-    this.svg = document.createElementNS(uri, 'svg');
-    this.append(this.svg);
+    this._svg = document.createElementNS(uri, 'svg');
+    this.append(this._svg);
 
     new ResizeObserver(() => this.resize()).observe(this);
 
@@ -33,14 +32,16 @@ class LinkLayer extends HTMLElement {
     const width = rect.width;
     const height = rect.height;
 
-    this.svg.setAttribute('width', width.toString());
-    this.svg.setAttribute('height', height.toString());
-    this.svg.setAttribute('viewBox', `${x} ${y} ${width} ${height}`);
+    this._svg.setAttribute('width', width.toString());
+    this._svg.setAttribute('height', height.toString());
+    this._svg.setAttribute('viewBox', `${x} ${y} ${width} ${height}`);
   }
 
   public addLink(input: Input, output: Output): void {
     if (!this._inputLinks.has(input)) {
-      const link = new Link(this, input, output);
+      const link = new Link(input, output);
+
+      this._svg.append(link.svg);
 
       this._inputLinks.set(input, link);
 
