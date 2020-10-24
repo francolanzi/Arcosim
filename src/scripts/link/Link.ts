@@ -135,6 +135,7 @@ class Link {
   public remove(): void {
     this.svg.remove();
     this._line.remove();
+    this.input.removeLink();
     this.output.removeLink(this);
     this._areas.forEach(area => area.remove());
     this._corners.forEach(corner => corner.remove());

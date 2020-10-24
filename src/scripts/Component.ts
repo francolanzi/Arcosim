@@ -239,6 +239,12 @@ abstract class Component extends HTMLElement {
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
   public deserialize(obj: CpntInfo): void {}
+
+  public remove(): void {
+    this._inputs.forEach(input => input.remove());
+    this._outputs.forEach(output => output.remove());
+    super.remove();
+  }
 }
 
 export default Component;

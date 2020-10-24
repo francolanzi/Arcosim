@@ -101,6 +101,11 @@ class Output extends IO {
   public removeLink(link: Link): void {
     this._links.delete(link);
   }
+
+  public remove(): void {
+    this._links.forEach(link => link.remove());
+    super.remove();
+  }
 }
 
 customElements.define('cpnt-output', Output);

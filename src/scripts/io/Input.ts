@@ -60,9 +60,10 @@ class Input extends IO {
   }
 
   public removeLink(): void {
-    if (this.link) {
-      this.link.remove();
+    const link = this.link;
+    if (link) {
       this._link = undefined;
+      link.remove();
       this.reset();
 
       const ev = new Event('unlink');
@@ -74,6 +75,13 @@ class Input extends IO {
     if (!this.link) {
       super.reset();
     }
+  }
+
+  public remove(): void {
+    if (this.link) {
+      this.link.remove();
+    }
+    super.remove();
   }
 }
 
