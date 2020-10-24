@@ -181,13 +181,6 @@ abstract class Component extends HTMLElement {
     this._inputs.set(input.ioId, input);
     this.append(input);
 
-    input.addEventListener('link', ev => {
-      const output: Output = (<CustomEvent> ev).detail;
-      this.dispatchEvent(new CustomEvent('link', {
-        detail: { input, output },
-      }));
-    });
-
     input.addEventListener('unlink', () =>
       this.dispatchEvent(new CustomEvent('unlink', { detail: input })));
 

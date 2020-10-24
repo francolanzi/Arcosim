@@ -37,19 +37,17 @@ class LinkLayer extends HTMLElement {
     this._svg.setAttribute('viewBox', `${x} ${y} ${width} ${height}`);
   }
 
-  public addLink(input: Input, output: Output): void {
-    if (!this._inputLinks.has(input)) {
-      const link = new Link(input, output);
-
+  public addLink(link: Link): void {
+    if (!this._inputLinks.has(link.input)) {
       this._svg.append(link.svg);
 
-      this._inputLinks.set(input, link);
+      this._inputLinks.set(link.input, link);
 
-      if (!this._outputLinks.has(output)) {
-        this._outputLinks.set(output, new Set());
+      if (!this._outputLinks.has(link.output)) {
+        this._outputLinks.set(link.output, new Set());
       }
 
-      const links = this._outputLinks.get(output);
+      const links = this._outputLinks.get(link.output);
 
       if (links) {
         links.add(link);
@@ -89,8 +87,6 @@ class LinkLayer extends HTMLElement {
             this._outputLinks.delete(link.output);
           }
         }
-
-        link.remove();
       }
     }
   }
@@ -99,10 +95,8 @@ class LinkLayer extends HTMLElement {
     const links = this._outputLinks.get(output);
 
     if (links) {
-      links.forEach(link => {
-        this._inputLinks.delete(link.input);
-        link.remove();
-      });
+      links.forEach(link =>
+        this._inputLinks.delete(link.input));
       this._outputLinks.delete(output);
     }
   }

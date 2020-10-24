@@ -38,10 +38,7 @@ menuLayer.computer.addEventListener('add', ev => {
 
   cpnt.addEventListener('link', ev => {
     const link: Link = (<CustomEvent> ev).detail;
-    const input = link.input;
-    const output = link.output;
-
-    linkLayer.addLink(input, output);
+    linkLayer.addLink(link);
   });
 
   cpnt.addEventListener('move', () => {

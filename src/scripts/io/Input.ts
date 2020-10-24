@@ -1,9 +1,10 @@
 import Component from '../Component.js';
+import Link from '../link/Link.js';
 import IO from './IO.js';
 import Output from './Output.js';
 
 class Input extends IO {
-  private _output: Output | undefined;
+  private _link: Link | undefined;
   private _clicked: boolean;
 
   public get default(): number {
@@ -12,19 +13,19 @@ class Input extends IO {
 
   public set default(value: number) {
     super.default = value;
-    if (!this.linked) {
+    if (!this.link) {
       this.value = value;
     }
   }
 
-  public get linked(): boolean {
-    return this._output !== undefined;
+  public get link(): Link | undefined {
+    return this._link;
   }
 
   public constructor(cpnt: Component, id: string, name: string, x: number, y: number) {
     super(cpnt, id, name, x, y);
 
-    this._output = undefined;
+    this._link = undefined;
     this._clicked = false;
 
     this.addEventListener('mousedown', () => this._clicked = true);
@@ -34,30 +35,34 @@ class Input extends IO {
       this.blur();
 
       if (this._clicked) {
-        if (this.linked) {
-          this.unlink();
+        if (this.link) {
+          this.removeLink();
         } else {
           const output = ev.relatedTarget;
           if (output && output.constructor === Output) {
-            this.link(output);
+            this.createLink(output);
           }
         }
       }
     });
   }
 
-  public link(output: Output): void {
-    if (!this.linked) {
-      this._output = output;
+  public createLink(output: Output): void {
+    if (!this.link) {
+      this._link = new Link(this, output);
 
-      const ev = new CustomEvent('link', { detail: output });
+      const ev = new CustomEvent('link', {
+        detail: this._link,
+        bubbles: true,
+      });
       this.dispatchEvent(ev);
     }
   }
 
-  public unlink(): void {
-    if (this.linked) {
-      this._output = undefined;
+  public removeLink(): void {
+    if (this.link) {
+      this.link.remove();
+      this._link = undefined;
       this.reset();
 
       const ev = new Event('unlink');
@@ -66,7 +71,7 @@ class Input extends IO {
   }
 
   public reset(): void {
-    if (!this.linked) {
+    if (!this.link) {
       super.reset();
     }
   }
