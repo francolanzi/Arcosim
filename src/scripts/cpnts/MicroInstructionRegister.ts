@@ -41,12 +41,12 @@ class MicroInstructionRegister extends Component {
     if (this._clock.value) {
       let bits = 0;
 
-      this._masks.forEach(mask => {
-        let value = -1 >>> (32 - mask.size);
+      for (let i = this._masks.length - 1; i >= 0; i--) {
+        let value = -1 >>> (32 - this._masks[i].size);
         value &= this._instruction.value >>> bits;
-        mask.output.value = value;
-        bits += mask.size;
-      });
+        this._masks[i].output.value = value;
+        bits += this._masks[i].size;
+      }
     }
 
     return super.run(time);
