@@ -1,7 +1,9 @@
 import Component from './Component.js';
 import CpntItem from './CpntItem.js';
 import CpntItems from './CpntItems.js';
+import ComputerInfo from './ifaces/ComputerInfo.js';
 import CpntInfo from './ifaces/CpntInfo.js';
+import LinkInfo from './ifaces/LinkInfo.js';
 
 class Computer extends EventTarget {
   private _stepping: boolean;
@@ -127,17 +129,25 @@ class Computer extends EventTarget {
     }
   }
 
-  serialize(): { cpnts: Array<CpntInfo> } {
+  serialize(): ComputerInfo {
     const cpnts: Array<CpntInfo> = [];
+    const links: Array<LinkInfo> = [];
 
-    this._cpnts.forEach(cpnt =>
-      cpnts.push(cpnt.serialize()));
+    this._cpnts.forEach(cpnt => {
+      cpnts.push(cpnt.serialize());
 
-    return { cpnts };
+      for (const input of cpnt.inputs) {
+        if (input.link) {
+          links.push(input.link.serialize());
+        }
+      }
+    });
+
+    return { cpnts, links };
   }
 
-  deserialize(obj: { cpnts: Array<CpntInfo> }): void {
-    if (obj.cpnts) {
+  deserialize(obj: ComputerInfo): void {
+    if (obj.cpnts && obj.links) {
       this.stop();
 
       this._cpnts.forEach(cpnt => {
@@ -145,12 +155,35 @@ class Computer extends EventTarget {
         cpnt.remove();
       });
 
-      obj.cpnts.forEach(async cpntObj => {
-        const item = this.item(cpntObj.type);
+      const cpntIds = new Map<number, number>();
+
+      obj.cpnts.forEach(cpntInfo => {
+        const item = this.item(cpntInfo.type);
         if (item) {
-          const cpnt = item.cpnt(cpntObj.top, cpntObj.left);
-          cpnt.deserialize(cpntObj);
+          const cpnt = item.cpnt(cpntInfo.top, cpntInfo.left);
+          cpnt.deserialize(cpntInfo);
           this.addCpnt(cpnt);
+          cpntIds.set(cpntInfo.cpntId, cpnt.cpntId);
+        }
+      });
+
+      obj.links.forEach(linkInfo => {
+        const inputCpntId = cpntIds.get(linkInfo.input.cpntId);
+        const outputCpntId = cpntIds.get(linkInfo.output.cpntId);
+
+        if (inputCpntId && outputCpntId) {
+          const inputCpnt = this.getCpnt(inputCpntId);
+          const outputCpnt = this.getCpnt(outputCpntId);
+
+          if (inputCpnt && outputCpnt) {
+            const input = inputCpnt.getInput(linkInfo.input.ioId);
+            const output = outputCpnt.getOutput(linkInfo.output.ioId);
+
+            if (input && output) {
+              input.createLink(output);
+            }
+
+          }
         }
       });
 

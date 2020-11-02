@@ -1,5 +1,6 @@
 import Component from '../Component.js';
 import Center from '../ifaces/Center.js';
+import IOInfo from '../ifaces/IOInfo.js';
 
 abstract class IO extends HTMLElement {
   private _name: string;
@@ -105,6 +106,13 @@ abstract class IO extends HTMLElement {
 
   public reset(): void {
     this.value = this.default;
+  }
+
+  public serialize(): IOInfo {
+    return {
+      cpntId: this.cpnt.cpntId,
+      ioId: this.ioId,
+    };
   }
 }
 

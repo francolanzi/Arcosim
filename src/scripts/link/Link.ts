@@ -1,3 +1,4 @@
+import LinkInfo from '../ifaces/LinkInfo.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
 import LinkCorner from './LinkCorner.js';
@@ -199,6 +200,13 @@ class Link {
     } else {
       this.moveInput();
     }
+  }
+
+  public serialize(): LinkInfo {
+    return {
+      input: this.input.serialize(),
+      output: this.output.serialize(),
+    };
   }
 }
 

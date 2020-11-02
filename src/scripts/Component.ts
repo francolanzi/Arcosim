@@ -230,6 +230,7 @@ abstract class Component extends HTMLElement {
   public serialize(): CpntInfo {
     return {
       type: this.type,
+      cpntId: this.cpntId,
       top: this.top,
       left: this.left,
     };
