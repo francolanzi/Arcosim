@@ -10,7 +10,7 @@ class Computer extends EventTarget {
   private _count: number;
   private _time: number;
 
-  private readonly _cpnts: Map<string, Component>;
+  private readonly _cpnts: Map<number, Component>;
   private readonly _items: CpntItems;
 
   public get items(): IterableIterator<CpntItem> {
@@ -43,32 +43,31 @@ class Computer extends EventTarget {
   }
 
   public addCpnt(cpnt: Component): void {
-    const type = cpnt.type;
-    const id = cpnt.cpntId;
+    console.log(`${cpnt.type} ${cpnt.cpntId} added`);
 
-    const key = `${type} ${id}`;
-    console.log(`${key} added`);
-    this._cpnts.set(key, cpnt);
+    this._cpnts.set(cpnt.cpntId, cpnt);
 
     cpnt.addEventListener('stop', () => this.stop());
 
     cpnt.addEventListener('remove', () => {
-      this.removeCpnt(cpnt.type, cpnt.cpntId);
+      this.removeCpnt(cpnt.cpntId);
     });
 
     this.dispatchEvent(new CustomEvent('add', { detail: cpnt }));
   }
 
-  public getCpnt(type: string, id: number): Component | undefined {
-    const key = `${type} ${id}`;
-    return this._cpnts.get(key);
+  public getCpnt(id: number): Component | undefined {
+    return this._cpnts.get(id);
   }
 
-  public removeCpnt(type: string, id: number): boolean {
-    const key = `${type} ${id}`;
+  public removeCpnt(id: number): boolean {
+    const cpnt = this._cpnts.get(id);
 
-    console.log(`${key} removed`);
-    return this._cpnts.delete(key);
+    if (cpnt) {
+      console.log(`${cpnt.type} ${cpnt.cpntId} removed`);
+    }
+
+    return this._cpnts.delete(id);
   }
 
   public run(): void {
@@ -142,7 +141,7 @@ class Computer extends EventTarget {
       this.stop();
 
       this._cpnts.forEach(cpnt => {
-        this.removeCpnt(cpnt.type, cpnt.cpntId);
+        this.removeCpnt(cpnt.cpntId);
         cpnt.remove();
       });
 

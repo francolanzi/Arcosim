@@ -7,7 +7,7 @@ import Output from './io/Output.js';
 import TrashButton from './menu/buttons/TrashButton.js';
 
 abstract class Component extends HTMLElement {
-  private static readonly _count = new Map<string, number>();
+  private static _count = 0;
 
   private _top: number;
   private _left: number;
@@ -56,9 +56,7 @@ abstract class Component extends HTMLElement {
 
     this._item = item;
 
-    const count = Component._count.get(this.type);
-    this.cpntId = count ? count + 1 : 1;
-    Component._count.set(this.type, this.cpntId);
+    this.cpntId = ++Component._count;
 
     this.classList.add('component');
 
