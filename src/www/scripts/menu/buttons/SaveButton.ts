@@ -5,28 +5,22 @@ const { remote } = window.require('electron');
 const { writeFileSync } = window.require('fs');
 
 class SaveButton extends MenuButton {
-  private _file: string | undefined;
-
   public constructor(computer: Computer) {
     const title = 'Guardar';
     const icon = 'images/menu/save.svg';
 
     super(title, icon);
 
-    this._file = undefined;
-
     const window = remote.getCurrentWindow();
 
     this.addEventListener('click', () => {
-      if (!this._file) {
-        this._file = remote.dialog.showSaveDialogSync(window, {
-          filters: [{ name: 'Arcosim', extensions: ['arcosim'] }],
-        });
-      }
+      const file = remote.dialog.showSaveDialogSync(window, {
+        filters: [{ name: 'Arcosim', extensions: ['arcosim'] }],
+      });
 
-      if (this._file) {
+      if (file) {
         const content = JSON.stringify(computer.serialize());
-        writeFileSync(this._file, content);
+        writeFileSync(file, content);
       }
     });
   }

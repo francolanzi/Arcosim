@@ -5,15 +5,11 @@ const { remote } = window.require('electron');
 const { readFileSync } = window.require('fs');
 
 class OpenButton extends MenuButton {
-  private _file: string | undefined;
-
   public constructor(computer: Computer) {
     const title = 'Abrir';
     const icon = 'images/menu/open.svg';
 
     super(title, icon);
-
-    this._file = undefined;
 
     const window = remote.getCurrentWindow();
 
@@ -23,8 +19,7 @@ class OpenButton extends MenuButton {
         properties: ['openFile'],
       });
       if (file) {
-        this._file = file[0];
-        const content = readFileSync(this._file, { encoding: 'utf8' });
+        const content = readFileSync(file[0], { encoding: 'utf8' });
         computer.deserialize(JSON.parse(content));
       }
     });
