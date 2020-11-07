@@ -72,7 +72,11 @@ class Link {
     this.svg.append(this._line);
     this.svg.append(this._areas[0]);
 
-    this._areas[0].addEventListener('dblclick', ev => this.addCorner(ev));
+    this._areas[0].addEventListener('dblclick', ev => {
+      const area = <SVGLineElement>ev.target;
+      const index = this._areas.indexOf(area);
+      this.addCorner(index, ev.pageX, ev.pageY);
+    });
 
     this._line.setAttribute('points', '0,0 0,0');
 
@@ -142,35 +146,38 @@ class Link {
     this._corners.forEach(corner => corner.remove());
   }
 
-  public addCorner(ev: MouseEvent): void {
-    const line = <SVGLineElement>ev.target;
-    const i = this._areas.indexOf(line);
+  public addCorner(index: number, x: number, y: number): void {
+    const area = this._areas[index];
+    const corner = new LinkCorner(x, y);
+    const newArea = document.createElementNS('http://www.w3.org/2000/svg', 'line');
 
-    const corner = new LinkCorner(ev.pageX, ev.pageY);
-    const area = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    newArea.addEventListener('dblclick', ev => {
+      const area = <SVGLineElement>ev.target;
+      const index = this._areas.indexOf(area);
+      this.addCorner(index, ev.pageX, ev.pageY);
+    });
 
-    area.addEventListener('dblclick', ev => this.addCorner(ev));
     corner.addEventListener('move', () => this.moveCorner(corner));
     corner.addEventListener('remove', () => this.removeCorner(corner));
 
     document.body.append(corner);
-    this.svg.append(area);
+    this.svg.append(newArea);
 
-    this._corners.splice(i, 0, corner);
-    this._areas.splice(i, 0, area);
+    this._corners.splice(index, 0, corner);
+    this._areas.splice(index, 0, newArea);
 
-    const x1 = line.getAttribute('x1');
-    const y1 = line.getAttribute('y1');
+    const x1 = area.getAttribute('x1');
+    const y1 = area.getAttribute('y1');
 
     if (x1 && y1) {
-      area.setAttribute('x1', x1);
-      area.setAttribute('y1', y1);
+      newArea.setAttribute('x1', x1);
+      newArea.setAttribute('y1', y1);
     }
 
     const points = this._line.getAttribute('points')?.split(' ');
 
     if (points) {
-      points.splice(i + 1, 0, '0,0');
+      points.splice(index + 1, 0, '0,0');
       this._line.setAttribute('points', points.reduce((acum, curr) => `${acum} ${curr}`));
     }
 
@@ -206,7 +213,13 @@ class Link {
     return {
       input: this.input.serialize(),
       output: this.output.serialize(),
+      corners: this._corners.map(corner => corner.serialize()),
     };
+  }
+
+  public deserialize(obj: LinkInfo): void {
+    obj.corners.forEach((info, index) =>
+      this.addCorner(index, info.x, info.y));
   }
 }
 

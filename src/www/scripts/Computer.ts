@@ -181,6 +181,7 @@ class Computer extends EventTarget {
 
             if (input && output) {
               input.createLink(output);
+              input.link?.deserialize(linkInfo);
             }
 
           }

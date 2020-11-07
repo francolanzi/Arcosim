@@ -1,4 +1,5 @@
 import Center from '../ifaces/Center.js';
+import CornerInfo from '../ifaces/CornerInfo.js';
 
 class LinkCorner extends HTMLElement {
   private readonly _center: Center;
@@ -59,6 +60,13 @@ class LinkCorner extends HTMLElement {
     document.removeEventListener('mouseup', this._drop);
 
     this.dispatchEvent(new Event('drop'));
+  }
+
+  public serialize(): CornerInfo {
+    return {
+      x: this._center.x,
+      y: this._center.y,
+    };
   }
 }
 
