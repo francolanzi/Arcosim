@@ -11,11 +11,13 @@
     "type": "git",
     "url": "https://github.com/francolanzi/Arcosim"
   },
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
-    "remove": "rm -rf www/*",
-    "copy": "cpy **/* !**/*.ts ../www --cwd=src --parents",
-    "compile": "tsc",
+    "remove": "rm -rf build/*",
+    "copy": "cpy **/* !**/*.ts ../build --cwd=src --parents",
+    "clicompile": "tsc -p tsconfig.cli.json",
+    "svrcompile": "tsc -p tsconfig.svr.json",
+    "compile": "npm run clicompile && npm run svrcompile",
     "build": "npm run remove && npm run copy && npm run compile",
     "start": "npm run build && electron .",
     "postinstall": "electron-builder install-app-deps",
@@ -38,9 +40,11 @@
     "appId": "arcosim-1.0.0-beta",
     "productName": "Arcosim",
     "files": [
-      "www",
-      "index.js",
+      "build",
       "package.json"
-    ]
+    ],
+    "directories": {
+      "buildResources": "icons"
+    }
   }
 }

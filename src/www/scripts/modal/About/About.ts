@@ -6,7 +6,7 @@ class About extends HTMLElement {
   public constructor() {
     super();
 
-    const path = resolve(__dirname, '../package.json');
+    const path = resolve(__dirname, '../../package.json');
     const pckg = JSON.parse(readFileSync(path, 'utf8'));
 
     const iconImg = document.createElement('img');
