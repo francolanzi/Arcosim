@@ -23,11 +23,15 @@ class ControlStore extends Component {
   }
 
   public set bits(bits: number) {
-    const mask = (1 << bits) - 1;
-    for (let i = 0; i < this._instructions.length; i++) {
-      this._instructions[i] &= mask;
+    if (bits > 0 && bits <= 32) {
+      const mask = 0xFFFFFFFF >>> (32 - bits);
+
+      for (let i = 0; i < this._instructions.length; i++) {
+        this._instructions[i] &= mask;
+      }
+
+      this._bits = bits;
     }
-    this._bits = bits;
   }
 
   public get instructionCount(): number {
