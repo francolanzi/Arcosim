@@ -6,6 +6,7 @@ import Config from '../modal/Const/Config.js';
 
 class Const extends Component {
   private _value: string;
+  private _radix: number;
 
   private readonly _const: Output;
   private readonly _display: HTMLDivElement;
@@ -26,12 +27,18 @@ class Const extends Component {
       this._const.default = number;
     }
 
-    let text = this._const.default.toString(16);
+    this._updateDisplay();
+  }
 
-    text = text.toUpperCase();
-    text = text.padStart(8, '0');
+  public get radix(): number {
+    return this._radix;
+  }
 
-    this._display.textContent = text;
+  public set radix(radix: number) {
+    if (radix >= 2 && radix <= 36) {
+      this._radix = radix;
+      this._updateDisplay();
+    }
   }
 
   public constructor(item: CpntItem, top: number, left: number) {
@@ -43,18 +50,33 @@ class Const extends Component {
     this.append(this._display);
 
     this._value = this._const.value.toString();
+    this._radix = 16;
     this.value = this._value;
+  }
+
+  private _updateDisplay() {
+    let text = this._const.default.toString(this._radix);
+
+    text = text.toUpperCase();
+    text = text.padStart(8, '0');
+
+    this._display.textContent = text;
   }
 
   public serialize(): ConstInfo {
     const cpnt = <ConstInfo> super.serialize();
     cpnt.value = this.value;
+    cpnt.radix = this.radix;
     return cpnt;
   }
 
   public deserialize(obj: ConstInfo): void {
     if (obj.value) {
       this.value = obj.value;
+    }
+
+    if (obj.radix) {
+      this.radix = obj.radix;
     }
   }
 }

@@ -2,12 +2,14 @@
 
 @import 'modal/CustomSelect.css';
 @import 'modal/ImgButton.css';
+@import 'modal/RadixSelect.css';
 @import 'modal/UintInput.css';
 
 @import 'modal/ArithmeticLogicUnit.css';
 @import 'modal/Clock.css';
 @import 'modal/Const.css';
 @import 'modal/ControlStore.css';
+@import 'modal/Display.css';
 @import 'modal/Memory.css';
 @import 'modal/MicroInstructionRegister.css';
 @import 'modal/MicroSequenceLogic.css';

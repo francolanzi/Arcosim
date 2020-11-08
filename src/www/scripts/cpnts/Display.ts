@@ -1,25 +1,42 @@
 import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
+import DisplayInfo from '../ifaces/cpntInfo/DisplayInfo.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
+import Config from '../modal/Display/Config.js';
 
 class Display extends Component {
+  private _value: number;
+  private _radix: number;
+
   private readonly _input: Input;
 
   private readonly _output: Output;
 
   private readonly _display: HTMLDivElement;
 
+  public get config(): Config {
+    return new Config(this);
+  }
+
   public get value(): number {
     return parseInt(this._display.textContent || '', 16);
   }
 
   public set value(value: number) {
-    value = value >>> 0;
-    let text = value.toString(16);
-    text = text.toUpperCase();
-    text = text.padStart(8, '0');
-    this._display.textContent = text;
+    this._value = value;
+    this._updateDisplay();
+  }
+
+  public get radix(): number {
+    return this._radix;
+  }
+
+  public set radix(radix: number) {
+    if (radix >= 2 && radix <= 36) {
+      this._radix = radix;
+      this._updateDisplay();
+    }
   }
 
   public constructor(item: CpntItem, top: number, left: number) {
@@ -32,7 +49,9 @@ class Display extends Component {
     this._display = document.createElement('div');
     this.append(this._display);
 
-    this.value = this._output.value;
+    this._value = this._output.value;
+    this._radix = 16;
+    this.value = this._value;
   }
 
   public run(time: number): boolean {
@@ -45,6 +64,27 @@ class Display extends Component {
   public reset(): void {
     super.reset();
     this.value = this._output.value;
+  }
+
+  private _updateDisplay() {
+    let text = this._value.toString(this._radix);
+
+    text = text.toUpperCase();
+    text = text.padStart(8, '0');
+
+    this._display.textContent = text;
+  }
+
+  public serialize(): DisplayInfo {
+    const cpnt = <DisplayInfo> super.serialize();
+    cpnt.radix = this.radix;
+    return cpnt;
+  }
+
+  public deserialize(obj: DisplayInfo): void {
+    if (obj.radix) {
+      this.radix = obj.radix;
+    }
   }
 }
 

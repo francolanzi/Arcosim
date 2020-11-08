@@ -1,11 +1,4 @@
-cpnt-const-config {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-cpnt-const-value {
+radix-select {
   display: block;
   width: min-content;
   white-space: nowrap;
@@ -13,7 +6,7 @@ cpnt-const-value {
   padding: 0;
 }
 
-cpnt-const-value label {
+radix-select label {
   margin-right: 0.25rem;
   color: black;
   line-height: 0;
