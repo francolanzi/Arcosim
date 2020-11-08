@@ -14,7 +14,7 @@ class MicroSequenceLogicCond extends HTMLElement {
 
     this.index = index;
 
-    this._cond = new CustomSelect(cond, supported);
+    this._cond = new CustomSelect(cond, new Map(supported.entries()));
     this._cond.id = `condition${index}`;
     this.append(this._cond);
 

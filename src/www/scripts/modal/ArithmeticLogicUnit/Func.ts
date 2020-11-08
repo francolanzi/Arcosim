@@ -14,7 +14,7 @@ class ArithmeticLogicUnitFunc extends HTMLElement {
 
     this.index = index;
 
-    this._func = new CustomSelect(func, supported);
+    this._func = new CustomSelect(func, new Map(supported.entries()));
     this._func.id = `function${index}`;
     this.append(this._func);
 

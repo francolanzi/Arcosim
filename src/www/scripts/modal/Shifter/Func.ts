@@ -20,7 +20,7 @@ class ShifterFunc extends HTMLElement {
 
     this.index = index;
 
-    this._func = new CustomSelect(func, supported);
+    this._func = new CustomSelect(func, new Map(supported.entries()));
     this._value = new UintInput(value, 0, 32, true);
 
     this.append(this._func);
