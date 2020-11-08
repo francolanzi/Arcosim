@@ -1,7 +1,7 @@
 import CpntInfo from '../CpntInfo.js';
 
 interface ConstInfo extends CpntInfo {
-  value: number,
+  value: string,
 }
 
 export default ConstInfo;

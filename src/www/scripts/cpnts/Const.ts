@@ -5,6 +5,8 @@ import Output from '../io/Output.js';
 import Config from '../modal/Const/Config.js';
 
 class Const extends Component {
+  private _value: string;
+
   private readonly _const: Output;
   private readonly _display: HTMLDivElement;
 
@@ -12,16 +14,23 @@ class Const extends Component {
     return new Config(this);
   }
 
-  public get value(): number {
-    return this._const.default;
+  public get value(): string {
+    return this._value;
   }
 
-  public set value(value: number) {
-    this._const.default = value;
-    value = value >>> 0;
-    let text = value.toString(16);
+  public set value(value: string) {
+    const number = Number(value);
+
+    if (value && !isNaN(number)) {
+      this._value = value;
+      this._const.default = number;
+    }
+
+    let text = this._const.default.toString(16);
+
     text = text.toUpperCase();
     text = text.padStart(8, '0');
+
     this._display.textContent = text;
   }
 
@@ -33,7 +42,8 @@ class Const extends Component {
     this._display = document.createElement('div');
     this.append(this._display);
 
-    this.value = this._const.value;
+    this._value = this._const.value.toString();
+    this.value = this._value;
   }
 
   public serialize(): ConstInfo {

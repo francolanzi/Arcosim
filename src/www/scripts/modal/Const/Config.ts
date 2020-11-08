@@ -8,8 +8,10 @@ class ConstConfig extends HTMLElement {
     const value = new Value(cpnt.value);
     this.append(value);
 
-    value.addEventListener('change', () =>
-      cpnt.value = value.value);
+    value.addEventListener('change', () => {
+      cpnt.value = value.value;
+      value.value = cpnt.value;
+    });
   }
 }
 
