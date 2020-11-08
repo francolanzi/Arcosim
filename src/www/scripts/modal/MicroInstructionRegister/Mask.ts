@@ -1,10 +1,9 @@
-import MaskName from './MaskName.js';
 import UintInput from '../UintInput.js';
 
 class MicroInstructionRegisterMask extends HTMLElement {
   public readonly index: number;
 
-  private readonly _maskName: MaskName;
+  private readonly _maskName: HTMLInputElement;
   private readonly _maskSize: UintInput;
 
   public get name(): string {
@@ -20,8 +19,11 @@ class MicroInstructionRegisterMask extends HTMLElement {
 
     this.index = index;
 
-    this._maskName = new MaskName(name);
+    this._maskName = document.createElement('input');
     this._maskSize = new UintInput(size, 1, 32, true);
+
+    this._maskName.value = name;
+    this._maskName.type = 'text';
 
     this.append(this._maskName);
     this.append(this._maskSize);
