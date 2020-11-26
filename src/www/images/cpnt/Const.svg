@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 99 46">
-  <rect fill="white" stroke="black" stroke-width="1" stroke-linejoin="round" transform="translate(0.5,0.5)" width="98" height="45" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 141 46">
+  <rect fill="white" stroke="black" stroke-width="1" stroke-linejoin="round" transform="translate(0.5,0.5)" width="140" height="45" />
   <text x="50%" y="10" dominant-baseline="middle" text-anchor="middle" font-family="monospace" font-size="12" fill="black">Const</text>
-  <rect fill="white" stroke="black" stroke-width="1" stroke-linejoin="round" transform="translate(0.5,0.5)" width="88" height="20" x="5" y="20" />
+  <rect fill="white" stroke="black" stroke-width="1" stroke-linejoin="round" transform="translate(0.5,0.5)" width="130" height="20" x="5" y="20" />
 </svg>

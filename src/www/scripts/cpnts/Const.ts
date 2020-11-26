@@ -44,7 +44,7 @@ class Const extends Component {
   public constructor(item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
-    this._const = this.addOutput('const', 'Constante', 49, 46);
+    this._const = this.addOutput('const', 'Constante', 70, 46);
 
     this._display = document.createElement('div');
     this.append(this._display);
@@ -55,10 +55,32 @@ class Const extends Component {
   }
 
   private _updateDisplay() {
-    let text = this._const.default.toString(this._radix);
+    let text = '';
 
-    text = text.toUpperCase();
-    text = text.padStart(8, '0');
+    switch (this._radix) {
+    case 2:
+      text = (this._const.default >>> 0).toString(this._radix);
+      text = text.toUpperCase();
+      text = text.slice(0, 11);
+      text = '0b' + text.padStart(11, '0');
+      break;
+    case 8:
+      text = (this._const.default >>> 0).toString(this._radix);
+      text = text.toUpperCase();
+      text = text.slice(0, 11);
+      text = '0o' + text.padStart(11, '0');
+      break;
+    case 16:
+      text = (this._const.default >>> 0).toString(this._radix);
+      text = text.toUpperCase();
+      text = text.slice(0, 8);
+      text = '0x' + text.padStart(8, '0');
+      break;
+    default:
+      text = this._const.default.toString(this._radix);
+      text = text.toUpperCase();
+      break;
+    }
 
     this._display.textContent = text;
   }
@@ -91,7 +113,7 @@ class ConstItem extends CpntItem {
   }
 
   public get width(): number {
-    return 99;
+    return 141;
   }
 
   public get height(): number {
