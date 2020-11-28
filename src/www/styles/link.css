@@ -5,7 +5,7 @@ link-layer {
   height: 100%;
   box-sizing: border-box;
   position: fixed;
-  z-index: 0;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -41,7 +41,7 @@ link-corner {
   background-color: black;
   background-clip: padding-box;
   border: 2px solid transparent;
-  z-index: 1;
+  z-index: 3;
   position: absolute;
 }
 
@@ -51,5 +51,6 @@ link-corner:hover {
 
 link-corner:active {
   opacity: 1;
+  z-index: 5;
   filter: drop-shadow(0 0 2px black);
 }
