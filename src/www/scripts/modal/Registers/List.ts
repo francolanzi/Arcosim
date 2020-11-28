@@ -37,9 +37,11 @@ class RegistersList extends HTMLElement {
     while (value !== undefined) {
       const register = new Register(index, value);
       this.append(register);
-      register.addEventListener('change', () =>
-        cpnt.setRegister(register.index, register.value));
       value = cpnt.getRegister(++index);
+      register.addEventListener('change', () => {
+        cpnt.setRegister(register.index, register.value);
+        register.value = cpnt.getRegister(register.index);
+      });
     }
   }
 }

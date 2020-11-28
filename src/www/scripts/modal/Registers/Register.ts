@@ -1,21 +1,29 @@
-import UintInput from '../UintInput.js';
-
 class RegistersRegister extends HTMLElement {
   public readonly index: number;
 
-  private readonly _input: UintInput;
+  private readonly _input: HTMLInputElement;
 
-  public get value(): number {
-    return parseInt(this._input.value);
+  private _value: string;
+
+  public get value(): string {
+    return this._input.value;
   }
 
-  public constructor(index: number, value: number) {
+  public set value(value: string) {
+    this._input.value = value;
+  }
+
+  public constructor(index: number, value: string) {
     super();
 
     this.index = index;
 
-    this._input = new UintInput(value, 0, 0xFFFFFFFF, true);
+    this._value = value.toString();
+
+    this._input = document.createElement('input');
     this._input.id = `register${index}`;
+    this._input.type = 'text';
+    this._input.value = value;
     this.append(this._input);
 
     const label = document.createElement('label');

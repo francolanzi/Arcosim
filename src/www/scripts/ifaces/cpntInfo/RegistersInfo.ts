@@ -1,7 +1,7 @@
 import CpntInfo from '../CpntInfo.js';
 
 interface RegistersInfo extends CpntInfo {
-  registers: Array<number>,
+  registers: Array<string>,
 }
 
 export default RegistersInfo;

@@ -6,7 +6,7 @@ import Output from '../io/Output.js';
 import Config from '../modal/Registers/Config.js';
 
 class Registers extends Component {
-  private readonly _registers: Array<number>;
+  private readonly _registers: Array<string>;
 
   private readonly _decoderA: Input;
   private readonly _decoderB: Input;
@@ -28,7 +28,7 @@ class Registers extends Component {
   public constructor(item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
-    this._registers = new Array(16).fill(0);
+    this._registers = new Array<string>(16).fill('0');
 
     this._decoderA = this.addInput('decoderA', 'Posición A', 20.75, 0);
     this._decoderB = this.addInput('decoderB', 'Posición B', 46.5, 0);
@@ -46,15 +46,15 @@ class Registers extends Component {
     const indexC = this.encode(this._decoderC.value);
 
     if (indexA >= 0 && indexA < this._registers.length) {
-      this._outputA.value = this._registers[indexA];
+      this._outputA.value = Number(this._registers[indexA]) || 0;
     }
 
     if (indexB >= 0 && indexB < this._registers.length) {
-      this._outputB.value = this._registers[indexB];
+      this._outputB.value = Number(this._registers[indexB]) || 0;
     }
 
     if (this._clock.value && indexC >= 0 && indexC < this._registers.length) {
-      this._registers[indexC] = this._inputC.value;
+      this._registers[indexC] = this._inputC.value.toString();
     }
 
     return super.run(time);
@@ -86,16 +86,16 @@ class Registers extends Component {
   }
 
   public addRegister(): number {
-    this._registers.push(0);
+    this._registers.push('0');
     return this._registers.length - 1;
   }
 
-  public getRegister(index: number): number {
+  public getRegister(index: number): string {
     return this._registers[index];
   }
 
-  public setRegister(index: number, value: number): void {
-    if (index >= 0 && index < this._registers.length) {
+  public setRegister(index: number, value: string): void {
+    if (index >= 0 && index < this._registers.length && !isNaN(Number(value))) {
       this._registers[index] = value;
     }
   }
