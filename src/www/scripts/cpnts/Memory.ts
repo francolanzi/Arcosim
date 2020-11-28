@@ -6,7 +6,7 @@ import Output from '../io/Output.js';
 import Config from '../modal/Memory/Config.js';
 
 class Memory extends Component {
-  private readonly _cells: Map<number, number>;
+  private readonly _cells: Map<number, string>;
 
   private readonly _read: Input;
   private readonly _write: Input;
@@ -34,10 +34,10 @@ class Memory extends Component {
 
   public run(time: number): boolean {
     if (this._read.value) {
-      this._dataout.value = this.getCell(this._address.value);
+      this._dataout.value = Number(this.getCell(this._address.value));
     }
     if (this._write.value) {
-      this.setCell(this._address.value, this._datain.value);
+      this.setCell(this._address.value, this._datain.value.toString());
     }
 
     return super.run(time);
@@ -57,16 +57,20 @@ class Memory extends Component {
     }
   }
 
-  public getCell(address: number): number {
+  public getCell(address: number): string {
     const data = this._cells.get(address);
-    return data ? data : 0;
+    return data ? data : '0';
   }
 
-  public setCell(address: number, data: number): void {
-    if (data) {
-      this._cells.set(address, data);
-    } else {
-      this._cells.delete(address);
+  public setCell(address: number, data: string): void {
+    const number = Number(data);
+
+    if (!isNaN(number)) {
+      if (number) {
+        this._cells.set(address, data);
+      } else {
+        this._cells.delete(address);
+      }
     }
   }
 }
