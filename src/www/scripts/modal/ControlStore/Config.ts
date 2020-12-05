@@ -1,4 +1,4 @@
-import Store from './Store.js';
+import Table from './Table.js';
 import Bits from './Bits.js';
 import { ControlStore } from '../../cpnts/ControlStore.js';
 
@@ -9,10 +9,10 @@ class ControlStoreConfig extends HTMLElement {
     const bits = new Bits(cpnt.bits);
     this.append(bits);
 
-    const store = new Store(cpnt);
-    this.append(store);
+    const table = new Table(cpnt);
+    this.append(table);
 
-    bits.addEventListener('change', () => store.bits = bits.value);
+    bits.addEventListener('change', () => table.bits = bits.value);
   }
 }
 
