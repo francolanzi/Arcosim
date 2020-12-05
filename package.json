@@ -20,8 +20,6 @@
     "compile": "npm run clicompile && npm run svrcompile",
     "build": "npm run remove && npm run copy && npm run compile",
     "start": "npm run build && electron .",
-    "postinstall": "electron-builder install-app-deps",
-    "pack": "electron-builder --dir",
     "dist": "npm run build && electron-builder"
   },
   "devDependencies": {
