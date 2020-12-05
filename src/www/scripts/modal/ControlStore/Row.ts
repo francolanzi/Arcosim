@@ -25,7 +25,7 @@ class ControlStoreRow extends HTMLElement {
   }
 
   public set bits(bits: number) {
-    this._instruction &= (1 << bits) - 1;
+    this._instruction &= 0xFFFFFFFF >>> (32 - bits);
     this._bits = bits;
     this.reload();
   }
