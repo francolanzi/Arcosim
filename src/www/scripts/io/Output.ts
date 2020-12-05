@@ -53,6 +53,10 @@ class Output extends IO {
     this._links.forEach(link => link.dashed = value);
   }
 
+  public get links(): IterableIterator<Link> {
+    return this._links.values();
+  }
+
   public constructor(cpnt: Component, id: string, name: string, x: number, y: number) {
     super(cpnt, id, name, x, y);
 
