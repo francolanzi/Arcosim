@@ -20,6 +20,12 @@ class MicroInstructionRegister extends Component {
     return this._masks.length;
   }
 
+  public get masks(): IterableIterator<Mask> {
+    return this._masks.map(mask => {
+      return { name: mask.output.name, size: mask.size };
+    }).values();
+  }
+
   public constructor(item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
