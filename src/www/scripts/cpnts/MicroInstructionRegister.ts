@@ -1,14 +1,10 @@
 import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
 import MicroInstructionRegisterInfo from '../ifaces/cpntInfo/MicroInstructionRegisterInfo.js';
+import Mask from '../ifaces/Mask.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
 import Config from '../modal/MicroInstructionRegister/Config.js';
-
-interface Mask {
-  name: string,
-  size: number,
-}
 
 class MicroInstructionRegister extends Component {
   private readonly _masks: Array<{ output: Output, size: number }>;
