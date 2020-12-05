@@ -1,11 +1,11 @@
-cpnt-mir-config {
+cpnt-splitter-config {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-cpnt-mir-label {
+cpnt-splitter-label {
   margin: 0;
   padding: 0.5rem;
   display: block;
@@ -18,7 +18,7 @@ cpnt-mir-label {
   font-family: 'Courier New', Courier, monospace;
 }
 
-cpnt-mir-count {
+cpnt-splitter-count {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -26,7 +26,7 @@ cpnt-mir-count {
   margin: 0.1rem 0;
 }
 
-cpnt-mir-list {
+cpnt-splitter-list {
   width: 100%;
   height: 50vh;
   display: flex;
@@ -36,13 +36,13 @@ cpnt-mir-list {
   overflow-y: scroll;
 }
 
-cpnt-mir-mask {
+cpnt-splitter-mask {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-input[is='cpnt-mir-mask-name'] {
+input[is='cpnt-splitter-mask-name'] {
   width: 10rem;
 }

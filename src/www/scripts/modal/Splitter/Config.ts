@@ -1,10 +1,10 @@
 import Count from './Count.js';
 import List from './List.js';
 import Label from './Label.js';
-import { MicroInstructionRegister } from '../../cpnts/MicroInstructionRegister';
+import { Splitter } from '../../cpnts/Splitter';
 
-class MicroInstructionRegisterConfig extends HTMLElement {
-  public constructor(cpnt: MicroInstructionRegister) {
+class SplitterConfig extends HTMLElement {
+  public constructor(cpnt: Splitter) {
     super();
 
     const count = new Count();
@@ -22,6 +22,6 @@ class MicroInstructionRegisterConfig extends HTMLElement {
   }
 }
 
-customElements.define('cpnt-mir-config', MicroInstructionRegisterConfig);
+customElements.define('cpnt-splitter-config', SplitterConfig);
 
-export default MicroInstructionRegisterConfig;
+export default SplitterConfig;

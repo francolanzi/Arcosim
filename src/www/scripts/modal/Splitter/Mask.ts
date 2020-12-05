@@ -1,6 +1,6 @@
 import UintInput from '../UintInput.js';
 
-class MicroInstructionRegisterMask extends HTMLElement {
+class SplitterMask extends HTMLElement {
   public readonly index: number;
 
   private readonly _maskName: HTMLInputElement;
@@ -30,6 +30,6 @@ class MicroInstructionRegisterMask extends HTMLElement {
   }
 }
 
-customElements.define('cpnt-mir-mask', MicroInstructionRegisterMask);
+customElements.define('cpnt-splitter-mask', SplitterMask);
 
-export default MicroInstructionRegisterMask;
+export default SplitterMask;

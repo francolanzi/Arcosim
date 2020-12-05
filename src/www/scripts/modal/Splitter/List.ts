@@ -1,10 +1,10 @@
-import { MicroInstructionRegister } from '../../cpnts/MicroInstructionRegister.js';
+import { Splitter } from '../../cpnts/Splitter.js';
 import Mask from './Mask.js';
 
-class MicroInstructionRegisterList extends HTMLElement {
-  private readonly _cpnt: MicroInstructionRegister;
+class SplitterList extends HTMLElement {
+  private readonly _cpnt: Splitter;
 
-  public constructor(cpnt: MicroInstructionRegister) {
+  public constructor(cpnt: Splitter) {
     super();
 
     this._cpnt = cpnt;
@@ -40,6 +40,6 @@ class MicroInstructionRegisterList extends HTMLElement {
   }
 }
 
-customElements.define('cpnt-mir-list', MicroInstructionRegisterList);
+customElements.define('cpnt-splitter-list', SplitterList);
 
-export default MicroInstructionRegisterList;
+export default SplitterList;

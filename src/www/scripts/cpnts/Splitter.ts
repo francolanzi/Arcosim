@@ -1,12 +1,12 @@
 import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
-import MicroInstructionRegisterInfo from '../ifaces/cpntInfo/MicroInstructionRegisterInfo.js';
+import SplitterInfo from '../ifaces/cpntInfo/SplitterInfo.js';
 import Mask from '../ifaces/Mask.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
-import Config from '../modal/MicroInstructionRegister/Config.js';
+import Config from '../modal/Splitter/Config.js';
 
-class MicroInstructionRegister extends Component {
+class Splitter extends Component {
   private readonly _masks: Array<{ output: Output, size: number }>;
 
   private readonly _instruction: Input;
@@ -54,8 +54,8 @@ class MicroInstructionRegister extends Component {
     return super.run(time);
   }
 
-  public serialize(): MicroInstructionRegisterInfo {
-    const cpnt = <MicroInstructionRegisterInfo> super.serialize();
+  public serialize(): SplitterInfo {
+    const cpnt = <SplitterInfo> super.serialize();
     cpnt.masks = this._masks.map(mask => {
       return {
         name: mask.output.name,
@@ -65,7 +65,7 @@ class MicroInstructionRegister extends Component {
     return cpnt;
   }
 
-  public deserialize(obj: MicroInstructionRegisterInfo): void {
+  public deserialize(obj: SplitterInfo): void {
     if (obj.masks) {
       this._masks.length = 0;
       obj.masks.forEach(({ name, size }) =>
@@ -123,13 +123,13 @@ class MicroInstructionRegister extends Component {
   }
 }
 
-class MicroInstructionRegisterItem extends CpntItem {
+class SplitterItem extends CpntItem {
   public get type(): string {
-    return 'Micro Instruction Register';
+    return 'Splitter';
   }
 
   public get image(): string {
-    return 'images/cpnt/MicroInstructionRegister.svg';
+    return 'images/cpnt/Splitter.svg';
   }
 
   public get width(): number {
@@ -141,11 +141,11 @@ class MicroInstructionRegisterItem extends CpntItem {
   }
 
   public cpnt(top: number, left: number): Component {
-    return new MicroInstructionRegister(this, top, left);
+    return new Splitter(this, top, left);
   }
 }
 
-customElements.define('cpnt-mir', MicroInstructionRegister);
-customElements.define('cpnt-item-mir', MicroInstructionRegisterItem);
+customElements.define('cpnt-splitter', Splitter);
+customElements.define('cpnt-item-splitter', SplitterItem);
 
-export { MicroInstructionRegisterItem, MicroInstructionRegister };
+export { SplitterItem, Splitter };

@@ -1,6 +1,6 @@
 import ImgButton from '../ImgButton.js';
 
-class MicroInstructionRegisterCount extends HTMLElement {
+class SplitterCount extends HTMLElement {
   public constructor() {
     super();
 
@@ -18,6 +18,6 @@ class MicroInstructionRegisterCount extends HTMLElement {
   }
 }
 
-customElements.define('cpnt-mir-count', MicroInstructionRegisterCount);
+customElements.define('cpnt-splitter-count', SplitterCount);
 
-export default MicroInstructionRegisterCount;
+export default SplitterCount;

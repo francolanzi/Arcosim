@@ -2,7 +2,7 @@ import Grid from './Grid.js';
 import Header from './Header.js';
 import Store from './Store.js';
 import { ControlStore } from '../../cpnts/ControlStore';
-import { MicroInstructionRegister } from '../../cpnts/MicroInstructionRegister.js';
+import { Splitter } from '../../cpnts/Splitter.js';
 import Mask from '../../ifaces/Mask.js';
 
 class ControlStoreTable extends HTMLElement {
@@ -36,14 +36,14 @@ class ControlStoreTable extends HTMLElement {
 
       let elem = links.next();
 
-      while (!elem.done && (elem.value.input.cpnt.type !== 'Micro Instruction Register')) {
+      while (!elem.done && (elem.value.input.cpnt.type !== 'Splitter')) {
         elem = links.next();
       }
 
       if (!elem.done) {
-        const mir = <MicroInstructionRegister> elem.value.input.cpnt;
+        const splitter = <Splitter> elem.value.input.cpnt;
 
-        masks.push(...mir.masks);
+        masks.push(...splitter.masks);
         sizes.push(...masks.map(mask => mask.size));
       }
     }

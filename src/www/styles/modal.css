@@ -11,9 +11,9 @@
 @import 'modal/ControlStore.css';
 @import 'modal/Display.css';
 @import 'modal/Memory.css';
-@import 'modal/MicroInstructionRegister.css';
 @import 'modal/MicroSequenceLogic.css';
 @import 'modal/Registers.css';
 @import 'modal/Shifter.css';
+@import 'modal/Splitter.css';
 
 @import 'modal/About.css';

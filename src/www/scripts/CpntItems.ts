@@ -12,11 +12,11 @@ import { LatchItem } from './cpnts/Latch.js';
 import { MemoryItem } from './cpnts/Memory.js';
 import { MemoryAddressRegisterItem } from './cpnts/MemoryAddressRegister.js';
 import { MemoryBufferRegisterItem } from './cpnts/MemoryBufferRegister.js';
-import { MicroInstructionRegisterItem } from './cpnts/MicroInstructionRegister.js';
 import { MicroSequenceLogicItem } from './cpnts/MicroSequenceLogic.js';
 import { MultiplexerItem } from './cpnts/Multiplexer.js';
 import { RegistersItem } from './cpnts/Registers.js';
 import { ShifterItem } from './cpnts/Shifter.js';
+import { SplitterItem } from './cpnts/Splitter.js';
 
 class CpntItems {
   private readonly _items: Map<string, CpntItem>;
@@ -36,11 +36,11 @@ class CpntItems {
     this.add(new MemoryItem(computer));
     this.add(new MemoryAddressRegisterItem(computer));
     this.add(new MemoryBufferRegisterItem(computer));
-    this.add(new MicroInstructionRegisterItem(computer));
     this.add(new MicroSequenceLogicItem(computer));
     this.add(new MultiplexerItem(computer));
     this.add(new RegistersItem(computer));
     this.add(new ShifterItem(computer));
+    this.add(new SplitterItem(computer));
   }
 
   public add(item: CpntItem): void {
