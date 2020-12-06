@@ -6,6 +6,7 @@ import Link from './scripts/link/Link.js';
 import LinkLayer from './scripts/link/LinkLayer.js';
 import MenuLayer from './scripts/menu/MenuLayer.js';
 import ModalLayer from './scripts/modal/ModalLayer.js';
+import Serialization from './scripts/Serialization.js';
 
 const { remote } = window.require('electron');
 
@@ -80,4 +81,4 @@ document.body.append(modalLayer);
 
 document.ondragstart = () => false;
 
-computer.deserializeFile(remote.process.argv[1]);
+Serialization.deserialize(computer, remote.process.argv[1]);

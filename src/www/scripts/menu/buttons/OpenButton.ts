@@ -1,4 +1,5 @@
 import Computer from '../../Computer.js';
+import Serialization from '../../Serialization.js';
 import MenuButton from '../MenuButton.js';
 
 const { remote } = window.require('electron');
@@ -18,7 +19,7 @@ class OpenButton extends MenuButton {
         properties: ['openFile'],
       });
 
-      computer.deserializeFile(paths[0]);
+      Serialization.deserialize(computer, paths[0]);
     });
   }
 }

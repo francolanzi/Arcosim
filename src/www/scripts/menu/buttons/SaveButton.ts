@@ -1,4 +1,5 @@
 import Computer from '../../Computer.js';
+import Serialization from '../../Serialization.js';
 import MenuButton from '../MenuButton.js';
 
 const { remote } = window.require('electron');
@@ -17,7 +18,7 @@ class SaveButton extends MenuButton {
         filters: [{ name: 'Arcosim', extensions: ['arcosim'] }],
       });
 
-      computer.serializeFile(path);
+      Serialization.serialize(computer, path);
     });
   }
 }

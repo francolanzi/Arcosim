@@ -5,8 +5,6 @@ import ComputerInfo from './ifaces/ComputerInfo.js';
 import CpntInfo from './ifaces/CpntInfo.js';
 import LinkInfo from './ifaces/LinkInfo.js';
 
-const { readFileSync, writeFileSync } = window.require('fs');
-
 class Computer extends EventTarget {
   private _stepping: boolean;
   private _running: boolean;
@@ -191,24 +189,6 @@ class Computer extends EventTarget {
       });
 
       this.reset();
-    }
-  }
-
-  serializeFile(path: string): void {
-    try {
-      const content = JSON.stringify(this.serialize());
-      writeFileSync(path, content);
-    } catch {
-      console.log(`Write failed: ${path}`);
-    }
-  }
-
-  deserializeFile(path: string): void {
-    try {
-      const content = readFileSync(path, { encoding: 'utf8' });
-      this.deserialize(JSON.parse(content));
-    } catch {
-      console.log(`Read failed: ${path}`);
     }
   }
 }
