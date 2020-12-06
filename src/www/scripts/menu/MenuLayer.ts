@@ -8,10 +8,10 @@ class MenuLayer extends HTMLElement {
   public readonly gallery: Gallery;
   public readonly menu: Menu;
 
-  public constructor() {
+  public constructor(computer: Computer) {
     super();
 
-    this.computer = new Computer();
+    this.computer = computer;
 
     this.gallery = new Gallery(this.computer);
     this.menu = new Menu(this.computer, this.gallery);

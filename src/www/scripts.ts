@@ -1,4 +1,5 @@
 import Component from './scripts/Component.js';
+import Computer from './scripts/Computer.js';
 import Input from './scripts/io/Input.js';
 import Output from './scripts/io/Output.js';
 import Link from './scripts/link/Link.js';
@@ -6,9 +7,11 @@ import LinkLayer from './scripts/link/LinkLayer.js';
 import MenuLayer from './scripts/menu/MenuLayer.js';
 import ModalLayer from './scripts/modal/ModalLayer.js';
 
-const menuLayer = new MenuLayer();
+const computer = new Computer();
+
 const linkLayer = new LinkLayer();
 const modalLayer = new ModalLayer();
+const menuLayer = new MenuLayer(computer);
 
 menuLayer.addEventListener('modal', ev => {
   const modal = (<CustomEvent> ev).detail;
