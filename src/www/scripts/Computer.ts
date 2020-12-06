@@ -129,7 +129,7 @@ class Computer extends EventTarget {
     }
   }
 
-  serialize(): ComputerInfo {
+  public serialize(): ComputerInfo {
     const cpnts: Array<CpntInfo> = [];
     const links: Array<LinkInfo> = [];
 
@@ -146,7 +146,7 @@ class Computer extends EventTarget {
     return { cpnts, links };
   }
 
-  deserialize(obj: ComputerInfo): void {
+  public deserialize(obj: ComputerInfo): void {
     if (obj.cpnts && obj.links) {
       this.stop();
 
