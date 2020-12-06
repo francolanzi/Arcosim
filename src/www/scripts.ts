@@ -7,6 +7,8 @@ import LinkLayer from './scripts/link/LinkLayer.js';
 import MenuLayer from './scripts/menu/MenuLayer.js';
 import ModalLayer from './scripts/modal/ModalLayer.js';
 
+const { remote } = window.require('electron');
+
 const computer = new Computer();
 
 const linkLayer = new LinkLayer();
@@ -77,3 +79,5 @@ document.body.append(menuLayer);
 document.body.append(modalLayer);
 
 document.ondragstart = () => false;
+
+computer.deserializeFile(remote.process.argv[1]);
