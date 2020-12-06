@@ -4,12 +4,12 @@ const { readFileSync, writeFileSync } = window.require('fs');
 const { remote } = window.require('electron');
 const { basename } = window.require('path');
 
-class Serialization {
+class FileManager {
   private constructor() {
     throw new Error('Serialization can not be instantiated');
   }
 
-  public static serialize(computer: Computer, path: string): void {
+  public static save(computer: Computer, path: string): void {
     try {
       const content = JSON.stringify(computer.serialize());
       writeFileSync(path, content);
@@ -21,7 +21,7 @@ class Serialization {
     }
   }
 
-  public static deserialize(computer: Computer, path: string): void {
+  public static open(computer: Computer, path: string): void {
     try {
       const content = readFileSync(path, { encoding: 'utf8' });
       computer.deserialize(JSON.parse(content));
@@ -34,4 +34,4 @@ class Serialization {
   }
 }
 
-export default Serialization;
+export default FileManager;

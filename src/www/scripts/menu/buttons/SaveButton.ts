@@ -1,5 +1,5 @@
 import Computer from '../../Computer.js';
-import Serialization from '../../Serialization.js';
+import FileManager from '../../FileManager.js';
 import MenuButton from '../MenuButton.js';
 
 const { remote } = window.require('electron');
@@ -19,7 +19,7 @@ class SaveButton extends MenuButton {
       });
 
       if (path) {
-        Serialization.serialize(computer, path);
+        FileManager.save(computer, path);
       }
     });
   }
