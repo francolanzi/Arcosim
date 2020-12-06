@@ -19,7 +19,9 @@ class OpenButton extends MenuButton {
         properties: ['openFile'],
       });
 
-      Serialization.deserialize(computer, paths[0]);
+      if (paths) {
+        Serialization.deserialize(computer, paths[0]);
+      }
     });
   }
 }

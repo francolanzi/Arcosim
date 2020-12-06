@@ -18,7 +18,9 @@ class SaveButton extends MenuButton {
         filters: [{ name: 'Arcosim', extensions: ['arcosim'] }],
       });
 
-      Serialization.serialize(computer, path);
+      if (path) {
+        Serialization.serialize(computer, path);
+      }
     });
   }
 }
