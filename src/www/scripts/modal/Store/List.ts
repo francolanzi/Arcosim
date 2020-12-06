@@ -1,8 +1,8 @@
-import { ControlStore } from '../../cpnts/ControlStore.js';
+import { Store } from '../../cpnts/Store.js';
 import Row from './Row.js';
 
-class ControlStoreStore extends HTMLElement {
-  public readonly cpnt: ControlStore;
+class StoreList extends HTMLElement {
+  public readonly cpnt: Store;
 
   public get bits(): number {
     return this.cpnt.bits;
@@ -16,7 +16,7 @@ class ControlStoreStore extends HTMLElement {
     });
   }
 
-  public constructor(cpnt: ControlStore) {
+  public constructor(cpnt: Store) {
     super();
 
     this.cpnt = cpnt;
@@ -54,6 +54,6 @@ class ControlStoreStore extends HTMLElement {
   }
 }
 
-customElements.define('cpnt-cs-store', ControlStoreStore);
+customElements.define('cpnt-store-list', StoreList);
 
-export default ControlStoreStore;
+export default StoreList;

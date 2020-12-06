@@ -1,7 +1,7 @@
 import UintInput from '../UintInput.js';
 import ImgButton from '../ImgButton.js';
 
-class ControlStoreRow extends HTMLElement {
+class StoreRow extends HTMLElement {
   private _instruction: number;
   private _bits: number;
 
@@ -92,6 +92,6 @@ class ControlStoreRow extends HTMLElement {
   }
 }
 
-customElements.define('cpnt-cs-row', ControlStoreRow);
+customElements.define('cpnt-store-row', StoreRow);
 
-export default ControlStoreRow;
+export default StoreRow;

@@ -3,7 +3,6 @@ import CpntItem from './CpntItem.js';
 import { ArithmeticLogicUnitItem } from './cpnts/ArithmeticLogicUnit.js';
 import { ClockItem } from './cpnts/Clock.js';
 import { ConstItem } from './cpnts/Const.js';
-import { ControlStoreItem } from './cpnts/ControlStore.js';
 import { DecoderItem } from './cpnts/Decoder.js';
 import { DisplayItem } from './cpnts/Display.js';
 import { EncoderItem } from './cpnts/Encoder.js';
@@ -17,6 +16,7 @@ import { MultiplexerItem } from './cpnts/Multiplexer.js';
 import { RegistersItem } from './cpnts/Registers.js';
 import { ShifterItem } from './cpnts/Shifter.js';
 import { SplitterItem } from './cpnts/Splitter.js';
+import { StoreItem } from './cpnts/Store.js';
 
 class CpntItems {
   private readonly _items: Map<string, CpntItem>;
@@ -27,7 +27,6 @@ class CpntItems {
     this.add(new ArithmeticLogicUnitItem(computer));
     this.add(new ClockItem(computer));
     this.add(new ConstItem(computer));
-    this.add(new ControlStoreItem(computer));
     this.add(new DecoderItem(computer));
     this.add(new DisplayItem(computer));
     this.add(new EncoderItem(computer));
@@ -41,6 +40,7 @@ class CpntItems {
     this.add(new RegistersItem(computer));
     this.add(new ShifterItem(computer));
     this.add(new SplitterItem(computer));
+    this.add(new StoreItem(computer));
   }
 
   public add(item: CpntItem): void {

@@ -1,11 +1,11 @@
 import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
-import ControlStoreInfo from '../ifaces/cpntInfo/ControlStoreInfo.js';
+import StoreInfo from '../ifaces/cpntInfo/StoreInfo.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
-import Config from '../modal/ControlStore/Config.js';
+import Config from '../modal/Store/Config.js';
 
-class ControlStore extends Component {
+class Store extends Component {
   private _bits: number;
 
   private readonly _instructions: Array<number>;
@@ -65,14 +65,14 @@ class ControlStore extends Component {
     return super.run(time);
   }
 
-  public serialize(): ControlStoreInfo {
-    const cpnt = <ControlStoreInfo> super.serialize();
+  public serialize(): StoreInfo {
+    const cpnt = <StoreInfo> super.serialize();
     cpnt.bits = this.bits;
     cpnt.instructions = this._instructions;
     return cpnt;
   }
 
-  public deserialize(obj: ControlStoreInfo): void {
+  public deserialize(obj: StoreInfo): void {
     if (obj.instructions) {
       this._instructions.length = 0;
       obj.instructions.forEach((instruction, position) =>
@@ -101,13 +101,13 @@ class ControlStore extends Component {
   }
 }
 
-class ControlStoreItem extends CpntItem {
+class StoreItem extends CpntItem {
   public get type(): string {
-    return 'Control Store';
+    return 'Store';
   }
 
   public get image(): string {
-    return 'images/cpnt/ControlStore.svg';
+    return 'images/cpnt/Store.svg';
   }
 
   public get width(): number {
@@ -119,11 +119,11 @@ class ControlStoreItem extends CpntItem {
   }
 
   public cpnt(top: number, left: number): Component {
-    return new ControlStore(this, top, left);
+    return new Store(this, top, left);
   }
 }
 
-customElements.define('cpnt-cs', ControlStore);
-customElements.define('cpnt-item-cs', ControlStoreItem);
+customElements.define('cpnt-store', Store);
+customElements.define('cpnt-item-store', StoreItem);
 
-export { ControlStoreItem, ControlStore };
+export { StoreItem, Store };

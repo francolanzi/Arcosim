@@ -1,6 +1,6 @@
 import Mask from '../../ifaces/Mask';
 
-class ControlStoreHeader extends HTMLElement {
+class StoreHeader extends HTMLElement {
   private _bits: number;
 
   public get bits(): number {
@@ -31,6 +31,6 @@ class ControlStoreHeader extends HTMLElement {
   }
 }
 
-customElements.define('cpnt-cs-header', ControlStoreHeader);
+customElements.define('cpnt-store-header', StoreHeader);
 
-export default ControlStoreHeader;
+export default StoreHeader;

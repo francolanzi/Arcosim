@@ -1,6 +1,6 @@
 import UintInput from '../UintInput.js';
 
-class ControlStoreBits extends HTMLElement {
+class StoreBits extends HTMLElement {
   private readonly _input: UintInput;
 
   public get value(): number {
@@ -21,6 +21,6 @@ class ControlStoreBits extends HTMLElement {
   }
 }
 
-customElements.define('cpnt-cs-bits', ControlStoreBits);
+customElements.define('cpnt-store-bits', StoreBits);
 
-export default ControlStoreBits;
+export default StoreBits;

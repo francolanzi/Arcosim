@@ -1,4 +1,4 @@
-class ControlStoreGrid extends HTMLElement {
+class StoreGrid extends HTMLElement {
   private _bits: number;
 
   public get bits(): number {
@@ -27,6 +27,6 @@ class ControlStoreGrid extends HTMLElement {
   }
 }
 
-customElements.define('cpnt-cs-grid', ControlStoreGrid);
+customElements.define('cpnt-store-grid', StoreGrid);
 
-export default ControlStoreGrid;
+export default StoreGrid;

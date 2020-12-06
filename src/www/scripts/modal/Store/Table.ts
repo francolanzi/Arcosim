@@ -1,16 +1,16 @@
 import Grid from './Grid.js';
 import Header from './Header.js';
-import Store from './Store.js';
-import { ControlStore } from '../../cpnts/ControlStore';
+import List from './List.js';
 import { Splitter } from '../../cpnts/Splitter.js';
+import { Store } from '../../cpnts/Store';
 import Mask from '../../ifaces/Mask.js';
 
-class ControlStoreTable extends HTMLElement {
+class StoreTable extends HTMLElement {
   private _bits: number;
 
   private readonly _grid: Grid;
   private readonly _header: Header;
-  private readonly _store: Store;
+  private readonly _list: List;
 
   public get bits(): number {
     return this._bits;
@@ -20,10 +20,10 @@ class ControlStoreTable extends HTMLElement {
     this._bits = bits;
     this._grid.bits = bits;
     this._header.bits = bits;
-    this._store.bits = bits;
+    this._list.bits = bits;
   }
 
-  public constructor(cpnt: ControlStore) {
+  public constructor(cpnt: Store) {
     super();
 
     const masks: Array<Mask> = [];
@@ -50,17 +50,17 @@ class ControlStoreTable extends HTMLElement {
 
     this._grid = new Grid(sizes, cpnt.bits);
     this._header = new Header(masks, cpnt.bits);
-    this._store = new Store(cpnt);
+    this._list = new List(cpnt);
 
     this.append(this._grid);
     this.append(this._header);
-    this.append(this._store);
+    this.append(this._list);
 
     this._bits = cpnt.bits;
     this.bits = this._bits;
   }
 }
 
-customElements.define('cpnt-cs-table', ControlStoreTable);
+customElements.define('cpnt-store-table', StoreTable);
 
-export default ControlStoreTable;
+export default StoreTable;

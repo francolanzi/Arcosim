@@ -1,9 +1,9 @@
 import Table from './Table.js';
 import Bits from './Bits.js';
-import { ControlStore } from '../../cpnts/ControlStore.js';
+import { Store } from '../../cpnts/Store.js';
 
-class ControlStoreConfig extends HTMLElement {
-  constructor(cpnt: ControlStore) {
+class StoreConfig extends HTMLElement {
+  constructor(cpnt: Store) {
     super();
 
     const bits = new Bits(cpnt.bits);
@@ -16,6 +16,6 @@ class ControlStoreConfig extends HTMLElement {
   }
 }
 
-customElements.define('cpnt-cs-config', ControlStoreConfig);
+customElements.define('cpnt-store-config', StoreConfig);
 
-export default ControlStoreConfig;
+export default StoreConfig;

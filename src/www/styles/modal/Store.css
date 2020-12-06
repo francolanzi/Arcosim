@@ -1,29 +1,29 @@
-cpnt-cs-config {
+cpnt-store-config {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-cpnt-cs-bits {
+cpnt-store-bits {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-cpnt-cs-bits label {
+cpnt-store-bits label {
   color: black;
   line-height: 0;
   font-size: 1rem;
   font-family: 'Courier New', Courier, monospace;
 }
 
-cpnt-cs-table {
+cpnt-store-table {
   position: relative;
 }
 
-cpnt-cs-store {
+cpnt-store-list {
   width: 100%;
   height: 50vh;
   display: flex;
@@ -33,7 +33,7 @@ cpnt-cs-store {
   overflow-y: scroll;
 }
 
-cpnt-cs-row {
+cpnt-store-row {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -41,7 +41,7 @@ cpnt-cs-row {
   margin: 0.1rem 0;
 }
 
-cpnt-cs-header {
+cpnt-store-header {
   height: 1.5rem;
   display: block;
   position: relative;
@@ -49,7 +49,7 @@ cpnt-cs-header {
   overflow: hidden;
 }
 
-cpnt-cs-header > div {
+cpnt-store-header > div {
   height: 1.5rem;
   position: absolute;
   text-align: center;
@@ -61,7 +61,7 @@ cpnt-cs-header > div {
   overflow: hidden;
 }
 
-cpnt-cs-grid {
+cpnt-store-grid {
   height: 100%;
   left: 3.2rem;
   position: absolute;
@@ -69,7 +69,7 @@ cpnt-cs-grid {
   overflow: hidden;
 }
 
-cpnt-cs-grid > div {
+cpnt-store-grid > div {
   width: 1px;
   height: 100%;
   position: absolute;
