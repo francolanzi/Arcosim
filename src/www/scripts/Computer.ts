@@ -129,6 +129,17 @@ class Computer extends EventTarget {
     }
   }
 
+  public clear(): void {
+    this.stop();
+
+    this._cpnts.forEach(cpnt => {
+      this.removeCpnt(cpnt.cpntId);
+      cpnt.remove();
+    });
+
+    this.reset();
+  }
+
   public serialize(): ComputerInfo {
     const cpnts: Array<CpntInfo> = [];
     const links: Array<LinkInfo> = [];
@@ -148,12 +159,7 @@ class Computer extends EventTarget {
 
   public deserialize(obj: ComputerInfo): void {
     if (obj.cpnts && obj.links) {
-      this.stop();
-
-      this._cpnts.forEach(cpnt => {
-        this.removeCpnt(cpnt.cpntId);
-        cpnt.remove();
-      });
+      this.clear();
 
       const cpntIds = new Map<number, number>();
 
@@ -187,8 +193,6 @@ class Computer extends EventTarget {
           }
         }
       });
-
-      this.reset();
     }
   }
 }
