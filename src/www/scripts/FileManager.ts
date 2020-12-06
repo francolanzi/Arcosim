@@ -9,6 +9,13 @@ class FileManager {
     throw new Error('Serialization can not be instantiated');
   }
 
+  public static new(computer: Computer): void {
+    computer.clear();
+
+    const window = remote.getCurrentWindow();
+    window.setTitle(`Arcosim`);
+  }
+
   public static save(computer: Computer, path: string): void {
     try {
       const content = JSON.stringify(computer.serialize());

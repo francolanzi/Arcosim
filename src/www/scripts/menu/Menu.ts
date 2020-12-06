@@ -1,3 +1,4 @@
+import NewButton from './buttons/NewButton.js';
 import OpenButton from './buttons/OpenButton.js';
 import SaveButton from './buttons/SaveButton.js';
 import TrashButton from './buttons/TrashButton.js';
@@ -13,6 +14,7 @@ import MenuButton from './MenuButton.js';
 class Menu extends HTMLElement {
   private readonly _buttons: Map<string, MenuButton>;
 
+  public readonly newButton: NewButton;
   public readonly openButton: OpenButton;
   public readonly saveButton: SaveButton;
   public readonly trashButton: TrashButton;
@@ -27,6 +29,7 @@ class Menu extends HTMLElement {
 
     this._buttons = new Map();
 
+    this.newButton = new NewButton(computer);
     this.openButton = new OpenButton(computer);
     this.saveButton = new SaveButton(computer);
     this.trashButton = new TrashButton();
@@ -36,6 +39,7 @@ class Menu extends HTMLElement {
     this.resetButton = new ResetButton(computer);
     this.aboutButton = new AboutButton();
 
+    this.addButton(this.newButton);
     this.addButton(this.openButton);
     this.addButton(this.saveButton);
     this.addButton(this.trashButton);

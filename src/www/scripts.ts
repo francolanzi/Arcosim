@@ -81,4 +81,5 @@ document.body.append(modalLayer);
 
 document.ondragstart = () => false;
 
+FileManager.new(computer);
 FileManager.open(computer, remote.process.argv[1]);
