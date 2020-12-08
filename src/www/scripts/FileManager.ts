@@ -1,3 +1,4 @@
+import Component from './Component';
 import Computer from './Computer';
 
 const { readFileSync, writeFileSync } = window.require('fs');
@@ -37,6 +38,24 @@ class FileManager {
       window.setTitle(`Arcosim - ${basename(path)}`);
     } catch {
       console.log(`Read failed: ${path}`);
+    }
+  }
+
+  public static export(cpnt: Component, path: string): void {
+    try {
+      const content = JSON.stringify(cpnt.export());
+      writeFileSync(path, content);
+    } catch {
+      console.log(`Export failed: ${path}`);
+    }
+  }
+
+  public static import(cpnt: Component, path: string): void {
+    try {
+      const content = readFileSync(path, { encoding: 'utf8' });
+      cpnt.import(JSON.parse(content));
+    } catch {
+      console.log(`Import failed: ${path}`);
     }
   }
 }

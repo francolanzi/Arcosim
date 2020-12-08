@@ -1,4 +1,5 @@
-import Component from '../Component';
+import Component from '../Component.js';
+import CpntLoader from './CpntLoader.js';
 
 abstract class CpntConfig<Cpnt extends Component> extends HTMLElement {
   private readonly _cpnt: Cpnt;
@@ -23,6 +24,11 @@ abstract class CpntConfig<Cpnt extends Component> extends HTMLElement {
 
   public reload(): void {
     this.clear();
+
+    const loader = new CpntLoader(this.cpnt);
+    this.append(loader);
+
+    loader.addEventListener('import', () => this.reload());
   }
 }
 
