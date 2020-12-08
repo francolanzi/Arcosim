@@ -1,13 +1,14 @@
 import { Shifter } from '../../cpnts/Shifter.js';
+import CpntConfig from '../CpntConfig.js';
 import Count from './Count.js';
 import List from './List.js';
 
-class ShifterConfig extends HTMLElement {
-  public constructor(cpnt: Shifter) {
-    super();
+class ShifterConfig extends CpntConfig<Shifter> {
+  public reload(): void {
+    super.reload();
 
     const count = new Count();
-    const list = new List(cpnt);
+    const list = new List(this.cpnt);
 
     this.append(count);
     this.append(list);

@@ -1,19 +1,20 @@
 import { Clock } from '../../cpnts/Clock.js';
+import CpntConfig from '../CpntConfig.js';
 import Subcycles from './Subcycles.js';
 
-class ClockConfig extends HTMLElement {
-  public constructor(cpnt: Clock) {
-    super();
+class ClockConfig extends CpntConfig<Clock> {
+  public reload(): void {
+    super.reload();
 
-    const subcycles = new Subcycles(cpnt.subcycles);
+    const subcycles = new Subcycles(this.cpnt.subcycles);
     this.append(subcycles);
 
     subcycles.addEventListener('change', () => {
-      while (subcycles.value > cpnt.subcycles) {
-        cpnt.addSubcycle();
+      while (subcycles.value > this.cpnt.subcycles) {
+        this.cpnt.addSubcycle();
       }
-      while (subcycles.value < cpnt.subcycles) {
-        cpnt.removeSubcycle();
+      while (subcycles.value < this.cpnt.subcycles) {
+        this.cpnt.removeSubcycle();
       }
     });
   }

@@ -1,14 +1,15 @@
 import { Memory } from '../../cpnts/Memory.js';
+import CpntConfig from '../CpntConfig.js';
 import Cells from './Cells.js';
 import Range from './Range.js';
 
-class MemoryConfig extends HTMLElement {
-  public constructor(cpnt: Memory) {
-    super();
+class MemoryConfig extends CpntConfig<Memory> {
+  public reload(): void {
+    super.reload();
 
     const from = new Range(0, 'cell-from', 'Desde:');
     const to = new Range(255, 'cell-to', 'Hasta:');
-    const memory = new Cells(cpnt);
+    const memory = new Cells(this.cpnt);
 
     memory.showCells(from.value, to.value);
 

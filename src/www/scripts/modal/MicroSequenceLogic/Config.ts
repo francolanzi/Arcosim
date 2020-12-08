@@ -1,13 +1,14 @@
 import { MicroSequenceLogic } from '../../cpnts/MicroSequenceLogic.js';
+import CpntConfig from '../CpntConfig.js';
 import Count from './Count.js';
 import List from './List.js';
 
-class MicroSequenceLogicConfig extends HTMLElement {
-  public constructor(cpnt: MicroSequenceLogic) {
-    super();
+class MicroSequenceLogicConfig extends CpntConfig<MicroSequenceLogic> {
+  public reload(): void {
+    super.reload();
 
     const count = new Count();
-    const list = new List(cpnt);
+    const list = new List(this.cpnt);
 
     this.append(count);
     this.append(list);

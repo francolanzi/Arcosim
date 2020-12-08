@@ -1,16 +1,16 @@
 import { Display } from '../../cpnts/Display.js';
+import CpntConfig from '../CpntConfig.js';
 import RadixSelect from '../RadixSelect.js';
 
-class DisplayConfig extends HTMLElement {
-  public constructor(cpnt: Display) {
-    super();
+class DisplayConfig extends CpntConfig<Display> {
+  public reload(): void {
+    super.reload();
 
-    const radix = new RadixSelect(cpnt.radix);
+    const radix = new RadixSelect(this.cpnt.radix);
     this.append(radix);
 
-    radix.addEventListener('change', () => {
-      cpnt.radix = radix.radix;
-    });
+    radix.addEventListener('change', () =>
+      this.cpnt.radix = radix.radix);
   }
 }
 

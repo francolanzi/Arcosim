@@ -5,6 +5,7 @@ import CpntInfo from './ifaces/CpntInfo.js';
 import Input from './io/Input.js';
 import Output from './io/Output.js';
 import TrashButton from './menu/buttons/TrashButton.js';
+import CpntConfig from './modal/CpntConfig.js';
 
 abstract class Component extends HTMLElement {
   private static _count = 0;
@@ -23,7 +24,7 @@ abstract class Component extends HTMLElement {
 
   public readonly cpntId: number
 
-  public get config(): Node | undefined {
+  public get config(): CpntConfig<Component> | undefined {
     return undefined;
   }
 

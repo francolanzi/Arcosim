@@ -1,4 +1,4 @@
-cpnt-display-config {
+[is='cpnt-config'] {
   display: flex;
   flex-direction: column;
   justify-content: center;
