@@ -1,6 +1,6 @@
 import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
-import StoreInfo from '../ifaces/cpntInfo/StoreInfo.js';
+import StoreData from '../ifaces/data/StoreData.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
 import Config from '../modal/Store/Config.js';
@@ -65,22 +65,22 @@ class Store extends Component {
     return super.run(time);
   }
 
-  public serialize(): StoreInfo {
-    const cpnt = <StoreInfo> super.serialize();
-    cpnt.bits = this.bits;
-    cpnt.instructions = this._instructions;
-    return cpnt;
+  public export(): StoreData {
+    return {
+      bits: this.bits,
+      instructions: this._instructions,
+    };
   }
 
-  public deserialize(obj: StoreInfo): void {
-    if (obj.instructions) {
+  public import(data: StoreData): void {
+    if (data.instructions) {
       this._instructions.length = 0;
-      obj.instructions.forEach((instruction, position) =>
+      data.instructions.forEach((instruction, position) =>
         this.addInstruction(position, instruction));
     }
 
-    if (obj.bits) {
-      this.bits = obj.bits;
+    if (data.bits) {
+      this.bits = data.bits;
     }
   }
 

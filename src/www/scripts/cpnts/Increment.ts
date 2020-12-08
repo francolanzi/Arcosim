@@ -27,6 +27,14 @@ class Increment extends Component {
 
     return super.run(time);
   }
+
+  public export(): undefined {
+    return undefined;
+  }
+
+  public import(): void {
+    // nothing
+  }
 }
 
 class IncrementItem extends CpntItem {

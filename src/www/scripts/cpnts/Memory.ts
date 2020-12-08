@@ -1,6 +1,6 @@
 import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
-import MemoryInfo from '../ifaces/cpntInfo/MemoryInfo.js';
+import MemoryData from '../ifaces/data/MemoryData.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
 import Config from '../modal/Memory/Config.js';
@@ -43,16 +43,16 @@ class Memory extends Component {
     return super.run(time);
   }
 
-  public serialize(): MemoryInfo {
-    const cpnt = <MemoryInfo> super.serialize();
-    cpnt.cells = Array.from(this._cells.entries());
-    return cpnt;
+  public export(): MemoryData {
+    return {
+      cells: Array.from(this._cells.entries()),
+    };
   }
 
-  public deserialize(obj: MemoryInfo): void {
-    if (obj.cells) {
+  public import(data: MemoryData): void {
+    if (data.cells) {
       this._cells.clear();
-      obj.cells.forEach(([address, data]) =>
+      data.cells.forEach(([address, data]) =>
         this.setCell(address, data));
     }
   }

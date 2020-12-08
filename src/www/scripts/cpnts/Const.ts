@@ -1,6 +1,6 @@
 import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
-import ConstInfo from '../ifaces/cpntInfo/ConstInfo.js';
+import ConstData from '../ifaces/data/ConstData.js';
 import Output from '../io/Output.js';
 import Config from '../modal/Const/Config.js';
 
@@ -85,20 +85,20 @@ class Const extends Component {
     this._display.textContent = text;
   }
 
-  public serialize(): ConstInfo {
-    const cpnt = <ConstInfo> super.serialize();
-    cpnt.value = this.value;
-    cpnt.radix = this.radix;
-    return cpnt;
+  public export(): ConstData {
+    return {
+      value: this.value,
+      radix: this.radix,
+    };
   }
 
-  public deserialize(obj: ConstInfo): void {
-    if (obj.value) {
-      this.value = obj.value;
+  public import(data: ConstData): void {
+    if (data.value) {
+      this.value = data.value;
     }
 
-    if (obj.radix) {
-      this.radix = obj.radix;
+    if (data.radix) {
+      this.radix = data.radix;
     }
   }
 }

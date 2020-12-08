@@ -1,6 +1,6 @@
 import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
-import ArithmeticLogicUnitInfo from '../ifaces/cpntInfo/ArithmeticLogicUnitInfo.js';
+import ArithmeticLogicUnitData from '../ifaces/data/ArithmeticLogicUnitData.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
 import Config from '../modal/ArithmeticLogicUnit/Config.js';
@@ -104,16 +104,16 @@ class ArithmeticLogicUnit extends Component {
     return super.run(time);
   }
 
-  public serialize(): ArithmeticLogicUnitInfo {
-    const cpnt = <ArithmeticLogicUnitInfo> super.serialize();
-    cpnt.functions = [...this._functions];
-    return cpnt;
+  public export(): ArithmeticLogicUnitData {
+    return {
+      functions: [...this._functions],
+    };
   }
 
-  public deserialize(obj: ArithmeticLogicUnitInfo): void {
-    if (obj.functions) {
+  public import(data: ArithmeticLogicUnitData): void {
+    if (data.functions) {
       this._functions.length = 0;
-      obj.functions.forEach(func => this.addFunction(func));
+      data.functions.forEach(func => this.addFunction(func));
     }
   }
 

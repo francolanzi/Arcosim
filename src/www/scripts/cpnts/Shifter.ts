@@ -1,6 +1,6 @@
 import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
-import ShifterInfo from '../ifaces/cpntInfo/ShifterInfo.js';
+import ShifterData from '../ifaces/data/ShifterData.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
 import Config from '../modal/Shifter/Config.js';
@@ -77,16 +77,16 @@ class Shifter extends Component {
     return super.run(time);
   }
 
-  public serialize(): ShifterInfo {
-    const cpnt = <ShifterInfo> super.serialize();
-    cpnt.functions = [...this._functions];
-    return cpnt;
+  public export(): ShifterData {
+    return {
+      functions: [...this._functions],
+    };
   }
 
-  public deserialize(obj: ShifterInfo): void {
-    if (obj.functions) {
+  public import(data: ShifterData): void {
+    if (data.functions) {
       this._functions.length = 0;
-      obj.functions.forEach(({ func, value }) =>
+      data.functions.forEach(({ func, value }) =>
         this.addFunction(func, value));
     }
   }

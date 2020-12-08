@@ -1,6 +1,6 @@
 import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
-import RegistersInfo from '../ifaces/cpntInfo/RegistersInfo.js';
+import RegistersData from '../ifaces/data/RegistersData.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
 import Config from '../modal/Registers/Config.js';
@@ -69,16 +69,16 @@ class Registers extends Component {
     return encoded;
   }
 
-  public serialize(): RegistersInfo {
-    const cpnt = <RegistersInfo> super.serialize();
-    cpnt.registers = this._registers;
-    return cpnt;
+  public export(): RegistersData {
+    return {
+      registers: this._registers,
+    };
   }
 
-  public deserialize(obj: RegistersInfo): void {
-    if (obj.registers) {
+  public import(data: RegistersData): void {
+    if (data.registers) {
       this._registers.length = 0;
-      obj.registers.forEach((value, index) => {
+      data.registers.forEach((value, index) => {
         this.addRegister();
         this.setRegister(index, value);
       });

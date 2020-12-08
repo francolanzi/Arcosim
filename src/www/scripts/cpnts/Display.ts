@@ -1,6 +1,6 @@
 import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
-import DisplayInfo from '../ifaces/cpntInfo/DisplayInfo.js';
+import DisplayData from '../ifaces/data/DisplayData.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
 import Config from '../modal/Display/Config.js';
@@ -97,15 +97,15 @@ class Display extends Component {
     this._display.textContent = text;
   }
 
-  public serialize(): DisplayInfo {
-    const cpnt = <DisplayInfo> super.serialize();
-    cpnt.radix = this.radix;
-    return cpnt;
+  public export(): DisplayData {
+    return {
+      radix: this.radix,
+    };
   }
 
-  public deserialize(obj: DisplayInfo): void {
-    if (obj.radix) {
-      this.radix = obj.radix;
+  public import(data: DisplayData): void {
+    if (data.radix) {
+      this.radix = data.radix;
     }
   }
 }

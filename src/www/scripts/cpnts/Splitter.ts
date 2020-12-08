@@ -1,6 +1,6 @@
 import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
-import SplitterInfo from '../ifaces/cpntInfo/SplitterInfo.js';
+import SplitterData from '../ifaces/data/SplitterData.js';
 import Mask from '../ifaces/Mask.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
@@ -54,21 +54,21 @@ class Splitter extends Component {
     return super.run(time);
   }
 
-  public serialize(): SplitterInfo {
-    const cpnt = <SplitterInfo> super.serialize();
-    cpnt.masks = this._masks.map(mask => {
-      return {
-        name: mask.output.name,
-        size: mask.size,
-      };
-    });
-    return cpnt;
+  public export(): SplitterData {
+    return {
+      masks: this._masks.map(mask => {
+        return {
+          name: mask.output.name,
+          size: mask.size,
+        };
+      }),
+    };
   }
 
-  public deserialize(obj: SplitterInfo): void {
-    if (obj.masks) {
+  public import(data: SplitterData): void {
+    if (data.masks) {
       this._masks.length = 0;
-      obj.masks.forEach(({ name, size }) =>
+      data.masks.forEach(({ name, size }) =>
         this.addMask(name, size));
     }
   }

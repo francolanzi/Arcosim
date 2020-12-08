@@ -1,6 +1,6 @@
 import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
-import ClockInfo from '../ifaces/cpntInfo/ClockInfo.js';
+import ClockData from '../ifaces/data/ClockData.js';
 import Output from '../io/Output.js';
 import Config from '../modal/Clock/Config.js';
 
@@ -32,21 +32,21 @@ class Clock extends Component {
     return super.run(time);
   }
 
-  public serialize(): ClockInfo {
-    const cpnt = <ClockInfo> super.serialize();
-    cpnt.subcycles = this.subcycles;
-    return cpnt;
+  public export(): ClockData {
+    return {
+      subcycles: this.subcycles,
+    };
   }
 
-  public deserialize(obj: ClockInfo): void {
-    if (obj.subcycles) {
+  public import(data: ClockData): void {
+    if (data.subcycles) {
       let subcycle = this._subcycles.pop();
       while (subcycle) {
         this.removeOutput(subcycle.ioId);
         subcycle = this._subcycles.pop();
       }
 
-      for (let i = 0; i < obj.subcycles; i++) {
+      for (let i = 0; i < data.subcycles; i++) {
         this.addSubcycle();
       }
 

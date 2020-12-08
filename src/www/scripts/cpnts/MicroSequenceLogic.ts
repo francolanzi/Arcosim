@@ -1,6 +1,6 @@
 import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
-import MicroSequenceLogicInfo from '../ifaces/cpntInfo/MicroSequenceLogicInfo.js';
+import MicroSequenceLogicData from '../ifaces/data/MicroSequenceLogicData.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
 import Config from '../modal/MicroSequenceLogic/Config.js';
@@ -84,13 +84,13 @@ class MicroSequenceLogic extends Component {
     return super.run(time);
   }
 
-  public serialize(): MicroSequenceLogicInfo {
-    const cpnt = <MicroSequenceLogicInfo> super.serialize();
-    cpnt.conditions = [...this._conditions];
-    return cpnt;
+  public export(): MicroSequenceLogicData {
+    return {
+      conditions: [...this._conditions],
+    };
   }
 
-  public deserialize(obj: MicroSequenceLogicInfo): void {
+  public import(obj: MicroSequenceLogicData): void {
     if (obj.conditions) {
       this._conditions.length = 0;
       obj.conditions.forEach(cond => this.addCondition(cond));

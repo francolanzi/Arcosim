@@ -234,11 +234,20 @@ abstract class Component extends HTMLElement {
       cpntId: this.cpntId,
       top: this.top,
       left: this.left,
+      data: this.export(),
     };
   }
 
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-  public deserialize(obj: CpntInfo): void {}
+  public deserialize(info: CpntInfo): void {
+    if (this.type === info.type) {
+      this._top = info.top;
+      this._left = info.left;
+      this.import(info.data);
+    }
+  }
+
+  public abstract export(): unknown;
+  public abstract import(data: unknown): void;
 
   public remove(): void {
     this._inputs.forEach(input => input.remove());
