@@ -37,9 +37,9 @@ class StoreRow extends HTMLElement {
     this._bits = bits;
     this._inputs = [];
 
-    const addBefore = new ImgButton('images/modal/plus.svg');
-    const addAfter = new ImgButton('images/modal/plus.svg');
-    const remove = new ImgButton('images/modal/minus.svg');
+    const addBefore = new ImgButton('Agregar antes', 'images/modal/plus.svg');
+    const addAfter = new ImgButton('Agregar después', 'images/modal/plus.svg');
+    const remove = new ImgButton('Quitar', 'images/modal/minus.svg');
 
     this.append(addBefore);
     this.append(remove);

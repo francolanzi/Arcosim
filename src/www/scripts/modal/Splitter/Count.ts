@@ -4,8 +4,8 @@ class SplitterCount extends HTMLElement {
   public constructor() {
     super();
 
-    const add = new ImgButton('images/modal/plus.svg');
-    const remove = new ImgButton('images/modal/minus.svg');
+    const add = new ImgButton('Agregar', 'images/modal/plus.svg');
+    const remove = new ImgButton('Quitar', 'images/modal/minus.svg');
 
     this.append(add);
     this.append(remove);
