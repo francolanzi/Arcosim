@@ -1,6 +1,7 @@
+import CpntData from '../CpntData';
 import Mask from '../Mask.js';
 
-interface SplitterData {
+interface SplitterData extends CpntData {
   masks: Array<Mask>,
 }
 

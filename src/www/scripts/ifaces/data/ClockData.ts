@@ -1,4 +1,6 @@
-interface ClockData {
+import CpntData from '../CpntData';
+
+interface ClockData extends CpntData {
   subcycles: number,
 }
 

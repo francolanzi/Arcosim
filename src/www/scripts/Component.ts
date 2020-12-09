@@ -1,6 +1,7 @@
 import Computer from './Computer.js';
 import CpntItem from './CpntItem.js';
 import Center from './ifaces/Center.js';
+import CpntData from './ifaces/CpntData.js';
 import CpntInfo from './ifaces/CpntInfo.js';
 import Input from './io/Input.js';
 import Output from './io/Output.js';
@@ -274,12 +275,12 @@ abstract class Component extends HTMLElement {
     }
   }
 
-  public export(): unknown {
+  public export(): CpntData {
     return {};
   }
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-  public import(data: unknown): void {
+  public import(data: CpntData): void {
     // nothing
   }
 
