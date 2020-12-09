@@ -25,8 +25,8 @@ abstract class Component extends HTMLElement {
 
   public readonly cpntId: number
 
-  public get config(): CpntConfig<Component> | undefined {
-    return undefined;
+  public get config(): CpntConfig<Component> {
+    return new CpntConfig(this);
   }
 
   public get type(): string {

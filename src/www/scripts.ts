@@ -27,9 +27,7 @@ menuLayer.computer.addEventListener('add', ev => {
   cpnt.addEventListener('config', () => {
     const type = cpnt.type;
     const config = cpnt.config;
-    if (config) {
-      modalLayer.show(type, config);
-    }
+    modalLayer.show(type, config);
   });
 
   cpnt.addEventListener('remove', () => {

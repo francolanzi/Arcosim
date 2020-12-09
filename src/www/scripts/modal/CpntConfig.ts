@@ -2,7 +2,7 @@ import Component from '../Component.js';
 import CpntLabelEditor from './CpntLabelEditor.js';
 import CpntLoader from './CpntLoader.js';
 
-abstract class CpntConfig<Cpnt extends Component> extends HTMLElement {
+class CpntConfig<Cpnt extends Component> extends HTMLElement {
   private readonly _cpnt: Cpnt;
 
   public get cpnt(): Cpnt {
@@ -35,5 +35,7 @@ abstract class CpntConfig<Cpnt extends Component> extends HTMLElement {
     loader.addEventListener('import', () => this.reload());
   }
 }
+
+customElements.define('cpnt-config', CpntConfig);
 
 export default CpntConfig;
