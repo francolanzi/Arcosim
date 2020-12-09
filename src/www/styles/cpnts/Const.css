@@ -1,4 +1,4 @@
-cpnt-const div {
+cpnt-const div[is='cpnt-const-display'] {
   position: absolute;
   top: 21px;
   left: 6px;

@@ -47,6 +47,7 @@ class Display extends Component {
     this._output = this.addOutput('output', 'Salida', 70, 46);
 
     this._display = document.createElement('div');
+    this._display.setAttribute('is', 'cpnt-display-display');
     this.append(this._display);
 
     this._value = this._output.value;

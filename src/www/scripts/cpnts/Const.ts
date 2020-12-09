@@ -47,6 +47,7 @@ class Const extends Component {
     this._const = this.addOutput('const', 'Constante', 70, 46);
 
     this._display = document.createElement('div');
+    this._display.setAttribute('is', 'cpnt-const-display');
     this.append(this._display);
 
     this._value = this._const.value.toString();
