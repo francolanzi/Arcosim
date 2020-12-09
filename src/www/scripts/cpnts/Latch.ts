@@ -54,6 +54,14 @@ class LatchItem extends CpntItem {
     return 20;
   }
 
+  public get defaultLabel(): string {
+    return 'Latch';
+  }
+
+  public get labelRect(): DOMRectReadOnly {
+    return new DOMRectReadOnly(1, 1, 62, 18);
+  }
+
   public cpnt(top: number, left: number): Component {
     return new Latch(this, top, left);
   }

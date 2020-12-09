@@ -18,3 +18,23 @@
 .component.trashed {
   filter: invert(1);
 }
+
+div[is='cpnt-label'] {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+  font-size: 12px;
+  line-height: 12px;
+  font-family: 'Courier New', Courier, monospace;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+}
+
+[is='cpnt-item'] {
+  position: relative;
+}

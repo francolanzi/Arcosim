@@ -121,6 +121,14 @@ class ConstItem extends CpntItem {
     return 46;
   }
 
+  public get defaultLabel(): string {
+    return 'Const';
+  }
+
+  public get labelRect(): DOMRectReadOnly {
+    return new DOMRectReadOnly(1, 1, 139, 19);
+  }
+
   public cpnt(top: number, left: number): Component {
     return new Const(this, top, left);
   }

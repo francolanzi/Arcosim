@@ -137,6 +137,14 @@ class MicroSequenceLogicItem extends CpntItem {
     return 42;
   }
 
+  public get defaultLabel(): string {
+    return 'Micro Sequence Logic';
+  }
+
+  public get labelRect(): DOMRectReadOnly {
+    return new DOMRectReadOnly(1, 1, 60, 40);
+  }
+
   public cpnt(top: number, left: number): Component {
     return new MicroSequenceLogic(this, top, left);
   }

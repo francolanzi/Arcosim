@@ -106,6 +106,14 @@ class ClockItem extends CpntItem {
     return 59;
   }
 
+  public get defaultLabel(): string {
+    return 'Clock';
+  }
+
+  public get labelRect(): DOMRectReadOnly {
+    return new DOMRectReadOnly(1, 1, 59, 57);
+  }
+
   public cpnt(top: number, left: number): Component {
     return new Clock(this, top, left);
   }

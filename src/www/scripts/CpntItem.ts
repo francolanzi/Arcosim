@@ -8,6 +8,8 @@ abstract class CpntItem extends HTMLElement {
   public abstract get image(): string;
   public abstract get width(): number;
   public abstract get height(): number;
+  public abstract get defaultLabel(): string;
+  public abstract get labelRect(): DOMRectReadOnly;
 
   public constructor(computer: Computer) {
     super();
@@ -31,6 +33,15 @@ abstract class CpntItem extends HTMLElement {
       this.computer.addCpnt(cpnt);
       cpnt.drag(ev);
     });
+
+    const label = document.createElement('div');
+    label.setAttribute('is', 'cpnt-label');
+    label.style.top = `${this.labelRect.top}px`;
+    label.style.left = `${this.labelRect.left}px`;
+    label.style.width = `${this.labelRect.width}px`;
+    label.style.height = `${this.labelRect.height}px`;
+    label.textContent = this.defaultLabel;
+    this.append(label);
   }
 
   public abstract cpnt(top: number, left: number): Component;

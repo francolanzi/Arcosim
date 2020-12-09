@@ -54,6 +54,14 @@ class IncrementItem extends CpntItem {
     return 23;
   }
 
+  public get defaultLabel(): string {
+    return 'Increment';
+  }
+
+  public get labelRect(): DOMRectReadOnly {
+    return new DOMRectReadOnly(1, 1, 66, 21);
+  }
+
   public cpnt(top: number, left: number): Component {
     return new Increment(this, top, left);
   }

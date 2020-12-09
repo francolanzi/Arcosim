@@ -118,6 +118,14 @@ class StoreItem extends CpntItem {
     return 64;
   }
 
+  public get defaultLabel(): string {
+    return 'Store';
+  }
+
+  public get labelRect(): DOMRectReadOnly {
+    return new DOMRectReadOnly(1, 1, 327, 62);
+  }
+
   public cpnt(top: number, left: number): Component {
     return new Store(this, top, left);
   }

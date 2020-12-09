@@ -140,6 +140,14 @@ class SplitterItem extends CpntItem {
     return 43;
   }
 
+  public get defaultLabel(): string {
+    return 'Splitter';
+  }
+
+  public get labelRect(): DOMRectReadOnly {
+    return new DOMRectReadOnly(1, 1, 328, 41);
+  }
+
   public cpnt(top: number, left: number): Component {
     return new Splitter(this, top, left);
   }

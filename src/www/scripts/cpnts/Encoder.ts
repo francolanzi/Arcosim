@@ -65,6 +65,14 @@ class EncoderItem extends CpntItem {
     return 30;
   }
 
+  public get defaultLabel(): string {
+    return 'Encoder';
+  }
+
+  public get labelRect(): DOMRectReadOnly {
+    return new DOMRectReadOnly(1, 1, 76, 28);
+  }
+
   public cpnt(top: number, left: number): Component {
     return new Encoder(this, top, left);
   }

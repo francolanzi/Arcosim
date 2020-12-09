@@ -137,6 +137,14 @@ class ShifterItem extends CpntItem {
     return 28;
   }
 
+  public get defaultLabel(): string {
+    return 'Shifter';
+  }
+
+  public get labelRect(): DOMRectReadOnly {
+    return new DOMRectReadOnly(1, 1, 74, 26);
+  }
+
   public cpnt(top: number, left: number): Component {
     return new Shifter(this, top, left);
   }

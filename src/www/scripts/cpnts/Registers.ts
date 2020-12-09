@@ -123,6 +123,14 @@ class RegistersItem extends CpntItem {
     return 90;
   }
 
+  public get defaultLabel(): string {
+    return 'Registers';
+  }
+
+  public get labelRect(): DOMRectReadOnly {
+    return new DOMRectReadOnly(1, 1, 92, 88);
+  }
+
   public cpnt(top: number, left: number): Component {
     return new Registers(this, top, left);
   }

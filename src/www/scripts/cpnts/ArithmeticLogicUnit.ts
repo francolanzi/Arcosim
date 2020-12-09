@@ -157,6 +157,14 @@ class ArithmeticLogicUnitItem extends CpntItem {
     return 45;
   }
 
+  public get defaultLabel(): string {
+    return 'ALU';
+  }
+
+  public get labelRect(): DOMRectReadOnly {
+    return new DOMRectReadOnly(15, 18, 51, 26);
+  }
+
   public cpnt(top: number, left: number): Component {
     return new ArithmeticLogicUnit(this, top, left);
   }

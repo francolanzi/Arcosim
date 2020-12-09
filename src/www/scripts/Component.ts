@@ -12,6 +12,7 @@ abstract class Component extends HTMLElement {
 
   private _top: number;
   private _left: number;
+  private _label: HTMLDivElement;
 
   private readonly _item: CpntItem;
   private readonly _inputs: Map<string, Input>;
@@ -42,6 +43,14 @@ abstract class Component extends HTMLElement {
 
   public get left(): number {
     return this._left;
+  }
+
+  public get label(): string {
+    return this._label.textContent || '';
+  }
+
+  public set label(label: string) {
+    this._label.textContent = label;
   }
 
   public get inputs(): IterableIterator<Input> {
@@ -85,6 +94,15 @@ abstract class Component extends HTMLElement {
       const ev = new Event('config');
       this.dispatchEvent(ev);
     });
+
+    this._label = document.createElement('div');
+    this._label.setAttribute('is', 'cpnt-label');
+    this._label.style.top = `${item.labelRect.top}px`;
+    this._label.style.left = `${item.labelRect.left}px`;
+    this._label.style.width = `${item.labelRect.width}px`;
+    this._label.style.height = `${item.labelRect.height}px`;
+    this.label = item.defaultLabel;
+    this.append(this._label);
   }
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars

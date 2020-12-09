@@ -53,6 +53,14 @@ class MultiplexerItem extends CpntItem {
     return 23;
   }
 
+  public get defaultLabel(): string {
+    return 'MUX';
+  }
+
+  public get labelRect(): DOMRectReadOnly {
+    return new DOMRectReadOnly(1, 1, 60, 21);
+  }
+
   public cpnt(top: number, left: number): Component {
     return new Multiplexer(this, top, left);
   }

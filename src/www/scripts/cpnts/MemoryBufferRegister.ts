@@ -70,6 +70,14 @@ class MemoryBufferRegisterItem extends CpntItem {
     return 20;
   }
 
+  public get defaultLabel(): string {
+    return 'MBR';
+  }
+
+  public get labelRect(): DOMRectReadOnly {
+    return new DOMRectReadOnly(1, 1, 45, 18);
+  }
+
   public cpnt(top: number, left: number): Component {
     return new MemoryBufferRegister(this, top, left);
   }

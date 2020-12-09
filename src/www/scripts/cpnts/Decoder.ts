@@ -57,6 +57,14 @@ class DecoderItem extends CpntItem {
     return 30;
   }
 
+  public get defaultLabel(): string {
+    return 'Decoder';
+  }
+
+  public get labelRect(): DOMRectReadOnly {
+    return new DOMRectReadOnly(1, 1, 76, 28);
+  }
+
   public cpnt(top: number, left: number): Component {
     return new Decoder(this, top, left);
   }
