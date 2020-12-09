@@ -69,7 +69,7 @@ abstract class Component extends HTMLElement {
 
     this.cpntId = ++Component._count;
 
-    this.classList.add('component');
+    this.setAttribute('is', 'cpnt');
 
     this.style.top = `${top}px`;
     this.style.left = `${left}px`;

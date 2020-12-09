@@ -1,4 +1,4 @@
-.component {
+[is='cpnt'] {
   margin: 0;
   padding: 0;
   line-height: 0;
@@ -7,15 +7,15 @@
   position: absolute;
 }
 
-.component.dragging {
+[is='cpnt'].dragging {
   z-index: 5;
 }
 
-.component.dragging img {
+[is='cpnt'].dragging img {
   filter: drop-shadow(0 0 5px grey);
 }
 
-.component.trashed {
+[is='cpnt'].trashed {
   filter: invert(1);
 }
 
