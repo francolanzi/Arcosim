@@ -19,10 +19,6 @@ class Computer extends EventTarget {
     return this._items.list();
   }
 
-  public item(type: string): CpntItem | undefined {
-    return this._items.get(type);
-  }
-
   public get running(): boolean {
     return this._running;
   }
@@ -42,6 +38,10 @@ class Computer extends EventTarget {
     this._stopped = true;
     this._count = 0;
     this._time = 0;
+  }
+
+  public getItem(type: string): CpntItem | undefined {
+    return this._items.get(type);
   }
 
   public addCpnt(cpnt: Component): void {
@@ -164,7 +164,7 @@ class Computer extends EventTarget {
       const cpntIds = new Map<number, number>();
 
       obj.cpnts.forEach(cpntInfo => {
-        const item = this.item(cpntInfo.type);
+        const item = this.getItem(cpntInfo.type);
         if (item) {
           const cpnt = item.cpnt(cpntInfo.top, cpntInfo.left);
           cpnt.deserialize(cpntInfo);
