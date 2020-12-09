@@ -259,10 +259,18 @@ abstract class Component extends HTMLElement {
 
   public deserialize(info: CpntInfo): void {
     if (this.type === info.type) {
-      this._top = info.top;
-      this._left = info.left;
-      this.label = info.label;
-      this.import(info.data);
+      if (info.top) {
+        this._top = info.top;
+      }
+      if (info.left) {
+        this._left = info.left;
+      }
+      if (info.label) {
+        this.label = info.label;
+      }
+      if (info.data) {
+        this.import(info.data);
+      }
     }
   }
 
