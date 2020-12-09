@@ -1,3 +1,6 @@
+@import 'cpnts/Const.css';
+@import 'cpnts/Display.css';
+
 [is='cpnt'] {
   margin: 0;
   padding: 0;
