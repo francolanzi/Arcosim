@@ -1,4 +1,5 @@
 import Component from '../Component.js';
+import CpntLabelEditor from './CpntLabelEditor.js';
 import CpntLoader from './CpntLoader.js';
 
 abstract class CpntConfig<Cpnt extends Component> extends HTMLElement {
@@ -26,7 +27,10 @@ abstract class CpntConfig<Cpnt extends Component> extends HTMLElement {
     this.clear();
 
     const loader = new CpntLoader(this.cpnt);
+    const label = new CpntLabelEditor(this.cpnt);
+
     this.append(loader);
+    this.append(label);
 
     loader.addEventListener('import', () => this.reload());
   }

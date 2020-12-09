@@ -1,0 +1,11 @@
+cpnt-label-editor {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+cpnt-label-editor input {
+  width: 10rem;
+  font-weight: bold;
+}
