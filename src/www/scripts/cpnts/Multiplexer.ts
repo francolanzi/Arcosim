@@ -26,14 +26,6 @@ class Multiplexer extends Component {
 
     return super.run(time);
   }
-
-  public export(): undefined {
-    return undefined;
-  }
-
-  public import(): void {
-    // nothing
-  }
 }
 
 class MultiplexerItem extends CpntItem {

@@ -274,8 +274,14 @@ abstract class Component extends HTMLElement {
     }
   }
 
-  public abstract export(): unknown;
-  public abstract import(data: unknown): void;
+  public export(): unknown {
+    return {};
+  }
+
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+  public import(data: unknown): void {
+    // nothing
+  }
 
   public remove(): void {
     this._inputs.forEach(input => input.remove());
