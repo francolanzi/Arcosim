@@ -20,7 +20,7 @@ abstract class MenuButton extends HTMLElement {
   public constructor(title: string, icon: string) {
     super();
 
-    this.classList.add('menu-button');
+    this.setAttribute('is', 'menu-button');
 
     this._image = document.createElement('img');
     this.append(this._image);

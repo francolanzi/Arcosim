@@ -24,7 +24,7 @@ main-menu {
   align-items: center;
 }
 
-.menu-button {
+[is='menu-button'] {
   margin: 0;
   margin-right: 1rem;
   padding: 0.5rem;
@@ -36,17 +36,17 @@ main-menu {
   pointer-events: all;
 }
 
-.menu-button img {
+[is='menu-button'] img {
   height: 2rem;
   width: 2rem;
   filter: brightness(0) invert(1);
 }
 
-.menu-button:hover {
+[is='menu-button']:hover {
   opacity: 1;
 }
 
-.menu-button.active {
+[is='menu-button'].active {
   opacity: 1;
   background-color: gray;
 }
