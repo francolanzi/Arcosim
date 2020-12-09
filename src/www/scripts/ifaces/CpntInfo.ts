@@ -3,6 +3,7 @@ interface CpntInfo {
   cpntId: number,
   top: number,
   left: number,
+  label: string,
   data: unknown,
 }
 

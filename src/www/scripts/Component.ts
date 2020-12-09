@@ -252,6 +252,7 @@ abstract class Component extends HTMLElement {
       cpntId: this.cpntId,
       top: this.top,
       left: this.left,
+      label: this.label,
       data: this.export(),
     };
   }
@@ -260,6 +261,7 @@ abstract class Component extends HTMLElement {
     if (this.type === info.type) {
       this._top = info.top;
       this._left = info.left;
+      this.label = info.label;
       this.import(info.data);
     }
   }
