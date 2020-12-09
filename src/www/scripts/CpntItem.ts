@@ -12,6 +12,7 @@ abstract class CpntItem extends HTMLElement {
   public constructor(computer: Computer) {
     super();
 
+    this.setAttribute('is', 'cpnt-item');
     this.computer = computer;
     this.init();
   }

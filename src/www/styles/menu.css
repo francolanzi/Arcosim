@@ -71,7 +71,7 @@ cpnt-gallery.open {
   transform: scaleY(1);
 }
 
-cpnt-gallery img {
+cpnt-gallery > [is='cpnt-item'] {
   margin: 0.5rem;
   padding: 0;
   line-height: 0;
