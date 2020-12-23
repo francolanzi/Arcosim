@@ -1,0 +1,33 @@
+cpnt-lut-list {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+cpnt-lut-value,
+cpnt-lut-key {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0.1rem 0;
+}
+
+cpnt-lut-key input,
+cpnt-lut-value input,
+cpnt-lut-value label {
+  width: 10rem;
+}
+
+cpnt-lut-value label,
+cpnt-lut-value div {
+  color: black;
+  line-height: 0;
+  font-size: 1rem;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}

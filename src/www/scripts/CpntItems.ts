@@ -8,6 +8,7 @@ import { DisplayItem } from './cpnts/Display.js';
 import { EncoderItem } from './cpnts/Encoder.js';
 import { IncrementItem } from './cpnts/Increment.js';
 import { LatchItem } from './cpnts/Latch.js';
+import { LookupTableItem } from './cpnts/LookupTable.js';
 import { MemoryItem } from './cpnts/Memory.js';
 import { MemoryAddressRegisterItem } from './cpnts/MemoryAddressRegister.js';
 import { MemoryBufferRegisterItem } from './cpnts/MemoryBufferRegister.js';
@@ -32,6 +33,7 @@ class CpntItems {
     this.add(new EncoderItem(computer));
     this.add(new IncrementItem(computer));
     this.add(new LatchItem(computer));
+    this.add(new LookupTableItem(computer));
     this.add(new MemoryItem(computer));
     this.add(new MemoryAddressRegisterItem(computer));
     this.add(new MemoryBufferRegisterItem(computer));
