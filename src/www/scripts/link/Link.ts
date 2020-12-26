@@ -1,3 +1,4 @@
+import Center from '../ifaces/Center.js';
 import LinkInfo from '../ifaces/LinkInfo.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
@@ -50,6 +51,25 @@ class Link {
     this._line.style.strokeDasharray = value ? '10,10' : 'none';
   }
 
+  private static offset(c1: Center, c2: Center) {
+    const dx = c2.x - c1.x;
+    const dy = c2.y - c1.y;
+
+    if (dx === 0) {
+      return {
+        x: c1.x,
+        y: c1.y + Math.sign(dy) * 5,
+      };
+    } else {
+      const m = dy / dx;
+
+      const x = c1.x + Math.sign(dx) * 5 / Math.sqrt(1 + m * m);
+      const y = c1.y + m * (x - c1.x);
+
+      return { x, y };
+    }
+  }
+
   public constructor(input: Input, output: Output) {
     this.input = input;
     this.output = output;
@@ -91,32 +111,39 @@ class Link {
   }
 
   public moveInput(): void {
-    const center = this.input.center;
+    const c1 = this.input.center;
+    const c2 = this._corners.length ? this._corners[0].center : this.output.center;
+
+    const { x, y } = Link.offset(c1, c2);
 
     const points = this._line.getAttribute('points')?.split(' ');
 
     if (points) {
-      points[0] = `${center.x},${center.y}`;
+      points[0] = `${c1.x},${c1.y}`;
       this._line.setAttribute('points', points.reduce((acum, curr) => `${acum} ${curr}`));
     }
 
-    this._areas[0].setAttribute('x1', center.x.toString());
-    this._areas[0].setAttribute('y1', center.y.toString());
+    this._areas[0].setAttribute('x1', x.toString());
+    this._areas[0].setAttribute('y1', y.toString());
   }
 
   public moveOutput(): void {
+    const c1 = this.output.center;
+    const c2 = this._corners.length ? this._corners[this._corners.length - 1].center : this.input.center;
+
+    const { x, y } = Link.offset(c1, c2);
+
     const i = this._corners.length;
-    const center = this.output.center;
 
     const points = this._line.getAttribute('points')?.split(' ');
 
     if (points) {
-      points[i + 1] = `${center.x},${center.y}`;
+      points[i + 1] = `${c1.x},${c1.y}`;
       this._line.setAttribute('points', points.reduce((acum, curr) => `${acum} ${curr}`));
     }
 
-    this._areas[i].setAttribute('x2', center.x.toString());
-    this._areas[i].setAttribute('y2', center.y.toString());
+    this._areas[i].setAttribute('x2', x.toString());
+    this._areas[i].setAttribute('y2', y.toString());
   }
 
   public moveCorner(corner: LinkCorner): void {
@@ -135,6 +162,9 @@ class Link {
 
     this._areas[i + 1].setAttribute('x1', center.x.toString());
     this._areas[i + 1].setAttribute('y1', center.y.toString());
+
+    this.moveInput();
+    this.moveOutput();
   }
 
   public remove(): void {
