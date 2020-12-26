@@ -43,6 +43,14 @@ class Link {
     this._line.style.stroke = value;
   }
 
+  public get opacity(): number {
+    return Number(this._line.style.opacity);
+  }
+
+  public set opacity(value: number) {
+    this._line.style.opacity = Math.max(Math.min(value, 1), 0).toString();
+  }
+
   public get dashed(): boolean {
     return this._line.style.strokeDasharray !== 'none';
   }
@@ -102,6 +110,7 @@ class Link {
 
     this.width = this._width;
     this.color = 'black';
+    this.opacity = 1;
     this.dashed = false;
 
     output.addLink(this);

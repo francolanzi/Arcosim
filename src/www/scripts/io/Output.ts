@@ -5,6 +5,7 @@ import IO from './IO.js';
 class Output extends IO {
   private _width: number;
   private _color: string;
+  private _opacity: number;
   private _dashed: boolean;
   private readonly _links: Set<Link>;
 
@@ -44,6 +45,16 @@ class Output extends IO {
     this._links.forEach(link => link.color = value);
   }
 
+  get opacity(): number {
+    return this._opacity;
+  }
+
+  set opacity(value: number) {
+    value = Math.max(Math.min(value, 1), 0);
+    this._opacity = value;
+    this._links.forEach(link => link.opacity = value);
+  }
+
   get dashed(): boolean {
     return this._dashed;
   }
@@ -64,10 +75,12 @@ class Output extends IO {
 
     this._width = 1;
     this._color = 'black';
+    this._opacity = 1;
     this._dashed = false;
 
     this.width = this._width;
     this.color = this._color;
+    this.opacity = this._opacity;
     this.dashed = this._dashed;
 
     let clicked = false;
@@ -99,6 +112,7 @@ class Output extends IO {
     link.value = this.value;
     link.width = this.width;
     link.color = this.color;
+    link.opacity = this.opacity;
     link.dashed = this.dashed;
   }
 
