@@ -20,13 +20,9 @@ class Const extends Component {
   }
 
   public set value(value: string) {
-    const number = Number(value);
-
-    if (value && !isNaN(number)) {
+    if (value && !isNaN(Number(value))) {
       this._value = value;
-      this._const.default = number;
     }
-
     this._updateDisplay();
   }
 
@@ -56,34 +52,41 @@ class Const extends Component {
   }
 
   private _updateDisplay() {
+    const number = Number(this._value);
+
     let text = '';
 
     switch (this._radix) {
     case 2:
-      text = (this._const.default >>> 0).toString(this._radix);
+      text = (number >>> 0).toString(this._radix);
       text = text.toUpperCase();
       text = text.slice(0, 11);
       text = '0b' + text.padStart(11, '0');
       break;
     case 8:
-      text = (this._const.default >>> 0).toString(this._radix);
+      text = (number >>> 0).toString(this._radix);
       text = text.toUpperCase();
       text = text.slice(0, 11);
       text = '0o' + text.padStart(11, '0');
       break;
     case 16:
-      text = (this._const.default >>> 0).toString(this._radix);
+      text = (number >>> 0).toString(this._radix);
       text = text.toUpperCase();
       text = text.slice(0, 8);
       text = '0x' + text.padStart(8, '0');
       break;
     default:
-      text = this._const.default.toString(this._radix);
+      text = number.toString(this._radix);
       text = text.toUpperCase();
       break;
     }
 
     this._display.textContent = text;
+  }
+
+  public run(time: number): boolean {
+    this._const.value = Number(this._value);
+    return super.run(time);
   }
 
   public export(): ConstData {
