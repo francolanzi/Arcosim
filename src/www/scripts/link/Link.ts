@@ -11,6 +11,7 @@ class Link {
   private readonly _corners: Array<LinkCorner>;
   private readonly _line: SVGPolylineElement;
   private readonly _areas: Array<SVGLineElement>;
+  private readonly _title: SVGTitleElement;
 
   public readonly input: Input;
   public readonly output: Output;
@@ -23,6 +24,7 @@ class Link {
   public set value(value: number) {
     this._value = value;
     this.input.value = value;
+    this._title.textContent = `${value}`;
   }
 
   public get width(): number {
@@ -85,8 +87,6 @@ class Link {
     this._value = 0;
     this._width = 1;
 
-    this.value = this._value;
-
     this._corners = [];
 
     const uri = 'http://www.w3.org/2000/svg';
@@ -94,11 +94,13 @@ class Link {
     this.svg = document.createElementNS(uri, 'g');
     this._line = document.createElementNS(uri, 'polyline');
     this._areas = [document.createElementNS(uri, 'line')];
+    this._title = document.createElementNS(uri, 'title');
 
     this.svg.classList.add('cpnt-link');
 
     this.svg.append(this._line);
     this.svg.append(this._areas[0]);
+    this.svg.append(this._title);
 
     this._areas[0].addEventListener('dblclick', ev => {
       const area = <SVGLineElement>ev.target;
@@ -108,6 +110,7 @@ class Link {
 
     this._line.setAttribute('points', '0,0 0,0');
 
+    this.value = this._value;
     this.width = this._width;
     this.color = 'black';
     this.opacity = 1;
