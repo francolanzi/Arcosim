@@ -1,6 +1,6 @@
 import Computer from './Computer.js';
 import CpntItem from './CpntItem.js';
-import Center from './ifaces/Center.js';
+import Draggable from './Draggable.js';
 import CpntData from './ifaces/CpntData.js';
 import CpntInfo from './ifaces/CpntInfo.js';
 import Input from './io/Input.js';
@@ -8,20 +8,15 @@ import Output from './io/Output.js';
 import TrashButton from './menu/buttons/TrashButton.js';
 import CpntConfig from './modal/CpntConfig.js';
 
-abstract class Component extends HTMLElement {
+abstract class Component extends Draggable {
   private static _count = 0;
 
-  private _top: number;
-  private _left: number;
   private _time: number;
   private _label: HTMLDivElement;
 
   private readonly _item: CpntItem;
   private readonly _inputs: Map<string, Input>;
   private readonly _outputs: Map<string, Output>;
-  private readonly _move: (ev: MouseEvent) => void;
-  private readonly _drop: (ev: MouseEvent) => void;
-  private readonly _mouse: Center;
 
   public trash: TrashButton | undefined;
 
@@ -37,14 +32,6 @@ abstract class Component extends HTMLElement {
 
   public get computer(): Computer {
     return this._item.computer;
-  }
-
-  public get top(): number {
-    return this._top;
-  }
-
-  public get left(): number {
-    return this._left;
   }
 
   public get label(): string {
@@ -64,7 +51,7 @@ abstract class Component extends HTMLElement {
   }
 
   public constructor(item: CpntItem, top: number, left: number) {
-    super();
+    super(top, left);
 
     this._item = item;
 
@@ -72,28 +59,16 @@ abstract class Component extends HTMLElement {
 
     this.setAttribute('is', 'cpnt');
 
-    this.style.top = `${top}px`;
-    this.style.left = `${left}px`;
-
-    this._top = top;
-    this._left = left;
-
     this._time = -1;
 
     this._inputs = new Map();
     this._outputs = new Map();
-
-    this._mouse = { x: 0, y: 0 };
-
-    this._move = ev => this.move(ev);
-    this._drop = ev => this.drop(ev);
 
     const img = new Image(item.width, item.height);
 
     img.src = item.image;
     this.append(img);
 
-    img.addEventListener('mousedown', ev => this.drag(ev));
     img.addEventListener('dblclick', () => {
       const ev = new Event('config');
       this.dispatchEvent(ev);
@@ -151,46 +126,31 @@ abstract class Component extends HTMLElement {
   }
 
   public drag(ev: MouseEvent): void {
-    const rect = this.getBoundingClientRect();
-
-    this._mouse.x = ev.clientX - rect.left;
-    this._mouse.y = ev.clientY - rect.top;
-
-    document.addEventListener('mousemove', this._move);
-    document.addEventListener('mouseup', this._drop);
+    super.drag(ev);
 
     this.classList.add('dragging');
-
-    this.dispatchEvent(new Event('drag'));
   }
 
   public move(ev: MouseEvent): void {
-    this._top = Math.max(ev.pageY - this._mouse.y, 0);
-    this._left = Math.max(ev.pageX - this._mouse.x, 0);
-
-    this.style.top = `${this.top}px`;
-    this.style.left = `${this.left}px`;
+    super.move(ev);
 
     const trashed = this.trashed(ev);
+
     this.classList.toggle('trashed', trashed);
+
     if (this.trash) {
       this.trash.active = trashed;
     }
-
-    this.dispatchEvent(new Event('move'));
   }
 
   public drop(ev: MouseEvent): void {
-    document.removeEventListener('mousemove', this._move);
-    document.removeEventListener('mouseup', this._drop);
+    super.drop(ev);
 
     this.classList.remove('dragging');
 
     if (this.trash) {
       this.trash.active = false;
     }
-
-    this.dispatchEvent(new Event('drop'));
 
     if (this.trashed(ev)) {
       this.remove();
@@ -286,10 +246,10 @@ abstract class Component extends HTMLElement {
   public deserialize(info: CpntInfo): void {
     if (this.type === info.type) {
       if (info.top) {
-        this._top = info.top;
+        this.top = info.top;
       }
       if (info.left) {
-        this._left = info.left;
+        this.left = info.left;
       }
       if (info.label) {
         this.label = info.label;
