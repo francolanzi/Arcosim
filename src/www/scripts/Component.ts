@@ -13,6 +13,7 @@ abstract class Component extends HTMLElement {
 
   private _top: number;
   private _left: number;
+  private _time: number;
   private _label: HTMLDivElement;
 
   private readonly _item: CpntItem;
@@ -77,6 +78,8 @@ abstract class Component extends HTMLElement {
     this._top = top;
     this._left = left;
 
+    this._time = -1;
+
     this._inputs = new Map();
     this._outputs = new Map();
 
@@ -108,11 +111,29 @@ abstract class Component extends HTMLElement {
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   public run(time: number): boolean {
+    if (this._time !== time) {
+      this._time = time;
+      this._outputs.forEach(output =>
+        output.color = 'black');
+    }
+
     let changed = false;
-    this._inputs.forEach(input =>
-      changed = changed || input.changed);
-    this._outputs.forEach(output =>
-      changed = changed || output.changed);
+
+    this._inputs.forEach(input => {
+      if (input.changed) {
+        changed = true;
+      }
+    });
+
+    this._outputs.forEach(output => {
+      if (output.changed) {
+        changed = true;
+        if (output.value) {
+          output.color = 'red';
+        }
+      }
+    });
+
     return changed;
   }
 
@@ -121,6 +142,10 @@ abstract class Component extends HTMLElement {
   }
 
   public reset(): void {
+    this._time = -1;
+    this._outputs.forEach(output =>
+      output.color = 'black');
+
     this._inputs.forEach(input => input.reset());
     this._outputs.forEach(output => output.reset());
   }
