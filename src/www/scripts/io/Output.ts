@@ -15,6 +15,7 @@ class Output extends IO {
 
   public set value(value: number) {
     super.value = value;
+    this.width = value ? 2 : 1;
     this._links.forEach(link => link.value = value);
   }
 
