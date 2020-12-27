@@ -15,13 +15,13 @@ link-layer svg {
   box-sizing: border-box;
 }
 
-.cpnt-link > polyline {
+g[is='cpnt-link'] > polyline {
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
 }
 
-.cpnt-link > line {
+g[is='cpnt-link'] > line {
   stroke-width: 10px;
   stroke: transparent;
   fill: none;

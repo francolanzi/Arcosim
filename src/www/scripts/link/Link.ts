@@ -96,7 +96,7 @@ class Link {
     this._areas = [document.createElementNS(uri, 'line')];
     this._title = document.createElementNS(uri, 'title');
 
-    this.svg.classList.add('cpnt-link');
+    this.svg.setAttribute('is', 'cpnt-link');
 
     this.svg.append(this._line);
     this.svg.append(this._areas[0]);
