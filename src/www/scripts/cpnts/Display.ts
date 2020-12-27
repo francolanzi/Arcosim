@@ -1,42 +1,18 @@
 import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
+import CpntWithScreen from '../CpntWithScreen.js';
 import DisplayData from '../ifaces/data/DisplayData.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
 import Config from '../modal/Display/Config.js';
 
-class Display extends Component {
-  private _value: number;
-  private _radix: number;
-
+class Display extends CpntWithScreen {
   private readonly _input: Input;
 
   private readonly _output: Output;
 
-  private readonly _display: HTMLDivElement;
-
   public get config(): Config {
     return new Config(this);
-  }
-
-  public get value(): number {
-    return parseInt(this._display.textContent || '', 16);
-  }
-
-  public set value(value: number) {
-    this._value = value;
-    this._updateDisplay();
-  }
-
-  public get radix(): number {
-    return this._radix;
-  }
-
-  public set radix(radix: number) {
-    if (radix >= 2 && radix <= 36) {
-      this._radix = radix;
-      this._updateDisplay();
-    }
   }
 
   public constructor(item: CpntItem, top: number, left: number) {
@@ -46,13 +22,7 @@ class Display extends Component {
 
     this._output = this.addOutput('output', 'Salida', 70, 46);
 
-    this._display = document.createElement('div');
-    this._display.setAttribute('is', 'cpnt-display-display');
-    this.append(this._display);
-
-    this._value = this._output.value;
-    this._radix = 16;
-    this.value = this._value;
+    this.value = this._output.value;
   }
 
   public run(time: number): boolean {
@@ -65,37 +35,6 @@ class Display extends Component {
   public reset(): void {
     super.reset();
     this.value = this._output.value;
-  }
-
-  private _updateDisplay() {
-    let text = '';
-
-    switch (this._radix) {
-    case 2:
-      text = (this._value >>> 0).toString(this._radix);
-      text = text.toUpperCase();
-      text = text.slice(0, 11);
-      text = '0b' + text.padStart(11, '0');
-      break;
-    case 8:
-      text = (this._value >>> 0).toString(this._radix);
-      text = text.toUpperCase();
-      text = text.slice(0, 11);
-      text = '0o' + text.padStart(11, '0');
-      break;
-    case 16:
-      text = (this._value >>> 0).toString(this._radix);
-      text = text.toUpperCase();
-      text = text.slice(0, 8);
-      text = '0x' + text.padStart(8, '0');
-      break;
-    default:
-      text = this._value.toString(this._radix);
-      text = text.toUpperCase();
-      break;
-    }
-
-    this._display.textContent = text;
   }
 
   public export(): DisplayData {

@@ -1,104 +1,56 @@
 import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
+import CpntWithScreen from '../CpntWithScreen.js';
 import ConstData from '../ifaces/data/ConstData.js';
 import Output from '../io/Output.js';
 import Config from '../modal/Const/Config.js';
 
-class Const extends Component {
-  private _value: string;
-  private _radix: number;
+class Const extends CpntWithScreen {
+  private _const: string;
 
-  private readonly _const: Output;
-  private readonly _display: HTMLDivElement;
+  private readonly _output: Output;
 
   public get config(): Config {
     return new Config(this);
   }
 
-  public get value(): string {
-    return this._value;
+  public get const(): string {
+    return this._const;
   }
 
-  public set value(value: string) {
-    if (value && !isNaN(Number(value))) {
-      this._value = value;
-    }
-    this._updateDisplay();
-  }
+  public set const(value: string) {
+    const number = Number(value);
 
-  public get radix(): number {
-    return this._radix;
-  }
-
-  public set radix(radix: number) {
-    if (radix >= 2 && radix <= 36) {
-      this._radix = radix;
-      this._updateDisplay();
+    if (value && !isNaN(number)) {
+      this._const = value;
+      this.value = number;
     }
   }
 
   public constructor(item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
-    this._const = this.addOutput('const', 'Constante', 70, 46);
+    this._output = this.addOutput('const', 'Constante', 70, 46);
 
-    this._display = document.createElement('div');
-    this._display.setAttribute('is', 'cpnt-const-display');
-    this.append(this._display);
-
-    this._value = this._const.value.toString();
-    this._radix = 16;
-    this.value = this._value;
-  }
-
-  private _updateDisplay() {
-    const number = Number(this._value);
-
-    let text = '';
-
-    switch (this._radix) {
-    case 2:
-      text = (number >>> 0).toString(this._radix);
-      text = text.toUpperCase();
-      text = text.slice(0, 11);
-      text = '0b' + text.padStart(11, '0');
-      break;
-    case 8:
-      text = (number >>> 0).toString(this._radix);
-      text = text.toUpperCase();
-      text = text.slice(0, 11);
-      text = '0o' + text.padStart(11, '0');
-      break;
-    case 16:
-      text = (number >>> 0).toString(this._radix);
-      text = text.toUpperCase();
-      text = text.slice(0, 8);
-      text = '0x' + text.padStart(8, '0');
-      break;
-    default:
-      text = number.toString(this._radix);
-      text = text.toUpperCase();
-      break;
-    }
-
-    this._display.textContent = text;
+    this._const = this._output.value.toString();
+    this.const = this._const;
   }
 
   public run(time: number): boolean {
-    this._const.value = Number(this._value);
+    this._output.value = this.value;
     return super.run(time);
   }
 
   public export(): ConstData {
     return {
-      value: this.value,
+      value: this.const,
       radix: this.radix,
     };
   }
 
   public import(data: ConstData): void {
     if (data.value) {
-      this.value = data.value;
+      this.const = data.value;
     }
 
     if (data.radix) {

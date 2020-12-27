@@ -7,15 +7,15 @@ class ConstConfig extends CpntConfig<Const> {
   public reload(): void {
     super.reload();
 
-    const value = new Value(this.cpnt.value);
+    const value = new Value(this.cpnt.const);
     const radix = new RadixSelect(this.cpnt.radix);
 
     this.append(value);
     this.append(radix);
 
     value.addEventListener('change', () => {
-      this.cpnt.value = value.value;
-      value.value = this.cpnt.value;
+      this.cpnt.const = value.value;
+      value.value = this.cpnt.const;
     });
 
     radix.addEventListener('change', () => {
