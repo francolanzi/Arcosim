@@ -9,7 +9,7 @@ class CpntConfig<Cpnt extends Component> extends HTMLElement {
     return this._cpnt;
   }
 
-  constructor(cpnt: Cpnt) {
+  public constructor(cpnt: Cpnt) {
     super();
 
     this._cpnt = cpnt;

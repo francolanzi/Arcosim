@@ -1,7 +1,7 @@
 import Component from '../Component';
 
 class CpntLabelEditor extends HTMLElement {
-  constructor(cpnt: Component) {
+  public constructor(cpnt: Component) {
     super();
 
     const input = document.createElement('input');

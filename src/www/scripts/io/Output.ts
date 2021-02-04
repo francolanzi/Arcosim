@@ -28,39 +28,39 @@ class Output extends IO {
     this.value = value;
   }
 
-  get width(): number {
+  public get width(): number {
     return this._width;
   }
 
-  set width(value: number) {
+  public set width(value: number) {
     this._width = value;
     this._links.forEach(link => link.width = value);
   }
 
-  get color(): string {
+  public get color(): string {
     return this._color;
   }
 
-  set color(value: string) {
+  public set color(value: string) {
     this._color = value;
     this._links.forEach(link => link.color = value);
   }
 
-  get opacity(): number {
+  public get opacity(): number {
     return this._opacity;
   }
 
-  set opacity(value: number) {
+  public set opacity(value: number) {
     value = Math.max(Math.min(value, 1), 0);
     this._opacity = value;
     this._links.forEach(link => link.opacity = value);
   }
 
-  get dashed(): boolean {
+  public get dashed(): boolean {
     return this._dashed;
   }
 
-  set dashed(value: boolean) {
+  public set dashed(value: boolean) {
     this._dashed = value;
     this._links.forEach(link => link.dashed = value);
   }

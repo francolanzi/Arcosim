@@ -5,7 +5,7 @@ import ImgButton from './ImgButton.js';
 const { remote } = window.require('electron');
 
 class CpntLoader extends HTMLElement {
-  constructor(cpnt: Component) {
+  public constructor(cpnt: Component) {
     super();
 
     const exportButton = new ImgButton('Exportar', 'images/modal/export.svg');

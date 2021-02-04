@@ -4,7 +4,7 @@ import Cond from './Cond.js';
 class MicroSequenceLogicList extends HTMLElement {
   private readonly _cpnt: MicroSequenceLogic;
 
-  get supported(): Array<string> {
+  public get supported(): Array<string> {
     return MicroSequenceLogic.supported;
   }
 

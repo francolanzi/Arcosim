@@ -26,7 +26,7 @@ abstract class Draggable extends HTMLElement {
     this.style.left = `${value}px`;
   }
 
-  constructor(top: number, left: number) {
+  public constructor(top: number, left: number) {
     super();
 
     this._top = top;
