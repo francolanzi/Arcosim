@@ -26,6 +26,6 @@ class MemoryDelay extends HTMLElement {
   }
 }
 
-customElements.define('memory-delay', MemoryDelay);
+customElements.define('cpnt-memory-delay', MemoryDelay);
 
 export default MemoryDelay;

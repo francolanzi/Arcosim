@@ -29,6 +29,6 @@ class MemoryCell extends HTMLElement {
   }
 }
 
-customElements.define('memory-cell', MemoryCell);
+customElements.define('cpnt-memory-cell', MemoryCell);
 
 export default MemoryCell;

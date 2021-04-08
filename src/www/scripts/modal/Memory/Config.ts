@@ -26,6 +26,6 @@ class MemoryConfig extends CpntConfig<Memory> {
   }
 }
 
-customElements.define('memory-config', MemoryConfig);
+customElements.define('cpnt-memory-config', MemoryConfig);
 
 export default MemoryConfig;

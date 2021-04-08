@@ -36,6 +36,6 @@ class MemoryRange extends HTMLElement {
   }
 }
 
-customElements.define('memory-range', MemoryRange);
+customElements.define('cpnt-memory-range', MemoryRange);
 
 export default MemoryRange;
