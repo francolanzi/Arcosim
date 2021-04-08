@@ -7,20 +7,16 @@ class MemoryConfig extends CpntConfig<Memory> {
   public reload(): void {
     super.reload();
 
-    const from = new Range(0, 'cell-from', 'Desde:');
-    const to = new Range(255, 'cell-to', 'Hasta:');
+    const range = new Range(0, 255);
     const memory = new Cells(this.cpnt);
 
-    memory.showCells(from.value, to.value);
+    memory.showCells(range.from, range.to);
 
-    this.append(from);
-    this.append(to);
+    this.append(range);
     this.append(memory);
 
-    from.addEventListener('change', () =>
-      memory.showCells(from.value, to.value));
-    to.addEventListener('change', () =>
-      memory.showCells(from.value, to.value));
+    range.addEventListener('change', () =>
+      memory.showCells(range.from, range.to));
   }
 }
 

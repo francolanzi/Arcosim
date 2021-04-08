@@ -1,24 +1,38 @@
 import UintInput from '../UintInput.js';
 
 class MemoryRange extends HTMLElement {
-  private readonly _input: UintInput;
+  private readonly _from: UintInput;
+  private readonly _to: UintInput;
 
-  public get value(): number {
-    return parseInt(this._input.value);
+  public get from(): number {
+    return parseInt(this._from.value);
   }
 
-  public constructor(value: number, id: string, label: string) {
+  public get to(): number {
+    return parseInt(this._to.value);
+  }
+
+  public constructor(from: number, to: number) {
     super();
 
-    this._input = new UintInput(value, 0, 0xFFFFFFFF, true);
-    this._input.id = id;
+    this._from = new UintInput(from, 0, 0xFFFFFFFF, true);
+    this._from.id = 'cell-from';
 
-    const inputLabel = document.createElement('label');
-    inputLabel.textContent = label;
-    inputLabel.setAttribute('for', id);
+    this._to = new UintInput(to, 0, 0xFFFFFFFF, true);
+    this._to.id = 'cell-to';
 
-    this.append(inputLabel);
-    this.append(this._input);
+    const fromLabel = document.createElement('label');
+    fromLabel.textContent = 'Rango:';
+    fromLabel.setAttribute('for', this._from.id);
+
+    const toLabel = document.createElement('label');
+    toLabel.textContent = '-';
+    toLabel.setAttribute('for', this._to.id);
+
+    this.append(fromLabel);
+    this.append(this._from);
+    this.append(toLabel);
+    this.append(this._to);
   }
 }
 
