@@ -15,6 +15,11 @@ class Memory extends Component {
 
   private readonly _dataout: Output;
 
+  private _readStartTime: number;
+  private _writeStartTime: number;
+
+  public delay: number;
+
   public get config(): Config {
     return new Config(this);
   }
@@ -23,6 +28,11 @@ class Memory extends Component {
     super(item, top, left);
 
     this._cells = new Map();
+
+    this._readStartTime = -1;
+    this._writeStartTime = -1;
+
+    this.delay = 0;
 
     this._read = this.addInput('read', 'Leer', 76.5, 63);
     this._write = this.addInput('write', 'Escribir', 87.5, 63);
@@ -33,11 +43,25 @@ class Memory extends Component {
   }
 
   public run(time: number): boolean {
-    if (this._read.value) {
-      this._dataout.value = Number(this.getCell(this._address.value));
+    if (!this._read.value) {
+      this._readStartTime = -1;
+    } else {
+      if (this._readStartTime < 0) {
+        this._readStartTime = time;
+      }
+      if (this._readStartTime + this.delay <= time) {
+        this._dataout.value = Number(this.getCell(this._address.value));
+      }
     }
-    if (this._write.value) {
-      this.setCell(this._address.value, this._datain.value.toString());
+    if (!this._write.value) {
+      this._writeStartTime = -1;
+    } else {
+      if (this._writeStartTime < 0) {
+        this._writeStartTime = time;
+      }
+      if (this._writeStartTime + this.delay <= time) {
+        this.setCell(this._address.value, this._datain.value.toString());
+      }
     }
 
     return super.run(time);
@@ -45,11 +69,14 @@ class Memory extends Component {
 
   public export(): MemoryData {
     return {
+      delay: this.delay,
       cells: Array.from(this._cells.entries()),
     };
   }
 
   public import(data: MemoryData): void {
+    this.delay = data.delay || 0;
+    console.log(this.delay);
     if (data.cells) {
       this._cells.clear();
       data.cells.forEach(([address, data]) =>

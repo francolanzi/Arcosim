@@ -1,3 +1,18 @@
+memory-delay {
+  display: block;
+  width: min-content;
+  white-space: nowrap;
+  margin: auto;
+  padding: 0;
+}
+
+memory-delay label {
+  color: black;
+  line-height: 0;
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
 memory-range {
   display: flex;
   flex-direction: row;
