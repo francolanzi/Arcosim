@@ -43,26 +43,29 @@ class Memory extends Component {
   }
 
   public run(time: number): boolean {
-    if (!this._read.value) {
-      this._readStartTime = -1;
-      this._dataout.value = 0;
-    } else {
+    if (this._read.value) {
       if (this._readStartTime < 0) {
         this._readStartTime = time;
       }
+
       if (this._readStartTime + this.delay <= time) {
         this._dataout.value = Number(this.getCell(this._address.value));
       }
-    }
-    if (!this._write.value) {
-      this._writeStartTime = -1;
     } else {
+      this._readStartTime = -1;
+      this._dataout.value = 0;
+    }
+
+    if (this._write.value) {
       if (this._writeStartTime < 0) {
         this._writeStartTime = time;
       }
+
       if (this._writeStartTime + this.delay <= time) {
         this.setCell(this._address.value, this._datain.value.toString());
       }
+    } else {
+      this._writeStartTime = -1;
     }
 
     return super.run(time);
