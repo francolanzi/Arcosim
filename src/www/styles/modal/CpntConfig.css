@@ -4,3 +4,10 @@
   justify-content: center;
   align-items: center;
 }
+
+[is='cpnt-config'] div:first-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

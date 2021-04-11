@@ -26,11 +26,15 @@ class CpntConfig<Cpnt extends Component> extends HTMLElement {
   public reload(): void {
     this.clear();
 
-    const loader = new CpntLoader(this.cpnt);
     const label = new CpntLabelEditor(this.cpnt);
+    const loader = new CpntLoader(this.cpnt);
 
-    this.append(loader);
-    this.append(label);
+    const div = document.createElement('div');
+
+    div.append(label);
+    div.append(loader);
+
+    this.append(div);
 
     loader.addEventListener('import', () => this.reload());
   }
