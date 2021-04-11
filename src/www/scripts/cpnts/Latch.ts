@@ -2,15 +2,28 @@ import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
+import Config from '../modal/Latch/Config.js';
 
 class Latch extends Component {
+  private _value: number;
+
   private readonly _input: Input;
   private readonly _clock: Input;
 
   private readonly _output: Output;
 
+  public get config(): Config {
+    return new Config(this);
+  }
+
+  public get value(): number {
+    return this._value;
+  }
+
   public constructor(item: CpntItem, top: number, left: number) {
     super(item, top, left);
+
+    this._value = 0;
 
     this._input = this.addInput('input', 'Entrada', 31.5, 0);
     this._clock = this.addInput('clock', 'Clock', 63, 9.5);
@@ -22,7 +35,9 @@ class Latch extends Component {
 
   public run(time: number): boolean {
     if (this._clock.value) {
-      this._output.value = this._input.value;
+      this._value = this._input.value;
+    } else {
+      this._output.value = this._value;
     }
 
     return super.run(time);

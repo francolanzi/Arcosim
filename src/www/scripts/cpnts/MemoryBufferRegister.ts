@@ -2,8 +2,11 @@ import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
+import Config from '../modal/MemoryBufferRegister/Config.js';
 
 class MemoryBufferRegister extends Component {
+  private _value: number;
+
   private readonly _read: Input;
   private readonly _write: Input;
   private readonly _control: Input;
@@ -14,8 +17,18 @@ class MemoryBufferRegister extends Component {
   private readonly _dataout: Output;
   private readonly _busout: Output;
 
+  public get config(): Config {
+    return new Config(this);
+  }
+
+  public get value(): number {
+    return this._value;
+  }
+
   public constructor(item: CpntItem, top: number, left: number) {
     super(item, top, left);
+
+    this._value = 0;
 
     this._read = this.addInput('read', 'Leer', 11.5, 19);
     this._write = this.addInput('write', 'Escribir', 23, 19);
@@ -29,17 +42,19 @@ class MemoryBufferRegister extends Component {
   }
 
   public run(time: number): boolean {
+    if (this._read.value) {
+      this._value = this._busin.value;
+    }
+
     if (this._clock.value) {
       if (this._control.value) {
-        this._dataout.value = this._datain.value;
-      } else if (this._read.value) {
-        this._dataout.value = this._busin.value;
+        this._value = this._datain.value;
       }
-
-      if (this._write.value) {
-        this._busout.value = this._dataout.value;
-      }
+    } else {
+      this._dataout.value = this._value;
     }
+
+    this._busout.value = this._write.value ? this._value : 0;
 
     return super.run(time);
   }

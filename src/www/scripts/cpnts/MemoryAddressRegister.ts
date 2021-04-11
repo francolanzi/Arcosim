@@ -2,16 +2,29 @@ import Component from '../Component.js';
 import CpntItem from '../CpntItem.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
+import Config from '../modal/MemoryAddressRegister/Config.js';
 
 class MemoryAddressRegister extends Component {
+  private _value: number;
+
   private readonly _control: Input;
   private readonly _clock: Input;
   private readonly _addrin: Input;
 
   private readonly _addrout: Output;
 
+  public get config(): Config {
+    return new Config(this);
+  }
+
+  public get value(): number {
+    return this._value;
+  }
+
   public constructor(item: CpntItem, top: number, left: number) {
     super(item, top, left);
+
+    this._value = 0;
 
     this._control = this.addInput('control', 'Control', 23, 19);
     this._clock = this.addInput('clock', 'Clock', 23, 0);
@@ -23,9 +36,12 @@ class MemoryAddressRegister extends Component {
   public run(time: number): boolean {
     if (this._clock.value) {
       if (this._control.value) {
-        this._addrout.value = this._addrin.value;
+        this._value = this._addrin.value;
       }
+    } else {
+      this._addrout.value = this._value;
     }
+
     return super.run(time);
   }
 }
