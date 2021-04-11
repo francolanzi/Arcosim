@@ -1,0 +1,19 @@
+cpnt-mbr-value {
+  display: block;
+  width: min-content;
+  white-space: nowrap;
+  margin: auto;
+  padding: 0;
+}
+
+cpnt-mbr-value label {
+  color: black;
+  line-height: 0;
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+cpnt-mbr-value input[type='number'] {
+  width: 7rem;
+  pointer-events: none;
+}
