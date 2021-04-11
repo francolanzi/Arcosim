@@ -45,6 +45,7 @@ class Memory extends Component {
   public run(time: number): boolean {
     if (!this._read.value) {
       this._readStartTime = -1;
+      this._dataout.value = 0;
     } else {
       if (this._readStartTime < 0) {
         this._readStartTime = time;
