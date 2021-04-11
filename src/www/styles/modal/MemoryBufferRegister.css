@@ -6,6 +6,7 @@ cpnt-mbr-value {
   padding: 0;
 }
 
+cpnt-mbr-bits label,
 cpnt-mbr-value label {
   color: black;
   line-height: 0;

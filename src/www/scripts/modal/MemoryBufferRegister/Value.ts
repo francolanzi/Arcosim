@@ -5,6 +5,10 @@ class MemoryBufferRegisterValue extends HTMLElement {
     return parseInt(this._input.value);
   }
 
+  public set value(value: number) {
+    this._input.value = value.toString();
+  }
+
   public constructor(value: number) {
     super();
 
