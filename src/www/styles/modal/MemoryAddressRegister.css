@@ -6,6 +6,7 @@ cpnt-mar-value {
   padding: 0;
 }
 
+cpnt-mar-bits label,
 cpnt-mar-value label {
   color: black;
   line-height: 0;
