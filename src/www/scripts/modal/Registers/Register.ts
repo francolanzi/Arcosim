@@ -1,35 +1,40 @@
 class RegistersRegister extends HTMLElement {
   public readonly index: number;
 
-  private readonly _input: HTMLInputElement;
+  private readonly _label: HTMLInputElement;
+  private readonly _value: HTMLInputElement;
 
-  private _value: string;
+  public get label(): string {
+    return this._label.value;
+  }
 
   public get value(): string {
-    return this._input.value;
+    return this._value.value;
   }
 
   public set value(value: string) {
-    this._input.value = value;
+    this._value.value = value;
   }
 
-  public constructor(index: number, value: string) {
+  public constructor(index: number, label: string, value: string) {
     super();
 
     this.index = index;
 
-    this._value = value.toString();
+    this._label = document.createElement('input');
+    this._label.type = 'text';
+    this._label.value = label;
 
-    this._input = document.createElement('input');
-    this._input.id = `register${index}`;
-    this._input.type = 'text';
-    this._input.value = value;
-    this.append(this._input);
+    this._value = document.createElement('input');
+    this._value.type = 'text';
+    this._value.value = value;
 
-    const label = document.createElement('label');
-    label.textContent = `Registro ${index} = `;
-    label.setAttribute('for', this._input.id);
-    this.prepend(label);
+    const equals = document.createElement('label');
+    equals.textContent = ` (${index.toString().padStart(2, '0')}) = `;
+
+    this.append(this._label);
+    this.append(equals);
+    this.append(this._value);
   }
 }
 

@@ -7,6 +7,7 @@ import Config from '../modal/Registers/Config.js';
 
 class Registers extends Component {
   private readonly _registers: Array<string>;
+  private readonly _labels: Array<string>;
 
   private readonly _decoderA: Input;
   private readonly _decoderB: Input;
@@ -29,6 +30,7 @@ class Registers extends Component {
     super(item, top, left);
 
     this._registers = new Array<string>(16).fill('0');
+    this._labels = new Array<string>(16).fill('Reg');
 
     this._decoderA = this.addInput('decoderA', 'Posición A', 20.75, 0);
     this._decoderB = this.addInput('decoderB', 'Posición B', 46.5, 0);
@@ -72,6 +74,7 @@ class Registers extends Component {
   public export(): RegistersData {
     return {
       registers: this._registers,
+      labels: this._labels,
     };
   }
 
@@ -82,11 +85,16 @@ class Registers extends Component {
         this.addRegister();
         this.setRegister(index, value);
       });
+      if (data.labels) {
+        data.labels.forEach((label, index) =>
+          this.setLabel(index, label));
+      }
     }
   }
 
   public addRegister(): number {
     this._registers.push('0');
+    this._labels.push('Reg');
     return this._registers.length - 1;
   }
 
@@ -102,7 +110,18 @@ class Registers extends Component {
 
   public removeRegister(): number {
     this._registers.pop();
+    this._labels.pop();
     return this._registers.length;
+  }
+
+  public getLabel(index: number): string {
+    return this._labels[index];
+  }
+
+  public setLabel(index: number, label: string): void {
+    if (index >= 0 && index < this._labels.length) {
+      this._labels[index] = label;
+    }
   }
 }
 
