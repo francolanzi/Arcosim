@@ -34,6 +34,10 @@ cpnt-store-row {
   margin: 0.1rem 0;
 }
 
+cpnt-store-row.active {
+  background-color: yellow;
+}
+
 cpnt-store-header {
   height: 1.5rem;
   display: block;

@@ -20,6 +20,14 @@ class StoreRow extends HTMLElement {
     return this._instruction;
   }
 
+  public get active(): boolean {
+    return this.classList.contains('active');
+  }
+
+  public set active(active: boolean) {
+    this.classList.toggle('active', active);
+  }
+
   public get bits(): number {
     return this._bits;
   }
@@ -84,6 +92,8 @@ class StoreRow extends HTMLElement {
         for (let i = 0; i < this._bits; i++) {
           this._instruction += parseInt(this._inputs[i].value) << i;
         }
+
+        this.active = false;
       });
 
       const firstChild = <Element> this.firstChild;

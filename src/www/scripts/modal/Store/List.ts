@@ -22,7 +22,9 @@ class StoreList extends HTMLElement {
     this.cpnt = cpnt;
 
     for (const instruction of cpnt.instructions) {
-      this.append(this.newRow(instruction));
+      const row = this.newRow(instruction);
+      this.append(row);
+      row.active = (row.position === cpnt.position && row.instruction === cpnt.instruction);
     }
   }
 

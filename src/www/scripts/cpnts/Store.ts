@@ -34,6 +34,14 @@ class Store extends Component {
     }
   }
 
+  public get position(): number {
+    return this._position.value;
+  }
+
+  public get instruction(): number {
+    return this._instruction.value;
+  }
+
   public get count(): number {
     return this._instructions.length;
   }
