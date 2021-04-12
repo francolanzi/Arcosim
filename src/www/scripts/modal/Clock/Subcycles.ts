@@ -16,7 +16,7 @@ class ClockSubcycles extends HTMLElement {
 
     const label = document.createElement('label');
     label.textContent = 'subciclos';
-    label.setAttribute('for', 'subcycles');
+    label.setAttribute('for', this._input.id);
     this.append(label);
   }
 }
