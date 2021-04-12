@@ -107,6 +107,10 @@ abstract class Component extends Draggable {
           output.color = 'red';
         }
       }
+
+      if (!output.value) {
+        output.color = 'black';
+      }
     });
 
     return changed;
