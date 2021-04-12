@@ -23,7 +23,7 @@ class MemoryCell extends HTMLElement {
     this.append(this._input);
 
     const label = document.createElement('label');
-    label.textContent = `[${index.toString(16).padStart(4, '0')}]:`;
+    label.textContent = `[${index.toString().padStart(4, '0')}]:`;
     label.setAttribute('for', this._input.id);
     this.prepend(label);
   }
