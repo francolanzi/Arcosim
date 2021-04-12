@@ -34,7 +34,7 @@ class Store extends Component {
     }
   }
 
-  public get instructionCount(): number {
+  public get count(): number {
     return this._instructions.length;
   }
 

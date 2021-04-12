@@ -44,7 +44,7 @@ class StoreList extends HTMLElement {
     });
 
     row.addEventListener('remove', () => {
-      if (this.cpnt.instructionCount > 1) {
+      if (this.cpnt.count > 1) {
         this.cpnt.removeInstruction(row.position);
         row.remove();
       }
