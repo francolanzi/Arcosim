@@ -8,7 +8,7 @@ abstract class CpntWithScreen extends Component {
   private readonly _screen: HTMLDivElement;
 
   public get value(): number {
-    return parseInt(this._screen.textContent || '', 16);
+    return this._value;
   }
 
   public set value(value: number) {
