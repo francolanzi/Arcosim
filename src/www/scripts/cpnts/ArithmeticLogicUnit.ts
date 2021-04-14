@@ -6,6 +6,9 @@ import Output from '../io/Output.js';
 import Config from '../modal/ArithmeticLogicUnit/Config.js';
 
 class ArithmeticLogicUnit extends Component {
+  private _bits: number;
+  private _mask: number;
+
   private readonly _functions: Array<number>;
 
   private readonly _inputA: Input;
@@ -36,12 +39,24 @@ class ArithmeticLogicUnit extends Component {
     return new Config(this);
   }
 
+  public get bits(): number {
+    return this._bits;
+  }
+
+  public set bits(bits: number) {
+    this._bits = Math.max(Math.min(bits, 32), 1);
+    this._mask = 0xFFFFFFFF >>> (32 - bits);
+  }
+
   public get count(): number {
     return this._functions.length;
   }
 
   public constructor(item: CpntItem, top: number, left: number) {
     super(item, top, left);
+
+    this._bits = 32;
+    this._mask = 0xFFFFFFFF;
 
     this._functions = [];
 
@@ -60,45 +75,49 @@ class ArithmeticLogicUnit extends Component {
   }
 
   public run(time: number): boolean {
+    const shift = 32 - this._bits;
+    const a = (this._inputA.value << shift) >> shift;
+    const b = (this._inputB.value << shift) >> shift;
+
     switch(this._functions[this._function.value]) {
     case 0:
-      this._result.value = this._inputA.value + this._inputB.value;
+      this._result.value = (a + b) & this._mask;
       break;
     case 1:
-      this._result.value = this._inputA.value - this._inputB.value;
+      this._result.value = (a - b) & this._mask;
       break;
     case 2:
-      this._result.value = this._inputA.value * this._inputB.value;
+      this._result.value = (a * b) & this._mask;
       break;
     case 3:
-      this._result.value = this._inputA.value / this._inputB.value;
+      this._result.value = (a / b) & this._mask;
       break;
     case 4:
-      this._result.value = this._inputA.value & this._inputB.value;
+      this._result.value = (a & b) & this._mask;
       break;
     case 5:
-      this._result.value = this._inputA.value | this._inputB.value;
+      this._result.value = (a | b) & this._mask;
       break;
     case 6:
-      this._result.value = this._inputA.value ^ this._inputB.value;
+      this._result.value = (a ^ b) & this._mask;
       break;
     case 7:
-      this._result.value = this._inputA.value;
+      this._result.value = a & this._mask;
       break;
     case 8:
-      this._result.value = this._inputB.value;
+      this._result.value = b & this._mask;
       break;
     case 9:
-      this._result.value = ~ this._inputA.value;
+      this._result.value = (~ a) & this._mask;
       break;
     case 10:
-      this._result.value = ~ this._inputB.value;
+      this._result.value = (~ b) & this._mask;
       break;
     default:
       break;
     }
 
-    this._controlN.value = (this._result.value < 0) ? 1 : 0;
+    this._controlN.value = this._result.value >>> (this._bits - 1);
     this._controlZ.value = (this._result.value === 0) ? 1 : 0;
 
     return super.run(time);
@@ -106,6 +125,7 @@ class ArithmeticLogicUnit extends Component {
 
   public export(): ArithmeticLogicUnitData {
     return {
+      bits: this.bits,
       functions: [...this._functions],
     };
   }
@@ -114,6 +134,10 @@ class ArithmeticLogicUnit extends Component {
     if (data.functions) {
       this._functions.length = 0;
       data.functions.forEach(func => this.addFunction(func));
+    }
+
+    if (data.bits) {
+      this.bits = data.bits;
     }
   }
 

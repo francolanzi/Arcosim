@@ -1,3 +1,10 @@
+cpnt-alu-bits label {
+  color: black;
+  line-height: 0;
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
 cpnt-alu-count {
   display: flex;
   flex-direction: row;
