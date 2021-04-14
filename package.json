@@ -43,6 +43,11 @@
     ],
     "directories": {
       "buildResources": "icons"
+    },
+    "linux": {
+      "target": [
+        "deb"
+      ]
     }
   }
 }
