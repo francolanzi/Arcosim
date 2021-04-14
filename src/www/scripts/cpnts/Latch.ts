@@ -42,6 +42,11 @@ class Latch extends Component {
 
     return super.run(time);
   }
+
+  public reset(): void {
+    super.reset();
+    this._value = 0;
+  }
 }
 
 class LatchItem extends CpntItem {
