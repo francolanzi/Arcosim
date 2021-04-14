@@ -1,6 +1,6 @@
 {
   "name": "arcosim",
-  "version": "1.0.0-beta",
+  "version": "2021.04.14-beta",
   "description": "Computer architecture simulator based on Tanenbaum architectures",
   "license": "GPL-3.0-only",
   "author": {
