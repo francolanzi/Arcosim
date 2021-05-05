@@ -24,8 +24,12 @@ class Decoder extends Component {
   }
 
   public run(time: number): boolean {
-    if (this._clock.value && this._enable.value) {
-      this._decoded.value = 1 << this._encoded.value;
+    if (this._enable.value) {
+      if (this._clock.value) {
+        this._decoded.value = 1 << this._encoded.value;
+      }
+    } else {
+      this._decoded.value = 0;
     }
 
     return super.run(time);
