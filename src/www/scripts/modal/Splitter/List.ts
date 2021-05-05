@@ -23,8 +23,8 @@ class SplitterList extends HTMLElement {
   }
 
   public addMask(): void {
-    const index = this._cpnt.addMask('', 0);
-    const elem = new Mask(index, '', 0);
+    const index = this._cpnt.addMask('', 1);
+    const elem = new Mask(index, '', 1);
     elem.addEventListener('change', () =>
       this._cpnt.setMask(elem.index, elem.name, elem.size));
     this.append(elem);

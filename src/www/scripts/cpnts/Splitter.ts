@@ -74,10 +74,12 @@ class Splitter extends Component {
   }
 
   public addMask(name: string, size: number): number {
-    const id = `mask${this.count + 1}`;
-    const output = this.addOutput(id, name, 0, 42);
-    this._masks.push({ output, size });
-    this.makeMasks();
+    if (size > 0) {
+      const id = `mask${this.count + 1}`;
+      const output = this.addOutput(id, name, 0, 42);
+      this._masks.push({ output, size });
+      this.makeMasks();
+    }
     return this._masks.length - 1;
   }
 
