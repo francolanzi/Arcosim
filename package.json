@@ -25,15 +25,15 @@
     "fix": "eslint --fix ./src/"
   },
   "devDependencies": {
-    "@types/resize-observer-browser": "^0.1.5",
-    "@typescript-eslint/eslint-plugin": "^4.23.0",
-    "@typescript-eslint/parser": "^4.23.0",
+    "@types/resize-observer-browser": "^0.1.7",
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
     "cpy-cli": "^4.1.0",
     "electron": "^9.4.4",
     "electron-builder": "^22.11.3",
     "eslint-config-semistandard": "^16.0.0",
-    "prettier": "^2.3.0",
-    "typescript": "^4.2.4"
+    "prettier": "^2.6.2",
+    "typescript": "^4.6.3"
   },
   "build": {
     "appId": "arcosim",
