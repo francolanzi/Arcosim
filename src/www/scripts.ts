@@ -8,7 +8,7 @@ import MenuLayer from './scripts/menu/MenuLayer.js';
 import ModalLayer from './scripts/modal/ModalLayer.js';
 import FileManager from './scripts/FileManager.js';
 
-const { remote } = window.require('electron');
+const { ipcRenderer } = window.require('electron');
 
 const computer = new Computer();
 
@@ -80,4 +80,6 @@ document.body.append(modalLayer);
 document.ondragstart = () => false;
 
 FileManager.new(computer);
-FileManager.open(computer, remote.process.argv[1]);
+
+ipcRenderer.invoke('get-args').then((args: string[]) =>
+  FileManager.open(computer, args[1]));

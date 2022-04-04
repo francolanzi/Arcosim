@@ -2,7 +2,7 @@ import Component from '../Component.js';
 import FileManager from '../FileManager.js';
 import ImgButton from './ImgButton.js';
 
-const { remote } = window.require('electron');
+const { ipcRenderer } = window.require('electron');
 
 class CpntLoader extends HTMLElement {
   public constructor (cpnt: Component) {
@@ -14,10 +14,8 @@ class CpntLoader extends HTMLElement {
     this.append(exportButton);
     this.append(importButton);
 
-    const window = remote.getCurrentWindow();
-
-    exportButton.addEventListener('click', () => {
-      const path = remote.dialog.showSaveDialogSync(window, {
+    exportButton.addEventListener('click', async () => {
+      const path = await ipcRenderer.invoke('save-dialog', {
         filters: [{ name: 'Componente', extensions: ['arcocpnt'] }]
       });
 
@@ -27,8 +25,8 @@ class CpntLoader extends HTMLElement {
       }
     });
 
-    importButton.addEventListener('click', () => {
-      const paths = remote.dialog.showOpenDialogSync(window, {
+    importButton.addEventListener('click', async () => {
+      const paths = await ipcRenderer.invoke('open-dialog', {
         filters: [{ name: 'Componente', extensions: ['arcocpnt'] }],
         properties: ['openFile']
       });

@@ -2,7 +2,7 @@ import Computer from '../../Computer.js';
 import FileManager from '../../FileManager.js';
 import MenuButton from '../MenuButton.js';
 
-const { remote } = window.require('electron');
+const { ipcRenderer } = window.require('electron');
 
 class SaveButton extends MenuButton {
   public constructor (computer: Computer) {
@@ -11,10 +11,8 @@ class SaveButton extends MenuButton {
 
     super(title, icon);
 
-    const window = remote.getCurrentWindow();
-
-    this.addEventListener('click', () => {
-      const path = remote.dialog.showSaveDialogSync(window, {
+    this.addEventListener('click', async () => {
+      const path = await ipcRenderer.invoke('save-dialog', {
         filters: [{ name: 'Arcosim', extensions: ['arcosim'] }]
       });
 

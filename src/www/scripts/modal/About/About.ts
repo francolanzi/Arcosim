@@ -1,6 +1,8 @@
 const { readFileSync } = window.require('fs');
 const { resolve } = window.require('path');
-const { remote, shell } = window.require('electron');
+const { ipcRenderer, shell } = window.require('electron');
+
+type ProcessVersions = typeof process.versions;
 
 class About extends HTMLElement {
   public constructor () {
@@ -37,8 +39,10 @@ class About extends HTMLElement {
     const chromeDep = document.createElement('li');
     const faDep = document.createElement('li');
 
-    electronDep.textContent = `Electron ${remote.process.versions.electron}`;
-    chromeDep.textContent = `Chrome ${remote.process.versions.chrome}`;
+    ipcRenderer.invoke('get-versions').then((versions: ProcessVersions) => {
+      electronDep.textContent = `Electron ${versions.electron}`;
+      chromeDep.textContent = `Chrome ${versions.chrome}`;
+    });
 
     const faLink = document.createElement('a');
     faLink.textContent = 'Font Awesome Free';

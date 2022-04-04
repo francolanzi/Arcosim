@@ -29,7 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^5.17.0",
     "@typescript-eslint/parser": "^5.17.0",
     "cpy-cli": "^4.1.0",
-    "electron": "^9.4.4",
+    "electron": "^18.0.1",
     "electron-builder": "^22.14.13",
     "eslint-config-semistandard": "^16.0.0",
     "prettier": "^2.6.2",

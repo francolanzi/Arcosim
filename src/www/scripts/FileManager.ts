@@ -2,7 +2,7 @@ import Component from './Component';
 import Computer from './Computer';
 
 const { readFileSync, writeFileSync } = window.require('fs');
-const { remote } = window.require('electron');
+const { ipcRenderer } = window.require('electron');
 const { basename } = window.require('path');
 
 class FileManager {
@@ -12,18 +12,14 @@ class FileManager {
 
   public static new (computer: Computer): void {
     computer.clear();
-
-    const window = remote.getCurrentWindow();
-    window.setTitle('Arcosim');
+    ipcRenderer.invoke('set-title', 'Arcosim');
   }
 
   public static save (computer: Computer, path: string): void {
     try {
       const content = JSON.stringify(computer.serialize());
       writeFileSync(path, content);
-
-      const window = remote.getCurrentWindow();
-      window.setTitle(`Arcosim - ${basename(path)}`);
+      ipcRenderer.invoke('set-title', `Arcosim - ${basename(path)}`);
     } catch {
       console.log(`Write failed: ${path}`);
     }
@@ -33,9 +29,7 @@ class FileManager {
     try {
       const content = readFileSync(path, { encoding: 'utf8' });
       computer.deserialize(JSON.parse(content));
-
-      const window = remote.getCurrentWindow();
-      window.setTitle(`Arcosim - ${basename(path)}`);
+      ipcRenderer.invoke('set-title', `Arcosim - ${basename(path)}`);
     } catch {
       console.log(`Read failed: ${path}`);
     }

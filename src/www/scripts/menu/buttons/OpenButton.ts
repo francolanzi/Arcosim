@@ -2,7 +2,7 @@ import Computer from '../../Computer.js';
 import FileManager from '../../FileManager.js';
 import MenuButton from '../MenuButton.js';
 
-const { remote } = window.require('electron');
+const { ipcRenderer } = window.require('electron');
 
 class OpenButton extends MenuButton {
   public constructor (computer: Computer) {
@@ -11,10 +11,8 @@ class OpenButton extends MenuButton {
 
     super(title, icon);
 
-    const window = remote.getCurrentWindow();
-
-    this.addEventListener('click', () => {
-      const paths = remote.dialog.showOpenDialogSync(window, {
+    this.addEventListener('click', async () => {
+      const paths = await ipcRenderer.invoke('open-dialog', {
         filters: [{ name: 'Arcosim', extensions: ['arcosim'] }],
         properties: ['openFile']
       });

@@ -1,17 +1,37 @@
-import { app, BrowserWindow } from 'electron';
-import path from 'path';
+import { app, BrowserWindow, ipcMain, dialog } from 'electron';
+import { resolve } from 'path';
 
 app.whenReady().then(() => {
-  const win = new BrowserWindow({
-    icon: path.resolve(__dirname, 'www/images/favicon.ico'),
+  const window = new BrowserWindow({
+    icon: resolve(__dirname, 'www/images/favicon.ico'),
     webPreferences: {
-      nodeIntegration: true,
-      enableRemoteModule: true
+      contextIsolation: false,
+      preload: resolve(__dirname, 'preload.js')
     }
   });
-  win.setMenuBarVisibility(false);
-  win.setMenu(null);
-  win.maximize();
-  win.loadFile(path.resolve(__dirname, 'www/index.html'));
-  // win.webContents.openDevTools();
+  window.setMenuBarVisibility(false);
+  window.setMenu(null);
+  window.maximize();
+  window.loadFile(resolve(__dirname, 'www/index.html'));
+  // window.webContents.openDevTools();
+
+  ipcMain.handle('get-args', async () => {
+    return process.argv;
+  });
+
+  ipcMain.handle('get-versions', async () => {
+    return process.versions;
+  });
+
+  ipcMain.handle('open-dialog', async (event, options) => {
+    return dialog.showOpenDialogSync(options);
+  });
+
+  ipcMain.handle('save-dialog', async (event, options) => {
+    return dialog.showSaveDialogSync(options);
+  });
+
+  ipcMain.handle('set-title', async (event, title) => {
+    window.setTitle(title);
+  });
 });
