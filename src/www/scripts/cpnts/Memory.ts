@@ -80,7 +80,6 @@ class Memory extends Component {
 
   public import (data: MemoryData): void {
     this.delay = data.delay || 0;
-    console.log(this.delay);
     if (data.cells) {
       this._cells.clear();
       data.cells.forEach(([address, data]) =>
