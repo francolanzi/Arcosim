@@ -6,3 +6,6 @@ build/
 
 # dist output directory
 dist/
+
+# package-lock.json file
+package-lock.json
