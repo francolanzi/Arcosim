@@ -1,4 +1,5 @@
 import { app, BrowserWindow, ipcMain, dialog } from 'electron';
+import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
 app.whenReady().then(() => {
@@ -21,6 +22,11 @@ app.whenReady().then(() => {
 
   ipcMain.handle('get-versions', async () => {
     return process.versions;
+  });
+
+  ipcMain.handle('get-package', async () => {
+    const path = resolve(__dirname, '../package.json');
+    return JSON.parse(readFileSync(path, 'utf8'));
   });
 
   ipcMain.handle('open-dialog', async (event, options) => {

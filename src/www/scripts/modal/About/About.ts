@@ -1,68 +1,69 @@
-const { readFileSync } = window.require('fs');
-const { resolve } = window.require('path');
 const { ipcRenderer, shell } = window.require('electron');
 
-type ProcessVersions = typeof process.versions;
+type Versions = typeof process.versions;
 
 class About extends HTMLElement {
   public constructor () {
     super();
 
-    const path = resolve(__dirname, '../../package.json');
-    const pckg = JSON.parse(readFileSync(path, 'utf8'));
+    Promise.all([
+      ipcRenderer.invoke('get-versions') as Promise<Versions>,
+      ipcRenderer.invoke('get-package') as Promise<Record<string, unknown>>
+    ]).then(([versions, pckg]) => {
+      const repository = pckg.repository as Record<string, unknown>;
+      const author = pckg.author as Record<string, unknown>;
 
-    const iconImg = document.createElement('img');
-    iconImg.src = 'images/icon.svg';
+      const iconImg = document.createElement('img');
+      iconImg.src = 'images/icon.svg';
 
-    const icon = document.createElement('a');
-    icon.href = pckg.repository.url;
-    icon.append(iconImg);
+      const icon = document.createElement('a');
+      icon.href = repository.url as string;
+      icon.append(iconImg);
 
-    const nameLink = document.createElement('a');
-    nameLink.textContent = `Arcosim ${pckg.version}`;
-    nameLink.href = pckg.repository.url;
+      const nameLink = document.createElement('a');
+      nameLink.textContent = `Arcosim ${pckg.version}`;
+      nameLink.href = repository.url as string;
 
-    const name = document.createElement('h6');
-    name.append(nameLink);
+      const name = document.createElement('h6');
+      name.append(nameLink);
 
-    const author = document.createElement('a');
-    author.textContent = pckg.author.name;
-    author.href = `mailto:${pckg.author.email}`;
+      const authorLink = document.createElement('a');
+      authorLink.textContent = author.name as string;
+      authorLink.href = `mailto:${author.email}`;
 
-    const developed = document.createElement('p');
-    developed.textContent = 'Desarrollado por ';
-    developed.append(author);
+      const developed = document.createElement('p');
+      developed.textContent = 'Desarrollado por ';
+      developed.append(authorLink);
 
-    const deps = document.createElement('ul');
+      const deps = document.createElement('ul');
 
-    const electronDep = document.createElement('li');
-    const chromeDep = document.createElement('li');
-    const faDep = document.createElement('li');
+      const electronDep = document.createElement('li');
+      const chromeDep = document.createElement('li');
+      const faDep = document.createElement('li');
 
-    ipcRenderer.invoke('get-versions').then((versions: ProcessVersions) => {
       electronDep.textContent = `Electron ${versions.electron}`;
       chromeDep.textContent = `Chrome ${versions.chrome}`;
-    });
 
-    const faLink = document.createElement('a');
-    faLink.textContent = 'Font Awesome Free';
-    faLink.href = 'https://fontawesome.com/license/free';
-    faDep.append(faLink);
+      const faLink = document.createElement('a');
+      faLink.textContent = 'Font Awesome Free';
+      faLink.href = 'https://fontawesome.com/license/free';
+      faDep.append(faLink);
 
-    deps.append(electronDep);
-    deps.append(chromeDep);
-    deps.append(faDep);
+      deps.append(electronDep);
+      deps.append(chromeDep);
+      deps.append(faDep);
 
-    this.append(icon);
-    this.append(name);
-    this.append(developed);
-    this.append(deps);
+      this.append(icon);
+      this.append(name);
+      this.append(developed);
+      this.append(deps);
 
-    this.querySelectorAll('a').forEach(a => {
-      a.onclick = ev => {
-        ev.preventDefault();
-        shell.openExternal(a.href);
-      };
+      this.querySelectorAll('a').forEach(a => {
+        a.onclick = ev => {
+          ev.preventDefault();
+          shell.openExternal(a.href);
+        };
+      });
     });
   }
 }
