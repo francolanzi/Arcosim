@@ -35,7 +35,7 @@
     "typescript": "^4.2.4"
   },
   "build": {
-    "appId": "arcosim-1.0.0-beta",
+    "appId": "arcosim",
     "productName": "Arcosim",
     "files": [
       "build",
