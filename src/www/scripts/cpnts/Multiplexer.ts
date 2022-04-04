@@ -10,7 +10,7 @@ class Multiplexer extends Component {
 
   private readonly _output: Output;
 
-  public constructor(item: CpntItem, top: number, left: number) {
+  public constructor (item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
     this._inputA = this.addInput('inputA', 'A', 18.5, 0);
@@ -20,40 +20,41 @@ class Multiplexer extends Component {
     this._output = this.addOutput('output', 'Salida', 30.5, 22);
   }
 
-  public run(time: number): boolean {
-    this._output.value = this._control.value ?
-      this._inputB.value : this._inputA.value;
+  public run (time: number): boolean {
+    this._output.value = this._control.value
+      ? this._inputB.value
+      : this._inputA.value;
 
     return super.run(time);
   }
 }
 
 class MultiplexerItem extends CpntItem {
-  public get type(): string {
+  public get type (): string {
     return 'Multiplexer';
   }
 
-  public get image(): string {
+  public get image (): string {
     return 'images/cpnt/Multiplexer.svg';
   }
 
-  public get width(): number {
+  public get width (): number {
     return 62;
   }
 
-  public get height(): number {
+  public get height (): number {
     return 23;
   }
 
-  public get defaultLabel(): string {
+  public get defaultLabel (): string {
     return 'MUX';
   }
 
-  public get labelRect(): DOMRectReadOnly {
+  public get labelRect (): DOMRectReadOnly {
     return new DOMRectReadOnly(1, 1, 60, 21);
   }
 
-  public cpnt(top: number, left: number): Component {
+  public cpnt (top: number, left: number): Component {
     return new Multiplexer(this, top, left);
   }
 }

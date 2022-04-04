@@ -1,5 +1,5 @@
 class UintInput extends HTMLInputElement {
-  public constructor(value: number, min: number, max: number, arrows: boolean) {
+  public constructor (value: number, min: number, max: number, arrows: boolean) {
     super();
 
     min = Math.max(min, 0);
@@ -34,7 +34,7 @@ class UintInput extends HTMLInputElement {
     });
   }
 
-  private clamp(value: number, min: number, max: number) {
+  private clamp (value: number, min: number, max: number) {
     value = Math.min(value, max);
     value = Math.max(value, min);
     return value;

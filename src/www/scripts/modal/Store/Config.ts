@@ -4,7 +4,7 @@ import { Store } from '../../cpnts/Store.js';
 import CpntConfig from '../CpntConfig.js';
 
 class StoreConfig extends CpntConfig<Store> {
-  public reload(): void {
+  public reload (): void {
     super.reload();
 
     const bits = new Bits(this.cpnt.bits);
@@ -13,7 +13,9 @@ class StoreConfig extends CpntConfig<Store> {
     this.append(bits);
     this.append(table);
 
-    bits.addEventListener('change', () => table.bits = bits.value);
+    bits.addEventListener('change', () => {
+      table.bits = bits.value;
+    });
   }
 }
 

@@ -3,7 +3,7 @@ const { resolve } = window.require('path');
 const { remote, shell } = window.require('electron');
 
 class About extends HTMLElement {
-  public constructor() {
+  public constructor () {
     super();
 
     const path = resolve(__dirname, '../../package.json');
@@ -28,7 +28,7 @@ class About extends HTMLElement {
     author.href = `mailto:${pckg.author.email}`;
 
     const developed = document.createElement('p');
-    developed.textContent = `Desarrollado por `;
+    developed.textContent = 'Desarrollado por ';
     developed.append(author);
 
     const deps = document.createElement('ul');
@@ -54,11 +54,12 @@ class About extends HTMLElement {
     this.append(developed);
     this.append(deps);
 
-    this.querySelectorAll('a').forEach(a =>
+    this.querySelectorAll('a').forEach(a => {
       a.onclick = ev => {
         ev.preventDefault();
         shell.openExternal(a.href);
-      });
+      };
+    });
   }
 }
 

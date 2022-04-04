@@ -3,22 +3,22 @@ import CustomSelect from './CustomSelect.js';
 class RadixSelect extends HTMLElement {
   private readonly _radix: CustomSelect;
 
-  public get radix(): number {
+  public get radix (): number {
     return parseInt(this._radix.value);
   }
 
-  public set radix(radix: number) {
+  public set radix (radix: number) {
     this._radix.value = radix.toString();
   }
 
-  public constructor(radix: number) {
+  public constructor (radix: number) {
     super();
 
     this._radix = new CustomSelect(radix, new Map([
       [2, 'Binario'],
       [8, 'Octal'],
       [10, 'Decimal'],
-      [16, 'Hexadecimal'],
+      [16, 'Hexadecimal']
     ]));
     this._radix.id = 'const-radix';
 

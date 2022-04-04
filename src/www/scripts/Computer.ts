@@ -15,19 +15,19 @@ class Computer extends EventTarget {
   private readonly _cpnts: Map<number, Component>;
   private readonly _items: CpntItems;
 
-  public get items(): IterableIterator<CpntItem> {
+  public get items (): IterableIterator<CpntItem> {
     return this._items.list();
   }
 
-  public get running(): boolean {
+  public get running (): boolean {
     return this._running;
   }
 
-  public get stepping(): boolean {
+  public get stepping (): boolean {
     return this._stepping;
   }
 
-  public constructor() {
+  public constructor () {
     super();
 
     this._items = new CpntItems(this);
@@ -40,11 +40,11 @@ class Computer extends EventTarget {
     this._time = 0;
   }
 
-  public getItem(type: string): CpntItem | undefined {
+  public getItem (type: string): CpntItem | undefined {
     return this._items.get(type);
   }
 
-  public addCpnt(cpnt: Component): void {
+  public addCpnt (cpnt: Component): void {
     console.log(`${cpnt.type} ${cpnt.cpntId} added`);
 
     this._cpnts.set(cpnt.cpntId, cpnt);
@@ -58,11 +58,11 @@ class Computer extends EventTarget {
     this.dispatchEvent(new CustomEvent('add', { detail: cpnt }));
   }
 
-  public getCpnt(id: number): Component | undefined {
+  public getCpnt (id: number): Component | undefined {
     return this._cpnts.get(id);
   }
 
-  public removeCpnt(id: number): boolean {
+  public removeCpnt (id: number): boolean {
     const cpnt = this._cpnts.get(id);
 
     if (cpnt) {
@@ -72,7 +72,7 @@ class Computer extends EventTarget {
     return this._cpnts.delete(id);
   }
 
-  public run(): void {
+  public run (): void {
     if (!this.running && !this.stepping) {
       this._running = true;
       this._stopped = false;
@@ -81,7 +81,7 @@ class Computer extends EventTarget {
     }
   }
 
-  public step(): void {
+  public step (): void {
     if (!this.running && !this.stepping) {
       this._stepping = true;
       this.dispatchEvent(new Event('step'));
@@ -89,11 +89,12 @@ class Computer extends EventTarget {
     }
   }
 
-  public continue(): void {
+  public continue (): void {
     let changed = false;
 
-    this._cpnts.forEach(cpnt =>
-      changed = cpnt.run(this._time) || changed);
+    this._cpnts.forEach(cpnt => {
+      changed = cpnt.run(this._time) || changed;
+    });
 
     const timeout = ++this._count < 1000;
 
@@ -116,20 +117,20 @@ class Computer extends EventTarget {
     }
   }
 
-  public stop(): void {
+  public stop (): void {
     if (this.running) {
       this._stopped = true;
     }
   }
 
-  public reset(): void {
+  public reset (): void {
     if (!this.running && !this.stepping) {
       this._time = 0;
       this._cpnts.forEach(cpnt => cpnt.reset());
     }
   }
 
-  public clear(): void {
+  public clear (): void {
     this.stop();
 
     this._cpnts.forEach(cpnt => {
@@ -140,7 +141,7 @@ class Computer extends EventTarget {
     this.reset();
   }
 
-  public serialize(): ComputerInfo {
+  public serialize (): ComputerInfo {
     const cpnts: Array<CpntInfo> = [];
     const links: Array<LinkInfo> = [];
 
@@ -157,7 +158,7 @@ class Computer extends EventTarget {
     return { cpnts, links };
   }
 
-  public deserialize(obj: ComputerInfo): void {
+  public deserialize (obj: ComputerInfo): void {
     if (obj.cpnts && obj.links) {
       this.clear();
 
@@ -189,7 +190,6 @@ class Computer extends EventTarget {
               input.createLink(output);
               input.link?.deserialize(linkInfo);
             }
-
           }
         }
       });

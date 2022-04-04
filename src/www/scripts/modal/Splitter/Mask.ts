@@ -6,15 +6,15 @@ class SplitterMask extends HTMLElement {
   private readonly _maskName: HTMLInputElement;
   private readonly _maskSize: UintInput;
 
-  public get name(): string {
+  public get name (): string {
     return this._maskName.value;
   }
 
-  public get size(): number {
+  public get size (): number {
     return parseInt(this._maskSize.value);
   }
 
-  public constructor(index: number, name: string, size: number) {
+  public constructor (index: number, name: string, size: number) {
     super();
 
     this.index = index;

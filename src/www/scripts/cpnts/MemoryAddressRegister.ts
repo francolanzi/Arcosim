@@ -16,25 +16,25 @@ class MemoryAddressRegister extends Component {
 
   private readonly _addrout: Output;
 
-  public get config(): Config {
+  public get config (): Config {
     return new Config(this);
   }
 
-  public get value(): number {
+  public get value (): number {
     return this._value;
   }
 
-  public get bits(): number {
+  public get bits (): number {
     return this._bits;
   }
 
-  public set bits(bits: number) {
+  public set bits (bits: number) {
     this._bits = Math.max(Math.min(bits, 32), 1);
     this._mask = 0xFFFFFFFF >>> (32 - bits);
     this._value &= this._mask;
   }
 
-  public constructor(item: CpntItem, top: number, left: number) {
+  public constructor (item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
     this._value = 0;
@@ -48,7 +48,7 @@ class MemoryAddressRegister extends Component {
     this._addrout = this.addOutput('addrout', 'Bus de direcciones', 0, 9.5);
   }
 
-  public run(time: number): boolean {
+  public run (time: number): boolean {
     if (this._clock.value) {
       if (this._control.value) {
         this._value = this._addrin.value & this._mask;
@@ -60,18 +60,18 @@ class MemoryAddressRegister extends Component {
     return super.run(time);
   }
 
-  public reset(): void {
+  public reset (): void {
     super.reset();
     this._value = 0;
   }
 
-  public export(): MemoryAddressRegisterData {
+  public export (): MemoryAddressRegisterData {
     return {
-      bits: this.bits,
+      bits: this.bits
     };
   }
 
-  public import(data: MemoryAddressRegisterData): void {
+  public import (data: MemoryAddressRegisterData): void {
     if (data.bits) {
       this.bits = data.bits;
     }
@@ -79,31 +79,31 @@ class MemoryAddressRegister extends Component {
 }
 
 class MemoryAddressRegisterItem extends CpntItem {
-  public get type(): string {
+  public get type (): string {
     return 'Memory Address Register';
   }
 
-  public get image(): string {
+  public get image (): string {
     return 'images/cpnt/MemoryAddressRegister.svg';
   }
 
-  public get width(): number {
+  public get width (): number {
     return 47;
   }
 
-  public get height(): number {
+  public get height (): number {
     return 20;
   }
 
-  public get defaultLabel(): string {
+  public get defaultLabel (): string {
     return 'MAR';
   }
 
-  public get labelRect(): DOMRectReadOnly {
+  public get labelRect (): DOMRectReadOnly {
     return new DOMRectReadOnly(1, 1, 45, 18);
   }
 
-  public cpnt(top: number, left: number): Component {
+  public cpnt (top: number, left: number): Component {
     return new MemoryAddressRegister(this, top, left);
   }
 }

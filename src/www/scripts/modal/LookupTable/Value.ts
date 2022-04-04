@@ -5,17 +5,17 @@ class LookupTableValue extends HTMLElement {
 
   private readonly _value: HTMLInputElement;
 
-  public get value(): string {
+  public get value (): string {
     return this._value.value;
   }
 
-  public constructor(key: string, value: string) {
+  public constructor (key: string, value: string) {
     super();
 
     this.key = key;
 
     this._value = document.createElement('input');
-    this._value.id = `value`;
+    this._value.id = 'value';
     this._value.type = 'text';
     this._value.value = value;
     this.append(this._value);

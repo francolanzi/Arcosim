@@ -4,7 +4,7 @@ import Bits from './Bits.js';
 import Value from './Value.js';
 
 class MemoryBufferRegisterConfig extends CpntConfig<MemoryBufferRegister> {
-  public reload(): void {
+  public reload (): void {
     super.reload();
 
     const bits = new Bits(this.cpnt.bits);

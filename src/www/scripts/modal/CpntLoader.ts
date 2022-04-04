@@ -5,7 +5,7 @@ import ImgButton from './ImgButton.js';
 const { remote } = window.require('electron');
 
 class CpntLoader extends HTMLElement {
-  public constructor(cpnt: Component) {
+  public constructor (cpnt: Component) {
     super();
 
     const exportButton = new ImgButton('Exportar', 'images/modal/export.svg');
@@ -18,7 +18,7 @@ class CpntLoader extends HTMLElement {
 
     exportButton.addEventListener('click', () => {
       const path = remote.dialog.showSaveDialogSync(window, {
-        filters: [{ name: 'Componente', extensions: ['arcocpnt'] }],
+        filters: [{ name: 'Componente', extensions: ['arcocpnt'] }]
       });
 
       if (path) {
@@ -30,7 +30,7 @@ class CpntLoader extends HTMLElement {
     importButton.addEventListener('click', () => {
       const paths = remote.dialog.showOpenDialogSync(window, {
         filters: [{ name: 'Componente', extensions: ['arcocpnt'] }],
-        properties: ['openFile'],
+        properties: ['openFile']
       });
 
       if (paths) {

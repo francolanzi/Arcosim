@@ -4,11 +4,11 @@ import Register from './Register.js';
 class RegistersList extends HTMLElement {
   public readonly cpnt: Registers;
 
-  public get count(): number {
+  public get count (): number {
     return this.cpnt.count;
   }
 
-  public set count(count: number) {
+  public set count (count: number) {
     while (count > this.cpnt.count) {
       const index = this.cpnt.addRegister();
       const label = this.cpnt.getLabel(index);
@@ -27,7 +27,7 @@ class RegistersList extends HTMLElement {
     }
   }
 
-  public constructor(cpnt: Registers) {
+  public constructor (cpnt: Registers) {
     super();
 
     this.cpnt = cpnt;

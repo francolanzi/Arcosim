@@ -2,7 +2,7 @@ import About from '../../modal/About/About.js';
 import MenuButton from '../MenuButton.js';
 
 class AboutButton extends MenuButton {
-  public constructor() {
+  public constructor () {
     const title = 'Acerca de';
     const icon = 'images/menu/about.svg';
 
@@ -12,9 +12,9 @@ class AboutButton extends MenuButton {
       const init = {
         detail: {
           title: 'Acerca de',
-          content: new About(),
+          content: new About()
         },
-        bubbles: true,
+        bubbles: true
       };
       const ev = new CustomEvent('modal', init);
       this.dispatchEvent(ev);

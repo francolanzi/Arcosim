@@ -3,7 +3,7 @@ class ModalLayer extends HTMLElement {
   private readonly _content: HTMLDivElement;
   private readonly _close: HTMLImageElement;
 
-  public constructor() {
+  public constructor () {
     super();
 
     const modal = document.createElement('div');
@@ -37,7 +37,7 @@ class ModalLayer extends HTMLElement {
     });
   }
 
-  public show(title: string, content: Node): void {
+  public show (title: string, content: Node): void {
     this._title.textContent = title;
     this._content.append(content);
     this.classList.add('show');

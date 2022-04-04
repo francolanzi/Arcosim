@@ -4,16 +4,16 @@ import MenuButton from '../MenuButton.js';
 class CpntButton extends MenuButton {
   private readonly _gallery: Gallery;
 
-  public get open(): boolean {
+  public get open (): boolean {
     return this.active;
   }
 
-  public set open(value: boolean) {
+  public set open (value: boolean) {
     this._gallery.open = value;
     this.active = value;
   }
 
-  public constructor(gallery: Gallery) {
+  public constructor (gallery: Gallery) {
     const title = 'Componentes';
     const icon = 'images/menu/cpnt.svg';
 
@@ -21,8 +21,9 @@ class CpntButton extends MenuButton {
 
     this._gallery = gallery;
 
-    this.addEventListener('click', () =>
-      this.open = !this._gallery.open);
+    this.addEventListener('click', () => {
+      this.open = !this._gallery.open;
+    });
   }
 }
 

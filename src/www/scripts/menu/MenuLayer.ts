@@ -8,7 +8,7 @@ class MenuLayer extends HTMLElement {
   public readonly gallery: Gallery;
   public readonly menu: Menu;
 
-  public constructor(computer: Computer) {
+  public constructor (computer: Computer) {
     super();
 
     this.computer = computer;
@@ -26,17 +26,21 @@ class MenuLayer extends HTMLElement {
       cpnt.trash = this.menu.trashButton;
     });
 
-    this.computer.addEventListener('run', () =>
-      this.style.pointerEvents = 'all');
+    this.computer.addEventListener('run', () => {
+      this.style.pointerEvents = 'all';
+    });
 
-    this.computer.addEventListener('stop', () =>
-      this.style.pointerEvents = 'none');
+    this.computer.addEventListener('stop', () => {
+      this.style.pointerEvents = 'none';
+    });
 
-    this.computer.addEventListener('step', () =>
-      this.style.pointerEvents = 'all');
+    this.computer.addEventListener('step', () => {
+      this.style.pointerEvents = 'all';
+    });
 
-    this.computer.addEventListener('pause', () =>
-      this.style.pointerEvents = 'none');
+    this.computer.addEventListener('pause', () => {
+      this.style.pointerEvents = 'none';
+    });
   }
 }
 

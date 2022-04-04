@@ -5,7 +5,7 @@ import Count from './Count.js';
 import List from './List.js';
 
 class ArithmeticLogicUnitConfig extends CpntConfig<ArithmeticLogicUnit> {
-  public reload(): void {
+  public reload (): void {
     super.reload();
 
     const bits = new Bits(this.cpnt.bits);
@@ -16,8 +16,9 @@ class ArithmeticLogicUnitConfig extends CpntConfig<ArithmeticLogicUnit> {
     this.append(count);
     this.append(list);
 
-    bits.addEventListener('change', () =>
-      this.cpnt.bits = bits.value);
+    bits.addEventListener('change', () => {
+      this.cpnt.bits = bits.value;
+    });
 
     count.addEventListener('add', () => list.addFunction());
     count.addEventListener('remove', () => list.removeFunction());

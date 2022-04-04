@@ -7,15 +7,15 @@ class ShifterFunc extends HTMLElement {
   private readonly _func: CustomSelect;
   private readonly _value: UintInput;
 
-  public get func(): number {
+  public get func (): number {
     return parseInt(this._func.value);
   }
 
-  public get value(): number {
+  public get value (): number {
     return parseInt(this._value.value);
   }
 
-  public constructor(index: number, func: number, value: number, supported: Array<string>) {
+  public constructor (index: number, func: number, value: number, supported: Array<string>) {
     super();
 
     this.index = index;

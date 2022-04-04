@@ -10,15 +10,15 @@ class Const extends CpntWithScreen {
 
   private readonly _output: Output;
 
-  public get config(): Config {
+  public get config (): Config {
     return new Config(this);
   }
 
-  public get const(): string {
+  public get const (): string {
     return this._const;
   }
 
-  public set const(value: string) {
+  public set const (value: string) {
     const number = Number(value);
 
     if (value && !isNaN(number)) {
@@ -27,7 +27,7 @@ class Const extends CpntWithScreen {
     }
   }
 
-  public constructor(item: CpntItem, top: number, left: number) {
+  public constructor (item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
     this._output = this.addOutput('const', 'Constante', 70, 46);
@@ -36,19 +36,19 @@ class Const extends CpntWithScreen {
     this.const = this._const;
   }
 
-  public run(time: number): boolean {
+  public run (time: number): boolean {
     this._output.value = this.value;
     return super.run(time);
   }
 
-  public export(): ConstData {
+  public export (): ConstData {
     return {
       value: this.const,
-      radix: this.radix,
+      radix: this.radix
     };
   }
 
-  public import(data: ConstData): void {
+  public import (data: ConstData): void {
     if (data.value) {
       this.const = data.value;
     }
@@ -60,31 +60,31 @@ class Const extends CpntWithScreen {
 }
 
 class ConstItem extends CpntItem {
-  public get type(): string {
+  public get type (): string {
     return 'Const';
   }
 
-  public get image(): string {
+  public get image (): string {
     return 'images/cpnt/Const.svg';
   }
 
-  public get width(): number {
+  public get width (): number {
     return 141;
   }
 
-  public get height(): number {
+  public get height (): number {
     return 46;
   }
 
-  public get defaultLabel(): string {
+  public get defaultLabel (): string {
     return 'Const';
   }
 
-  public get labelRect(): DOMRectReadOnly {
+  public get labelRect (): DOMRectReadOnly {
     return new DOMRectReadOnly(1, 1, 139, 19);
   }
 
-  public cpnt(top: number, left: number): Component {
+  public cpnt (top: number, left: number): Component {
     return new Const(this, top, left);
   }
 }

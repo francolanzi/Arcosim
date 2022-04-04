@@ -4,13 +4,13 @@ import Cell from './Cell.js';
 class MemoryCells extends HTMLElement {
   private readonly _cpnt: Memory;
 
-  public constructor(cpnt: Memory) {
+  public constructor (cpnt: Memory) {
     super();
 
     this._cpnt = cpnt;
   }
 
-  public showCells(from: number, to: number): void {
+  public showCells (from: number, to: number): void {
     while (this.lastChild) {
       this.removeChild(this.lastChild);
     }

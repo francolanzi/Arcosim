@@ -1,7 +1,7 @@
 import ImgButton from '../ImgButton.js';
 
 class ShifterCount extends HTMLElement {
-  public constructor() {
+  public constructor () {
     super();
 
     const add = new ImgButton('Agregar', 'images/modal/plus.svg');

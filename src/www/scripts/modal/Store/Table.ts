@@ -12,18 +12,18 @@ class StoreTable extends HTMLElement {
   private readonly _header: Header;
   private readonly _list: List;
 
-  public get bits(): number {
+  public get bits (): number {
     return this._bits;
   }
 
-  public set bits(bits: number) {
+  public set bits (bits: number) {
     this._bits = bits;
     this._grid.bits = bits;
     this._header.bits = bits;
     this._list.bits = bits;
   }
 
-  public constructor(cpnt: Store) {
+  public constructor (cpnt: Store) {
     super();
 
     const masks: Array<Mask> = [];

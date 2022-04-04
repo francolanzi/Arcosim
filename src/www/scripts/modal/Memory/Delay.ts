@@ -3,11 +3,11 @@ import UintInput from '../UintInput.js';
 class MemoryDelay extends HTMLElement {
   private readonly _input: UintInput;
 
-  public get value(): number {
+  public get value (): number {
     return parseInt(this._input.value);
   }
 
-  public constructor(delay: number) {
+  public constructor (delay: number) {
     super();
 
     const leftLabel = document.createElement('label');

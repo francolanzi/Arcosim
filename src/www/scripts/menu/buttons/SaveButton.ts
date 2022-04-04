@@ -5,7 +5,7 @@ import MenuButton from '../MenuButton.js';
 const { remote } = window.require('electron');
 
 class SaveButton extends MenuButton {
-  public constructor(computer: Computer) {
+  public constructor (computer: Computer) {
     const title = 'Guardar';
     const icon = 'images/menu/save.svg';
 
@@ -15,7 +15,7 @@ class SaveButton extends MenuButton {
 
     this.addEventListener('click', () => {
       const path = remote.dialog.showSaveDialogSync(window, {
-        filters: [{ name: 'Arcosim', extensions: ['arcosim'] }],
+        filters: [{ name: 'Arcosim', extensions: ['arcosim'] }]
       });
 
       if (path) {

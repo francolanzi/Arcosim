@@ -5,11 +5,11 @@ class ArithmeticLogicUnitFunc extends HTMLElement {
 
   public readonly index: number;
 
-  public get func(): number {
+  public get func (): number {
     return parseInt(this._func.value);
   }
 
-  public constructor(index: number, func: number, supported: Array<string>) {
+  public constructor (index: number, func: number, supported: Array<string>) {
     super();
 
     this.index = index;

@@ -4,7 +4,7 @@ import Count from './Count.js';
 import List from './List.js';
 
 class MicroSequenceLogicConfig extends CpntConfig<MicroSequenceLogic> {
-  public reload(): void {
+  public reload (): void {
     super.reload();
 
     const count = new Count();

@@ -17,58 +17,58 @@ class Link {
   public readonly output: Output;
   public readonly svg: SVGGElement;
 
-  public get value(): number {
+  public get value (): number {
     return this._value;
   }
 
-  public set value(value: number) {
+  public set value (value: number) {
     this._value = value;
     this.input.value = value;
     this._title.textContent = `${value}`;
   }
 
-  public get width(): number {
+  public get width (): number {
     return this._width;
   }
 
-  public set width(value: number) {
+  public set width (value: number) {
     value = Math.min(Math.max(value, 1), 10);
     this._width = value;
     this._line.style.strokeWidth = `${value}px`;
   }
 
-  public get color(): string {
+  public get color (): string {
     return this._line.style.stroke;
   }
 
-  public set color(value: string) {
+  public set color (value: string) {
     this._line.style.stroke = value;
   }
 
-  public get opacity(): number {
+  public get opacity (): number {
     return Number(this._line.style.opacity);
   }
 
-  public set opacity(value: number) {
+  public set opacity (value: number) {
     this._line.style.opacity = Math.max(Math.min(value, 1), 0).toString();
   }
 
-  public get dashed(): boolean {
+  public get dashed (): boolean {
     return this._line.style.strokeDasharray !== 'none';
   }
 
-  public set dashed(value: boolean) {
+  public set dashed (value: boolean) {
     this._line.style.strokeDasharray = value ? '10,10' : 'none';
   }
 
-  private static offset(c1: Center, c2: Center) {
+  private static offset (c1: Center, c2: Center) {
     const dx = c2.x - c1.x;
     const dy = c2.y - c1.y;
 
     if (dx === 0) {
       return {
         x: c1.x,
-        y: c1.y + Math.sign(dy) * 5,
+        y: c1.y + Math.sign(dy) * 5
       };
     } else {
       const m = dy / dx;
@@ -80,7 +80,7 @@ class Link {
     }
   }
 
-  public constructor(input: Input, output: Output) {
+  public constructor (input: Input, output: Output) {
     this.input = input;
     this.output = output;
 
@@ -122,7 +122,7 @@ class Link {
     this.moveOutput();
   }
 
-  public moveInput(): void {
+  public moveInput (): void {
     const c1 = this.input.center;
     const c2 = this._corners.length ? this._corners[0].center : this.output.center;
 
@@ -139,7 +139,7 @@ class Link {
     this._areas[0].setAttribute('y1', y.toString());
   }
 
-  public moveOutput(): void {
+  public moveOutput (): void {
     const c1 = this.output.center;
     const c2 = this._corners.length ? this._corners[this._corners.length - 1].center : this.input.center;
 
@@ -158,7 +158,7 @@ class Link {
     this._areas[i].setAttribute('y2', y.toString());
   }
 
-  public moveCorner(corner: LinkCorner): void {
+  public moveCorner (corner: LinkCorner): void {
     const center = corner.center;
     const i = this._corners.indexOf(corner);
 
@@ -179,7 +179,7 @@ class Link {
     this.moveOutput();
   }
 
-  public remove(): void {
+  public remove (): void {
     this.svg.remove();
     this._line.remove();
     this.input.removeLink();
@@ -188,7 +188,7 @@ class Link {
     this._corners.forEach(corner => corner.remove());
   }
 
-  public addCorner(index: number, x: number, y: number): void {
+  public addCorner (index: number, x: number, y: number): void {
     const area = this._areas[index];
     const corner = new LinkCorner(x, y);
     const newArea = document.createElementNS('http://www.w3.org/2000/svg', 'line');
@@ -226,7 +226,7 @@ class Link {
     this.moveCorner(corner);
   }
 
-  public removeCorner(corner: LinkCorner): void {
+  public removeCorner (corner: LinkCorner): void {
     const i = this._corners.indexOf(corner);
 
     const area = this._areas[i];
@@ -251,15 +251,15 @@ class Link {
     }
   }
 
-  public serialize(): LinkInfo {
+  public serialize (): LinkInfo {
     return {
       input: this.input.serialize(),
       output: this.output.serialize(),
-      corners: this._corners.map(corner => corner.serialize()),
+      corners: this._corners.map(corner => corner.serialize())
     };
   }
 
-  public deserialize(obj: LinkInfo): void {
+  public deserialize (obj: LinkInfo): void {
     obj.corners.forEach((info, index) =>
       this.addCorner(index, info.x, info.y));
   }

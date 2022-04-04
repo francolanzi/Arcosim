@@ -2,7 +2,7 @@ import Computer from '../../Computer.js';
 import MenuButton from '../MenuButton.js';
 
 class StepButton extends MenuButton {
-  public constructor(computer: Computer) {
+  public constructor (computer: Computer) {
     const title = 'Avanzar';
     const icon = 'images/menu/step.svg';
 

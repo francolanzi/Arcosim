@@ -4,7 +4,7 @@ import RadixSelect from '../RadixSelect.js';
 import Value from './Value.js';
 
 class ConstConfig extends CpntConfig<Const> {
-  public reload(): void {
+  public reload (): void {
     super.reload();
 
     const value = new Value(this.cpnt.const);

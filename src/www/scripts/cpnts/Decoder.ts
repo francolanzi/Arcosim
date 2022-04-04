@@ -10,7 +10,7 @@ class Decoder extends Component {
 
   private readonly _decoded: Output;
 
-  public constructor(item: CpntItem, top: number, left: number) {
+  public constructor (item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
     this._encoded = this.addInput('encoded', 'Codificado', 77, 14.5);
@@ -23,7 +23,7 @@ class Decoder extends Component {
     this._clock.default = 1;
   }
 
-  public run(time: number): boolean {
+  public run (time: number): boolean {
     if (this._enable.value && this._clock.value) {
       this._decoded.value = 1 << this._encoded.value;
     } else {
@@ -35,31 +35,31 @@ class Decoder extends Component {
 }
 
 class DecoderItem extends CpntItem {
-  public get type(): string {
+  public get type (): string {
     return 'Decoder';
   }
 
-  public get image(): string {
+  public get image (): string {
     return 'images/cpnt/Decoder.svg';
   }
 
-  public get width(): number {
+  public get width (): number {
     return 78;
   }
 
-  public get height(): number {
+  public get height (): number {
     return 30;
   }
 
-  public get defaultLabel(): string {
+  public get defaultLabel (): string {
     return 'Decoder';
   }
 
-  public get labelRect(): DOMRectReadOnly {
+  public get labelRect (): DOMRectReadOnly {
     return new DOMRectReadOnly(1, 1, 76, 28);
   }
 
-  public cpnt(top: number, left: number): Component {
+  public cpnt (top: number, left: number): Component {
     return new Decoder(this, top, left);
   }
 }

@@ -22,7 +22,7 @@ import { StoreItem } from './cpnts/Store.js';
 class CpntItems {
   private readonly _items: Map<string, CpntItem>;
 
-  public constructor(computer: Computer) {
+  public constructor (computer: Computer) {
     this._items = new Map();
 
     this.add(new ArithmeticLogicUnitItem(computer));
@@ -45,15 +45,15 @@ class CpntItems {
     this.add(new StoreItem(computer));
   }
 
-  public add(item: CpntItem): void {
+  public add (item: CpntItem): void {
     this._items.set(item.type, item);
   }
 
-  public get(type: string): CpntItem | undefined {
+  public get (type: string): CpntItem | undefined {
     return this._items.get(type);
   }
 
-  public list(): IterableIterator<CpntItem> {
+  public list (): IterableIterator<CpntItem> {
     return this._items.values();
   }
 }

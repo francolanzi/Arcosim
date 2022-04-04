@@ -1,5 +1,5 @@
 class SplitterLabel extends HTMLElement {
-  public constructor(content: string) {
+  public constructor (content: string) {
     super();
 
     this.textContent = content;

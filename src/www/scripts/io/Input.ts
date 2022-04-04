@@ -7,29 +7,34 @@ class Input extends IO {
   private _link: Link | undefined;
   private _clicked: boolean;
 
-  public get default(): number {
+  public get default (): number {
     return super.default;
   }
 
-  public set default(value: number) {
+  public set default (value: number) {
     super.default = value;
     if (!this.link) {
       this.value = value;
     }
   }
 
-  public get link(): Link | undefined {
+  public get link (): Link | undefined {
     return this._link;
   }
 
-  public constructor(cpnt: Component, id: string, name: string, x: number, y: number) {
+  public constructor (cpnt: Component, id: string, name: string, x: number, y: number) {
     super(cpnt, id, name, x, y);
 
     this._link = undefined;
     this._clicked = false;
 
-    this.addEventListener('mousedown', () => this._clicked = true);
-    this.addEventListener('mouseup', () => this._clicked = false);
+    this.addEventListener('mousedown', () => {
+      this._clicked = true;
+    });
+
+    this.addEventListener('mouseup', () => {
+      this._clicked = false;
+    });
 
     this.addEventListener('focus', ev => {
       this.blur();
@@ -47,19 +52,19 @@ class Input extends IO {
     });
   }
 
-  public createLink(output: Output): void {
+  public createLink (output: Output): void {
     if (!this.link) {
       this._link = new Link(this, output);
 
       const ev = new CustomEvent('link', {
         detail: this._link,
-        bubbles: true,
+        bubbles: true
       });
       this.dispatchEvent(ev);
     }
   }
 
-  public removeLink(): void {
+  public removeLink (): void {
     const link = this.link;
     if (link) {
       this._link = undefined;
@@ -71,13 +76,13 @@ class Input extends IO {
     }
   }
 
-  public reset(): void {
+  public reset (): void {
     if (!this.link) {
       super.reset();
     }
   }
 
-  public remove(): void {
+  public remove (): void {
     if (this.link) {
       this.link.remove();
     }

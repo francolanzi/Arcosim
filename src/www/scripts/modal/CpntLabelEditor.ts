@@ -1,7 +1,7 @@
 import Component from '../Component';
 
 class CpntLabelEditor extends HTMLElement {
-  public constructor(cpnt: Component) {
+  public constructor (cpnt: Component) {
     super();
 
     const input = document.createElement('input');
@@ -9,7 +9,9 @@ class CpntLabelEditor extends HTMLElement {
     input.value = cpnt.label;
     this.append(input);
 
-    input.addEventListener('change', () => cpnt.label = input.value);
+    input.addEventListener('change', () => {
+      cpnt.label = input.value;
+    });
   }
 }
 

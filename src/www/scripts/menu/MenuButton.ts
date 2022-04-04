@@ -1,23 +1,23 @@
 abstract class MenuButton extends HTMLElement {
   private readonly _image: HTMLImageElement;
 
-  public get icon(): string {
+  public get icon (): string {
     return this._image.src;
   }
 
-  public set icon(value: string) {
+  public set icon (value: string) {
     this._image.src = value;
   }
 
-  public get active(): boolean {
+  public get active (): boolean {
     return this.classList.contains('active');
   }
 
-  public set active(value: boolean) {
+  public set active (value: boolean) {
     this.classList.toggle('active', value);
   }
 
-  public constructor(title: string, icon: string) {
+  public constructor (title: string, icon: string) {
     super();
 
     this.setAttribute('is', 'menu-button');

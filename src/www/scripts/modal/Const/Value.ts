@@ -1,15 +1,15 @@
 class ConstValue extends HTMLElement {
   private readonly _input: HTMLInputElement;
 
-  public get value(): string {
+  public get value (): string {
     return this._input.value;
   }
 
-  public set value(value: string) {
+  public set value (value: string) {
     this._input.value = value;
   }
 
-  public constructor(value: string) {
+  public constructor (value: string) {
     super();
 
     this._input = document.createElement('input');

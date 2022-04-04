@@ -24,7 +24,7 @@ class Menu extends HTMLElement {
   public readonly resetButton: ResetButton;
   public readonly aboutButton: AboutButton;
 
-  public constructor(computer: Computer, gallery: Gallery) {
+  public constructor (computer: Computer, gallery: Gallery) {
     super();
 
     this._buttons = new Map();
@@ -78,7 +78,7 @@ class Menu extends HTMLElement {
     });
   }
 
-  private addButton(button: MenuButton): void {
+  private addButton (button: MenuButton): void {
     button.style.pointerEvents = 'all';
     this.append(button);
   }

@@ -6,18 +6,18 @@ const { remote } = window.require('electron');
 const { basename } = window.require('path');
 
 class FileManager {
-  private constructor() {
+  private constructor () {
     throw new Error('Serialization can not be instantiated');
   }
 
-  public static new(computer: Computer): void {
+  public static new (computer: Computer): void {
     computer.clear();
 
     const window = remote.getCurrentWindow();
-    window.setTitle(`Arcosim`);
+    window.setTitle('Arcosim');
   }
 
-  public static save(computer: Computer, path: string): void {
+  public static save (computer: Computer, path: string): void {
     try {
       const content = JSON.stringify(computer.serialize());
       writeFileSync(path, content);
@@ -29,7 +29,7 @@ class FileManager {
     }
   }
 
-  public static open(computer: Computer, path: string): void {
+  public static open (computer: Computer, path: string): void {
     try {
       const content = readFileSync(path, { encoding: 'utf8' });
       computer.deserialize(JSON.parse(content));
@@ -41,7 +41,7 @@ class FileManager {
     }
   }
 
-  public static export(cpnt: Component, path: string): void {
+  public static export (cpnt: Component, path: string): void {
     try {
       const content = JSON.stringify(cpnt.export());
       writeFileSync(path, content);
@@ -50,7 +50,7 @@ class FileManager {
     }
   }
 
-  public static import(cpnt: Component, path: string): void {
+  public static import (cpnt: Component, path: string): void {
     try {
       const content = readFileSync(path, { encoding: 'utf8' });
       cpnt.import(JSON.parse(content));

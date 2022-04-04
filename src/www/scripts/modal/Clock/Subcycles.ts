@@ -3,11 +3,11 @@ import UintInput from '../UintInput.js';
 class ClockSubcycles extends HTMLElement {
   private readonly _input: UintInput;
 
-  public get value(): number {
+  public get value (): number {
     return parseInt(this._input.value);
   }
 
-  public constructor(subcycles: number) {
+  public constructor (subcycles: number) {
     super();
 
     this._input = new UintInput(subcycles, 1, 8, true);

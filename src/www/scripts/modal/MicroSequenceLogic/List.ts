@@ -4,11 +4,11 @@ import Cond from './Cond.js';
 class MicroSequenceLogicList extends HTMLElement {
   private readonly _cpnt: MicroSequenceLogic;
 
-  public get supported(): Array<string> {
+  public get supported (): Array<string> {
     return MicroSequenceLogic.supported;
   }
 
-  public constructor(cpnt: MicroSequenceLogic) {
+  public constructor (cpnt: MicroSequenceLogic) {
     super();
 
     this._cpnt = cpnt;
@@ -22,7 +22,7 @@ class MicroSequenceLogicList extends HTMLElement {
     }
   }
 
-  public addCondition(): void {
+  public addCondition (): void {
     const index = this._cpnt.addCondition(0);
     const elem = new Cond(index, 0, this.supported);
     elem.addEventListener('change', () =>
@@ -30,7 +30,7 @@ class MicroSequenceLogicList extends HTMLElement {
     this.append(elem);
   }
 
-  public removeCondition(): void {
+  public removeCondition (): void {
     if (this._cpnt.count > 1) {
       this._cpnt.removeCondition();
       if (this.lastChild) {

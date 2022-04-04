@@ -6,7 +6,7 @@ class LookupTableList extends HTMLElement {
 
   private readonly _values: Map<number, Value>;
 
-  public constructor(cpnt: LookupTable) {
+  public constructor (cpnt: LookupTable) {
     super();
 
     this.cpnt = cpnt;
@@ -22,7 +22,7 @@ class LookupTableList extends HTMLElement {
       this.addValue(key, value));
   }
 
-  public addValue(key: string, value: string): void {
+  public addValue (key: string, value: string): void {
     if (!this._values.has(Number(key))) {
       const elem = new Value(key, value);
 
@@ -38,7 +38,7 @@ class LookupTableList extends HTMLElement {
     }
   }
 
-  public removeValue(key: string): void {
+  public removeValue (key: string): void {
     const elem = this._values.get(Number(key));
 
     if (elem && this._values.size > 1) {

@@ -9,7 +9,7 @@ class Increment extends Component {
 
   private readonly _next: Output;
 
-  public constructor(item: CpntItem, top: number, left: number) {
+  public constructor (item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
     this._current = this.addInput('current', 'Actual', 67, 11);
@@ -20,7 +20,7 @@ class Increment extends Component {
     this._clock.default = 1;
   }
 
-  public run(time: number): boolean {
+  public run (time: number): boolean {
     if (this._clock.value) {
       this._next.value = this._current.value + 1;
     }
@@ -30,31 +30,31 @@ class Increment extends Component {
 }
 
 class IncrementItem extends CpntItem {
-  public get type(): string {
+  public get type (): string {
     return 'Increment';
   }
 
-  public get image(): string {
+  public get image (): string {
     return 'images/cpnt/Increment.svg';
   }
 
-  public get width(): number {
+  public get width (): number {
     return 68;
   }
 
-  public get height(): number {
+  public get height (): number {
     return 23;
   }
 
-  public get defaultLabel(): string {
+  public get defaultLabel (): string {
     return 'Increment';
   }
 
-  public get labelRect(): DOMRectReadOnly {
+  public get labelRect (): DOMRectReadOnly {
     return new DOMRectReadOnly(1, 1, 66, 21);
   }
 
-  public cpnt(top: number, left: number): Component {
+  public cpnt (top: number, left: number): Component {
     return new Increment(this, top, left);
   }
 }

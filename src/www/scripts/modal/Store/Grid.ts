@@ -1,16 +1,16 @@
 class StoreGrid extends HTMLElement {
   private _bits: number;
 
-  public get bits(): number {
+  public get bits (): number {
     return this._bits;
   }
 
-  public set bits(bits: number) {
+  public set bits (bits: number) {
     this._bits = bits;
     this.style.width = `${1.25 * (bits - 1)}rem`;
   }
 
-  public constructor(sizes: Array<number>, bits: number) {
+  public constructor (sizes: Array<number>, bits: number) {
     super();
 
     this._bits = bits;

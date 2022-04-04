@@ -5,11 +5,11 @@ import CpntLoader from './CpntLoader.js';
 class CpntConfig<Cpnt extends Component> extends HTMLElement {
   private readonly _cpnt: Cpnt;
 
-  public get cpnt(): Cpnt {
+  public get cpnt (): Cpnt {
     return this._cpnt;
   }
 
-  public constructor(cpnt: Cpnt) {
+  public constructor (cpnt: Cpnt) {
     super();
 
     this._cpnt = cpnt;
@@ -17,13 +17,13 @@ class CpntConfig<Cpnt extends Component> extends HTMLElement {
     this.reload();
   }
 
-  public clear(): void {
-    while(this.firstChild) {
+  public clear (): void {
+    while (this.firstChild) {
       this.removeChild(this.firstChild);
     }
   }
 
-  public reload(): void {
+  public reload (): void {
     this.clear();
 
     const label = new CpntLabelEditor(this.cpnt);

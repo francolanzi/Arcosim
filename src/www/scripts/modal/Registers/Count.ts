@@ -3,11 +3,11 @@ import UintInput from '../UintInput.js';
 class RegistersCount extends HTMLElement {
   private readonly _input: UintInput;
 
-  public get value(): number {
+  public get value (): number {
     return parseInt(this._input.value);
   }
 
-  public constructor(count: number) {
+  public constructor (count: number) {
     super();
 
     this._input = new UintInput(count, 1, 32, true);

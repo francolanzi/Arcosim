@@ -4,15 +4,15 @@ class MemoryRange extends HTMLElement {
   private readonly _from: UintInput;
   private readonly _to: UintInput;
 
-  public get from(): number {
+  public get from (): number {
     return parseInt(this._from.value);
   }
 
-  public get to(): number {
+  public get to (): number {
     return parseInt(this._to.value);
   }
 
-  public constructor(from: number, to: number) {
+  public constructor (from: number, to: number) {
     super();
 
     this._from = new UintInput(from, 0, 0xFFFFFFFF, true);

@@ -22,35 +22,35 @@ abstract class Component extends Draggable {
 
   public readonly cpntId: number
 
-  public get config(): CpntConfig<Component> {
+  public get config (): CpntConfig<Component> {
     return new CpntConfig(this);
   }
 
-  public get type(): string {
+  public get type (): string {
     return this._item.type;
   }
 
-  public get computer(): Computer {
+  public get computer (): Computer {
     return this._item.computer;
   }
 
-  public get label(): string {
+  public get label (): string {
     return this._label.textContent || '';
   }
 
-  public set label(label: string) {
+  public set label (label: string) {
     this._label.textContent = label;
   }
 
-  public get inputs(): IterableIterator<Input> {
+  public get inputs (): IterableIterator<Input> {
     return this._inputs.values();
   }
 
-  public get outputs(): IterableIterator<Output> {
+  public get outputs (): IterableIterator<Output> {
     return this._outputs.values();
   }
 
-  public constructor(item: CpntItem, top: number, left: number) {
+  public constructor (item: CpntItem, top: number, left: number) {
     super(top, left);
 
     this._item = item;
@@ -85,11 +85,12 @@ abstract class Component extends Draggable {
   }
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-  public run(time: number): boolean {
+  public run (time: number): boolean {
     if (this._time !== time) {
       this._time = time;
-      this._outputs.forEach(output =>
-        output.color = 'black');
+      this._outputs.forEach(output => {
+        output.color = 'black';
+      });
     }
 
     let changed = false;
@@ -116,26 +117,27 @@ abstract class Component extends Draggable {
     return changed;
   }
 
-  public stop(): void {
+  public stop (): void {
     this.dispatchEvent(new Event('stop'));
   }
 
-  public reset(): void {
+  public reset (): void {
     this._time = -1;
-    this._outputs.forEach(output =>
-      output.color = 'black');
+    this._outputs.forEach(output => {
+      output.color = 'black';
+    });
 
     this._inputs.forEach(input => input.reset());
     this._outputs.forEach(output => output.reset());
   }
 
-  public drag(ev: MouseEvent): void {
+  public drag (ev: MouseEvent): void {
     super.drag(ev);
 
     this.classList.add('dragging');
   }
 
-  public move(ev: MouseEvent): void {
+  public move (ev: MouseEvent): void {
     super.move(ev);
 
     const trashed = this.trashed(ev);
@@ -147,7 +149,7 @@ abstract class Component extends Draggable {
     }
   }
 
-  public drop(ev: MouseEvent): void {
+  public drop (ev: MouseEvent): void {
     super.drop(ev);
 
     this.classList.remove('dragging');
@@ -162,20 +164,20 @@ abstract class Component extends Draggable {
     }
   }
 
-  public trashed(ev: MouseEvent): boolean {
+  public trashed (ev: MouseEvent): boolean {
     if (!this.trash) {
       return false;
     }
 
     const rect = this.trash.getBoundingClientRect();
 
-    return ev.clientY >= rect.top
-        && ev.clientX >= rect.left
-        && ev.clientY <= rect.bottom
-        && ev.clientX <= rect.right;
+    return ev.clientY >= rect.top &&
+        ev.clientX >= rect.left &&
+        ev.clientY <= rect.bottom &&
+        ev.clientX <= rect.right;
   }
 
-  public addInput(id: string, name: string, x: number, y: number): Input {
+  public addInput (id: string, name: string, x: number, y: number): Input {
     let input = this._inputs.get(id);
 
     if (input) {
@@ -194,7 +196,7 @@ abstract class Component extends Draggable {
     return input;
   }
 
-  public addOutput(id: string, name: string, x: number, y: number): Output {
+  public addOutput (id: string, name: string, x: number, y: number): Output {
     let output = this._outputs.get(id);
 
     if (output) {
@@ -210,15 +212,15 @@ abstract class Component extends Draggable {
     return output;
   }
 
-  public getInput(id: string): Input | undefined {
+  public getInput (id: string): Input | undefined {
     return this._inputs.get(id);
   }
 
-  public getOutput(id: string): Output | undefined {
+  public getOutput (id: string): Output | undefined {
     return this._outputs.get(id);
   }
 
-  public removeInput(id: string): void {
+  public removeInput (id: string): void {
     const input = this._inputs.get(id);
     if (input) {
       this._inputs.delete(id);
@@ -227,7 +229,7 @@ abstract class Component extends Draggable {
     }
   }
 
-  public removeOutput(id: string): void {
+  public removeOutput (id: string): void {
     const output = this._outputs.get(id);
     if (output) {
       this._outputs.delete(id);
@@ -236,18 +238,18 @@ abstract class Component extends Draggable {
     }
   }
 
-  public serialize(): CpntInfo {
+  public serialize (): CpntInfo {
     return {
       type: this.type,
       cpntId: this.cpntId,
       top: this.top,
       left: this.left,
       label: this.label,
-      data: this.export(),
+      data: this.export()
     };
   }
 
-  public deserialize(info: CpntInfo): void {
+  public deserialize (info: CpntInfo): void {
     if (this.type === info.type) {
       if (info.top) {
         this.top = info.top;
@@ -264,16 +266,16 @@ abstract class Component extends Draggable {
     }
   }
 
-  public export(): CpntData {
+  public export (): CpntData {
     return {};
   }
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-  public import(data: CpntData): void {
+  public import (data: CpntData): void {
     // nothing
   }
 
-  public remove(): void {
+  public remove (): void {
     this._inputs.forEach(input => input.remove());
     this._outputs.forEach(output => output.remove());
     super.remove();

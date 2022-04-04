@@ -7,7 +7,7 @@ class LinkLayer extends HTMLElement {
   private readonly _inputLinks: Map<Input, Link>;
   private readonly _outputLinks: Map<Output, Set<Link>>;
 
-  public constructor() {
+  public constructor () {
     super();
 
     this._inputLinks = new Map();
@@ -24,7 +24,7 @@ class LinkLayer extends HTMLElement {
     window.addEventListener('scroll', () => this.resize());
   }
 
-  public resize(): void {
+  public resize (): void {
     const rect = this.getBoundingClientRect();
 
     const x = window.scrollX;
@@ -37,7 +37,7 @@ class LinkLayer extends HTMLElement {
     this._svg.setAttribute('viewBox', `${x} ${y} ${width} ${height}`);
   }
 
-  public addLink(link: Link): void {
+  public addLink (link: Link): void {
     if (!this._inputLinks.has(link.input)) {
       this._svg.append(link.svg);
 
@@ -55,7 +55,7 @@ class LinkLayer extends HTMLElement {
     }
   }
 
-  public moveInput(input: Input): void {
+  public moveInput (input: Input): void {
     const link = this._inputLinks.get(input);
 
     if (link) {
@@ -63,7 +63,7 @@ class LinkLayer extends HTMLElement {
     }
   }
 
-  public moveOutput(output: Output): void {
+  public moveOutput (output: Output): void {
     const links = this._outputLinks.get(output);
 
     if (links) {
@@ -72,7 +72,7 @@ class LinkLayer extends HTMLElement {
     }
   }
 
-  public removeInput(input: Input): void {
+  public removeInput (input: Input): void {
     if (this._inputLinks.has(input)) {
       const link = this._inputLinks.get(input);
 
@@ -91,7 +91,7 @@ class LinkLayer extends HTMLElement {
     }
   }
 
-  public removeOutput(output: Output): void {
+  public removeOutput (output: Output): void {
     const links = this._outputLinks.get(output);
 
     if (links) {

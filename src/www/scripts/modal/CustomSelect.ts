@@ -1,5 +1,5 @@
 class CustomSelect extends HTMLSelectElement {
-  public constructor(value: number, options: Map<number, string>) {
+  public constructor (value: number, options: Map<number, string>) {
     super();
 
     this.setAttribute('is', 'custom-select');

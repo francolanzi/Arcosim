@@ -20,7 +20,9 @@
     "compile": "npm run clicompile && npm run svrcompile",
     "build": "npm run remove && npm run copy && npm run compile",
     "start": "npm run build && electron .",
-    "dist": "npm run build && electron-builder"
+    "dist": "npm run build && electron-builder",
+    "lint": "eslint ./src/",
+    "fix": "eslint --fix ./src/"
   },
   "devDependencies": {
     "@types/resize-observer-browser": "^0.1.5",
@@ -29,8 +31,7 @@
     "cpy-cli": "^3.1.1",
     "electron": "^9.4.4",
     "electron-builder": "^22.11.3",
-    "eslint": "^7.26.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-semistandard": "^16.0.0",
     "prettier": "^2.3.0",
     "typescript": "^4.2.4"
   },

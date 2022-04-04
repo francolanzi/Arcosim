@@ -14,15 +14,15 @@ class Store extends Component {
 
   private readonly _instruction: Output;
 
-  public get config(): Config {
+  public get config (): Config {
     return new Config(this);
   }
 
-  public get bits(): number {
+  public get bits (): number {
     return this._bits;
   }
 
-  public set bits(bits: number) {
+  public set bits (bits: number) {
     if (bits > 0 && bits <= 32) {
       const mask = 0xFFFFFFFF >>> (32 - bits);
 
@@ -34,23 +34,23 @@ class Store extends Component {
     }
   }
 
-  public get position(): number {
+  public get position (): number {
     return this._position.value;
   }
 
-  public get instruction(): number {
+  public get instruction (): number {
     return this._instruction.value;
   }
 
-  public get count(): number {
+  public get count (): number {
     return this._instructions.length;
   }
 
-  public get instructions(): IterableIterator<number> {
+  public get instructions (): IterableIterator<number> {
     return this._instructions.values();
   }
 
-  public constructor(item: CpntItem, top: number, left: number) {
+  public constructor (item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
     this._instructions = [0];
@@ -61,7 +61,7 @@ class Store extends Component {
     this._instruction = this.addOutput('instruction', 'Instrucción', 164, 63);
   }
 
-  public run(time: number): boolean {
+  public run (time: number): boolean {
     const index = this._position.value;
 
     if (index < this._instructions.length) {
@@ -73,14 +73,14 @@ class Store extends Component {
     return super.run(time);
   }
 
-  public export(): StoreData {
+  public export (): StoreData {
     return {
       bits: this.bits,
-      instructions: this._instructions,
+      instructions: this._instructions
     };
   }
 
-  public import(data: StoreData): void {
+  public import (data: StoreData): void {
     if (data.instructions) {
       this._instructions.length = 0;
       data.instructions.forEach((instruction, position) =>
@@ -92,49 +92,49 @@ class Store extends Component {
     }
   }
 
-  public addInstruction(position: number, instruction: number): void {
+  public addInstruction (position: number, instruction: number): void {
     this._instructions.splice(position, 0, instruction);
   }
 
-  public getInstruction(position: number): number {
+  public getInstruction (position: number): number {
     return this._instructions[position];
   }
 
-  public setInstruction(position: number, instruction: number): void {
+  public setInstruction (position: number, instruction: number): void {
     this._instructions[position] = instruction;
   }
 
-  public removeInstruction(position: number): void {
+  public removeInstruction (position: number): void {
     this._instructions.splice(position, 1);
   }
 }
 
 class StoreItem extends CpntItem {
-  public get type(): string {
+  public get type (): string {
     return 'Store';
   }
 
-  public get image(): string {
+  public get image (): string {
     return 'images/cpnt/Store.svg';
   }
 
-  public get width(): number {
+  public get width (): number {
     return 329;
   }
 
-  public get height(): number {
+  public get height (): number {
     return 64;
   }
 
-  public get defaultLabel(): string {
+  public get defaultLabel (): string {
     return 'Store';
   }
 
-  public get labelRect(): DOMRectReadOnly {
+  public get labelRect (): DOMRectReadOnly {
     return new DOMRectReadOnly(1, 1, 327, 62);
   }
 
-  public cpnt(top: number, left: number): Component {
+  public cpnt (top: number, left: number): Component {
     return new Store(this, top, left);
   }
 }

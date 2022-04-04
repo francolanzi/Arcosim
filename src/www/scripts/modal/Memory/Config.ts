@@ -5,7 +5,7 @@ import Delay from './Delay.js';
 import Range from './Range.js';
 
 class MemoryConfig extends CpntConfig<Memory> {
-  public reload(): void {
+  public reload (): void {
     super.reload();
 
     const delay = new Delay(this.cpnt.delay);
@@ -18,8 +18,9 @@ class MemoryConfig extends CpntConfig<Memory> {
     this.append(range);
     this.append(memory);
 
-    delay.addEventListener('change', () =>
-      this.cpnt.delay = delay.value);
+    delay.addEventListener('change', () => {
+      this.cpnt.delay = delay.value;
+    });
 
     range.addEventListener('change', () =>
       memory.showCells(range.from, range.to));

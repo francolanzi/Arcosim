@@ -3,11 +3,11 @@ import UintInput from '../UintInput.js';
 class MemoryBufferRegisterBits extends HTMLElement {
   private readonly _input: UintInput;
 
-  public get value(): number {
+  public get value (): number {
     return parseInt(this._input.value);
   }
 
-  public constructor(bits: number) {
+  public constructor (bits: number) {
     super();
 
     this._input = new UintInput(bits, 1, 32, true);

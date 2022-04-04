@@ -1,7 +1,7 @@
 import MenuButton from '../MenuButton.js';
 
 class TrashButton extends MenuButton {
-  public constructor() {
+  public constructor () {
     const title = 'Eliminar';
     const icon = 'images/menu/trash.svg';
 

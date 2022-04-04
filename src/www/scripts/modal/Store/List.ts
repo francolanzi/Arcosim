@@ -4,11 +4,11 @@ import Row from './Row.js';
 class StoreList extends HTMLElement {
   public readonly cpnt: Store;
 
-  public get bits(): number {
+  public get bits (): number {
     return this.cpnt.bits;
   }
 
-  public set bits(bits: number) {
+  public set bits (bits: number) {
     this.cpnt.bits = bits;
     this.childNodes.forEach(child => {
       const row = <Row> child;
@@ -16,7 +16,7 @@ class StoreList extends HTMLElement {
     });
   }
 
-  public constructor(cpnt: Store) {
+  public constructor (cpnt: Store) {
     super();
 
     this.cpnt = cpnt;
@@ -28,7 +28,7 @@ class StoreList extends HTMLElement {
     }
   }
 
-  private newRow(instruction: number): Row {
+  private newRow (instruction: number): Row {
     const row = new Row(instruction, this.cpnt.bits);
 
     row.addEventListener('change', () => {

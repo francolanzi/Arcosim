@@ -6,12 +6,12 @@ app.whenReady().then(() => {
     icon: path.resolve(__dirname, 'www/images/favicon.ico'),
     webPreferences: {
       nodeIntegration: true,
-      enableRemoteModule: true,
-    },
+      enableRemoteModule: true
+    }
   });
   win.setMenuBarVisibility(false);
   win.setMenu(null);
   win.maximize();
   win.loadFile(path.resolve(__dirname, 'www/index.html'));
-  //win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 });

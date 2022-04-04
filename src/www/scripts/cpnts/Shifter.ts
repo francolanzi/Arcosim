@@ -18,28 +18,28 @@ class Shifter extends Component {
 
   private readonly _result: Output;
 
-  public static get supported(): Array<string> {
+  public static get supported (): Array<string> {
     return [
       'Nada', // 0
-      '<<',   // 1
-      '>>',   // 2
-      '>>>',  // 3
+      '<<', // 1
+      '>>', // 2
+      '>>>' // 3
     ];
   }
 
-  public get config(): Config {
+  public get config (): Config {
     return new Config(this);
   }
 
-  public get functions(): IterableIterator<[number, { func: number, value: number }]> {
+  public get functions (): IterableIterator<[number, { func: number, value: number }]> {
     return this._functions.entries();
   }
 
-  public get count(): number {
+  public get count (): number {
     return this._functions.length;
   }
 
-  public constructor(item: CpntItem, top: number, left: number) {
+  public constructor (item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
     this._functions = [];
@@ -54,36 +54,36 @@ class Shifter extends Component {
     this.addFunction(1, 1);
   }
 
-  public run(time: number): boolean {
+  public run (time: number): boolean {
     const { func, value } = this._functions[this._function.value];
 
-    switch(func) {
-    case 0:
-      this._result.value = this._input.value;
-      break;
-    case 1:
-      this._result.value = this._input.value << value;
-      break;
-    case 2:
-      this._result.value = this._input.value >> value;
-      break;
-    case 3:
-      this._result.value = this._input.value >>> value;
-      break;
-    default:
-      break;
+    switch (func) {
+      case 0:
+        this._result.value = this._input.value;
+        break;
+      case 1:
+        this._result.value = this._input.value << value;
+        break;
+      case 2:
+        this._result.value = this._input.value >> value;
+        break;
+      case 3:
+        this._result.value = this._input.value >>> value;
+        break;
+      default:
+        break;
     }
 
     return super.run(time);
   }
 
-  public export(): ShifterData {
+  public export (): ShifterData {
     return {
-      functions: [...this._functions],
+      functions: [...this._functions]
     };
   }
 
-  public import(data: ShifterData): void {
+  public import (data: ShifterData): void {
     if (data.functions) {
       this._functions.length = 0;
       data.functions.forEach(({ func, value }) =>
@@ -91,12 +91,12 @@ class Shifter extends Component {
     }
   }
 
-  public addFunction(func: number, value: number): number {
+  public addFunction (func: number, value: number): number {
     this._functions.push({ func, value });
     return this._functions.length - 1;
   }
 
-  public getFunction(index: number): Func | undefined {
+  public getFunction (index: number): Func | undefined {
     const func = this._functions[index];
     if (func !== undefined) {
       return { ...func };
@@ -105,14 +105,14 @@ class Shifter extends Component {
     }
   }
 
-  public setFunction(index: number, func: number, value: number): void {
+  public setFunction (index: number, func: number, value: number): void {
     if (index >= 0 && index < this._functions.length) {
       this._functions[index].func = func;
       this._functions[index].value = value;
     }
   }
 
-  public removeFunction(): number {
+  public removeFunction (): number {
     if (this._functions.length > 1) {
       this._functions.pop();
     }
@@ -121,31 +121,31 @@ class Shifter extends Component {
 }
 
 class ShifterItem extends CpntItem {
-  public get type(): string {
+  public get type (): string {
     return 'Shifter';
   }
 
-  public get image(): string {
+  public get image (): string {
     return 'images/cpnt/Shifter.svg';
   }
 
-  public get width(): number {
+  public get width (): number {
     return 76;
   }
 
-  public get height(): number {
+  public get height (): number {
     return 28;
   }
 
-  public get defaultLabel(): string {
+  public get defaultLabel (): string {
     return 'Shifter';
   }
 
-  public get labelRect(): DOMRectReadOnly {
+  public get labelRect (): DOMRectReadOnly {
     return new DOMRectReadOnly(1, 1, 74, 26);
   }
 
-  public cpnt(top: number, left: number): Component {
+  public cpnt (top: number, left: number): Component {
     return new Shifter(this, top, left);
   }
 }

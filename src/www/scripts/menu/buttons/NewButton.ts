@@ -3,7 +3,7 @@ import FileManager from '../../FileManager.js';
 import MenuButton from '../MenuButton.js';
 
 class NewButton extends MenuButton {
-  public constructor(computer: Computer) {
+  public constructor (computer: Computer) {
     const title = 'Nuevo';
     const icon = 'images/menu/new.svg';
 

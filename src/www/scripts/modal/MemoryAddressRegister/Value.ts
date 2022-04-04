@@ -1,15 +1,15 @@
 class MemoryAddressRegisterValue extends HTMLElement {
   private readonly _input: HTMLInputElement;
 
-  public get value(): number {
+  public get value (): number {
     return parseInt(this._input.value);
   }
 
-  public set value(value: number) {
+  public set value (value: number) {
     this._input.value = value.toString();
   }
 
-  public constructor(value: number) {
+  public constructor (value: number) {
     super();
 
     this._input = document.createElement('input');

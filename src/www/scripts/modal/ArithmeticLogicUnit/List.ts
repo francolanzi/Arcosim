@@ -4,11 +4,11 @@ import Func from './Func.js';
 class ArithmeticLogicUnitList extends HTMLElement {
   private readonly _cpnt: ArithmeticLogicUnit
 
-  public get supported(): Array<string> {
+  public get supported (): Array<string> {
     return ArithmeticLogicUnit.supported;
   }
 
-  public constructor(cpnt: ArithmeticLogicUnit) {
+  public constructor (cpnt: ArithmeticLogicUnit) {
     super();
 
     this._cpnt = cpnt;
@@ -22,7 +22,7 @@ class ArithmeticLogicUnitList extends HTMLElement {
     }
   }
 
-  public addFunction(): void {
+  public addFunction (): void {
     const index = this._cpnt.addFunction(0);
     const elem = new Func(index, 0, this.supported);
     elem.addEventListener('change', () =>
@@ -30,7 +30,7 @@ class ArithmeticLogicUnitList extends HTMLElement {
     this.append(elem);
   }
 
-  public removeFunction(): void {
+  public removeFunction (): void {
     if (this._cpnt.count > 1) {
       this._cpnt.removeFunction();
       if (this.lastChild) {

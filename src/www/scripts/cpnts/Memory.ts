@@ -20,11 +20,11 @@ class Memory extends Component {
 
   public delay: number;
 
-  public get config(): Config {
+  public get config (): Config {
     return new Config(this);
   }
 
-  public constructor(item: CpntItem, top: number, left: number) {
+  public constructor (item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
     this._cells = new Map();
@@ -42,7 +42,7 @@ class Memory extends Component {
     this._dataout = this.addOutput('dataout', 'Dato', 251.5, 63);
   }
 
-  public run(time: number): boolean {
+  public run (time: number): boolean {
     if (this._read.value) {
       if (this._readStartTime < 0) {
         this._readStartTime = time;
@@ -71,14 +71,14 @@ class Memory extends Component {
     return super.run(time);
   }
 
-  public export(): MemoryData {
+  public export (): MemoryData {
     return {
       delay: this.delay,
-      cells: Array.from(this._cells.entries()),
+      cells: Array.from(this._cells.entries())
     };
   }
 
-  public import(data: MemoryData): void {
+  public import (data: MemoryData): void {
     this.delay = data.delay || 0;
     console.log(this.delay);
     if (data.cells) {
@@ -88,12 +88,12 @@ class Memory extends Component {
     }
   }
 
-  public getCell(address: number): string {
+  public getCell (address: number): string {
     const data = this._cells.get(address);
-    return data ? data : '0';
+    return data || '0';
   }
 
-  public setCell(address: number, data: string): void {
+  public setCell (address: number, data: string): void {
     const number = Number(data);
 
     if (!isNaN(number)) {
@@ -107,31 +107,31 @@ class Memory extends Component {
 }
 
 class MemoryItem extends CpntItem {
-  public get type(): string {
+  public get type (): string {
     return 'Memory';
   }
 
-  public get image(): string {
+  public get image (): string {
     return 'images/cpnt/Memory.svg';
   }
 
-  public get width(): number {
+  public get width (): number {
     return 329;
   }
 
-  public get height(): number {
+  public get height (): number {
     return 64;
   }
 
-  public get defaultLabel(): string {
+  public get defaultLabel (): string {
     return 'Memory';
   }
 
-  public get labelRect(): DOMRectReadOnly {
+  public get labelRect (): DOMRectReadOnly {
     return new DOMRectReadOnly(1, 1, 327, 62);
   }
 
-  public cpnt(top: number, left: number): Component {
+  public cpnt (top: number, left: number): Component {
     return new Memory(this, top, left);
   }
 }

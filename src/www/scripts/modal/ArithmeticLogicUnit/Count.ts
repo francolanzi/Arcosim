@@ -1,7 +1,7 @@
 import ImgButton from '../ImgButton.js';
 
 class ArithmeticLogicUnitCount extends HTMLElement {
-  public constructor() {
+  public constructor () {
     super();
 
     const add = new ImgButton('Agregar', 'images/modal/plus.svg');

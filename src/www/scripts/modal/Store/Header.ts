@@ -3,16 +3,16 @@ import Mask from '../../ifaces/Mask';
 class StoreHeader extends HTMLElement {
   private _bits: number;
 
-  public get bits(): number {
+  public get bits (): number {
     return this._bits;
   }
 
-  public set bits(bits: number) {
+  public set bits (bits: number) {
     this._bits = bits;
     this.style.width = `${1.25 * bits}rem`;
   }
 
-  public constructor(masks: Array<Mask>, bits: number) {
+  public constructor (masks: Array<Mask>, bits: number) {
     super();
 
     this._bits = bits;

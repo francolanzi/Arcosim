@@ -3,15 +3,15 @@ class MemoryCell extends HTMLElement {
 
   private readonly _input: HTMLInputElement;
 
-  public get value(): string {
+  public get value (): string {
     return this._input.value;
   }
 
-  public set value(value: string) {
+  public set value (value: string) {
     this._input.value = value;
   }
 
-  public constructor(index: number, value: string) {
+  public constructor (index: number, value: string) {
     super();
 
     this.index = index;

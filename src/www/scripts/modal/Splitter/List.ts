@@ -4,7 +4,7 @@ import Mask from './Mask.js';
 class SplitterList extends HTMLElement {
   private readonly _cpnt: Splitter;
 
-  public constructor(cpnt: Splitter) {
+  public constructor (cpnt: Splitter) {
     super();
 
     this._cpnt = cpnt;
@@ -22,7 +22,7 @@ class SplitterList extends HTMLElement {
     }
   }
 
-  public addMask(): void {
+  public addMask (): void {
     const index = this._cpnt.addMask('', 1);
     const elem = new Mask(index, '', 1);
     elem.addEventListener('change', () =>
@@ -30,7 +30,7 @@ class SplitterList extends HTMLElement {
     this.append(elem);
   }
 
-  public removeMask(): void {
+  public removeMask (): void {
     if (this._cpnt.count > 1) {
       this._cpnt.removeMask();
       if (this.lastChild) {

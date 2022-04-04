@@ -3,11 +3,11 @@ import ImgButton from '../ImgButton.js';
 class LookupTableKey extends HTMLElement {
   private readonly _key: HTMLInputElement;
 
-  public get key(): string {
+  public get key (): string {
     return this._key.value;
   }
 
-  public constructor() {
+  public constructor () {
     super();
 
     this._key = document.createElement('input');

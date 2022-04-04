@@ -14,28 +14,28 @@ class MicroSequenceLogic extends Component {
 
   private readonly _jump: Output;
 
-  public static get supported(): Array<string> {
+  public static get supported (): Array<string> {
     return [
-      'Nunca',   // 0
-      '> 0',     // 1
-      '< 0',     // 2
-      '= 0',     // 3
-      '!= 0',    // 4
-      '>= 0',    // 5
-      '<= 0',    // 6
-      'Siempre', // 7
+      'Nunca', // 0
+      '> 0', // 1
+      '< 0', // 2
+      '= 0', // 3
+      '!= 0', // 4
+      '>= 0', // 5
+      '<= 0', // 6
+      'Siempre' // 7
     ];
   }
 
-  public get config(): Config {
+  public get config (): Config {
     return new Config(this);
   }
 
-  public get count(): number {
+  public get count (): number {
     return this._conditions.length;
   }
 
-  public constructor(item: CpntItem, top: number, left: number) {
+  public constructor (item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
     this._conditions = [];
@@ -52,67 +52,67 @@ class MicroSequenceLogic extends Component {
     this.addCondition(7);
   }
 
-  public run(time: number): boolean {
+  public run (time: number): boolean {
     switch (this._conditions[this._condition.value]) {
-    case 0:
-      this._jump.value = 0;
-      break;
-    case 1:
-      this._jump.value = 1 - this._controlN.value - this._controlZ.value;
-      break;
-    case 2:
-      this._jump.value = this._controlN.value;
-      break;
-    case 3:
-      this._jump.value = this._controlZ.value;
-      break;
-    case 4:
-      this._jump.value = 1 - this._controlZ.value;
-      break;
-    case 5:
-      this._jump.value = 1 - this._controlN.value;
-      break;
-    case 6:
-      this._jump.value = this._controlN.value + this._controlZ.value;
-      break;
-    case 7:
-      this._jump.value = 1;
-      break;
-    default:
-      break;
+      case 0:
+        this._jump.value = 0;
+        break;
+      case 1:
+        this._jump.value = 1 - this._controlN.value - this._controlZ.value;
+        break;
+      case 2:
+        this._jump.value = this._controlN.value;
+        break;
+      case 3:
+        this._jump.value = this._controlZ.value;
+        break;
+      case 4:
+        this._jump.value = 1 - this._controlZ.value;
+        break;
+      case 5:
+        this._jump.value = 1 - this._controlN.value;
+        break;
+      case 6:
+        this._jump.value = this._controlN.value + this._controlZ.value;
+        break;
+      case 7:
+        this._jump.value = 1;
+        break;
+      default:
+        break;
     }
     return super.run(time);
   }
 
-  public export(): MicroSequenceLogicData {
+  public export (): MicroSequenceLogicData {
     return {
-      conditions: [...this._conditions],
+      conditions: [...this._conditions]
     };
   }
 
-  public import(obj: MicroSequenceLogicData): void {
+  public import (obj: MicroSequenceLogicData): void {
     if (obj.conditions) {
       this._conditions.length = 0;
       obj.conditions.forEach(cond => this.addCondition(cond));
     }
   }
 
-  public addCondition(cond: number): number {
+  public addCondition (cond: number): number {
     this._conditions.push(cond);
     return this._conditions.length - 1;
   }
 
-  public getCondition(index: number): number {
+  public getCondition (index: number): number {
     return this._conditions[index];
   }
 
-  public setCondition(index: number, cond: number): void {
+  public setCondition (index: number, cond: number): void {
     if (index >= 0 && index < this._conditions.length) {
       this._conditions[index] = cond;
     }
   }
 
-  public removeCondition(): number {
+  public removeCondition (): number {
     if (this._conditions.length > 1) {
       this._conditions.pop();
     }
@@ -121,31 +121,31 @@ class MicroSequenceLogic extends Component {
 }
 
 class MicroSequenceLogicItem extends CpntItem {
-  public get type(): string {
+  public get type (): string {
     return 'Micro Sequence Logic';
   }
 
-  public get image(): string {
+  public get image (): string {
     return 'images/cpnt/MicroSequenceLogic.svg';
   }
 
-  public get width(): number {
+  public get width (): number {
     return 62;
   }
 
-  public get height(): number {
+  public get height (): number {
     return 42;
   }
 
-  public get defaultLabel(): string {
+  public get defaultLabel (): string {
     return 'Micro Sequence Logic';
   }
 
-  public get labelRect(): DOMRectReadOnly {
+  public get labelRect (): DOMRectReadOnly {
     return new DOMRectReadOnly(1, 1, 60, 40);
   }
 
-  public cpnt(top: number, left: number): Component {
+  public cpnt (top: number, left: number): Component {
     return new MicroSequenceLogic(this, top, left);
   }
 }

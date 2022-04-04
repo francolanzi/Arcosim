@@ -5,11 +5,11 @@ import CornerInfo from '../ifaces/CornerInfo.js';
 class LinkCorner extends Draggable {
   private readonly _center: Center;
 
-  public get center(): Center {
+  public get center (): Center {
     return { ...this._center };
   }
 
-  public constructor(x: number, y: number) {
+  public constructor (x: number, y: number) {
     super(y - 5, x - 5);
 
     this._center = { x, y };
@@ -20,17 +20,17 @@ class LinkCorner extends Draggable {
     });
   }
 
-  public move(ev: MouseEvent): void {
+  public move (ev: MouseEvent): void {
     super.move(ev);
 
     this._center.x = this.left + 5;
     this._center.y = this.top + 5;
   }
 
-  public serialize(): CornerInfo {
+  public serialize (): CornerInfo {
     return {
       x: this._center.x,
-      y: this._center.y,
+      y: this._center.y
     };
   }
 }

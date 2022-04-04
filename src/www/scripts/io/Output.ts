@@ -9,67 +9,77 @@ class Output extends IO {
   private _dashed: boolean;
   private readonly _links: Set<Link>;
 
-  public get value(): number {
+  public get value (): number {
     return super.value;
   }
 
-  public set value(value: number) {
+  public set value (value: number) {
     super.value = value;
     this.width = value ? 2 : 1;
-    this._links.forEach(link => link.value = value);
+    this._links.forEach(link => {
+      link.value = value;
+    });
   }
 
-  public get default(): number {
+  public get default (): number {
     return super.default;
   }
 
-  public set default(value: number) {
+  public set default (value: number) {
     super.default = value;
     this.value = value;
   }
 
-  public get width(): number {
+  public get width (): number {
     return this._width;
   }
 
-  public set width(value: number) {
+  public set width (value: number) {
     this._width = value;
-    this._links.forEach(link => link.width = value);
+    this._links.forEach(link => {
+      link.width = value;
+    });
   }
 
-  public get color(): string {
+  public get color (): string {
     return this._color;
   }
 
-  public set color(value: string) {
+  public set color (value: string) {
     this._color = value;
-    this._links.forEach(link => link.color = value);
+    this._links.forEach(link => {
+      link.color = value;
+    });
   }
 
-  public get opacity(): number {
+  public get opacity (): number {
     return this._opacity;
   }
 
-  public set opacity(value: number) {
+  public set opacity (value: number) {
     value = Math.max(Math.min(value, 1), 0);
     this._opacity = value;
-    this._links.forEach(link => link.opacity = value);
+    this._links.forEach(link => {
+      link.opacity = value;
+    });
   }
 
-  public get dashed(): boolean {
+  public get dashed (): boolean {
     return this._dashed;
   }
 
-  public set dashed(value: boolean) {
+  public set dashed (value: boolean) {
     this._dashed = value;
-    this._links.forEach(link => link.dashed = value);
+    this._links.forEach(link => {
+      link.dashed = value;
+    });
   }
 
-  public get links(): IterableIterator<Link> {
+  public get links (): IterableIterator<Link> {
     return this._links.values();
   }
 
-  public constructor(cpnt: Component, id: string, name: string, x: number, y: number) {
+  public constructor (cpnt: Component, id: string, name: string, x: number, y: number) {
     super(cpnt, id, name, x, y);
 
     this._links = new Set();
@@ -95,7 +105,9 @@ class Output extends IO {
       }
     });
 
-    this.addEventListener('mouseup', () => clicked = false);
+    this.addEventListener('mouseup', () => {
+      clicked = false;
+    });
 
     this.addEventListener('focus', () => {
       if (clicked) {
@@ -105,10 +117,12 @@ class Output extends IO {
       }
     });
 
-    this.addEventListener('blur', () => focused = false);
+    this.addEventListener('blur', () => {
+      focused = false;
+    });
   }
 
-  public addLink(link: Link): void {
+  public addLink (link: Link): void {
     this._links.add(link);
     link.value = this.value;
     link.width = this.width;
@@ -117,11 +131,11 @@ class Output extends IO {
     link.dashed = this.dashed;
   }
 
-  public removeLink(link: Link): void {
+  public removeLink (link: Link): void {
     this._links.delete(link);
   }
 
-  public remove(): void {
+  public remove (): void {
     this._links.forEach(link => link.remove());
     super.remove();
   }

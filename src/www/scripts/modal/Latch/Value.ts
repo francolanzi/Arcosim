@@ -1,11 +1,11 @@
 class LatchValue extends HTMLElement {
   private readonly _input: HTMLInputElement;
 
-  public get value(): number {
+  public get value (): number {
     return parseInt(this._input.value);
   }
 
-  public constructor(value: number) {
+  public constructor (value: number) {
     super();
 
     this._input = document.createElement('input');

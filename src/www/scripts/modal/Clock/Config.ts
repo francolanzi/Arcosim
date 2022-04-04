@@ -3,7 +3,7 @@ import CpntConfig from '../CpntConfig.js';
 import Subcycles from './Subcycles.js';
 
 class ClockConfig extends CpntConfig<Clock> {
-  public reload(): void {
+  public reload (): void {
     super.reload();
 
     const subcycles = new Subcycles(this.cpnt.subcycles);

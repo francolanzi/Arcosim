@@ -1,5 +1,5 @@
 class ImgButton extends HTMLElement {
-  public constructor(title: string, icon: string) {
+  public constructor (title: string, icon: string) {
     super();
 
     const image = document.createElement('img');

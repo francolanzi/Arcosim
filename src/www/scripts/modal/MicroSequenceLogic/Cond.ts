@@ -5,11 +5,11 @@ class MicroSequenceLogicCond extends HTMLElement {
 
   private readonly _cond: CustomSelect;
 
-  public get cond(): number {
+  public get cond (): number {
     return parseInt(this._cond.value);
   }
 
-  public constructor(index: number, cond: number, supported: Array<string>) {
+  public constructor (index: number, cond: number, supported: Array<string>) {
     super();
 
     this.index = index;

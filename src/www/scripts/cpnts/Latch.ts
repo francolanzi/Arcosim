@@ -12,15 +12,15 @@ class Latch extends Component {
 
   private readonly _output: Output;
 
-  public get config(): Config {
+  public get config (): Config {
     return new Config(this);
   }
 
-  public get value(): number {
+  public get value (): number {
     return this._value;
   }
 
-  public constructor(item: CpntItem, top: number, left: number) {
+  public constructor (item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
     this._value = 0;
@@ -33,7 +33,7 @@ class Latch extends Component {
     this._clock.default = 1;
   }
 
-  public run(time: number): boolean {
+  public run (time: number): boolean {
     if (this._clock.value) {
       this._value = this._input.value;
     } else {
@@ -43,38 +43,38 @@ class Latch extends Component {
     return super.run(time);
   }
 
-  public reset(): void {
+  public reset (): void {
     super.reset();
     this._value = 0;
   }
 }
 
 class LatchItem extends CpntItem {
-  public get type(): string {
+  public get type (): string {
     return 'Latch';
   }
 
-  public get image(): string {
+  public get image (): string {
     return 'images/cpnt/Latch.svg';
   }
 
-  public get width(): number {
+  public get width (): number {
     return 64;
   }
 
-  public get height(): number {
+  public get height (): number {
     return 20;
   }
 
-  public get defaultLabel(): string {
+  public get defaultLabel (): string {
     return 'Latch';
   }
 
-  public get labelRect(): DOMRectReadOnly {
+  public get labelRect (): DOMRectReadOnly {
     return new DOMRectReadOnly(1, 1, 62, 18);
   }
 
-  public cpnt(top: number, left: number): Component {
+  public cpnt (top: number, left: number): Component {
     return new Latch(this, top, left);
   }
 }

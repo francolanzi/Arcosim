@@ -7,7 +7,7 @@ class StoreRow extends HTMLElement {
 
   private readonly _inputs: Array<UintInput>;
 
-  public get position(): number {
+  public get position (): number {
     if (this.parentNode) {
       const childs = this.parentNode.childNodes;
       return Array.prototype.indexOf.call(childs, this);
@@ -16,29 +16,29 @@ class StoreRow extends HTMLElement {
     }
   }
 
-  public get instruction(): number {
+  public get instruction (): number {
     return this._instruction;
   }
 
-  public get active(): boolean {
+  public get active (): boolean {
     return this.classList.contains('active');
   }
 
-  public set active(active: boolean) {
+  public set active (active: boolean) {
     this.classList.toggle('active', active);
   }
 
-  public get bits(): number {
+  public get bits (): number {
     return this._bits;
   }
 
-  public set bits(bits: number) {
+  public set bits (bits: number) {
     this._instruction &= 0xFFFFFFFF >>> (32 - bits);
     this._bits = bits;
     this.reload();
   }
 
-  public constructor(instruction: number, bits: number) {
+  public constructor (instruction: number, bits: number) {
     super();
 
     this._instruction = instruction;
@@ -65,7 +65,7 @@ class StoreRow extends HTMLElement {
     this.reload();
   }
 
-  public reload(): void {
+  public reload (): void {
     let input = this._inputs.pop();
     while (input) {
       input.remove();

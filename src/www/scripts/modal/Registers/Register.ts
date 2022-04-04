@@ -4,19 +4,19 @@ class RegistersRegister extends HTMLElement {
   private readonly _label: HTMLInputElement;
   private readonly _value: HTMLInputElement;
 
-  public get label(): string {
+  public get label (): string {
     return this._label.value;
   }
 
-  public get value(): string {
+  public get value (): string {
     return this._value.value;
   }
 
-  public set value(value: string) {
+  public set value (value: string) {
     this._value.value = value;
   }
 
-  public constructor(index: number, label: string, value: string) {
+  public constructor (index: number, label: string, value: string) {
     super();
 
     this.index = index;

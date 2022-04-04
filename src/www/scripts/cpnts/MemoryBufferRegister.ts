@@ -20,25 +20,25 @@ class MemoryBufferRegister extends Component {
   private readonly _dataout: Output;
   private readonly _busout: Output;
 
-  public get config(): Config {
+  public get config (): Config {
     return new Config(this);
   }
 
-  public get value(): number {
+  public get value (): number {
     return this._value;
   }
 
-  public get bits(): number {
+  public get bits (): number {
     return this._bits;
   }
 
-  public set bits(bits: number) {
+  public set bits (bits: number) {
     this._bits = Math.max(Math.min(bits, 32), 1);
     this._mask = 0xFFFFFFFF >>> (32 - bits);
     this._value &= this._mask;
   }
 
-  public constructor(item: CpntItem, top: number, left: number) {
+  public constructor (item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
     this._value = 0;
@@ -56,7 +56,7 @@ class MemoryBufferRegister extends Component {
     this._busout = this.addOutput('busout', 'Bus de datos', 0, 15);
   }
 
-  public run(time: number): boolean {
+  public run (time: number): boolean {
     if (this._read.value) {
       this._value = this._busin.value;
     }
@@ -74,18 +74,18 @@ class MemoryBufferRegister extends Component {
     return super.run(time);
   }
 
-  public reset(): void {
+  public reset (): void {
     super.reset();
     this._value = 0;
   }
 
-  public export(): MemoryBufferRegisterData {
+  public export (): MemoryBufferRegisterData {
     return {
-      bits: this.bits,
+      bits: this.bits
     };
   }
 
-  public import(data: MemoryBufferRegisterData): void {
+  public import (data: MemoryBufferRegisterData): void {
     if (data.bits) {
       this.bits = data.bits;
     }
@@ -93,31 +93,31 @@ class MemoryBufferRegister extends Component {
 }
 
 class MemoryBufferRegisterItem extends CpntItem {
-  public get type(): string {
+  public get type (): string {
     return 'Memory Buffer Register';
   }
 
-  public get image(): string {
+  public get image (): string {
     return 'images/cpnt/MemoryBufferRegister.svg';
   }
 
-  public get width(): number {
+  public get width (): number {
     return 47;
   }
 
-  public get height(): number {
+  public get height (): number {
     return 20;
   }
 
-  public get defaultLabel(): string {
+  public get defaultLabel (): string {
     return 'MBR';
   }
 
-  public get labelRect(): DOMRectReadOnly {
+  public get labelRect (): DOMRectReadOnly {
     return new DOMRectReadOnly(1, 1, 45, 18);
   }
 
-  public cpnt(top: number, left: number): Component {
+  public cpnt (top: number, left: number): Component {
     return new MemoryBufferRegister(this, top, left);
   }
 }

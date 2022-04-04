@@ -4,7 +4,7 @@ import Key from './Key.js';
 import List from './List.js';
 
 class LookupTableConfig extends CpntConfig<LookupTable> {
-  public reload(): void {
+  public reload (): void {
     super.reload();
 
     const key = new Key();

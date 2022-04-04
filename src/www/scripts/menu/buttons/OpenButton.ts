@@ -5,7 +5,7 @@ import MenuButton from '../MenuButton.js';
 const { remote } = window.require('electron');
 
 class OpenButton extends MenuButton {
-  public constructor(computer: Computer) {
+  public constructor (computer: Computer) {
     const title = 'Abrir';
     const icon = 'images/menu/open.svg';
 
@@ -16,7 +16,7 @@ class OpenButton extends MenuButton {
     this.addEventListener('click', () => {
       const paths = remote.dialog.showOpenDialogSync(window, {
         filters: [{ name: 'Arcosim', extensions: ['arcosim'] }],
-        properties: ['openFile'],
+        properties: ['openFile']
       });
 
       if (paths) {

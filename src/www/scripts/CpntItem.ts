@@ -11,7 +11,7 @@ abstract class CpntItem extends HTMLElement {
   public abstract get defaultLabel(): string;
   public abstract get labelRect(): DOMRectReadOnly;
 
-  public constructor(computer: Computer) {
+  public constructor (computer: Computer) {
     super();
 
     this.setAttribute('is', 'cpnt-item');
@@ -19,7 +19,7 @@ abstract class CpntItem extends HTMLElement {
     this.init();
   }
 
-  private init(): void {
+  private init (): void {
     const img = new Image(this.width, this.height);
     img.src = this.image;
     this.append(img);

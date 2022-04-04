@@ -4,11 +4,11 @@ import Func from './Func.js';
 class ShifterList extends HTMLElement {
   private readonly _cpnt: Shifter;
 
-  public get supported(): Array<string> {
+  public get supported (): Array<string> {
     return Shifter.supported;
   }
 
-  public constructor(cpnt: Shifter) {
+  public constructor (cpnt: Shifter) {
     super();
 
     this._cpnt = cpnt;
@@ -26,7 +26,7 @@ class ShifterList extends HTMLElement {
     }
   }
 
-  public addFunction(): void {
+  public addFunction (): void {
     const index = this._cpnt.addFunction(0, 0);
     const elem = new Func(index, 0, 0, this.supported);
     elem.addEventListener('change', () =>
@@ -34,7 +34,7 @@ class ShifterList extends HTMLElement {
     this.append(elem);
   }
 
-  public removeFunction(): void {
+  public removeFunction (): void {
     if (this._cpnt.count > 1) {
       this._cpnt.removeFunction();
       if (this.lastChild) {

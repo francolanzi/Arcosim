@@ -5,7 +5,7 @@ import { Splitter } from '../../cpnts/Splitter';
 import CpntConfig from '../CpntConfig.js';
 
 class SplitterConfig extends CpntConfig<Splitter> {
-  public reload(): void {
+  public reload (): void {
     super.reload();
 
     const count = new Count();

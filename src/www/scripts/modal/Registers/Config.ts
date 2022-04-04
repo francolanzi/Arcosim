@@ -4,7 +4,7 @@ import Count from './Count.js';
 import List from './List.js';
 
 class RegistersConfig extends CpntConfig<Registers> {
-  public reload(): void {
+  public reload (): void {
     super.reload();
 
     const count = new Count(this.cpnt.count);
@@ -13,7 +13,9 @@ class RegistersConfig extends CpntConfig<Registers> {
     this.append(count);
     this.append(list);
 
-    count.addEventListener('change', () => list.count = count.value);
+    count.addEventListener('change', () => {
+      list.count = count.value;
+    });
   }
 }
 

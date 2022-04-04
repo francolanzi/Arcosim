@@ -12,21 +12,21 @@ class Splitter extends Component {
   private readonly _instruction: Input;
   private readonly _clock: Input;
 
-  public get config(): Config {
+  public get config (): Config {
     return new Config(this);
   }
 
-  public get count(): number {
+  public get count (): number {
     return this._masks.length;
   }
 
-  public get masks(): IterableIterator<Mask> {
+  public get masks (): IterableIterator<Mask> {
     return this._masks.map(mask => {
       return { name: mask.output.name, size: mask.size };
     }).values();
   }
 
-  public constructor(item: CpntItem, top: number, left: number) {
+  public constructor (item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
     this._masks = [];
@@ -39,7 +39,7 @@ class Splitter extends Component {
     this.addMask('', 1);
   }
 
-  public run(time: number): boolean {
+  public run (time: number): boolean {
     if (this._clock.value) {
       let bits = 0;
 
@@ -54,18 +54,18 @@ class Splitter extends Component {
     return super.run(time);
   }
 
-  public export(): SplitterData {
+  public export (): SplitterData {
     return {
       masks: this._masks.map(mask => {
         return {
           name: mask.output.name,
-          size: mask.size,
+          size: mask.size
         };
-      }),
+      })
     };
   }
 
-  public import(data: SplitterData): void {
+  public import (data: SplitterData): void {
     if (data.masks) {
       this._masks.length = 0;
       data.masks.forEach(({ name, size }) =>
@@ -73,7 +73,7 @@ class Splitter extends Component {
     }
   }
 
-  public addMask(name: string, size: number): number {
+  public addMask (name: string, size: number): number {
     if (size > 0) {
       const id = `mask${this.count + 1}`;
       const output = this.addOutput(id, name, 0, 42);
@@ -83,7 +83,7 @@ class Splitter extends Component {
     return this._masks.length - 1;
   }
 
-  public getMask(index: number): Mask | undefined {
+  public getMask (index: number): Mask | undefined {
     const mask = this._masks[index];
     if (!mask) {
       return undefined;
@@ -94,7 +94,7 @@ class Splitter extends Component {
     }
   }
 
-  public setMask(index: number, name: string, size: number): void {
+  public setMask (index: number, name: string, size: number): void {
     if (index >= 0 && index < this._masks.length) {
       const mask = this._masks[index];
       mask.output.name = name;
@@ -103,7 +103,7 @@ class Splitter extends Component {
     }
   }
 
-  public removeMask(): number {
+  public removeMask (): number {
     if (this.count > 1) {
       const mask = this._masks.pop();
       if (mask) {
@@ -114,7 +114,7 @@ class Splitter extends Component {
     return this.count;
   }
 
-  public makeMasks(): void {
+  public makeMasks (): void {
     const space = 329 / (this._masks.length + 1);
 
     let x = 0;
@@ -126,31 +126,31 @@ class Splitter extends Component {
 }
 
 class SplitterItem extends CpntItem {
-  public get type(): string {
+  public get type (): string {
     return 'Splitter';
   }
 
-  public get image(): string {
+  public get image (): string {
     return 'images/cpnt/Splitter.svg';
   }
 
-  public get width(): number {
+  public get width (): number {
     return 330;
   }
 
-  public get height(): number {
+  public get height (): number {
     return 43;
   }
 
-  public get defaultLabel(): string {
+  public get defaultLabel (): string {
     return 'Splitter';
   }
 
-  public get labelRect(): DOMRectReadOnly {
+  public get labelRect (): DOMRectReadOnly {
     return new DOMRectReadOnly(1, 1, 328, 41);
   }
 
-  public cpnt(top: number, left: number): Component {
+  public cpnt (top: number, left: number): Component {
     return new Splitter(this, top, left);
   }
 }
