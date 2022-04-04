@@ -48,7 +48,8 @@
     "linux": {
       "target": [
         "deb"
-      ]
+      ],
+      "category": "Education"
     }
   }
 }
