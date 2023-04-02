@@ -4,6 +4,7 @@ import { ArithmeticLogicUnitItem } from './cpnts/ArithmeticLogicUnit.js';
 import { ClockItem } from './cpnts/Clock.js';
 import { ConstItem } from './cpnts/Const.js';
 import { DecoderItem } from './cpnts/Decoder.js';
+import { DecrementItem } from './cpnts/Decrement.js';
 import { DisplayItem } from './cpnts/Display.js';
 import { EncoderItem } from './cpnts/Encoder.js';
 import { IncrementItem } from './cpnts/Increment.js';
@@ -29,6 +30,7 @@ class CpntItems {
     this.add(new ClockItem(computer));
     this.add(new ConstItem(computer));
     this.add(new DecoderItem(computer));
+    this.add(new DecrementItem(computer));
     this.add(new DisplayItem(computer));
     this.add(new EncoderItem(computer));
     this.add(new IncrementItem(computer));
