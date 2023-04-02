@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, dialog } from 'electron';
+import { BrowserWindow, app, dialog, ipcMain } from 'electron';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
@@ -6,6 +6,7 @@ app.whenReady().then(() => {
   const window = new BrowserWindow({
     icon: resolve(__dirname, 'www/images/favicon.ico'),
     webPreferences: {
+      nodeIntegration: true,
       contextIsolation: false,
       preload: resolve(__dirname, 'preload.js')
     }
