@@ -1,0 +1,15 @@
+cpnt-increment-value {
+  display: block;
+  width: min-content;
+  white-space: nowrap;
+  margin: auto;
+  padding: 0;
+}
+
+cpnt-increment-value label {
+  margin-right: 0.25rem;
+  color: black;
+  line-height: 0;
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}

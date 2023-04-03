@@ -11,8 +11,9 @@
 @import 'modal/CpntConfig.css';
 @import 'modal/CpntLabelEditor.css';
 @import 'modal/CpntLoader.css';
-@import 'modal/LookupTable.css';
+@import 'modal/Increment.css';
 @import 'modal/Latch.css';
+@import 'modal/LookupTable.css';
 @import 'modal/Memory.css';
 @import 'modal/MemoryAddressRegister.css';
 @import 'modal/MemoryBufferRegister.css';
