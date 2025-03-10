@@ -29,8 +29,8 @@ class Registers extends Component {
   public constructor (item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
-    this._registers = new Array<string>(16).fill('0');
-    this._labels = new Array<string>(16).fill('Reg');
+    this._registers = new Array<string>(16).fill('');
+    this._labels = new Array<string>(16).fill('');
 
     this._decoderA = this.addInput('decoderA', 'Posición A', 20.75, 0);
     this._decoderB = this.addInput('decoderB', 'Posición B', 46.5, 0);
@@ -93,8 +93,8 @@ class Registers extends Component {
   }
 
   public addRegister (): number {
-    this._registers.push('0');
-    this._labels.push('Reg');
+    this._registers.push('');
+    this._labels.push('');
     return this._registers.length - 1;
   }
 
@@ -158,4 +158,4 @@ class RegistersItem extends CpntItem {
 customElements.define('cpnt-registers', Registers);
 customElements.define('cpnt-item-registers', RegistersItem);
 
-export { RegistersItem, Registers };
+export { Registers, RegistersItem };

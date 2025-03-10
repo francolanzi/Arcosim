@@ -24,7 +24,7 @@ class LookupTable extends Component {
     super(item, top, left);
 
     this._table = new Map();
-    this._table.set(0, ['0', '0']);
+    this._table.set(0, ['0', '']);
 
     this._key = this.addInput('key', 'Clave', 0, 44.5);
 

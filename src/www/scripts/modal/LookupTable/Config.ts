@@ -14,7 +14,7 @@ class LookupTableConfig extends CpntConfig<LookupTable> {
     this.append(list);
 
     key.addEventListener('add', () => {
-      list.addValue(key.key, '0');
+      list.addValue(key.key, '');
       this.reload();
     });
   }
