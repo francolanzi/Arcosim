@@ -2,7 +2,8 @@ select[is='custom-select'] {
   margin: 0;
   padding: 0;
   height: 1.75rem;
-  border: none;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
   text-align-last: center;
   box-sizing: border-box;
   font-size: 1rem;
@@ -13,4 +14,8 @@ select[is='custom-select'] {
 
 select[is='custom-select']:focus {
   outline: none;
+}
+
+select[is='custom-select']:read-only, select[is='custom-select']:disabled {
+  border: none;
 }

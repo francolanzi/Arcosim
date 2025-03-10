@@ -69,13 +69,18 @@ modal-layer input {
   padding: 0;
   height: 1.75rem;
   text-align: center;
-  border: 0;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
   box-sizing: border-box;
   font-size: 1rem;
   color: black;
   line-height: 0;
   background-color: transparent;
   font-family: 'Courier New', Courier, monospace;
+}
+
+modal-layer input:read-only, modal-layer input:disabled {
+  border: none;
 }
 
 modal-layer input:focus {
@@ -85,4 +90,9 @@ modal-layer input:focus {
 modal-layer input::selection {
   color: white;
   background-color: gray;
+}
+
+modal-layer input::placeholder {
+  color: lightgray;
+  font-weight: bold;
 }
