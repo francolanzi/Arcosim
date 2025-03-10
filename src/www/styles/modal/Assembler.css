@@ -1,0 +1,41 @@
+cpnt-assembler-label {
+  margin: 0;
+  padding: 0.5rem;
+  display: block;
+  width: 100%;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  text-align: center;
+  color: black;
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+cpnt-assembler-count {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0.1rem 0;
+}
+
+cpnt-assembler-list {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+cpnt-assembler-mask {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+input[is='cpnt-assembler-mask-name'] {
+  width: 10rem;
+}

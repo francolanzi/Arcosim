@@ -1,6 +1,7 @@
 import Computer from './Computer.js';
 import CpntItem from './CpntItem.js';
 import { ArithmeticLogicUnitItem } from './cpnts/ArithmeticLogicUnit.js';
+import { AssemblerItem } from './cpnts/Assembler.js';
 import { ClockItem } from './cpnts/Clock.js';
 import { ConstItem } from './cpnts/Const.js';
 import { DecoderItem } from './cpnts/Decoder.js';
@@ -26,6 +27,7 @@ class CpntItems {
     this._items = new Map();
 
     this.add(new ArithmeticLogicUnitItem(computer));
+    this.add(new AssemblerItem(computer));
     this.add(new ClockItem(computer));
     this.add(new ConstItem(computer));
     this.add(new DecoderItem(computer));
