@@ -24,6 +24,7 @@ class SplitterMask extends HTMLElement {
 
     this._maskName.value = name;
     this._maskName.type = 'text';
+    this._maskName.placeholder = 'Nombre';
 
     this.append(this._maskName);
     this.append(this._maskSize);

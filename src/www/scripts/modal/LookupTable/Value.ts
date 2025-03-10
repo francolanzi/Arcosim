@@ -18,6 +18,7 @@ class LookupTableValue extends HTMLElement {
     this._value.id = 'value';
     this._value.type = 'text';
     this._value.value = value;
+    this._value.placeholder = 'Valor';
     this.append(this._value);
 
     const remove = new ImgButton('Quitar', 'images/modal/minus.svg');

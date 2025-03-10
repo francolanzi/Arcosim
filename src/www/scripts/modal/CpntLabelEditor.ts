@@ -7,6 +7,7 @@ class CpntLabelEditor extends HTMLElement {
     const input = document.createElement('input');
     input.id = 'label';
     input.value = cpnt.label;
+    input.placeholder = 'Etiqueta';
     this.append(input);
 
     input.addEventListener('change', () => {

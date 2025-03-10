@@ -24,10 +24,12 @@ class RegistersRegister extends HTMLElement {
     this._label = document.createElement('input');
     this._label.type = 'text';
     this._label.value = label;
+    this._label.placeholder = 'Nombre';
 
     this._value = document.createElement('input');
     this._value.type = 'text';
     this._value.value = value;
+    this._value.placeholder = 'Valor';
 
     const equals = document.createElement('label');
     equals.textContent = ` (${index.toString().padStart(2, '0')}) = `;

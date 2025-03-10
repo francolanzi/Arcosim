@@ -12,6 +12,7 @@ class LookupTableKey extends HTMLElement {
 
     this._key = document.createElement('input');
     this._key.type = 'text';
+    this._key.placeholder = 'Clave';
     this.append(this._key);
     this._key.addEventListener('keypress', ev => {
       if (ev.key === 'Enter') {
