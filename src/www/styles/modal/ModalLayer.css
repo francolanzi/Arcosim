@@ -10,9 +10,6 @@ modal-layer {
   opacity: 0;
   pointer-events: none;
   transition: all 0.5s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 modal-layer.show {
@@ -20,16 +17,16 @@ modal-layer.show {
   pointer-events: all;
 }
 
-modal-layer .modal {
+modal-layer modal-box {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   border-radius: 0.5rem;
   box-shadow: 0 0 5px black;
-  position: relative;
+  position: fixed;
 }
 
-modal-layer .modal .modal-title {
+modal-layer modal-box .modal-title {
   margin: 0;
   padding: 0.5rem 2.25rem 0.5rem 0.75rem;
   width: 100%;
@@ -42,7 +39,7 @@ modal-layer .modal .modal-title {
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
-modal-layer .modal .modal-content {
+modal-layer modal-box .modal-content {
   margin: 0;
   padding: 0.5rem;
   width: 100%;
@@ -51,7 +48,7 @@ modal-layer .modal .modal-content {
   border-radius: 0 0 0.5rem 0.5rem;
 }
 
-modal-layer .modal .modal-close {
+modal-layer modal-box .modal-close {
   width: 1rem;
   height: 1rem;
   margin: 0;
