@@ -2,7 +2,7 @@ import { ArithmeticLogicUnit } from '../../cpnts/ArithmeticLogicUnit.js';
 import Func from './Func.js';
 
 class ArithmeticLogicUnitList extends HTMLElement {
-  private readonly _cpnt: ArithmeticLogicUnit
+  private readonly _cpnt: ArithmeticLogicUnit;
 
   public get supported (): Array<string> {
     return ArithmeticLogicUnit.supported;

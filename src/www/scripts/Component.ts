@@ -20,7 +20,7 @@ abstract class Component extends Draggable {
 
   public trash: TrashButton | undefined;
 
-  public readonly cpntId: number
+  public readonly cpntId: number;
 
   public get config (): CpntConfig<Component> {
     return new CpntConfig(this);
