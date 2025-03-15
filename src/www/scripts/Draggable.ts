@@ -3,6 +3,7 @@ import Center from './ifaces/Center.js';
 abstract class Draggable extends HTMLElement {
   private _top: number;
   private _left: number;
+  private _area: HTMLElement;
 
   private readonly _move: (ev: MouseEvent) => void;
   private readonly _drop: (ev: MouseEvent) => void;
@@ -15,6 +16,12 @@ abstract class Draggable extends HTMLElement {
   public set top (value: number) {
     this._top = value;
     this.style.top = `${value}px`;
+
+    const { top, bottom } = this.getBoundingClientRect();
+
+    this._top -= Math.min(top - this._area.offsetTop + this._area.scrollTop, 0);
+    this._top -= Math.max(bottom - this._area.scrollHeight, 0);
+    this.style.top = `${value}px`;
   }
 
   public get left (): number {
@@ -24,10 +31,34 @@ abstract class Draggable extends HTMLElement {
   public set left (value: number) {
     this._left = value;
     this.style.left = `${value}px`;
+
+    const { left, right } = this.getBoundingClientRect();
+
+    this._left -= Math.min(left - this._area.offsetLeft + this._area.scrollLeft, 0);
+    this._left -= Math.max(right - this._area.scrollWidth, 0);
+    this.style.left = `${value}px`;
+  }
+
+  public get area (): HTMLElement {
+    return this._area;
+  }
+
+  public set area (value: HTMLElement) {
+    this._area = value;
+    this.top = this._top;
+    this.left = this._left;
   }
 
   public constructor (top: number, left: number) {
     super();
+
+    this._mouse = { x: 0, y: 0 };
+
+    this._move = ev => this.move(ev);
+    this._drop = ev => this.drop(ev);
+
+    this._area = document.documentElement;
+    this.area = this._area;
 
     this._top = top;
     this._left = left;
@@ -35,12 +66,10 @@ abstract class Draggable extends HTMLElement {
     this.top = this._top;
     this.left = this._left;
 
-    this._mouse = { x: 0, y: 0 };
-
-    this._move = ev => this.move(ev);
-    this._drop = ev => this.drop(ev);
-
-    this.addEventListener('mousedown', ev => this.drag(ev));
+    window.addEventListener('resize', () => {
+      this.top = this._top;
+      this.left = this._left;
+    });
   }
 
   public drag (ev: MouseEvent): void {
