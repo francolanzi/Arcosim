@@ -12,6 +12,8 @@ class LookupTable extends Component {
 
   private readonly _value: Output;
 
+  private _default: number;
+
   public get config (): Config {
     return new Config(this);
   }
@@ -20,11 +22,19 @@ class LookupTable extends Component {
     return this._table.values();
   }
 
+  public get default (): number {
+    return this._default;
+  }
+
+  public set default (value: number) {
+    this._default = value;
+  }
+
   public constructor (item: CpntItem, top: number, left: number) {
     super(item, top, left);
 
     this._table = new Map();
-    this._table.set(0, ['0', '']);
+    this._default = 0;
 
     this._key = this.addInput('key', 'Clave', 0, 44.5);
 
@@ -38,7 +48,8 @@ class LookupTable extends Component {
 
   public export (): LookupTableData {
     return {
-      table: [...this._table.values()]
+      table: [...this._table.values()],
+      default: this._default || 0
     };
   }
 
@@ -48,6 +59,8 @@ class LookupTable extends Component {
       data.table.forEach(([key, value]) =>
         this.setValue(key, value));
     }
+
+    this._default = data.default || 0;
   }
 
   public setValue (key: number | string, value: number | string): void {
@@ -56,7 +69,7 @@ class LookupTable extends Component {
 
   public getValue (key: number | string): number {
     const elem = this._table.get(Number(key));
-    return elem ? Number(elem[1]) : 0;
+    return elem ? Number(elem[1]) : this._default;
   }
 
   public removeValue (key: number | string): void {

@@ -9,7 +9,8 @@ cpnt-lut-list {
 }
 
 cpnt-lut-value,
-cpnt-lut-key {
+cpnt-lut-key,
+cpnt-lut-default {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -19,12 +20,16 @@ cpnt-lut-key {
 
 cpnt-lut-key input,
 cpnt-lut-value input,
-cpnt-lut-value label {
+cpnt-lut-value label,
+cpnt-lut-default input,
+cpnt-lut-default label {
   width: 10rem;
 }
 
 cpnt-lut-value label,
-cpnt-lut-value div {
+cpnt-lut-value div,
+cpnt-lut-default label,
+cpnt-lut-default div {
   color: black;
   line-height: 0;
   font-size: 1rem;

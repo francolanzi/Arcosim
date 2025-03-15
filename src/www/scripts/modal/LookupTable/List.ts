@@ -41,7 +41,7 @@ class LookupTableList extends HTMLElement {
   public removeValue (key: string): void {
     const elem = this._values.get(Number(key));
 
-    if (elem && this._values.size > 1) {
+    if (elem) {
       this.cpnt.removeValue(key);
       this._values.delete(Number(key));
       this.removeChild(elem);
