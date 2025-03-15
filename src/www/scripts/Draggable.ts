@@ -3,8 +3,10 @@ import Center from './ifaces/Center.js';
 abstract class Draggable extends HTMLElement {
   private _top: number;
   private _left: number;
+  private _handle: HTMLElement;
   private _area: HTMLElement;
 
+  private readonly _drag: (ev: MouseEvent) => void;
   private readonly _move: (ev: MouseEvent) => void;
   private readonly _drop: (ev: MouseEvent) => void;
   private readonly _mouse: Center;
@@ -39,6 +41,18 @@ abstract class Draggable extends HTMLElement {
     this.style.left = `${value}px`;
   }
 
+  public get handle (): HTMLElement {
+    return this._handle;
+  }
+
+  public set handle (value: HTMLElement) {
+    this._handle.removeEventListener('mousedown', this._drag);
+    this._handle.style.removeProperty('cursor');
+    this._handle = value;
+    this._handle.addEventListener('mousedown', this._drag);
+    this._handle.style.cursor = 'move';
+  }
+
   public get area (): HTMLElement {
     return this._area;
   }
@@ -54,8 +68,12 @@ abstract class Draggable extends HTMLElement {
 
     this._mouse = { x: 0, y: 0 };
 
+    this._drag = ev => this.drag(ev);
     this._move = ev => this.move(ev);
     this._drop = ev => this.drop(ev);
+
+    this._handle = this;
+    this.handle = this._handle;
 
     this._area = document.documentElement;
     this.area = this._area;
