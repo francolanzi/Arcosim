@@ -23,7 +23,7 @@ class LookupTableList extends HTMLElement {
   }
 
   public addValue (key: string, value: string): void {
-    if (!this._values.has(Number(key))) {
+    if (key && !this._values.has(Number(key))) {
       const elem = new Value(key, value);
 
       this.cpnt.setValue(key, value);
