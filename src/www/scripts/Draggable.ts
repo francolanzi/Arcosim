@@ -44,10 +44,8 @@ abstract class Draggable extends HTMLElement {
   }
 
   public drag (ev: MouseEvent): void {
-    const rect = this.getBoundingClientRect();
-
-    this._mouse.x = ev.clientX - rect.left;
-    this._mouse.y = ev.clientY - rect.top;
+    this._mouse.x = ev.pageX;
+    this._mouse.y = ev.pageY;
 
     document.addEventListener('mousemove', this._move);
     document.addEventListener('mouseup', this._drop);
@@ -56,8 +54,11 @@ abstract class Draggable extends HTMLElement {
   }
 
   public move (ev: MouseEvent): void {
-    this.top = Math.max(ev.pageY - this._mouse.y, 0);
-    this.left = Math.max(ev.pageX - this._mouse.x, 0);
+    this.top = this.top + ev.pageY - this._mouse.y;
+    this.left = this.left + ev.pageX - this._mouse.x;
+
+    this._mouse.x = ev.pageX;
+    this._mouse.y = ev.pageY;
 
     this.dispatchEvent(new Event('move'));
   }
