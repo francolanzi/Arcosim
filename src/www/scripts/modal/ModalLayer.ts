@@ -23,9 +23,6 @@ class ModalLayer extends HTMLElement {
   public show (title: string, content: Node): void {
     this._modal.show(title, content);
     this.classList.add('show');
-
-    this._modal.top = window.innerHeight / 2 - this._modal.clientHeight / 2;
-    this._modal.left = window.innerWidth / 2 - this._modal.clientWidth / 2;
   }
 }
 

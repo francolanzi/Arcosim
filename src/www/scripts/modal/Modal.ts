@@ -25,10 +25,13 @@ class Modal extends Draggable {
 
     this._close.addEventListener('click', () =>
       this.dispatchEvent(new Event('close')));
+
+    this.center();
   }
 
   public show (title: string, content: Node): void {
     this._title.textContent = title;
+    new ResizeObserver(() => this.center()).observe(this._content);
     this._content.append(content);
   }
 
@@ -38,8 +41,7 @@ class Modal extends Draggable {
     if (content) {
       this._content.removeChild(content);
     }
-    this.top = 0;
-    this.left = 0;
+    this.center();
   }
 }
 

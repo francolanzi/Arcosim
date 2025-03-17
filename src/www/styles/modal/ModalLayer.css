@@ -24,6 +24,7 @@ modal-layer modal-box {
   border-radius: 0.5rem;
   box-shadow: 0 0 5px black;
   position: fixed;
+  white-space: nowrap;
 }
 
 modal-layer modal-box .modal-title {

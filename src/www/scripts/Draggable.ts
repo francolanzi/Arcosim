@@ -117,6 +117,11 @@ abstract class Draggable extends HTMLElement {
 
     this.dispatchEvent(new Event('drop'));
   }
+
+  public center (): void {
+    this.top = (this._area.scrollHeight - this.clientHeight) / 2;
+    this.left = (this._area.scrollWidth - this.clientWidth) / 2;
+  }
 }
 
 export default Draggable;
