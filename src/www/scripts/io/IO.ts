@@ -1,5 +1,5 @@
 import Component from '../Component.js';
-import Center from '../ifaces/Center.js';
+import Coords from '../ifaces/Coords.js';
 import IOInfo from '../ifaces/IOInfo.js';
 
 abstract class IO extends HTMLElement {
@@ -7,7 +7,7 @@ abstract class IO extends HTMLElement {
   private _value: number;
   private _default: number;
   private _changed: boolean;
-  private readonly _center: Center;
+  private readonly _coords: Coords;
 
   public readonly cpnt: Component;
   public readonly ioId: string;
@@ -47,19 +47,19 @@ abstract class IO extends HTMLElement {
     return changed;
   }
 
-  public get center (): Center {
-    const x = this._center.x + this.cpnt.left;
-    const y = this._center.y + this.cpnt.top;
+  public get coords (): Coords {
+    const x = this._coords.x + this.cpnt.left;
+    const y = this._coords.y + this.cpnt.top;
     return { x, y };
   }
 
   public get x (): number {
-    return this._center.x;
+    return this._coords.x;
   }
 
   public set x (value: number) {
-    if (value !== this._center.x) {
-      this._center.x = value;
+    if (value !== this._coords.x) {
+      this._coords.x = value;
       this.style.left = `${value - 5}px`;
 
       const ev = new Event('move', { bubbles: true });
@@ -68,12 +68,12 @@ abstract class IO extends HTMLElement {
   }
 
   public get y (): number {
-    return this._center.y;
+    return this._coords.y;
   }
 
   public set y (value: number) {
-    if (value !== this._center.y) {
-      this._center.y = value;
+    if (value !== this._coords.y) {
+      this._coords.y = value;
       this.style.top = `${value - 5}px`;
 
       const ev = new Event('move', { bubbles: true });
@@ -86,7 +86,7 @@ abstract class IO extends HTMLElement {
 
     this._name = name;
     this._value = 0;
-    this._center = { x: -1, y: -1 };
+    this._coords = { x: -1, y: -1 };
 
     this.cpnt = cpnt;
     this.ioId = id;

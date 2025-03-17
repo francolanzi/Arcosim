@@ -1,4 +1,4 @@
-import Center from '../ifaces/Center.js';
+import Coords from '../ifaces/Coords.js';
 import LinkInfo from '../ifaces/LinkInfo.js';
 import Input from '../io/Input.js';
 import Output from '../io/Output.js';
@@ -61,7 +61,7 @@ class Link {
     this._line.style.strokeDasharray = value ? '10,10' : 'none';
   }
 
-  private static offset (c1: Center, c2: Center) {
+  private static offset (c1: Coords, c2: Coords): Coords {
     const dx = c2.x - c1.x;
     const dy = c2.y - c1.y;
 
@@ -123,8 +123,8 @@ class Link {
   }
 
   public moveInput (): void {
-    const c1 = this.input.center;
-    const c2 = this._corners.length ? this._corners[0].center : this.output.center;
+    const c1 = this.input.coords;
+    const c2 = this._corners.length ? this._corners[0].coords : this.output.coords;
 
     const { x, y } = Link.offset(c1, c2);
 
@@ -140,8 +140,8 @@ class Link {
   }
 
   public moveOutput (): void {
-    const c1 = this.output.center;
-    const c2 = this._corners.length ? this._corners[this._corners.length - 1].center : this.input.center;
+    const c1 = this.output.coords;
+    const c2 = this._corners.length ? this._corners[this._corners.length - 1].coords : this.input.coords;
 
     const { x, y } = Link.offset(c1, c2);
 
@@ -159,21 +159,21 @@ class Link {
   }
 
   public moveCorner (corner: LinkCorner): void {
-    const center = corner.center;
+    const coords = corner.coords;
     const i = this._corners.indexOf(corner);
 
     const points = this._line.getAttribute('points')?.split(' ');
 
     if (points) {
-      points[i + 1] = `${center.x},${center.y}`;
+      points[i + 1] = `${coords.x},${coords.y}`;
       this._line.setAttribute('points', points.reduce((acum, curr) => `${acum} ${curr}`));
     }
 
-    this._areas[i].setAttribute('x2', center.x.toString());
-    this._areas[i].setAttribute('y2', center.y.toString());
+    this._areas[i].setAttribute('x2', coords.x.toString());
+    this._areas[i].setAttribute('y2', coords.y.toString());
 
-    this._areas[i + 1].setAttribute('x1', center.x.toString());
-    this._areas[i + 1].setAttribute('y1', center.y.toString());
+    this._areas[i + 1].setAttribute('x1', coords.x.toString());
+    this._areas[i + 1].setAttribute('y1', coords.y.toString());
 
     this.moveInput();
     this.moveOutput();

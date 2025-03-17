@@ -1,4 +1,4 @@
-import Center from './ifaces/Center.js';
+import Coords from './ifaces/Coords.js';
 
 abstract class Draggable extends HTMLElement {
   private _top: number;
@@ -9,7 +9,7 @@ abstract class Draggable extends HTMLElement {
   private readonly _drag: (ev: MouseEvent) => void;
   private readonly _move: (ev: MouseEvent) => void;
   private readonly _drop: (ev: MouseEvent) => void;
-  private readonly _mouse: Center;
+  private readonly _mouse: Coords;
 
   public get top (): number {
     return this._top;
