@@ -13,6 +13,9 @@ class ModalLayer extends HTMLElement {
     this._modal.addEventListener('close', () =>
       this.classList.remove('show'));
 
+    this.addEventListener('click', () =>
+      this.classList.remove('show'));
+
     this.addEventListener('transitionend', () => {
       if (!this.classList.contains('show')) {
         this._modal.hide();

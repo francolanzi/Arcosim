@@ -26,6 +26,8 @@ class Modal extends Draggable {
     this._close.addEventListener('click', () =>
       this.dispatchEvent(new Event('close')));
 
+    this.addEventListener('click', ev => ev.stopPropagation());
+
     this.center();
   }
 
