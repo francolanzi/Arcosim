@@ -1,7 +1,12 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "es2022"
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "types": ["node"]
   },
-  "include": ["src/www/**/*"]
+  "include": [
+    "src/www/**/*",
+    "src/global.d.ts"
+  ]
 }
