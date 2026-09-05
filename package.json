@@ -14,7 +14,7 @@
   "main": "build/index.js",
   "scripts": {
     "remove": "rm -rf build/*",
-    "copy": "cpy ./src/**/* !./src/**/*.ts ./build",
+    "copy": "cpy --cwd=src \"**/*\" \"!**/*.ts\" ../build",
     "clicompile": "tsc -p tsconfig.cli.json",
     "svrcompile": "tsc -p tsconfig.svr.json",
     "compile": "npm run clicompile && npm run svrcompile",
